@@ -1,32 +1,13 @@
 {
-  "name": "your-awesome-website-basic-website-template-node",
+  "name": "sse-sheets-render",
   "version": "1.0.0",
-  "description": "YOUR PROJECT DESCRIPTION GOES HERE",
   "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amyhua/basic-website-template-node.git"
-  },
-  "keywords": [
-    "Girls",
-    "Who",
-    "Code",
-    "website",
-    "template",
-    "node"
-  ],
-  "author": "YOUR NAME GOES HERE",
-  "bugs": {
-    "url": "https://github.com/amyhua/basic-website-template-node/issues"
-  },
-  "homepage": "https://github.com/amyhua/basic-website-template-node#readme",
   "dependencies": {
-    "express": "^4.14.0",
-    "http": "0.0.0",
-    "nodemon": "^1.11.0"
+    "express": "^4.19.0",
+    "node-fetch": "^2.6.7"
   }
 }

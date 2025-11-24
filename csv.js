@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const parse = require('csv-parse');
+const parse = require('csv-parse/lib/sync');
 
 let cachedMatrix = null;
 let cachedParams = null;
@@ -11,12 +11,8 @@ async function fetchCSV() {
     const response = await fetch(CSV_URL);
     const text = await response.text();
 
-    return new Promise((resolve, reject) => {
-        parse(text, {}, (err, rows) => {
-            if (err) reject(err);
-            resolve(rows);
-        });
-    });
+    const rows = parse(text, { skip_empty_lines: true });
+    return rows;
 }
 
 async function loadMatrix() {
@@ -25,8 +21,6 @@ async function loadMatrix() {
     const header = rows[0];   // First row = parameter names
     const matrix = rows.slice(1);
 
-    // Build param dictionary:
-    // "Imię_1" → value from row 1 under "Imię"
     let params = {};
     matrix.forEach((row, rowIndex) => {
         header.forEach((colName, colIndex) => {

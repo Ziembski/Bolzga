@@ -9,6 +9,7 @@ let clients = [];
 
 // SSE endpoint
 app.get("/sse", async (req, res) => {
+    console.log("[SSE] Client connected.");
     res.writeHead(200, {
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",
@@ -22,6 +23,7 @@ app.get("/sse", async (req, res) => {
     res.write(`data: ${JSON.stringify(constants)}\n\n`);
 
     req.on("close", () => {
+		console.log("[SSE] Client disconnected.");
         clients = clients.filter(c => c !== res);
     });
 });
@@ -38,9 +40,25 @@ setInterval(async () => {
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public/index.html")));
 
 for (let i = 1; i <= 5; i++) {
-    app.get(`/sub${i}`, (req, res) =>
-        res.sendFile(path.join(__dirname, `public/sub${i}.html`))
-    );
+    app.get(`/sub${i}`, async (req, res) => {
+		
+		console.log(`[PAGE] Subpage ${i} opened → forcing CSV refresh...`);
+		
+        // Force CSV refresh
+        const { table, constants } = await fetchCSV();
+		
+		console.log(`[PAGE] Subpage ${i} CSV refreshed. Rows: ${table.length}`);
+
+        // Update cache for SSE system
+        cachedData = table;
+
+        // Notify active SSE clients (optional but useful)
+        clients.forEach(c => c.write(`data: ${JSON.stringify(constants)}\n\n`));
+
+        // Serve subpage
+        res.sendFile(path.join(__dirname, `public/sub${i}.html`));
+    });
+}
 }
 
 const PORT = process.env.PORT || 3000;

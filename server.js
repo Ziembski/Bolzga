@@ -116,7 +116,7 @@ app.get("/fetch-now", async (req, res) => {
 });
 
 // Subpages (row-specific)
-app.get("/sub:row", (req, res) =>
+app.get("/sub/:row", (req, res) =>
   res.sendFile(path.join(__dirname, "public", `sub${req.params.row}.html`))
 );
 

@@ -14,10 +14,5 @@ function connectSSE(updateFn) {
 async function loadInitial(updateFn) {
     const res = await fetch("/constants");
     constants = await res.json();
-	
-        try {
-            const data = JSON.parse(msg.data);
-            constants = data;
-            updateFn();
-        } catch {}
+    updateFn();
 }

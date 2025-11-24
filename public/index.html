@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Main Page</title>
+    <meta charset="UTF-8">
+    <title>Main</title>
 </head>
 <body>
-<h1>Main Page</h1>
+    <h1>Main Page</h1>
 
-    <ul>
-        <li><a href="/sub1">Subpage 1</a></li>
-        <li><a href="/sub2">Subpage 2</a></li>
-        <li><a href="/sub3">Subpage 3</a></li>
-        <li><a href="/sub4">Subpage 4</a></li>
-        <li><a href="/sub5">Subpage 5</a></li>
-    </ul>
-	
+    <a href="/aslan.html">Go to Aslan Page</a>
+
+    <br><br>
+
+    <button onclick="refreshCSV()">Force Refresh CSV</button>
+
+    <script>
+        function refreshCSV() {
+            fetch("/force-refresh")
+                .then(r => r.text())
+                .then(t => alert(t));
+        }
+    </script>
 </body>
 </html>

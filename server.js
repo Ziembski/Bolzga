@@ -1,67 +1,59 @@
 const express = require("express");
-const fetch = require("node-fetch");
-const path = require("path");
+const axios = require("axios");
+const cors = require("cors");
+const fs = require("fs");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.static("public"));
 
-// Replace with your real sheet ID
-const SHEET_ID = "1rJ8Xl52w1zrjxiV5oQGXdIr2LDLxA_ZNu9iNUD1O9Qg";
-
-// Public CSV export URL
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv`;
+const CSV_URL = "https://docs.google.com/spreadsheets/d/<sheet_id>/export?format=csv";
 
 let clients = [];
 
-// Serve frontend
-app.use(express.static(path.join(__dirname, "public")));
-
-// SSE endpoint
-app.get("/events", (req, res) => {
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
-  res.setHeader("Connection", "keep-alive");
-  res.flushHeaders();
-
-  const client = { id: Date.now(), res };
-  clients.push(client);
-
-  console.log("Client connected:", client.id);
-
-  req.on("close", () => {
-    clients = clients.filter(c => c.id !== client.id);
-    console.log("Client disconnected:", client.id);
-  });
-});
-
-// Broadcast function
-function broadcast(data) {
-  clients.forEach(client => {
-    client.res.write(`data: ${JSON.stringify(data)}\n\n`);
-  });
+async function fetchCSV() {
+    const res = await axios.get(CSV_URL);
+    const rows = res.data.trim().split("\n").map(r => r.split(","));
+    let constants = {};
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (let r = 0; r < rows.length; r++) {
+        for (let c = 0; c < rows[r].length; c++) {
+            const name = letters[c] + (r + 1);
+            constants[name] = rows[r][c];
+        }
+    }
+    fs.writeFileSync("constants.js","module.exports = " + JSON.stringify(constants, null, 2),"utf8");
+    return constants;
 }
 
-// Fetch Google Sheets A1 every 15 seconds
-async function fetchAndBroadcast() {
-  try {
-    const response = await fetch(CSV_URL);
-    const csv = await response.text();
+let lastData = null;
 
-    const firstLine = csv.split("\n")[0];
-    const A1 = firstLine.split(",")[0];
+setInterval(async () => {
+    const fresh = await fetchCSV();
+    if (JSON.stringify(fresh) !== JSON.stringify(lastData)) {
+        lastData = fresh;
+        clients.forEach(client => client.res.write(`data: ${JSON.stringify(fresh)}\n\n`));
+    }
+}, 5000);
 
-    console.log("Fetched A1:", A1);
-    broadcast({ a1: A1 });
-
-  } catch (err) {
-    console.error("Failed to fetch CSV:", err);
-  }
-}
-
-// Start polling
-setInterval(fetchAndBroadcast, 15000);
-fetchAndBroadcast(); // Fetch immediately at startup
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.get("/sse", (req, res) => {
+    res.set({
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        "Connection": "keep-alive"
+    });
+    res.flushHeaders();
+    res.write("data: connected\n\n");
+    const client = { res };
+    clients.push(client);
+    req.on("close", () => {
+        clients = clients.filter(c => c !== client);
+    });
 });
+
+app.get("/constants", async (req, res) => {
+    res.json(require("./constants.js"));
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Server running on " + port));

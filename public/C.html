@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page C</title>
+</head>
+<body>
+<h1>Strona C</h1>
+<div id="out">Ładowanie...</div>
+<script src="sse.js"></script>
+<script>
+function updatePage() {
+    document.getElementById("out").innerText =
+      `Siła jest równa ${constants.C1}, ` +
+      `Zręczność jest równa ${constants.C2}, ` +
+      `Wytrzymałość jest równa ${constants.C3}`;
+}
+loadInitial(updatePage);
+connectSSE(updatePage);
+</script>
+</body>
+</html>

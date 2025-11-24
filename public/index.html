@@ -1,37 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>A1 Live Value (SSE)</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      background: #fafafa;
-    }
-    #value {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-top: 20px;
-    }
-  </style>
+<title>Main Page</title>
 </head>
 <body>
-  <h1>Google Sheets A1 (Live via SSE)</h1>
-  <div id="value">Waiting for data...</div>
-
-  <script>
-    const source = new EventSource("/events");
-    const valueBox = document.getElementById("value");
-
-    source.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      valueBox.textContent = data.a1;
-    };
-
-    source.onerror = () => {
-      valueBox.textContent = "Connection lost… retrying…";
-    };
-  </script>
+<h1>Main Page</h1>
+<p><a href="A.html">Subpage A</a></p>
+<p><a href="B.html">Subpage B</a></p>
+<p><a href="C.html">Subpage C</a></p>
+<p><a href="D.html">Subpage D</a></p>
+<p><a href="E.html">Subpage E</a></p>
 </body>
 </html>

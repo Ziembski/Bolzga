@@ -32,7 +32,7 @@ function broadcast(msg) {
 // Check A1 every 5 seconds
 async function checkA1() {
     try {
-        const response = await fetch(""https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv"");
+        const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv");
         const text = await response.text();
 
         const rows = parse(text, { skip_empty_lines: true });

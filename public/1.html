@@ -8,47 +8,20 @@
 
 <div id="out">Ładowanie...</div>
 
-	<!-- 🔙 Back to main page -->
-<div style="margin-top: 20px;">
-    <a href="/" style="font-size: 18px;">⬅ Powrót na stronę główną</a>
-</div>
-
 <script src="sse.js"></script>
 
 <script>
-// 🔧 Change this constant to select row:
-const ROW = {N};
+// 🔧 Change only this constant to change which row is shown:
+const ROW = 1;
 
-let constants = {}; // Cleared on refresh
-
-// 🔁 Fully reload constants (cache-bust + wipe local cache)
-function reloadConstants() {
-
-// Completely remove previously cached values
-constants = {};
-document.getElementById("out").innerText = "Odświeżanie…";
-
-    return fetch("/constants?ts=" + Date.now(), {
-        cache: "no-store"    // ← absolutely no browser caching
-    })
+// 🔁 Force-refresh constants every time page is opened:
+fetch("/constants?ts=" + Date.now())
     .then(r => r.json())
     .then(data => {
-        constants = data;   // restore fresh values
+        constants = data;
         updatePage();
     });
-}
 
-// 🔘 Refresh button handler
-function manualRefresh() {
-    refreshButton.innerText = "Odświeżam…";
-    reloadConstants().then(() => {
-        refreshButton.innerText = "Odśwież dane";
-    });
-}
-
-const refreshButton = document.querySelector("button");
-
-// Update displayed text
 function updatePage() {
     document.getElementById("out").innerText =
       `Siła jest równa ${constants["A" + ROW]}, ` +
@@ -56,15 +29,17 @@ function updatePage() {
       `Wytrzymałość jest równa ${constants["C" + ROW]}`;
 }
 
-// Load constants when page opens
-reloadConstants();
+<!-- 🔙 Back to main page -->
+<div style="margin-top: 20px;">
+    <a href="/" style="font-size: 18px;">⬅ Powrót na stronę główną</a>
+</div>
 
-// Load updates via SSE
+// Load constants again in case fetch completes slowly
 loadInitial(updatePage);
-connectSSE(() => reloadConstants());
-</script>
 
+// SSE for live updates
+connectSSE(updatePage);
+</script>
 
 </body>
 </html>
-

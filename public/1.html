@@ -8,6 +8,11 @@
 
 <div id="out">Ładowanie...</div>
 
+<!-- 🔙 Back to main page -->
+<div style="margin-top: 20px;">
+    <a href="/" style="font-size: 18px;">⬅ Powrót na stronę główną</a>
+</div>
+
 <script src="sse.js"></script>
 
 <script>
@@ -30,7 +35,8 @@ function updatePage() {
 }
 
 
-// Load constants again in case fetch completes slowly
+// Load constants again in case fetc
+ h completes slowly
 loadInitial(updatePage);
 
 // SSE for live updates

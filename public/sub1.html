@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Subpage 1</title>
+  <meta charset="UTF-8">
+  <title>Subpage 1</title>
 </head>
 <body>
-    <h1>Subpage 1</h1>
+<h2>Subpage 1</h2>
 
-    <p>Imię: <span id="A1"></span></p>
-    <p>Nazwisko: <span id="B1"></span></p>
-    <p>Wiek: <span id="C1"></span></p>
-    <p>Płeć: <span id="D1"></span></p>
-    <p>Rasa: <span id="E1"></span></p>
+<p id="imie">Imię: ...</p>
+<p id="nazw">Nazwisko: ...</p>
+<p id="wiek">Wiek: ...</p>
+<p id="plec">Płeć: ...</p>
+<p id="rasa">Rasa: ...</p>
 
-    <a href="/">Back to main page</a>
+<br>
+<a href="/">Powrót</a>
 
-    <script src="sse.js"></script>
+<script>
+const row = 1;
+const row = row+1;
+
+function applyData(data) {
+  document.getElementById("imie").innerText = "Imię: " + data["A" + row];
+  document.getElementById("nazw").innerText = "Nazwisko: " + data["B" + row];
+  document.getElementById("wiek").innerText = "Wiek: " + data["C" + row];
+  document.getElementById("plec").innerText = "Płeć: " + data["D" + row];
+  document.getElementById("rasa").innerText = "Rasa: " + data["E" + row];
+}
+
+const evt = new EventSource("/events");
+evt.onmessage = (e) => applyData(JSON.parse(e.data));
+</script>
 </body>
 </html>

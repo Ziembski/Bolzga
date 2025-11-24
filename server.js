@@ -1,67 +1,143 @@
+// server.js
 const express = require("express");
+const fs = require("fs");
+const fetch = require("node-fetch");
 const path = require("path");
-const { checkForUpdates, fetchCSV } = require("./csvFetcher");
 
 const app = express();
 app.use(express.static("public"));
 
-let clients = [];
-let cachedData = null;
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/xxxx/pub?output=csv";
 
-// SSE endpoint
-app.get("/sse", async (req, res) => {
-    console.log("[SSE] Client connected.");
-    res.writeHead(200, {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive"
-    });
-
-    clients.push(res);
-
-    // Send data immediately when page loads
-    const { constants } = await fetchCSV();
-    res.write(`data: ${JSON.stringify(constants)}\n\n`);
-
-    req.on("close", () => {
-		console.log("[SSE] Client disconnected.");
-        clients = clients.filter(c => c !== res);
-    });
-});
-
-// Notify clients on CSV update
-setInterval(async () => {
-    const { changed, constants, table } = await checkForUpdates();
-    if (changed) {
-        cachedData = table;
-        clients.forEach(c => c.write(`data: ${JSON.stringify(constants)}\n\n`));
-    }
-}, 5000);
-
-// Serve pages
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public/index.html")));
-
-for (let i = 1; i <= 5; i++) {
-    app.get(`/sub${i}`, async (req, res) => {
-
-        console.log(`[PAGE] Subpage ${i} opened → checking CSV...`);
-
-        const { table, constants } = await fetchCSV();
-
-        const changed = JSON.stringify(table) !== JSON.stringify(cachedData);
-
-        if (changed) {
-            console.log(`[PAGE] CSV changed (via subpage ${i}). Updating cache + sending SSE.`);
-            cachedData = table;
-            clients.forEach(c => c.write(`data: ${JSON.stringify(constants)}\n\n`));
-        } else {
-            console.log(`[PAGE] CSV unchanged (via subpage ${i}). No SSE sent.`);
-        }
-
-        res.sendFile(path.join(__dirname, `public/sub${i}.html`));
-    });
+// ====== FAST FNV-1a HASH ======
+function fnv1a(str) {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    hash ^= str.charCodeAt(i);
+    hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
+  return hash >>> 0;
 }
 
+// ====== GLOBAL CACHE ======
+let csvData = [];         // 2D array
+let rowHashes = [];       // Hash per row: [hash1, hash2, ...]
+let lastUpdate = 0;       // Timestamp of last CSV fetch
+let isThrottled = false;  // Prevent multiple fetches from burst loads
 
+// ====== THROTTLED CSV FETCH (1 fetch per 1s max) ======
+async function throttledFetchCSV() {
+  if (isThrottled) {
+    console.log("[THROTTLE] Fetch skipped");
+    return false;
+  }
+
+  isThrottled = true;
+  setTimeout(() => (isThrottled = false), 1000);
+
+  return await fetchCSV();
+}
+
+// ====== DOWNLOAD CSV & DETECT PARTIAL CHANGES ======
+async function fetchCSV() {
+  console.log("[CSV] Fetching CSV...");
+
+  const response = await fetch(CSV_URL);
+  const text = await response.text();
+
+  const rows = text
+    .trim()
+    .split("\n")
+    .map((r) => r.split(","));
+
+  const newRowHashes = rows.map((r) => fnv1a(r.join("|")));
+  let changed = false;
+
+  // Compare old vs new row hashes
+  for (let i = 0; i < newRowHashes.length; i++) {
+    if (rowHashes[i] !== newRowHashes[i]) {
+      changed = true;
+      break;
+    }
+  }
+
+  if (!changed) {
+    console.log("[CSV] No changes detected.");
+    return false;
+  }
+
+  console.log("[CSV] Change detected — updating memory.");
+
+  csvData = rows;
+  rowHashes = newRowHashes;
+  lastUpdate = Date.now();
+
+  broadcastSSE();
+
+  return true;
+}
+
+// Initial CSV load
+fetchCSV();
+
+// ====== GENERATE CONSTANTS A1–E5 ONLY ======
+function getConstants() {
+  const constants = {};
+
+  for (let row = 0; row < 5; row++) {
+    for (let col = 0; col < 5; col++) {
+      const letter = String.fromCharCode(65 + col); // A–E
+      const cellName = `${letter}${row + 1}`;
+      constants[cellName] = csvData[row]?.[col] ?? "";
+    }
+  }
+
+  return constants;
+}
+
+// ====== SSE CLIENTS ======
+let clients = [];
+
+function broadcastSSE() {
+  const constants = getConstants();
+  const json = JSON.stringify(constants);
+
+  console.log("[SSE] Broadcasting update...");
+
+  clients.forEach((res) => res.write(`data: ${json}\n\n`));
+}
+
+app.get("/events", (req, res) => {
+  console.log("[SSE] Client connected.");
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+
+  clients.push(res);
+
+  req.on("close", () => {
+    console.log("[SSE] Client disconnected.");
+    clients = clients.filter((c) => c !== res);
+  });
+});
+
+// ====== ROUTE: SERVE SUBPAGES & TRIGGER THROTTLED FETCH ======
+app.get("/sub/:id", async (req, res) => {
+  const id = Number(req.params.id);
+
+  await throttledFetchCSV();
+
+  res.sendFile(path.join(__dirname, "public", `sub${id}.html`));
+});
+
+// ====== MAIN PAGE ======
+app.get("/", async (req, res) => {
+  await throttledFetchCSV();
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// ====== START SERVER ======
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Server running on " + PORT));
+app.listen(PORT, () => console.log("Server running on port", PORT));

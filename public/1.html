@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Row 1</title>
+</head>
+<body>
+<h1>Strona 1</h1>
+
+<div id="out">Ładowanie...</div>
+
+<script src="sse.js"></script>
+
+<script>
+// 🔧 Change only this constant to change which row is shown:
+const ROW = {1};
+
+function updatePage() {
+    document.getElementById("out").innerText =
+      `Siła jest równa ${constants["A" + ROW]}, ` +
+      `Zręczność jest równa ${constants["B" + ROW]}, ` +
+      `Wytrzymałość jest równa ${constants["C" + ROW]}`;
+}
+
+loadInitial(updatePage);
+connectSSE(updatePage);
+</script>
+
+</body>
+</html>

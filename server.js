@@ -7,7 +7,7 @@ const path = require("path");
 const app = express();
 app.use(express.static("public"));
 
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/xxxx/pub?output=csv";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv";
 
 // ====== FAST FNV-1a HASH ======
 function fnv1a(str) {

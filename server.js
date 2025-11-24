@@ -8,39 +8,17 @@ const app = express();
 app.use(cors());
 app.use(express.static("public"));
 
-let clients = [];
-
-async function broadcastUpdate() {
+// Returns current CSV values
+app.get("/fetch-data", async (req, res) => {
     const data = await fetchCSV();
-    const payload = `data: ${JSON.stringify(data)}\n\n`;
-    clients.forEach(res => res.write(payload));
-}
-
-setInterval(broadcastUpdate, 5000);
-
-app.get("/sse", async (req, res) => {
-    res.writeHead(200, {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive",
-        "Access-Control-Allow-Origin": "*"
-    });
-
-    clients.push(res);
-
-    const initial = await fetchCSV();
-    res.write(`data: ${JSON.stringify(initial)}\n\n`);
-
-    req.on("close", () => {
-        clients = clients.filter(c => c !== res);
-    });
+    res.json(data);
 });
 
+// Clears CSV cache and forces fresh reload
 app.get("/force-refresh", async (req, res) => {
     clearCache();
-    await fetchCSV();
-    await broadcastUpdate();
-    res.send("CSV cache cleared and refreshed.");
+    const fresh = await fetchCSV();
+    res.json(fresh);
 });
 
 const PORT = process.env.PORT || 3000;

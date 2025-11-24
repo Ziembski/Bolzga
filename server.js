@@ -30,7 +30,7 @@ function broadcast(msg) {
 }
 
 async function checkA1() {
-    const response = await fetch("https://docs.google.com/spreadsheets/d/TEST_ID/export?format=csv");
+    const response = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv");
     const text = await response.text();
     const rows = await new Promise((resolve, reject) => {
         parse(text, {}, (err, data) => err ? reject(err) : resolve(data));
@@ -44,7 +44,7 @@ async function checkA1() {
 }
 
 // Check every 5 seconds
-setInterval(checkA1, 5000);
+setInterval(checkA1, 15000);
 
 // API: GET parameters
 app.get("/api/params", async (req, res) => {

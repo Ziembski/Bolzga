@@ -14,8 +14,13 @@
 // 🔧 Change only this constant to change which row is shown:
 const ROW = 1;
 
-// 🔁 Force refresh constants whenever page loads:
-fetch("/constants", { cache: "reload" });
+// 🔁 Force-refresh constants every time page is opened:
+fetch("/constants?ts=" + Date.now())
+    .then(r => r.json())
+    .then(data => {
+        constants = data;
+        updatePage();
+    });
 
 function updatePage() {
     document.getElementById("out").innerText =
@@ -24,7 +29,11 @@ function updatePage() {
       `Wytrzymałość jest równa ${constants["C" + ROW]}`;
 }
 
+
+// Load constants again in case fetch completes slowly
 loadInitial(updatePage);
+
+// SSE for live updates
 connectSSE(updatePage);
 </script>
 

@@ -8,7 +8,8 @@
 
 <div id="out">Ładowanie...</div>
 
-<a href="/" style="font-size: 18px;"> Test ${constants["A" + ROW]} </a>
+<div id="Imie">Imię: </div>
+
 
 <!-- 🔙 Back to main page -->
 <div style="margin-top: 20px;">
@@ -20,8 +21,9 @@
 <script>
 // 🔧 Change only this constant to change which row is shown:
 const ROW = 1;
+const ROW = ROW + 1;
 
-// 🔁 Force-refresh constants every time page is opened:
+ // 🔁 Force-refresh constants every time page is opened:
 fetch("/constants?ts=" + Date.now())
     .then(r => r.json())
     .then(data => {
@@ -30,10 +32,7 @@ fetch("/constants?ts=" + Date.now())
     });
 
 function updatePage() {
-    document.getElementById("out").innerText =
-      `Siła jest równa ${constants["A" + ROW]}, ` +
-      `Zręczność jest równa ${constants["B" + ROW]}, ` +
-      `Wytrzymałość jest równa ${constants["C" + ROW]}`;
+    document.getElementById("Imie").innerText =`Imię: ${constants["B" + ROW]}`;
 }
 
 

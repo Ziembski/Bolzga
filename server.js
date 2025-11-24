@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.static("public"));
 
-const CSV_URL = "https://docs.google.com/spreadsheets/d/1rJ8Xl52w1zrjxiV5oQGXdIr2LDLxA_ZNu9iNUD1O9Qg/export?format=csv";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv";
 
 let clients = [];
 

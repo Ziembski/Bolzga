@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>Aslan</title>
 </head>
 <body>
-    <h1>Aslan</h1>
+<h1>Aslan</h1>
 
-    <p id="imie">Imię: (loading…)</p>
-    <p id="nazwisko">Nazwisko: (loading…)</p>
-    <p id="wiek">Wiek: (loading…)</p>
-    <p id="plec">Płeć: (loading…)</p>
-    <p id="rasa">Rasa: (loading…)</p>
+<div>
+    <p id="imie"></p>
+    <p id="nazwisko"></p>
+    <p id="wiek"></p>
+    <p id="plec"></p>
+    <p id="rasa"></p>
+</div>
 
-    <br>
-    <button onclick="refreshCSV()">Refresh Data</button>
-    <br><br>
-    <a href="/index.html">Back to main page</a>
+<button id="refresh">Force Refresh</button>
+<br><br>
+<a href="index.html">Back to Main Page</a>
 
-    <script>
+<script>
+async function loadValues() {
+    const res = await fetch("/api/params");
+    const data = await res.json();
 
-        // Load data immediately on page open
-        window.addEventListener("DOMContentLoaded", async () => {
-            const data = await fetch("/fetch-data").then(r => r.json());
-            updatePageValues(data);
-        });
+    document.getElementById("imie").textContent = "Imię: " + data["Imię_1"];
+    document.getElementById("nazwisko").textContent = "Nazwisko: " + data["Nazwisko_1"];
+    document.getElementById("wiek").textContent = "Wiek: " + data["Wiek_1"];
+    document.getElementById("plec").textContent = "Płeć: " + data["Płeć_1"];
+    document.getElementById("rasa").textContent = "Rasa: " + data["Rasa_1"];
+}
 
-        // Button refresh → clears cache + forces reload
-        async function refreshCSV() {
-            const data = await fetch("/force-refresh").then(r => r.json());
-            updatePageValues(data);
-        }
+// Load on open
+loadValues();
 
-        function updatePageValues(data) {
-            document.getElementById("imie").textContent     = "Imię: " + (data["Imię_1"] || "");
-            document.getElementById("nazwisko").textContent = "Nazwisko: " + (
+// SSE live reload on A1 change
+const evt = new EventSource("/events");
+evt.onmessage = (e) => {
+    const msg = JSON.parse(e.data);
+    if (msg.update) loadValues();
+};
+
+// Manual refresh button
+document.getElementById("refresh").onclick = async () => {
+    await fetch("/api/refresh");
+    loadValues();
+};
+</script>
+
+</body>
+</html>

@@ -13,23 +13,42 @@
 <p id="plec">Płeć: ...</p>
 <p id="rasa">Rasa: ...</p>
 
+<button id="refresh">Refresh CSV</button>
+
 <br>
-<a href="/">Powrót</a>
+<a href="/">Back to main page</a>
 
 <script>
 const row = 1;
 const row = row+1;
 
-function applyData(data) {
-  document.getElementById("imie").innerText = "Imię: " + data["A" + row];
-  document.getElementById("nazw").innerText = "Nazwisko: " + data["B" + row];
-  document.getElementById("wiek").innerText = "Wiek: " + data["C" + row];
-  document.getElementById("plec").innerText = "Płeć: " + data["D" + row];
-  document.getElementById("rasa").innerText = "Rasa: " + data["E" + row];
+
+// Update page content
+function update(data) {
+  document.getElementById("imie").innerText = "Imię: " + (data["A" + row] ?? "");
+  document.getElementById("nazw").innerText = "Nazwisko: " + (data["B" + row] ?? "");
+  document.getElementById("wiek").innerText = "Wiek: " + (data["C" + row] ?? "");
+  document.getElementById("plec").innerText = "Płeć: " + (data["D" + row] ?? "");
+  document.getElementById("rasa").innerText = "Rasa: " + (data["E" + row] ?? "");
 }
 
+// SSE subscription
 const evt = new EventSource("/events");
-evt.onmessage = (e) => applyData(JSON.parse(e.data));
+evt.onmessage = (e) => {
+  const constants = JSON.parse(e.data); // all CSV data still available
+  update(constants);
+};
+
+// Refresh button handler
+document.getElementById("refresh").addEventListener("click", async () => {
+  try {
+    const res = await fetch("/fetch-now");
+    const json = await res.json();
+    console.log("[CSV] Manual fetch result:", json);
+  } catch (err) {
+    console.error("Error fetching CSV:", err);
+  }
+});
 </script>
 </body>
 </html>

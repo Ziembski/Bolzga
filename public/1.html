@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Row 1</title>
+<title>Row {N}</title>
 </head>
 <body>
-<h1>Strona 1</h1>
+<h1>Strona {N}</h1>
 
 <div id="out">Ładowanie...</div>
 
-<script src="sse.js"></script>
+<!-- 🔘 Refresh button -->
+<button onclick="manualRefresh()">Odśwież dane</button>
+
+<!-- 🔙 Back to main page -->
+<div style="margin-top: 20px;">
+    <a href="/" style="font-size: 18px;">⬅ Powrót na stronę główną</a>
+</div>
+
+<script src="/sse.js"></script>
 
 <script>
-// 🔧 Change only this constant to change which row is shown:
+// 🔧 Change this constant to select row:
 const ROW = 1;
 
-// 🔁 Force-refresh constants every time page is opened:
-fetch("/constants?ts=" + Date.now())
-    .then(r => r.json())
-    .then(data => {
-        constants = data;
-        updatePage();
+// 🔁 Fetch fresh constants (cache-bust)
+function fetchFreshConstants() {
+    return fetch("/constants?ts=" + Date.now())
+        .then(r => r.json())
+        .then(data => {
+            constants = data;
+            updatePage();
+        });
+}
+
+// 🔘 Refresh button handler
+function manualRefresh() {
+    manualRefreshElement.innerText = "Odświeżam...";
+    fetchFreshConstants().then(() => {
+        manualRefreshElement.innerText = "Odśwież dane";
     });
+}
+
+const manualRefreshElement = document.querySelector("button");
 
 function updatePage() {
     document.getElementById("out").innerText =
@@ -29,11 +49,11 @@ function updatePage() {
       `Wytrzymałość jest równa ${constants["C" + ROW]}`;
 }
 
+// Load fresh constants on page load
+fetchFreshConstants();
 
-// Load constants again in case fetch completes slowly
+// Load again via SSE
 loadInitial(updatePage);
-
-// SSE for live updates
 connectSSE(updatePage);
 </script>
 

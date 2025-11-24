@@ -7,18 +7,26 @@
 <body>
     <h1>Aslan</h1>
 
-    <p id="imie">Imię: (press refresh)</p>
-    <p id="nazwisko">Nazwisko: (press refresh)</p>
-    <p id="wiek">Wiek: (press refresh)</p>
-    <p id="plec">Płeć: (press refresh)</p>
-    <p id="rasa">Rasa: (press refresh)</p>
+    <p id="imie">Imię: (loading…)</p>
+    <p id="nazwisko">Nazwisko: (loading…)</p>
+    <p id="wiek">Wiek: (loading…)</p>
+    <p id="plec">Płeć: (loading…)</p>
+    <p id="rasa">Rasa: (loading…)</p>
 
     <br>
-    <button onclick="refreshCSV()">Update Aslan</button>
+    <button onclick="refreshCSV()">Refresh Data</button>
     <br><br>
     <a href="/index.html">Back to main page</a>
 
     <script>
+
+        // Load data immediately on page open
+        window.addEventListener("DOMContentLoaded", async () => {
+            const data = await fetch("/fetch-data").then(r => r.json());
+            updatePageValues(data);
+        });
+
+        // Button refresh → clears cache + forces reload
         async function refreshCSV() {
             const data = await fetch("/force-refresh").then(r => r.json());
             updatePageValues(data);
@@ -26,11 +34,4 @@
 
         function updatePageValues(data) {
             document.getElementById("imie").textContent     = "Imię: " + (data["Imię_1"] || "");
-            document.getElementById("nazwisko").textContent = "Nazwisko: " + (data["Nazwisko_1"] || "");
-            document.getElementById("wiek").textContent     = "Wiek: " + (data["Wiek_1"] || "");
-            document.getElementById("plec").textContent     = "Płeć: " + (data["Płeć_1"] || "");
-            document.getElementById("rasa").textContent     = "Rasa: " + (data["Rasa_1"] || "");
-        }
-    </script>
-</body>
-</html>
+            document.getElementById("nazwisko").textContent = "Nazwisko: " + (

@@ -59,7 +59,7 @@ for (let i = 1; i <= 5; i++) {
         res.sendFile(path.join(__dirname, `public/sub${i}.html`));
     });
 }
-}
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Server running on " + PORT));

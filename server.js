@@ -6,6 +6,7 @@ const app = express();
 app.use(express.static("public"));
 
 let clients = [];
+let cachedData = null;
 
 // SSE endpoint
 app.get("/sse", async (req, res) => {
@@ -30,8 +31,9 @@ app.get("/sse", async (req, res) => {
 
 // Notify clients on CSV update
 setInterval(async () => {
-    const { changed, constants } = await checkForUpdates();
+    const { changed, constants, table } = await checkForUpdates();
     if (changed) {
+        cachedData = table;
         clients.forEach(c => c.write(`data: ${JSON.stringify(constants)}\n\n`));
     }
 }, 5000);
@@ -41,21 +43,21 @@ app.get("/", (req, res) => res.sendFile(path.join(__dirname, "public/index.html"
 
 for (let i = 1; i <= 5; i++) {
     app.get(`/sub${i}`, async (req, res) => {
-		
-		console.log(`[PAGE] Subpage ${i} opened → forcing CSV refresh...`);
-		
-        // Force CSV refresh
+
+        console.log(`[PAGE] Subpage ${i} opened → checking CSV...`);
+
         const { table, constants } = await fetchCSV();
-		
-		console.log(`[PAGE] Subpage ${i} CSV refreshed. Rows: ${table.length}`);
 
-        // Update cache for SSE system
-        cachedData = table;
+        const changed = JSON.stringify(table) !== JSON.stringify(cachedData);
 
-        // Notify active SSE clients (optional but useful)
-        clients.forEach(c => c.write(`data: ${JSON.stringify(constants)}\n\n`));
+        if (changed) {
+            console.log(`[PAGE] CSV changed (via subpage ${i}). Updating cache + sending SSE.`);
+            cachedData = table;
+            clients.forEach(c => c.write(`data: ${JSON.stringify(constants)}\n\n`));
+        } else {
+            console.log(`[PAGE] CSV unchanged (via subpage ${i}). No SSE sent.`);
+        }
 
-        // Serve subpage
         res.sendFile(path.join(__dirname, `public/sub${i}.html`));
     });
 }

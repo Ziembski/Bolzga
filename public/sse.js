@@ -1,18 +1,10 @@
-let constants = {};
+const evtSource = new EventSource("/sse");
 
-function connectSSE(updateFn) {
-    const sse = new EventSource("/sse");
-    sse.onmessage = (msg) => {
-        try {
-            const data = JSON.parse(msg.data);
-            constants = data;
-            updateFn();
-        } catch {}
-    };
-}
+evtSource.onmessage = (e) => {
+    const constants = JSON.parse(e.data);
 
-async function loadInitial(updateFn) {
-    const res = await fetch("/constants");
-    constants = await res.json();
-    updateFn();
-}
+    for (const key in constants) {
+        const el = document.getElementById(key);
+        if (el) el.textContent = constants[key];
+    }
+};

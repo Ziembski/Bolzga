@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>Aslan</h1>
-	
 
     <p id="imie"></p>
     <p id="nazwisko"></p>
@@ -15,18 +14,42 @@
     <p id="rasa"></p>
 
     <br>
+    <button onclick="refreshCSV()">Force Refresh CSV</button>
+    <br><br>
     <a href="/index.html">Back to main page</a>
 
     <script src="/client.js"></script>
 
     <script>
-        window.updatePageValues = function(data) {
+        // Button handler
+        function refreshCSV() {
+            fetch("/force-refresh")
+                .then(r => r.text())
+                .then(t => alert(t));
+        }
+
+        // This function will be called every time SSE receives new data
+        function applyValues(data) {
+            if (!data) return;
+
             document.getElementById("imie").textContent     = "Imię: " + (data["Imię_1"] || "");
             document.getElementById("nazwisko").textContent = "Nazwisko: " + (data["Nazwisko_1"] || "");
             document.getElementById("wiek").textContent     = "Wiek: " + (data["Wiek_1"] || "");
             document.getElementById("plec").textContent     = "Płeć: " + (data["Płeć_1"] || "");
             document.getElementById("rasa").textContent     = "Rasa: " + (data["Rasa_1"] || "");
+        }
+
+        // Expose to client.js
+        window.updatePageValues = function(data) {
+            applyValues(data);
         };
+
+        // If SSE data arrives before DOM loads, apply immediately after DOM is ready
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.latestData) {
+                applyValues(window.latestData);
+            }
+        });
     </script>
 </body>
 </html>

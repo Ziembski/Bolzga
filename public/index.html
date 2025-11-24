@@ -8,17 +8,5 @@
     <h1>Main Page</h1>
 
     <a href="/aslan.html">Go to Aslan Page</a>
-
-    <br><br>
-
-    <button onclick="refreshCSV()">Force Refresh CSV</button>
-
-    <script>
-        function refreshCSV() {
-            fetch("/force-refresh")
-                .then(r => r.text())
-                .then(t => alert(t));
-        }
-    </script>
 </body>
 </html>

@@ -29,7 +29,12 @@ app.get("/api/refresh", async (req, res) => {
     console.log("[REFRESH] Cache cleared.");
 
     const data = await fetchCSV();
-    console.log("[REFRESH] Fresh CSV fetched. Sending updated params.");
+
+    // update lastFirstCell so SSE watch doesn't retrigger
+    const firstCell = data.matrix[0][0];
+    setLastFirstCell(firstCell);
+
+    console.log(`[REFRESH] lastFirstCell updated to: ${firstCell}`);
 
     res.json({ refreshed: true, params: data.params });
 });

@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { parse } from "csv-parse/sync";
 import fs from "fs";
 
-const CSV_URL = "YOUR_PUBLIC_GOOGLE_SHEET_CSV_URL_HERE";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv";
 const CACHE_FILE = "./utils/csvCache.json";
 
 export async function fetchCSV() {

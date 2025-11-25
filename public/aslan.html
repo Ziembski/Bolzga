@@ -1,3 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aslan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Aslan</h1>
+
+<div id="content">
+    <p>Imię: <span id="i"></span></p>
+    <p>Nazwisko: <span id="n"></span></p>
+    <p>Wiek: <span id="w"></span></p>
+    <p>Płeć: <span id="p"></span></p>
+    <p>Rasa: <span id="r"></span></p>
+</div>
+
+<button id="refreshBtn">Refresh CSV</button>
+<br><br>
+<a href="index.html">Back to main page</a>
+
 <script>
     async function loadData() {
         const r = await fetch("/api/data");
@@ -31,3 +53,7 @@
     // Load initial data on page load
     loadData();
 </script>
+
+
+</body>
+</html>

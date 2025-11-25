@@ -22,8 +22,14 @@ app.get("/api/data", async (req, res) => {
 
 // Force refresh (from Aslan page button)
 app.get("/api/refresh", async (req, res) => {
+    console.log("[REFRESH] Manual CSV refresh triggered.");
+
     clearCache();
+    console.log("[REFRESH] Cache cleared.");
+
     const data = await fetchCSV();
+    console.log("[REFRESH] Fresh CSV fetched. Sending updated params.");
+
     res.json({ refreshed: true, params: data.params });
 });
 

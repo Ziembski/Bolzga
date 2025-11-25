@@ -1,0 +1,13 @@
+body {
+    font-family: Arial;
+    margin: 30px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+button {
+    padding: 8px 14px;
+    cursor: pointer;
+}

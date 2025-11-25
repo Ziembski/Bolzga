@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Main Page</h1>
+
+    <a href="aslan.html">Go to Aslan Subpage</a>
+
+    <script>
+        const evt = new EventSource("/events");
+        evt.onmessage = (e) => {
+            const msg = JSON.parse(e.data);
+            if (msg.updated) {
+                alert("CSV changed — updating!");
+                location.reload();
+            }
+        };
+    </script>
+</body>
+</html>

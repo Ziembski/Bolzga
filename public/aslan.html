@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Aslan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Aslan</h1>
+
+<div id="content">
+    <p>Imię: <span id="i"></span></p>
+    <p>Nazwisko: <span id="n"></span></p>
+    <p>Wiek: <span id="w"></span></p>
+    <p>Płeć: <span id="p"></span></p>
+    <p>Rasa: <span id="r"></span></p>
+</div>
+
+<button id="refreshBtn">Refresh CSV</button>
+<br><br>
+<a href="index.html">Back to main page</a>
+
+<script>
+    async function loadData() {
+        const r = await fetch("/api/data");
+        const params = await r.json();
+
+        document.getElementById("i").textContent = params["Imię_1"];
+        document.getElementById("n").textContent = params["Nazwisko_1"];
+        document.getElementById("w").textContent = params["Wiek_1"];
+        document.getElementById("p").textContent = params["Płeć_1"];
+        document.getElementById("r").textContent = params["Rasa_1"];
+    }
+
+    document.getElementById("refreshBtn").onclick = async () => {
+        await fetch("/api/refresh");
+        await loadData();
+        alert("Data refreshed!");
+    };
+
+    loadData();
+</script>
+
+</body>
+</html>

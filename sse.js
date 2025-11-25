@@ -45,7 +45,7 @@ export async function startCSVWatcher() {
         } else {
             console.log("[WATCHER] No confirmed change.");
         }
-    }, 20000);
+    }, 10000);
 }
 
 function sendEvent(payload) {

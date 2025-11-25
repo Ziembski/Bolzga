@@ -17,17 +17,26 @@
 
     <script>
         /**
-         * This script manages the main page display
-         * It fetches data and creates links to template pages for each row
+         * CONFIGURATION: Specify which rows you want to display
+         * Add or remove row numbers from this array to customize
+         * Example: [1, 3, 5] will show only rows 1, 3, and 5
          */
+        const ROWS_TO_DISPLAY = [
+            1,  // Shows row 2 from CSV
+            2   // Shows row 3 from CSV
+            // Add more row numbers here as needed:
+            // 5,
+            // 7,
+            // 10
+        ];
         
         let currentData = null;
         let eventSource = null;
         let updateDebounceTimer = null;
         
         /**
-         * Render the list of available entries as links
-         * Each entry corresponds to one row in the CSV
+         * Render only the specified entries as links
+         * Only rows listed in ROWS_TO_DISPLAY array will be shown
          */
         function renderEntries(data) {
             const container = document.getElementById('entries-list');
@@ -42,19 +51,30 @@
             
             let html = '<div class="entries-grid">';
             
-            // Create a link for each row in the data
-            data.rows.forEach((row, index) => {
-                const rowNumber = index + 1;
-                const displayName = imieIndex >= 0 && row[imieIndex] 
-                    ? row[imieIndex] 
-                    : `Wpis ${rowNumber}`;
-                
-                html += `
-                    <a href="template.html?row=${rowNumber}" class="entry-card">
-                        <h3>${displayName}</h3>
-                        <span class="row-number">Wiersz ${rowNumber}</span>
-                    </a>
-                `;
+            // Only display rows specified in ROWS_TO_DISPLAY array
+            ROWS_TO_DISPLAY.forEach(rowNumber => {
+                // Check if this row exists in the data
+                if (rowNumber <= data.rows.length && rowNumber > 0) {
+                    const row = data.rows[rowNumber - 1];
+                    const displayName = imieIndex >= 0 && row[imieIndex] 
+                        ? row[imieIndex] 
+                        : `Wpis ${rowNumber}`;
+                    
+                    html += `
+                        <a href="template.html?row=${rowNumber}" class="entry-card">
+                            <h3>${displayName}</h3>
+                            <span class="row-number">Wiersz ${rowNumber}</span>
+                        </a>
+                    `;
+                } else {
+                    // Row number is out of range
+                    html += `
+                        <div class="entry-card error-card">
+                            <h3>Wiersz ${rowNumber}</h3>
+                            <span class="row-number">Brak danych</span>
+                        </div>
+                    `;
+                }
             });
             
             html += '</div>';
@@ -73,7 +93,7 @@
             updateDebounceTimer = setTimeout(() => {
                 currentData = data;
                 renderEntries(data);
-            }, 300); // Wait 300ms before updating
+            }, 2000); // Wait ms before updating
         }
         
         /**

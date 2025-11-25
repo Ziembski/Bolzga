@@ -23,9 +23,20 @@
 
     <script>
         /**
-         * Template page script for displaying individual entry details
-         * This page dynamically shows data for a specific row from the CSV
+         * CONFIGURATION: Specify which fields you want to display
+         * Add or remove field names from this array to customize
+         * Field names must match the column headers in your CSV exactly
          */
+        const FIELDS_TO_DISPLAY = [
+            'Imię',      // Shows "Imię" field
+            'Nazwisko'   // Shows "Nazwisko" field
+            // Add more field names here as needed:
+            // 'Wiek',
+            // 'Płeć',
+            // 'Rasa',
+            // 'Email',
+            // 'Telefon'
+        ];
         
         let currentData = null;
         let currentRow = null;
@@ -42,8 +53,8 @@
         }
         
         /**
-         * Render the entry details for the specified row
-         * Creates dynamic fields based on CSV headers and data
+         * Render only the specified fields for the entry
+         * Only fields listed in FIELDS_TO_DISPLAY array will be shown
          */
         function renderDetails(data, rowNumber) {
             const container = document.getElementById('entry-details');
@@ -58,16 +69,30 @@
             
             let html = '<div class="details-grid">';
             
-            // Create a field for each header-value pair
-            data.headers.forEach((header, index) => {
-                const value = row[index] || 'Brak danych';
+            // Only display fields specified in FIELDS_TO_DISPLAY array
+            FIELDS_TO_DISPLAY.forEach(fieldName => {
+                // Find the index of this field in the headers
+                const fieldIndex = data.headers.indexOf(fieldName);
                 
-                html += `
-                    <div class="detail-item">
-                        <label>${header}:</label>
-                        <span class="detail-value">${value}</span>
-                    </div>
-                `;
+                if (fieldIndex >= 0) {
+                    // Field exists in CSV
+                    const value = row[fieldIndex] || 'Brak danych';
+                    
+                    html += `
+                        <div class="detail-item">
+                            <label>${fieldName}:</label>
+                            <span class="detail-value">${value}</span>
+                        </div>
+                    `;
+                } else {
+                    // Field not found in CSV headers
+                    html += `
+                        <div class="detail-item error-item">
+                            <label>${fieldName}:</label>
+                            <span class="detail-value error-value">Pole nie istnieje w CSV</span>
+                        </div>
+                    `;
+                }
             });
             
             html += '</div>';

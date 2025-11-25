@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szczegóły Wpisu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="index.html">← Powrót do listy</a>
+        </nav>
+        
+        <div id="entry-details" class="details-card">
+            <p>Ładowanie danych...</p>
+        </div>
+        
+        <button id="refresh-btn" class="refresh-button">Odśwież dane</button>
+        
+        <div id="last-update" class="last-update"></div>
+    </div>
+
+    <script>
+        /**
+         * Template page script for displaying individual entry details
+         * This page dynamically shows data for a specific row from the CSV
+         */
+        
+        let currentData = null;
+        let currentRow = null;
+        let eventSource = null;
+        let updateDebounceTimer = null;
+        
+        /**
+         * Get the row number from URL query parameters
+         * This determines which row's data to display
+         */
+        function getRowNumber() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('row')) || 1;
+        }
+        
+        /**
+         * Render the entry details for the specified row
+         * Creates dynamic fields based on CSV headers and data
+         */
+        function renderDetails(data, rowNumber) {
+            const container = document.getElementById('entry-details');
+            
+            if (!data || !data.rows || rowNumber > data.rows.length) {
+                container.innerHTML = '<p>Nie znaleziono danych dla tego wpisu.</p>';
+                return;
+            }
+            
+            // Get the specific row (remember rows are 0-indexed)
+            const row = data.rows[rowNumber - 1];
+            
+            let html = '<div class="details-grid">';
+            
+            // Create a field for each header-value pair
+            data.headers.forEach((header, index) => {
+                const value = row[index] || 'Brak danych';
+                
+                html += `
+                    <div class="detail-item">
+                        <label>${header}:</label>
+                        <span class="detail-value">${value}</span>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+            
+            // Update last update timestamp
+            const now = new Date().toLocaleString('pl-PL');
+            document.getElementById('last-update').textContent = 
+                `Ostatnia aktualizacja: ${now}`;
+        }
+        
+        /**
+         * Debounced update to prevent rapid successive renders
+         * Ensures smooth updates even with frequent data changes
+         */
+        function debouncedUpdate(data) {
+            if (updateDebounceTimer) {
+                clearTimeout(updateDebounceTimer);
+            }
+            
+            updateDebounceTimer = setTimeout(() => {
+                currentData = data;
+                renderDetails(data, currentRow);
+            }, 300);
+        }
+        
+        /**
+         * Initialize Server-Sent Events for real-time updates
+         * Automatically updates the page when CSV data changes
+         */
+        function initSSE() {
+            if (eventSource) {
+                eventSource.close();
+            }
+            
+            eventSource = new EventSource('/api/sse');
+            
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                debouncedUpdate(data);
+            };
+            
+            eventSource.onerror = (error) => {
+                console.error('SSE Error:', error);
+                eventSource.close();
+                
+                // Reconnect after 5 seconds
+                setTimeout(initSSE, 5000);
+            };
+        }
+        
+        /**
+         * Handle manual refresh button click
+         * Forces a fresh fetch from Google Sheets
+         */
+        async function handleRefresh() {
+            const button = document.getElementById('refresh-btn');
+            button.disabled = true;
+            button.textContent = 'Odświeżanie...';
+            
+            try {
+                const response = await fetch('/api/refresh');
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentData = result.data;
+                    renderDetails(currentData, currentRow);
+                    
+                    // Restart SSE connection with new data
+                    initSSE();
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                alert('Błąd podczas odświeżania danych');
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Odśwież dane';
+            }
+        }
+        
+        /**
+         * Initialize the page on load
+         * Sets up data display and real-time updates
+         */
+        async function init() {
+            currentRow = getRowNumber();
+            
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                currentData = data;
+                renderDetails(data, currentRow);
+                
+                // Set up real-time updates
+                initSSE();
+                
+                // Set up refresh button
+                document.getElementById('refresh-btn')
+                    .addEventListener('click', handleRefresh);
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('entry-details').innerHTML = 
+                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+            }
+        }
+        
+        // Start when page loads
+        init();
+    </script>
+</body>
+</html>

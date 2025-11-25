@@ -1,15 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Główna Strona - Lista Wpisów</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Main Page</h1>
+    <div class="container">
+        <h1>Lista Dostępnych Wpisów</h1>
+        
+        <div id="entries-list">
+            <p>Ładowanie danych...</p>
+        </div>
+    </div>
 
-    <a href="aslan.html">Open Aslan Page</a>
-
-    <script src="client.js"></script>
+    <script>
+        /**
+         * This script manages the main page display
+         * It fetches data and creates links to template pages for each row
+         */
+        
+        let currentData = null;
+        let eventSource = null;
+        let updateDebounceTimer = null;
+        
+        /**
+         * Render the list of available entries as links
+         * Each entry corresponds to one row in the CSV
+         */
+        function renderEntries(data) {
+            const container = document.getElementById('entries-list');
+            
+            if (!data || !data.rows || data.rows.length === 0) {
+                container.innerHTML = '<p>Brak dostępnych danych.</p>';
+                return;
+            }
+            
+            // Find the index of "Imię" column to use as display name
+            const imieIndex = data.headers.indexOf('Imię');
+            
+            let html = '<div class="entries-grid">';
+            
+            // Create a link for each row in the data
+            data.rows.forEach((row, index) => {
+                const rowNumber = index + 1;
+                const displayName = imieIndex >= 0 && row[imieIndex] 
+                    ? row[imieIndex] 
+                    : `Wpis ${rowNumber}`;
+                
+                html += `
+                    <a href="template.html?row=${rowNumber}" class="entry-card">
+                        <h3>${displayName}</h3>
+                        <span class="row-number">Wiersz ${rowNumber}</span>
+                    </a>
+                `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+        
+        /**
+         * Debounced update function to prevent rapid successive updates
+         * This ensures we don't update the display too frequently
+         */
+        function debouncedUpdate(data) {
+            if (updateDebounceTimer) {
+                clearTimeout(updateDebounceTimer);
+            }
+            
+            updateDebounceTimer = setTimeout(() => {
+                currentData = data;
+                renderEntries(data);
+            }, 300); // Wait 300ms before updating
+        }
+        
+        /**
+         * Initialize Server-Sent Events connection
+         * This provides real-time updates when CSV data changes
+         */
+        function initSSE() {
+            if (eventSource) {
+                eventSource.close();
+            }
+            
+            eventSource = new EventSource('/api/sse');
+            
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                debouncedUpdate(data);
+            };
+            
+            eventSource.onerror = (error) => {
+                console.error('SSE Error:', error);
+                eventSource.close();
+                
+                // Reconnect after 5 seconds
+                setTimeout(initSSE, 5000);
+            };
+        }
+        
+        /**
+         * Initial page load
+         * Fetch data and set up real-time updates
+         */
+        async function init() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                currentData = data;
+                renderEntries(data);
+                
+                // Start SSE connection for real-time updates
+                initSSE();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('entries-list').innerHTML = 
+                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+            }
+        }
+        
+        // Start the application when page loads
+        init();
+    </script>
 </body>
 </html>

@@ -1,185 +1,185 @@
-import express from "express";
-import fs from "fs";
-import { fetchCSV, clearCache } from "./csv.js";
-import path from "path";
-import { fileURLToPath } from "url";
+const express = require('express');
+const fetch = require('node-fetch');
+const path = require('path');
 
 const app = express();
-app.use(express.static("public"));
+const PORT = process.env.PORT || 3000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-let matrixCache = {};
-let lastHeaderCell = null;
-
-let sseClients = [];
-
-// Read row number from <meta>
-function getRowNumber() {
-    const meta = document.querySelector('meta[name="row"]');
-    return meta ? parseInt(meta.content, 10) : 1;
-}
-
-const row = getRowNumber();
-
-// Gather all <div class="field"> elements
-const fieldElements = Array.from(document.querySelectorAll(".field"));
-
-const evt = new EventSource("/events");
-evt.onmessage = (e) => {
-    console.log("[CLIENT] SSE update received from server.");
-    const data = JSON.parse(e.data);
-    console.log("[CLIENT] New matrix:", data);
-    updatePage(data);
+// Store the current data in memory
+let currentData = {
+  headers: [],
+  rows: [],
+  lastTimestamp: null
 };
 
-function updatePage(matrix) {
-    fieldElements.forEach(el => {
-        const fieldName = el.dataset.name;       // Example: "Imię"
-        const key = `${fieldName}_${row}`;       // Example: "Imię_1"
-        const value = matrix[key] || "";
+// SSE clients tracking
+let sseClients = [];
 
-        el.innerText = value;
-    });
+// Google Sheets CSV URL - Replace with your actual public CSV URL
+const SHEETS_CSV_URL = process.env.SHEETS_CSV_URL || 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv';
+
+/**
+ * Parse CSV text into an array of rows and columns
+ * This handles basic CSV parsing including quoted fields
+ */
+function parseCSV(text) {
+  const lines = text.split('\n').filter(line => line.trim());
+  const result = [];
+  
+  for (let line of lines) {
+    const row = [];
+    let currentField = '';
+    let insideQuotes = false;
+    
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      
+      if (char === '"') {
+        insideQuotes = !insideQuotes;
+      } else if (char === ',' && !insideQuotes) {
+        row.push(currentField.trim());
+        currentField = '';
+      } else {
+        currentField += char;
+      }
+    }
+    
+    row.push(currentField.trim());
+    result.push(row);
+  }
+  
+  return result;
 }
 
-async function loadInitial() {
-    console.log("[CLIENT] Loading initial CSV data...");
-    const res = await fetch("/api/data");
-    const matrix = await res.json();
-    console.log("[CLIENT] Initial data loaded:", matrix);
-    updatePage(matrix);
-}
-
-loadInitial();
-
-// Handle refresh button
-const btn = document.getElementById("refresh");
-if (btn) {
-    btn.onclick = async () => {
-        console.log("[CLIENT] Refresh button clicked.");
-        await fetch("/api/refresh");
-        console.log("[CLIENT] Refresh request sent to server.");
+/**
+ * Fetch data from Google Sheets CSV and process it
+ * Creates indexed parameters like "Imię_1", "Nazwisko_1", etc.
+ */
+async function fetchSheetData() {
+  try {
+    const response = await fetch(SHEETS_CSV_URL);
+    const text = await response.text();
+    const parsed = parseCSV(text);
+    
+    if (parsed.length === 0) {
+      throw new Error('No data found in CSV');
+    }
+    
+    // First row contains headers
+    const headers = parsed[0];
+    // Remaining rows contain data
+    const dataRows = parsed.slice(1);
+    
+    // Get timestamp from first cell (assuming it's in the first column)
+    const newTimestamp = dataRows.length > 0 ? dataRows[0][0] : null;
+    
+    return {
+      headers,
+      rows: dataRows,
+      lastTimestamp: newTimestamp
     };
+  } catch (error) {
+    console.error('Error fetching sheet data:', error);
+    throw error;
+  }
 }
 
-// --- SSE endpoint ---
-app.get("/events", (req, res) => {
-    res.writeHead(200, {
-        "Content-Type": "text/event-stream",
-        "Cache-Control": "no-cache",
-        "Connection": "keep-alive"
+/**
+ * Update the current data and notify all SSE clients
+ * This is called when data changes are detected
+ */
+async function updateData() {
+  const newData = await fetchSheetData();
+  
+  // Check if timestamp has changed (data update detection)
+  if (newData.lastTimestamp !== currentData.lastTimestamp) {
+    currentData = newData;
+    
+    // Notify all connected SSE clients
+    sseClients.forEach(client => {
+      client.res.write(`data: ${JSON.stringify(currentData)}\n\n`);
     });
-
-    const client = { id: Date.now(), res };
-    sseClients.push(client);
-
-    req.on("close", () => {
-        sseClients = sseClients.filter(c => c.id !== client.id);
-    });
-});
-
-// --- Push SSE update ---
-function broadcastUpdate(matrix) {
-    console.log(`[SSE] Broadcasting update to ${clients.length} clients...`);
-
-    const payload = `data: ${JSON.stringify(matrix)}\n\n`;
-
-    clients.forEach(res => res.write(payload));
+    
+    console.log('Data updated at:', new Date().toISOString());
+  }
 }
 
+// Serve static files from public directory
+app.use(express.static('public'));
 
-
-
-
-
-
-// --- Debouncer ---
-let debounceTimer = null;
-function triggerUpdate(matrix) {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
-        broadcastUpdate(matrix);
-    }, 1000); // 1s debounce
-}
-
-async function watchCSV() {
-    console.log("[WATCHER] Checking CSV for updates...");
-
-    const { matrix, data } = await fetchCSV();
-    const timestampStr = data[0]?.[0] || "";
-    const newTimestamp = new Date(timestampStr);
-
-    console.log(`[WATCHER] CSV timestamp found: ${timestampStr}`);
-
-    if (isNaN(newTimestamp)) {
-        console.log("[WATCHER] WARNING: Timestamp is invalid. Skipping update.");
-        return;
+/**
+ * API endpoint to get current data
+ * Returns headers and all rows with indexed parameters
+ */
+app.get('/api/data', async (req, res) => {
+  try {
+    if (currentData.rows.length === 0) {
+      await updateData();
     }
-
-    // First initialization
-    if (lastHeaderCell === null) {
-        lastHeaderCell = newTimestamp;
-        matrixCache = matrix;
-        console.log("[WATCHER] Initial timestamp set.");
-        return;
-    }
-
-    // Compare timestamps
-    if (newTimestamp > lastHeaderCell) {
-        console.log(
-            `[WATCHER] CSV UPDATED: Old=${lastHeaderCell.toISOString()}, New=${newTimestamp.toISOString()}`
-        );
-
-        lastHeaderCell = newTimestamp;
-        matrixCache = matrix;
-
-        triggerUpdate(matrixCache);
-    } else {
-        console.log("[WATCHER] No update detected (timestamp unchanged).");
-    }
-}
-
-setInterval(watchCSV, 10000);
-
-// Initial load
-await watchCSV();
-
-// --- REST endpoint for subpages to request current data ---
-app.get("/api/data", (req, res) => {
-    res.json(matrixCache);
+    res.json(currentData);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
 });
 
-// --- Clear & refresh CSV ---
-app.get("/api/refresh", async (req, res) => {
-    console.log("[REFRESH] Manual refresh requested by client.");
-
-    clearCache();
-
-    const { matrix, data } = await fetchCSV();
-
-    const timestampStr = data[0]?.[0] || "";
-    const newTimestamp = new Date(timestampStr);
-
-    console.log(`[REFRESH] New CSV timestamp: ${timestampStr}`);
-
-    if (!isNaN(newTimestamp)) {
-        console.log(`[REFRESH] Timestamp updated from manual refresh.`);
-        lastHeaderCell = newTimestamp;
-    } else {
-        console.log("[REFRESH] WARNING: Timestamp invalid during manual refresh.");
-    }
-
-    matrixCache = matrix;
-
-    broadcastUpdate(matrixCache);
-
-    console.log("[REFRESH] Broadcast sent to all SSE clients.");
-
-    res.json({ ok: true });
+/**
+ * API endpoint to force refresh data
+ * Clears current data and fetches fresh from Google Sheets
+ */
+app.get('/api/refresh', async (req, res) => {
+  try {
+    currentData = {
+      headers: [],
+      rows: [],
+      lastTimestamp: null
+    };
+    
+    await updateData();
+    res.json({ success: true, data: currentData });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to refresh data' });
+  }
 });
 
-// --- Start server ---
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Server running on", PORT));
+/**
+ * SSE endpoint for real-time updates
+ * Clients connect here to receive automatic updates when data changes
+ */
+app.get('/api/sse', (req, res) => {
+  // Set headers for SSE
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  
+  // Add this client to the list
+  const clientId = Date.now();
+  const newClient = {
+    id: clientId,
+    res
+  };
+  
+  sseClients.push(newClient);
+  
+  // Send initial data
+  res.write(`data: ${JSON.stringify(currentData)}\n\n`);
+  
+  // Remove client on connection close
+  req.on('close', () => {
+    sseClients = sseClients.filter(client => client.id !== clientId);
+  });
+});
+
+// Initial data load when server starts
+fetchSheetData().then(data => {
+  currentData = data;
+  console.log('Initial data loaded');
+}).catch(err => {
+  console.error('Failed to load initial data:', err);
+});
+
+// Check for updates every 10 seconds
+setInterval(updateData, 10000);
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

@@ -1,13 +1,17 @@
+
 {
-  "name": "csv-sse-app",
+  "name": "google-sheets-display",
   "version": "1.0.0",
+  "description": "Dynamic display of Google Sheets data with SSE updates",
   "main": "server.js",
-  "type": "module",
-  "dependencies": {
-    "csv-parse": "^5.5.2",
-    "node-fetch": "^3.3.2"
-  },
   "scripts": {
     "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.7"
   }
 }

@@ -3,6 +3,11 @@ import { fetchCSV } from "./csv.js";
 let clients = [];
 let lastFirstCell = null;
 
+export function setLastFirstCell(value) {
+    lastFirstCell = value;
+    console.log(`[SSE] lastFirstCell updated manually to: ${value}`);
+}
+
 export function sseHandler(req, res) {
     res.set({
         "Content-Type": "text/event-stream",

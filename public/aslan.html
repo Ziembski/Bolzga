@@ -22,8 +22,9 @@
 
 <script>
     async function loadData() {
-        const r = await fetch("/api/data");
-        const params = await r.json();
+        // Fetch CSV parameters from backend
+        const response = await fetch("/api/data");
+        const params = await response.json();
 
         document.getElementById("i").textContent = params["Imię_1"];
         document.getElementById("n").textContent = params["Nazwisko_1"];
@@ -32,13 +33,12 @@
         document.getElementById("r").textContent = params["Rasa_1"];
     }
 
-    // SSE: automatic realtime updates
+    // SSE for real-time updates using built-in browser EventSource
     const evt = new EventSource("/events");
     evt.onmessage = async (e) => {
         const msg = JSON.parse(e.data);
-
         if (msg.updated) {
-            console.log("SSE update detected → reloading data");
+            console.log("SSE detected CSV update → reloading values");
             await loadData();
         }
     };
@@ -50,9 +50,10 @@
         alert("Data refreshed!");
     };
 
-    // Load initial data on page load
+    // Load initial data
     loadData();
 </script>
+
 
 
 </body>

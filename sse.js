@@ -1,12 +1,8 @@
 import { fetchCSV } from "./csv.js";
 
 let clients = [];
-let lastFirstCell = null;
-
-export function setLastFirstCell(value) {
-    lastFirstCell = value;
-    console.log(`[SSE] lastFirstCell updated manually to: ${value}`);
-}
+let lastFirstCell = null;       // confirmed value
+let pendingFirstCell = null;    // latest fetched value
 
 export function sseHandler(req, res) {
     res.set({
@@ -16,7 +12,6 @@ export function sseHandler(req, res) {
     });
 
     res.flushHeaders();
-
     clients.push(res);
 
     console.log(`[SSE] Client connected. Total: ${clients.length}`);
@@ -33,17 +28,23 @@ export async function startCSVWatcher() {
 
         const data = await fetchCSV();
         const firstCell = data.matrix[0][0];
+        console.log(`[WATCHER] Fetched first cell: ${firstCell}`);
 
-        console.log(`[WATCHER] First cell value: ${firstCell}`);
-
-        if (lastFirstCell !== null && firstCell !== lastFirstCell) {
-            console.log(`[WATCHER] CHANGE DETECTED! "${lastFirstCell}" → "${firstCell}"`);
-            sendEvent({ updated: true });
-        } else {
-            console.log("[WATCHER] No change detected.");
+        // debounce / avoid stale first cell
+        if (pendingFirstCell !== firstCell) {
+            pendingFirstCell = firstCell;
+            console.log("[WATCHER] Pending value updated, waiting next check for confirmation.");
+            return; // wait next interval to confirm
         }
 
-        lastFirstCell = firstCell;
+        // only push SSE if value is confirmed and changed
+        if (lastFirstCell !== firstCell) {
+            console.log(`[WATCHER] CONFIRMED CHANGE detected: "${lastFirstCell}" → "${firstCell}"`);
+            sendEvent({ updated: true });
+            lastFirstCell = firstCell; // update confirmed value
+        } else {
+            console.log("[WATCHER] No confirmed change.");
+        }
     }, 20000);
 }
 
@@ -52,4 +53,11 @@ function sendEvent(payload) {
     clients.forEach(client => {
         client.write(`data: ${JSON.stringify(payload)}\n\n`);
     });
+}
+
+// called when manual refresh occurs
+export function setLastFirstCell(value) {
+    lastFirstCell = value;
+    pendingFirstCell = value;
+    console.log(`[SSE] lastFirstCell and pendingFirstCell updated manually to: ${value}`);
 }

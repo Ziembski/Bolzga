@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Aslan</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<h1>Aslan</h1>
-
-<div id="content">
-    <p>Imię: <span id="i"></span></p>
-    <p>Nazwisko: <span id="n"></span></p>
-    <p>Wiek: <span id="w"></span></p>
-    <p>Płeć: <span id="p"></span></p>
-    <p>Rasa: <span id="r"></span></p>
-</div>
-
-<button id="refreshBtn">Refresh CSV</button>
-<br><br>
-<a href="index.html">Back to main page</a>
-
 <script>
     async function loadData() {
         const r = await fetch("/api/data");
@@ -32,14 +10,24 @@
         document.getElementById("r").textContent = params["Rasa_1"];
     }
 
+    // SSE: automatic realtime updates
+    const evt = new EventSource("/events");
+    evt.onmessage = async (e) => {
+        const msg = JSON.parse(e.data);
+
+        if (msg.updated) {
+            console.log("SSE update detected → reloading data");
+            await loadData();
+        }
+    };
+
+    // Manual refresh button
     document.getElementById("refreshBtn").onclick = async () => {
         await fetch("/api/refresh");
         await loadData();
         alert("Data refreshed!");
     };
 
+    // Load initial data on page load
     loadData();
 </script>
-
-</body>
-</html>

@@ -3,58 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Aslan</title>
+    <meta name="row" content="1">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Aslan</h1>
+    <h1>Aslan Page</h1>
 
-<div id="content">
-    <p>Imię: <span id="i"></span></p>
-    <p>Nazwisko: <span id="n"></span></p>
-    <p>Wiek: <span id="w"></span></p>
-    <p>Płeć: <span id="p"></span></p>
-    <p>Rasa: <span id="r"></span></p>
-</div>
+    <!-- Dynamic fields -->
+	<div>Imię: <span class="field" data-name="Imię"></span></div>
+	<div>Nazwisko: <span class="field" data-name="Nazwisko"></span></div>
+	<div>Wiek: <span class="field" data-name="Wiek"></span></div>
+	<div>Płeć: <span class="field" data-name="Płeć"></span></div>
+	<div>Rasa: <span class="field" data-name="Rasa"></span></div>
+	
 
-<button id="refreshBtn">Refresh CSV</button>
-<br><br>
-<a href="index.html">Back to main page</a>
+    <button id="refresh">Clear & Reload CSV</button>
 
-<script>
-    async function loadData() {
-        // Fetch CSV parameters from backend
-        const response = await fetch("/api/data");
-        const params = await response.json();
+    <br><br>
+    <a href="index.html">← Back to main</a>
 
-        document.getElementById("i").textContent = params["Imię_1"];
-        document.getElementById("n").textContent = params["Nazwisko_1"];
-        document.getElementById("w").textContent = params["Wiek_1"];
-        document.getElementById("p").textContent = params["Płeć_1"];
-        document.getElementById("r").textContent = params["Rasa_1"];
-    }
-
-    // SSE for real-time updates using built-in browser EventSource
-    const evt = new EventSource("/events");
-    evt.onmessage = async (e) => {
-        const msg = JSON.parse(e.data);
-        if (msg.updated) {
-            console.log("SSE detected CSV update → reloading values");
-            await loadData();
-        }
-    };
-
-    // Manual refresh button
-    document.getElementById("refreshBtn").onclick = async () => {
-        await fetch("/api/refresh");
-        await loadData();
-        alert("Data refreshed!");
-    };
-
-    // Load initial data
-    loadData();
-</script>
-
-
-
+    <script src="client.js"></script>
 </body>
 </html>

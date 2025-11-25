@@ -2,41 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Main Page</title>
+    <title>Main</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Main Page</h1>
 
-    <a href="aslan.html">Go to Aslan Subpage</a>
+    <a href="aslan.html">Open Aslan Page</a>
 
-    <div id="data-display">
-        <!-- Example: we can show some CSV values on main page -->
-        <p>First Imię_1: <span id="firstImie"></span></p>
-    </div>
-
-    <script>
-        // Function to fetch CSV data and update DOM
-        async function loadData() {
-            const response = await fetch("/api/data");
-            const params = await response.json();
-
-            // Update any fields you want to display
-            document.getElementById("firstImie").textContent = params["Imię_1"];
-        }
-
-        // Initial load
-        loadData();
-
-        // SSE listener for live updates
-        const evt = new EventSource("/events");
-        evt.onmessage = async (e) => {
-            const msg = JSON.parse(e.data);
-            if (msg.updated) {
-                console.log("SSE detected CSV update → updating main page");
-                await loadData(); // refresh data without full reload
-            }
-        };
-    </script>
+    <script src="client.js"></script>
 </body>
 </html>

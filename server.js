@@ -1,3 +1,4 @@
+
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
@@ -52,6 +53,91 @@ function parseCSV(text) {
 }
 
 /**
+ * Parse timestamp string in format "YYYY-MM-DD hh:mm:ss" to Date object
+ * Returns null if parsing fails
+ */
+function parseTimestamp(timestampStr) {
+  if (!timestampStr || typeof timestampStr !== 'string') {
+    return null;
+  }
+  
+  // Remove quotes if present
+  const cleanStr = timestampStr.replace(/['"]/g, '').trim();
+  
+  // Parse "YYYY-MM-DD hh:mm:ss" format
+  const regex = /^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})$/;
+  const match = cleanStr.match(regex);
+  
+  if (!match) {
+    console.warn('Timestamp format does not match YYYY-MM-DD hh:mm:ss:', cleanStr);
+    return null;
+  }
+  
+  const [, year, month, day, hour, minute, second] = match;
+  
+  // Create date object (month is 0-indexed in JavaScript)
+  const date = new Date(
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day),
+    parseInt(hour),
+    parseInt(minute),
+    parseInt(second)
+  );
+  
+  // Validate date
+  if (isNaN(date.getTime())) {
+    console.warn('Invalid date created from timestamp:', cleanStr);
+    return null;
+  }
+  
+  return date;
+}
+
+/**
+ * Compare two timestamps and return true if newTimestamp is newer
+ */
+function isNewerTimestamp(newTimestampStr, oldTimestampStr) {
+  // If no old timestamp, consider new one as newer
+  if (!oldTimestampStr) {
+    return true;
+  }
+  
+  const newDate = parseTimestamp(newTimestampStr);
+  const oldDate = parseTimestamp(oldTimestampStr);
+  
+  // If we can't parse new timestamp, don't update
+  if (!newDate) {
+    console.warn('Cannot parse new timestamp, skipping update');
+    return false;
+  }
+  
+  // If we can't parse old timestamp, consider new one as newer
+  if (!oldDate) {
+    return true;
+  }
+  
+  // Compare timestamps
+  const isNewer = newDate.getTime() > oldDate.getTime();
+  
+  if (isNewer) {
+    console.log('New timestamp is newer:', {
+      old: oldTimestampStr,
+      new: newTimestampStr,
+      oldDate: oldDate.toISOString(),
+      newDate: newDate.toISOString()
+    });
+  } else {
+    console.log('New timestamp is NOT newer, skipping update:', {
+      old: oldTimestampStr,
+      new: newTimestampStr
+    });
+  }
+  
+  return isNewer;
+}
+
+/**
  * Fetch data from Google Sheets CSV and process it
  * Creates indexed parameters like "Imię_1", "Nazwisko_1", etc.
  */
@@ -70,7 +156,7 @@ async function fetchSheetData() {
     // Remaining rows contain data
     const dataRows = parsed.slice(1);
     
-    // Get timestamp from first cell (assuming it's in the first column)
+    // Get timestamp from first cell of first data row (assuming it's in the first column)
     const newTimestamp = dataRows.length > 0 ? dataRows[0][0] : null;
     
     return {
@@ -87,20 +173,27 @@ async function fetchSheetData() {
 /**
  * Update the current data and notify all SSE clients
  * This is called when data changes are detected
+ * Only updates if the new timestamp is actually newer
  */
 async function updateData() {
-  const newData = await fetchSheetData();
-  
-  // Check if timestamp has changed (data update detection)
-  if (newData.lastTimestamp !== currentData.lastTimestamp) {
-    currentData = newData;
+  try {
+    const newData = await fetchSheetData();
     
-    // Notify all connected SSE clients
-    sseClients.forEach(client => {
-      client.res.write(`data: ${JSON.stringify(currentData)}\n\n`);
-    });
-    
-    console.log('Data updated at:', new Date().toISOString());
+    // Check if timestamp has changed AND is newer than the current one
+    if (isNewerTimestamp(newData.lastTimestamp, currentData.lastTimestamp)) {
+      currentData = newData;
+      
+      // Notify all connected SSE clients
+      sseClients.forEach(client => {
+        client.res.write(`data: ${JSON.stringify(currentData)}\n\n`);
+      });
+      
+      console.log('Data updated at:', new Date().toISOString(), 'with timestamp:', newData.lastTimestamp);
+    } else {
+      console.log('No update needed - timestamp is not newer');
+    }
+  } catch (error) {
+    console.error('Error in updateData:', error);
   }
 }
 
@@ -128,13 +221,14 @@ app.get('/api/data', async (req, res) => {
  */
 app.get('/api/refresh', async (req, res) => {
   try {
-    currentData = {
-      headers: [],
-      rows: [],
-      lastTimestamp: null
-    };
+    // Clear the timestamp to force an update
+    const oldTimestamp = currentData.lastTimestamp;
+    currentData.lastTimestamp = null;
     
     await updateData();
+    
+    console.log('Manual refresh triggered. Old timestamp:', oldTimestamp, 'New timestamp:', currentData.lastTimestamp);
+    
     res.json({ success: true, data: currentData });
   } catch (error) {
     res.status(500).json({ error: 'Failed to refresh data' });
@@ -166,13 +260,16 @@ app.get('/api/sse', (req, res) => {
   // Remove client on connection close
   req.on('close', () => {
     sseClients = sseClients.filter(client => client.id !== clientId);
+    console.log(`SSE client ${clientId} disconnected. Active clients: ${sseClients.length}`);
   });
+  
+  console.log(`SSE client ${clientId} connected. Active clients: ${sseClients.length}`);
 });
 
 // Initial data load when server starts
 fetchSheetData().then(data => {
   currentData = data;
-  console.log('Initial data loaded');
+  console.log('Initial data loaded with timestamp:', data.lastTimestamp);
 }).catch(err => {
   console.error('Failed to load initial data:', err);
 });
@@ -182,4 +279,5 @@ setInterval(updateData, 10000);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Timestamp format expected: YYYY-MM-DD hh:mm:ss`);
 });

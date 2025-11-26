@@ -10,80 +10,104 @@
     <div class="container">
         <h1>Lista Dostępnych Wpisów</h1>
         
-        <div id="entries-list">
-            <p>Ładowanie danych...</p>
+        <div id="entries-list" class="entries-grid">
+            <!-- 
+                MANUAL ENTRY CONFIGURATION:
+                Copy and paste the template below for each entry you want to display.
+                Each entry will automatically update when CSV data changes.
+                
+                Template structure:
+                <a href="template.html?row=ROW_NUMBER" class="entry-card entry-row-ROW_NUMBER" data-row="ROW_NUMBER">
+                    <h3 class="entry-name">Loading...</h3>
+                    <span class="row-number">Wiersz ROW_NUMBER</span>
+                </a>
+            -->
+            
+            <!-- Entry for Row -->
+            <a href="template.html?row=2" class="entry-card entry-row-2" data-row="1">
+                <h3 class="entry-name">Ładowanie...</h3>
+                <span class="row-number">Wiersz 1</span>
+            </a>
+            
+            <a href="template.html?row=3" class="entry-card entry-row-3" data-row="2">
+                <h3 class="entry-name">Ładowanie...</h3>
+                <span class="row-number">Wiersz 2</span>
+            </a>
+            
+            <!-- 
+                ADD MORE ENTRIES BELOW:
+                Copy one of the blocks above and change the row numbers.
+                
+                Example for Row 5:
+                <a href="template.html?row=5" class="entry-card entry-row-5" data-row="5">
+                    <h3 class="entry-name">Ładowanie...</h3>
+                    <span class="row-number">Wiersz 5</span>
+                </a>
+                
+                Example for Row 10:
+                <a href="template.html?row=10" class="entry-card entry-row-10" data-row="10">
+                    <h3 class="entry-name">Ładowanie...</h3>
+                    <span class="row-number">Wiersz 10</span>
+                </a>
+            -->
+            
         </div>
     </div>
 
     <script>
         /**
-         * CONFIGURATION: Specify which rows you want to display
-         * Add or remove row numbers from this array to customize
-         * Example: [1, 3, 5] will show only rows 1, 3, and 5
+         * This script updates the manually defined entries with data from CSV
+         * It finds all entry cards and updates them based on their data-row attribute
          */
-        const ROWS_TO_DISPLAY = [
-            1,  // Shows row 2 from CSV
-            2   // Shows row 3 from CSV
-            // Add more row numbers here as needed:
-            // 5,
-            // 7,
-            // 10
-        ];
         
         let currentData = null;
         let eventSource = null;
         let updateDebounceTimer = null;
         
         /**
-         * Render only the specified entries as links
-         * Only rows listed in ROWS_TO_DISPLAY array will be shown
+         * Update all manually defined entry cards with current data
          */
-        function renderEntries(data) {
-            const container = document.getElementById('entries-list');
-            
+        function updateEntries(data) {
             if (!data || !data.rows || data.rows.length === 0) {
-                container.innerHTML = '<p>Brak dostępnych danych.</p>';
                 return;
             }
             
             // Find the index of "Imię" column to use as display name
             const imieIndex = data.headers.indexOf('Imię');
             
-            let html = '<div class="entries-grid">';
+            // Find all entry cards that have been manually added to the HTML
+            const entryCards = document.querySelectorAll('.entry-card[data-row]');
             
-            // Only display rows specified in ROWS_TO_DISPLAY array
-            ROWS_TO_DISPLAY.forEach(rowNumber => {
-                // Check if this row exists in the data
-                if (rowNumber <= data.rows.length && rowNumber > 0) {
+            entryCards.forEach(card => {
+                const rowNumber = parseInt(card.getAttribute('data-row'));
+                
+                if (rowNumber > 0 && rowNumber <= data.rows.length) {
                     const row = data.rows[rowNumber - 1];
                     const displayName = imieIndex >= 0 && row[imieIndex] 
                         ? row[imieIndex] 
                         : `Wpis ${rowNumber}`;
                     
-                    html += `
-                        <a href="template.html?row=${rowNumber}" class="entry-card">
-                            <h3>${displayName}</h3>
-                            <span class="row-number">Wiersz ${rowNumber}</span>
-                        </a>
-                    `;
+                    // Update the entry name
+                    const nameElement = card.querySelector('.entry-name');
+                    if (nameElement) {
+                        nameElement.textContent = displayName;
+                    }
+                    
+                    // Remove error styling if it exists
+                    card.classList.remove('error-card');
                 } else {
-                    // Row number is out of range
-                    html += `
-                        <div class="entry-card error-card">
-                            <h3>Wiersz ${rowNumber}</h3>
-                            <span class="row-number">Brak danych</span>
-                        </div>
-                    `;
+                    // Row doesn't exist in data
+                    const nameElement = card.querySelector('.entry-name');
+                    if (nameElement) {
+                        nameElement.textContent = 'Brak danych';
+                    }
+                    card.classList.add('error-card');
                 }
             });
-            
-            html += '</div>';
-            container.innerHTML = html;
         }
         
         /**
          * Debounced update function to prevent rapid successive updates
-         * This ensures we don't update the display too frequently
          */
         function debouncedUpdate(data) {
             if (updateDebounceTimer) {
@@ -92,13 +116,12 @@
             
             updateDebounceTimer = setTimeout(() => {
                 currentData = data;
-                renderEntries(data);
-            }, 2000); // Wait ms before updating
+                updateEntries(data);
+            }, 300);
         }
         
         /**
          * Initialize Server-Sent Events connection
-         * This provides real-time updates when CSV data changes
          */
         function initSSE() {
             if (eventSource) {
@@ -115,33 +138,26 @@
             eventSource.onerror = (error) => {
                 console.error('SSE Error:', error);
                 eventSource.close();
-                
-                // Reconnect after 5 seconds
                 setTimeout(initSSE, 5000);
             };
         }
         
         /**
          * Initial page load
-         * Fetch data and set up real-time updates
          */
         async function init() {
             try {
                 const response = await fetch('/api/data');
                 const data = await response.json();
                 currentData = data;
-                renderEntries(data);
+                updateEntries(data);
                 
-                // Start SSE connection for real-time updates
                 initSSE();
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('entries-list').innerHTML = 
-                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
             }
         }
         
-        // Start the application when page loads
         init();
     </script>
 </body>

@@ -13,7 +13,65 @@
         </nav>
         
         <div id="entry-details" class="details-card">
-            <p>Ładowanie danych...</p>
+            <div class="details-grid">
+                <!-- 
+                    MANUAL FIELD CONFIGURATION:
+                    Copy and paste the template below for each field you want to display.
+                    Each field will automatically update when CSV data changes.
+                    
+                    Template structure:
+                    <div class="detail-item field-FIELDNAME" data-field="FIELDNAME">
+                        <label>DISPLAY_LABEL:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                    
+                    Replace FIELDNAME with the exact column name from your CSV (no spaces in class name).
+                    Replace DISPLAY_LABEL with what you want to show to users.
+                -->
+                
+                <!-- Field: Imię -->
+                <div class="detail-item field-imie" data-field="Imię">
+                    <label>Imię:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Nazwisko -->
+                <div class="detail-item field-nazwisko" data-field="Nazwisko">
+                    <label>Nazwisko:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- 
+                    ADD MORE FIELDS BELOW:
+                    Copy one of the blocks above and change the field name.
+                    Make sure data-field matches your CSV column header exactly!
+                    
+                    Example for "Wiek":
+                    <div class="detail-item field-wiek" data-field="Wiek">
+                        <label>Wiek:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                    
+                    Example for "Płeć":
+                    <div class="detail-item field-plec" data-field="Płeć">
+                        <label>Płeć:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                    
+                    Example for "Rasa":
+                    <div class="detail-item field-rasa" data-field="Rasa">
+                        <label>Rasa:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                    
+                    Example for custom field "Email":
+                    <div class="detail-item field-email" data-field="Email">
+                        <label>Email:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                -->
+                
+            </div>
         </div>
         
         <button id="refresh-btn" class="refresh-button">Odśwież dane</button>
@@ -23,20 +81,9 @@
 
     <script>
         /**
-         * CONFIGURATION: Specify which fields you want to display
-         * Add or remove field names from this array to customize
-         * Field names must match the column headers in your CSV exactly
+         * This script updates the manually defined fields with data from CSV
+         * It finds all field items and updates them based on their data-field attribute
          */
-        const FIELDS_TO_DISPLAY = [
-            'Imię',      // Shows "Imię" field
-            'Nazwisko'   // Shows "Nazwisko" field
-            // Add more field names here as needed:
-            // 'Wiek',
-            // 'Płeć',
-            // 'Rasa',
-            // 'Email',
-            // 'Telefon'
-        ];
         
         let currentData = null;
         let currentRow = null;
@@ -45,7 +92,6 @@
         
         /**
          * Get the row number from URL query parameters
-         * This determines which row's data to display
          */
         function getRowNumber() {
             const params = new URLSearchParams(window.location.search);
@@ -53,50 +99,48 @@
         }
         
         /**
-         * Render only the specified fields for the entry
-         * Only fields listed in FIELDS_TO_DISPLAY array will be shown
+         * Update all manually defined fields with current data
          */
-        function renderDetails(data, rowNumber) {
-            const container = document.getElementById('entry-details');
-            
+        function updateFields(data, rowNumber) {
             if (!data || !data.rows || rowNumber > data.rows.length) {
-                container.innerHTML = '<p>Nie znaleziono danych dla tego wpisu.</p>';
+                // Show error message if row doesn't exist
+                const detailItems = document.querySelectorAll('.detail-item[data-field]');
+                detailItems.forEach(item => {
+                    const valueElement = item.querySelector('.detail-value');
+                    if (valueElement) {
+                        valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+                        valueElement.classList.add('error-value');
+                    }
+                });
                 return;
             }
             
             // Get the specific row (remember rows are 0-indexed)
             const row = data.rows[rowNumber - 1];
             
-            let html = '<div class="details-grid">';
+            // Find all field items that have been manually added to the HTML
+            const fieldItems = document.querySelectorAll('.detail-item[data-field]');
             
-            // Only display fields specified in FIELDS_TO_DISPLAY array
-            FIELDS_TO_DISPLAY.forEach(fieldName => {
-                // Find the index of this field in the headers
+            fieldItems.forEach(item => {
+                const fieldName = item.getAttribute('data-field');
                 const fieldIndex = data.headers.indexOf(fieldName);
+                const valueElement = item.querySelector('.detail-value');
+                
+                if (!valueElement) return;
                 
                 if (fieldIndex >= 0) {
                     // Field exists in CSV
                     const value = row[fieldIndex] || 'Brak danych';
-                    
-                    html += `
-                        <div class="detail-item">
-                            <label>${fieldName}:</label>
-                            <span class="detail-value">${value}</span>
-                        </div>
-                    `;
+                    valueElement.textContent = value;
+                    valueElement.classList.remove('error-value');
+                    item.classList.remove('error-item');
                 } else {
                     // Field not found in CSV headers
-                    html += `
-                        <div class="detail-item error-item">
-                            <label>${fieldName}:</label>
-                            <span class="detail-value error-value">Pole nie istnieje w CSV</span>
-                        </div>
-                    `;
+                    valueElement.textContent = 'Pole nie istnieje w CSV';
+                    valueElement.classList.add('error-value');
+                    item.classList.add('error-item');
                 }
             });
-            
-            html += '</div>';
-            container.innerHTML = html;
             
             // Update last update timestamp
             const now = new Date().toLocaleString('pl-PL');
@@ -106,7 +150,6 @@
         
         /**
          * Debounced update to prevent rapid successive renders
-         * Ensures smooth updates even with frequent data changes
          */
         function debouncedUpdate(data) {
             if (updateDebounceTimer) {
@@ -115,13 +158,12 @@
             
             updateDebounceTimer = setTimeout(() => {
                 currentData = data;
-                renderDetails(data, currentRow);
+                updateFields(data, currentRow);
             }, 300);
         }
         
         /**
          * Initialize Server-Sent Events for real-time updates
-         * Automatically updates the page when CSV data changes
          */
         function initSSE() {
             if (eventSource) {
@@ -138,15 +180,12 @@
             eventSource.onerror = (error) => {
                 console.error('SSE Error:', error);
                 eventSource.close();
-                
-                // Reconnect after 5 seconds
                 setTimeout(initSSE, 5000);
             };
         }
         
         /**
          * Handle manual refresh button click
-         * Forces a fresh fetch from Google Sheets
          */
         async function handleRefresh() {
             const button = document.getElementById('refresh-btn');
@@ -159,9 +198,7 @@
                 
                 if (result.success) {
                     currentData = result.data;
-                    renderDetails(currentData, currentRow);
-                    
-                    // Restart SSE connection with new data
+                    updateFields(currentData, currentRow);
                     initSSE();
                 }
             } catch (error) {
@@ -175,7 +212,6 @@
         
         /**
          * Initialize the page on load
-         * Sets up data display and real-time updates
          */
         async function init() {
             currentRow = getRowNumber();
@@ -184,12 +220,10 @@
                 const response = await fetch('/api/data');
                 const data = await response.json();
                 currentData = data;
-                renderDetails(data, currentRow);
+                updateFields(data, currentRow);
                 
-                // Set up real-time updates
                 initSSE();
                 
-                // Set up refresh button
                 document.getElementById('refresh-btn')
                     .addEventListener('click', handleRefresh);
                 
@@ -200,7 +234,6 @@
             }
         }
         
-        // Start when page loads
         init();
     </script>
 </body>

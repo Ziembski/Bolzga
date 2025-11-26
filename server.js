@@ -1,4 +1,3 @@
-
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
@@ -217,20 +216,44 @@ app.get('/api/data', async (req, res) => {
 
 /**
  * API endpoint to force refresh data
- * Clears current data and fetches fresh from Google Sheets
+ * Fetches fresh from Google Sheets but only updates if timestamp is newer
  */
 app.get('/api/refresh', async (req, res) => {
   try {
-    // Clear the timestamp to force an update
     const oldTimestamp = currentData.lastTimestamp;
-    currentData.lastTimestamp = null;
     
-    await updateData();
+    // Fetch fresh data from Google Sheets
+    const newData = await fetchSheetData();
     
-    console.log('Manual refresh triggered. Old timestamp:', oldTimestamp, 'New timestamp:', currentData.lastTimestamp);
-    
-    res.json({ success: true, data: currentData });
+    // Check if timestamp is actually newer
+    if (isNewerTimestamp(newData.lastTimestamp, oldTimestamp)) {
+      currentData = newData;
+      
+      // Notify all connected SSE clients about the manual update
+      sseClients.forEach(client => {
+        client.res.write(`data: ${JSON.stringify(currentData)}\n\n`);
+      });
+      
+      console.log('Manual refresh: Data updated. Old timestamp:', oldTimestamp, 'New timestamp:', currentData.lastTimestamp);
+      
+      res.json({ 
+        success: true, 
+        updated: true,
+        data: currentData,
+        message: 'Data has been updated with newer timestamp'
+      });
+    } else {
+      console.log('Manual refresh: No update - timestamp is not newer. Current:', oldTimestamp, 'Fetched:', newData.lastTimestamp);
+      
+      res.json({ 
+        success: true, 
+        updated: false,
+        data: currentData,
+        message: 'No update needed - data is already current'
+      });
+    }
   } catch (error) {
+    console.error('Manual refresh error:', error);
     res.status(500).json({ error: 'Failed to refresh data' });
   }
 });

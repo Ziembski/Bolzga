@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szczegóły Wpisu - Widok 4</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container template4-view">
+        <nav class="breadcrumb">
+            <a href="index.html">← Powrót do listy</a>
+        </nav>
+        
+        <div id="entry-details" class="details-card">
+            <div class="details-grid">
+                <!-- 
+                    TEMPLATE 4 - MANUAL FIELD CONFIGURATION
+                    This is an independent view with its own field selection.
+                    Copy and paste field blocks to customize this view.
+                    
+                    Template structure:
+                    <div class="detail-item field-FIELDNAME" data-field="FIELDNAME">
+                        <label>DISPLAY_LABEL:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                -->
+                
+                <!-- Field: Imię -->
+                <div class="detail-item field-imie" data-field="Imię">
+                    <label>Imię:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Nazwisko -->
+                <div class="detail-item field-nazwisko" data-field="Nazwisko">
+                    <label>Nazwisko:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- ADD MORE FIELDS FOR TEMPLATE 4 HERE -->
+                
+            </div>
+        </div>
+        
+        <button id="refresh-btn" class="refresh-button">Odśwież dane</button>
+        
+        <div id="last-update" class="last-update"></div>
+    </div>
+
+    <script>
+        let currentData = null;
+        let currentRow = null;
+        let eventSource = null;
+        let updateDebounceTimer = null;
+        
+        function getRowNumber() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('row')) || 1;
+        }
+        
+        function updateFields(data, rowNumber) {
+            if (!data || !data.rows || rowNumber > data.rows.length) {
+                const detailItems = document.querySelectorAll('.detail-item[data-field]');
+                detailItems.forEach(item => {
+                    const valueElement = item.querySelector('.detail-value');
+                    if (valueElement) {
+                        valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+                        valueElement.classList.add('error-value');
+                    }
+                });
+                return;
+            }
+            
+            const row = data.rows[rowNumber - 1];
+            const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+            
+            fieldItems.forEach(item => {
+                const fieldName = item.getAttribute('data-field');
+                const fieldIndex = data.headers.indexOf(fieldName);
+                const valueElement = item.querySelector('.detail-value');
+                
+                if (!valueElement) return;
+                
+                if (fieldIndex >= 0) {
+                    const value = row[fieldIndex] || 'Brak danych';
+                    valueElement.textContent = value;
+                    valueElement.classList.remove('error-value');
+                    item.classList.remove('error-item');
+                } else {
+                    valueElement.textContent = 'Pole nie istnieje w CSV';
+                    valueElement.classList.add('error-value');
+                    item.classList.add('error-item');
+                }
+            });
+            
+            const now = new Date().toLocaleString('pl-PL');
+            document.getElementById('last-update').textContent = 
+                `Ostatnia aktualizacja: ${now}`;
+        }
+        
+        function debouncedUpdate(data) {
+            if (updateDebounceTimer) {
+                clearTimeout(updateDebounceTimer);
+            }
+            
+            updateDebounceTimer = setTimeout(() => {
+                currentData = data;
+                updateFields(data, currentRow);
+            }, 300);
+        }
+        
+        function initSSE() {
+            if (eventSource) {
+                eventSource.close();
+            }
+            
+            eventSource = new EventSource('/api/sse');
+            
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                debouncedUpdate(data);
+            };
+            
+            eventSource.onerror = (error) => {
+                console.error('SSE Error:', error);
+                eventSource.close();
+                setTimeout(initSSE, 5000);
+            };
+        }
+        
+        async function handleRefresh() {
+            const button = document.getElementById('refresh-btn');
+            button.disabled = true;
+            button.textContent = 'Odświeżanie...';
+            
+            try {
+                const response = await fetch('/api/refresh');
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentData = result.data;
+                    updateFields(currentData, currentRow);
+                    
+                    if (result.updated) {
+                        console.log('Data updated:', result.message);
+                        initSSE();
+                    } else {
+                        console.log('No update:', result.message);
+                        alert('Dane są już aktualne - nie ma nowszego znacznika czasu w arkuszu.');
+                    }
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                alert('Błąd podczas odświeżania danych');
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Odśwież dane';
+            }
+        }
+        
+        async function init() {
+            currentRow = getRowNumber();
+            
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                currentData = data;
+                updateFields(data, currentRow);
+                
+                initSSE();
+                
+                document.getElementById('refresh-btn')
+                    .addEventListener('click', handleRefresh);
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('entry-details').innerHTML = 
+                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+            }
+        }
+        
+        init();
+    </script>
+</body>
+</html>

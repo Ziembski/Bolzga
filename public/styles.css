@@ -1,129 +1,168 @@
-/* General page styling */
-body {
-    font-family: 'Courier New', 'Courier', monospace;
-    background-color: #1a1a1a;
+* {
     margin: 0;
-    padding: 20px;
-    color: #2a2a2a;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Main container */
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+    font-family: 'Georgia', serif;
 }
 
-/* Breadcrumb navigation */
-.breadcrumb {
+.id-card {
+    width: 850px;
+    height: 550px;
+    background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
+    border: 3px solid #8b6f47;
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.header {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.breadcrumb a {
-    color: #333;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 8px 12px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 3px;
-    display: inline-block;
+.header h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
 }
 
-.breadcrumb a:hover {
-    background-color: rgba(255, 255, 255, 1);
+.header h2 {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
-/* Details card with background image */
-.details-card {
-    background-image: url('/img/Paszport_first.png');
-    background-size: contain;
-    background-position: top center;
-    background-repeat: no-repeat;
-    min-height: 800px;
-    padding: 0;
+.content {
+    display: grid;
+    grid-template-columns: 280px 1fr 200px;
+    gap: 30px;
+    margin-top: 30px;
 }
 
-/* Details grid - single column on right side */
-.details-grid {
+.photo-section {
     display: flex;
     flex-direction: column;
-    margin-left: 50%;
-    padding: 80px 40px 40px 40px;
-    max-width: 600px;
+    gap: 20px;
 }
 
-/* Detail items - plain text styling */
-.detail-item {
-    margin-bottom: 25px;
-}
-
-.detail-item label {
-    display: inline;
+.photo-box {
+    width: 100%;
+    height: 320px;
+    background: #0000cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4em;
     font-weight: bold;
-    font-size: 16px;
-    color: #1a1a1a;
+    border: 2px solid #000;
 }
 
-.detail-item .detail-value {
-    display: inline;
-    font-size: 16px;
-    color: #2a2a2a;
-    margin-left: 8px;
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-/* Error states */
-.error-value {
-    color: #8b0000;
+.info-field {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Refresh button */
-.refresh-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 25px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 3px;
-    font-size: 14px;
+.info-label {
+    font-size: 1.3em;
+    margin-bottom: 2px;
+}
+
+.info-value {
+    font-size: 2.5em;
     font-weight: bold;
-    cursor: pointer;
-    font-family: 'Courier New', 'Courier', monospace;
 }
 
-.refresh-button:hover:not(:disabled) {
-    background-color: rgba(255, 255, 255, 1);
+.info-value.large {
+    font-size: 2.8em;
 }
 
-.refresh-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+.coat-of-arms {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 180px;
+    height: 220px;
 }
 
-/* Last update info */
-.last-update {
-    text-align: center;
-    color: #333;
-    font-size: 12px;
-    margin-top: 15px;
-    padding: 8px;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 3px;
+.coat-of-arms img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    .details-card {
-        min-height: 600px;
-        padding: 20px;
-    }
-    
-    .details-grid {
-        margin-left: 0;
-        padding: 20px;
-        max-width: 100%;
-    }
+.right-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 200px;
+}
+
+.age-section {
+    text-align: right;
+}
+
+.age-label {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.age-value {
+    font-size: 4.5em;
+    font-weight: bold;
+}
+
+.religion-section {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.religion-label {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.religion-value {
+    font-size: 2.8em;
+    font-weight: bold;
+}
+
+.signature-section {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.signature-label {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.signature-box {
+    width: 240px;
+    height: 140px;
+    background: #0000cc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3em;
+    font-weight: bold;
+    border: 2px solid #000;
 }

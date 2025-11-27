@@ -50,36 +50,47 @@ body {
     min-height: 600px;
 }
 
-/* Left column - Image area */
-.details-grid::before {
-    content: '';
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2Y0ZTRjMSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjIwIiBmaWxsPSIjOGE2YTRhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBvcGFjaXR5PSIwLjMiPltVbWllxZvEhyB0dXRhaiBvYnJheiBkb2t1bWVudHVdPC90ZXh0Pjwvc3ZnPg==');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-right: 3px solid #8a6a4a;
+/* Document image styling */
+.document-image {
+    grid-column: 1;
+    grid-row: 1 / -1;
     padding: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    border-right: 3px solid #8a6a4a;
+}
+
+.document-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Right column - Form fields */
-.details-grid > * {
+.detail-item {
     grid-column: 2;
-    padding: 40px;
-    background: linear-gradient(to bottom, #f4e4c1 0%, #ebe0c8 100%);
 }
 
 /* Detail items styling */
 .detail-item {
+    grid-column: 2;
     margin-bottom: 20px;
     padding: 12px 15px;
     background-color: rgba(255, 255, 255, 0.4);
     border-left: 4px solid #8a6a4a;
     border-radius: 3px;
     transition: all 0.3s ease;
+}
+
+.detail-item:first-of-type {
+    margin-top: 40px;
+}
+
+.detail-item:last-of-type {
+    margin-bottom: 40px;
 }
 
 .detail-item:hover {
@@ -156,20 +167,41 @@ body {
     border-radius: 5px;
 }
 
- /* Document image styling */
-.document-image {
-    grid-column: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    border-right: 3px solid #8a6a4a;
+/* Loading animation */
+.detail-value:contains("Ładowanie...") {
+    opacity: 0.6;
+    animation: pulse 1.5s infinite;
 }
 
-.document-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .document-image {
+        grid-column: 1;
+        grid-row: auto;
+        border-right: none;
+        border-bottom: 3px solid #8a6a4a;
+        min-height: 300px;
+    }
+    
+    .detail-item {
+        grid-column: 1;
+        padding: 30px 20px;
+    }
+    
+    .detail-item:first-of-type {
+        margin-top: 20px;
+    }
 }

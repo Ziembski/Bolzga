@@ -34,7 +34,7 @@ body {
 
 /* Details card with background image */
 .details-card {
-    background-image: url('document-image.jpg');
+    background-image: url('/img/Paszport_first.png');
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;

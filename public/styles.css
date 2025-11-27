@@ -34,12 +34,12 @@ body {
 
 /* Details card with background image */
 .details-card {
-    background-image: url('/img/Paszport_first.png');
-    background-size: cover;
-    background-position: center;
+    background-image: url('document-image.jpg');
+    background-size: contain;
+    background-position: top center;
     background-repeat: no-repeat;
     min-height: 800px;
-    padding: 40px;
+    padding: 0;
 }
 
 /* Details grid - single column on right side */
@@ -47,7 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 50%;
-    padding: 60px 40px;
+    padding: 80px 40px 40px 40px;
     max-width: 600px;
 }
 

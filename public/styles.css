@@ -42,9 +42,9 @@ body {
     height: 100%;
 }
 
-/* Header Title */
+/* Header Title - Rzeczpospolita Bolzga */
 .details-grid::before {
-    content: 'Rzeczpospolita Bolzga\ADokument Obywatelski';
+    content: 'Rzeczpospolita Bolzga';
     position: absolute;
     top: 30px;
     left: 60px;
@@ -52,7 +52,19 @@ body {
     font-weight: bold;
     line-height: 1.2;
     color: #000000;
-    white-space: pre-line;
+    letter-spacing: 1px;
+}
+
+/* Header Subtitle - Dokument Obywatelski */
+.details-card::before {
+    content: 'Dokument Obywatelski';
+    position: absolute;
+    top: 106px;
+    left: 60px;
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #000000;
     letter-spacing: 1px;
 }
 
@@ -64,7 +76,7 @@ body {
     right: 60px;
     width: 280px;
     height: 320px;
-    background-image: url('/img/godlo.png');
+    background-image: url('coat-of-arms.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -72,7 +84,7 @@ body {
     border-radius: 5px;
 }
 
-/* IMG1 - Photo box (left) */
+/* COLUMN 1 - IMG1 (Photo box) */
 .field-imie::before {
     content: '';
     position: absolute;
@@ -81,15 +93,9 @@ body {
     width: 410px;
     height: 546px;
     background-color: #0000FF;
-    background-image: url('/img/Aslan_passport.png');
+    background-image: url('IMG1.png');
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 72px;
-    font-weight: bold;
     overflow: hidden;
 }
 
@@ -131,85 +137,49 @@ body {
     color: #000000;
 }
 
+/* COLUMN 2 - Middle column fields */
+
 /* Nazwisko field */
 .field-nazwisko {
-    top: 192px;
-    left: 515px;
+    top: 226px;
+    left: 510px;
 }
 
 /* Imię field */
 .field-imie {
-    top: 298px;
-    left: 515px;
-}
-
-/* Płeć field */
-.field-płec {
-    top: 192px;
-    right: 440px;
-    text-align: right;
-}
-
-.field-płec label,
-.field-płec .detail-value {
-    text-align: right;
-}
-
-/* Wiek field */
-.field-wiek {
-    top: 298px;
-    right: 440px;
-    text-align: right;
-}
-
-.field-wiek label,
-.field-wiek .detail-value {
-    text-align: right;
+    top: 332px;
+    left: 510px;
 }
 
 /* Rasa field */
 .field-rasa {
-    top: 404px;
-    left: 515px;
+    top: 438px;
+    left: 510px;
 }
 
-/* Wyznanie field */
-.field-wyznanie {
-    top: 404px;
-    right: 440px;
-    text-align: right;
-}
-
-.field-wyznanie label,
-.field-wyznanie .detail-value {
-    text-align: right;
+/* Płeć field */
+.field-płec {
+    top: 544px;
+    left: 510px;
 }
 
 /* Stan cywilny field */
 .field-stan-cywilny {
-    top: 510px;
-    left: 515px;
+    top: 650px;
+    left: 510px;
 }
 
-/* Numer Identyfikacyjny - Static Label */
-.field-stan-cywilny::after {
-    content: 'Numer Identyfikacyjny';
-    position: absolute;
-    top: 106px;
-    left: 0;
-    font-size: 28px;
-    font-weight: normal;
-    color: #000000;
-}
-
-/* Numer Identyfikacyjny - Value (using Podpis Obywatelski field) */
+/* Numer Identyfikacyjny field (using Podpis Obywatelski) */
 .field-podpis-obywatelski {
-    top: 644px;
-    left: 515px;
+    top: 756px;
+    left: 510px;
 }
 
 .field-podpis-obywatelski label {
-    display: none;
+    font-size: 28px;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 5px;
 }
 
 .field-podpis-obywatelski .detail-value {
@@ -218,16 +188,30 @@ body {
     letter-spacing: 2px;
 }
 
-/* IMG2 - Signature box (right) */
-.field-podpis-obywatelski::after {
+/* COLUMN 3 - Right column fields */
+
+/* Wiek field */
+.field-wiek {
+    top: 226px;
+    left: 960px;
+}
+
+/* Wyznanie field */
+.field-wyznanie {
+    top: 332px;
+    left: 960px;
+}
+
+/* IMG2 - Signature box */
+.field-wiek::after {
     content: 'IMG2';
     position: absolute;
-    top: 138px;
-    right: -445px;
+    top: 212px;
+    left: 0;
     width: 385px;
     height: 146px;
     background-color: #0000FF;
-    background-image: url('/img/Aslan_passport.png');
+    background-image: url('IMG2.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -239,17 +223,15 @@ body {
     overflow: hidden;
 }
 
-/* Podpis obywatelski - Static Label */
-.field-podpis-obywatelski::before {
+/* Podpis obywatelski label above IMG2 */
+.field-wyznanie::after {
     content: 'Podpis obywatelski';
     position: absolute;
-    top: 108px;
-    right: -445px;
+    top: 182px;
+    left: 0;
     font-size: 28px;
     font-weight: normal;
     color: #000000;
-    text-align: right;
-    width: 385px;
 }
 
 /* Refresh Button */

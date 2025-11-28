@@ -23,8 +23,8 @@
             <div class="details-grid">
                 <!-- COLUMN 1: IMG1 -->
                 <div class="column-1">
-                    <div class="detail-item field-Img">
-                        <img src="detail-value" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none';">
+                    <div class="img1-container">
+                        <img id="img1-photo" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img1-placeholder').style.display='block';">
                         <span class="img1-placeholder">IMG1</span>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     <div class="img2-wrapper">
                         <div class="img2-label">Podpis obywatelski</div>
                         <div class="img2-container">
-                            <img src="IMG2.png" alt="Podpis" style="display: none;" onerror="this.style.display='none';">
+                            <img id="img2-signature" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img2-placeholder').style.display='block';">
                             <span class="img2-placeholder">IMG2</span>
                         </div>
                     </div>
@@ -110,6 +110,24 @@
             return parseInt(params.get('row')) || 1;
         }
         
+        function updateImage(imgId, placeholderId, url) {
+            const imgElement = document.getElementById(imgId);
+            const placeholderElement = document.querySelector(placeholderId);
+            
+            if (url && url.trim() !== '' && url !== 'Brak danych') {
+                imgElement.src = url;
+                imgElement.style.display = 'block';
+                if (placeholderElement) {
+                    placeholderElement.style.display = 'none';
+                }
+            } else {
+                imgElement.style.display = 'none';
+                if (placeholderElement) {
+                    placeholderElement.style.display = 'block';
+                }
+            }
+        }
+        
         function updateFields(data, rowNumber) {
             if (!data || !data.rows || rowNumber > data.rows.length) {
                 const detailItems = document.querySelectorAll('.detail-item[data-field]');
@@ -126,6 +144,7 @@
             const row = data.rows[rowNumber - 1];
             const fieldItems = document.querySelectorAll('.detail-item[data-field]');
             
+            // Update text fields
             fieldItems.forEach(item => {
                 const fieldName = item.getAttribute('data-field');
                 const fieldIndex = data.headers.indexOf(fieldName);
@@ -144,6 +163,20 @@
                     item.classList.add('error-item');
                 }
             });
+            
+            // Update IMG1 from "Img" field
+            const img1Index = data.headers.indexOf('Img');
+            if (img1Index >= 0) {
+                const img1Url = row[img1Index];
+                updateImage('img1-photo', '.img1-placeholder', img1Url);
+            }
+            
+            // Update IMG2 from "Img2" field (if exists)
+            const img2Index = data.headers.indexOf('Img2');
+            if (img2Index >= 0) {
+                const img2Url = row[img2Index];
+                updateImage('img2-signature', '.img2-placeholder', img2Url);
+            }
             
             const now = new Date().toLocaleString('pl-PL');
             document.getElementById('last-update').textContent = 

@@ -3,68 +3,80 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     display: flex;
-    justify-content: left;
-    align-items: top;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 100vh;
     background: #f0f0f0;
     font-family: 'Georgia', serif;
+    padding: clamp(10px, 2vw, 20px);
 }
+
 .id-card {
-    width: clamp(500px, 100vw, 850px);
-    height: clamp(325px, 65vw, 550px);
+    width: clamp(280px, 95vw, 850px);
+    min-height: clamp(350px, 120vw, 550px);
     background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
-    border: clamp(5px, 1.2vw, 10px) solid #8b6f47;
-    border-radius: clamp(15px, 3.5vw, 30px);
-    padding: clamp(8px, 1.8vw, 15px);
+    border: clamp(3px, 1vw, 10px) solid #8b6f47;
+    border-radius: clamp(10px, 3vw, 30px);
+    padding: clamp(10px, 2vw, 25px);
     position: relative;
 }
+
 .header {
     text-align: left;
-    margin-bottom: clamp(5px, 1.2vw, 10px);
+    margin-bottom: clamp(10px, 2vw, 15px);
+    padding-right: clamp(80px, 20vw, 150px);
 }
+
 .header h1 {
-    font-size: clamp(1.5rem, 3vw + 0.5rem, 3rem);
+    font-size: clamp(1.2rem, 4vw, 3rem);
     font-weight: bold;
     letter-spacing: clamp(0.5px, 0.12vw, 1px);
     margin-bottom: clamp(1px, 0.24vw, 2px);
 }
+
 .header h2 {
-    font-size: clamp(1.25rem, 2.6vw + 0.5rem, 2.6rem);
+    font-size: clamp(1rem, 3.5vw, 2.6rem);
     font-weight: bold;
     letter-spacing: clamp(0.5px, 0.12vw, 1px);
 }
+
 .content {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: clamp(10px, 2.4vw, 20px);
-    margin-top: clamp(8px, 1.8vw, 15px);
+    gap: clamp(8px, 1.5vw, 20px);
+    margin-top: clamp(10px, 2vw, 20px);
 }
+
 .photo-section {
     display: flex;
     flex-direction: column;
     gap: clamp(10px, 2.4vw, 20px);
-	object-fit: contain;
+    object-fit: contain;
 }
+
 .photo-box {
-    width: clamp(150px, 29vw, 250px);
-    height: 100%;
+    width: clamp(100px, 25vw, 250px);
+    height: clamp(120px, 30vw, 200px);
     background: #0000cc;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: clamp(2rem, 3vw + 1rem, 3rem);
+    font-size: clamp(1.5rem, 3vw, 3rem);
     font-weight: bold;
     border: clamp(1px, 0.24vw, 2px) solid #000;
-	object-fit: contain;
+    object-fit: contain;
 }
+
 .info-section {
     display: flex;
     flex-direction: column;
-    gap: clamp(3px, 0.6vw, 5px);
+    gap: clamp(5px, 1vw, 10px);
 }
+
 .surname-section,
 .name-section,
 .gender-section,
@@ -74,89 +86,115 @@ body {
     display: flex;
     flex-direction: column;
 }
+
 .surname-label,
 .name-label,
 .gender-label,
 .race-label,
 .marital-label,
 .id-label {
-    font-size: clamp(0.875rem, 1.3vw + 0.3rem, 1.3rem);
-    margin-bottom: clamp(0.5px, 0.12vw, 1px);
+    font-size: clamp(0.75rem, 2vw, 1.3rem);
+    margin-bottom: clamp(1px, 0.24vw, 3px);
 }
+
 .surname-value,
 .name-value {
-    font-size: clamp(1.5rem, 2.3vw + 0.5rem, 2.3rem);
+    font-size: clamp(1.1rem, 3vw, 2.3rem);
     font-weight: bold;
 }
+
 .gender-value,
 .race-value,
 .marital-value {
-    font-size: clamp(1.125rem, 1.8vw + 0.4rem, 1.8rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.8rem);
     font-weight: bold;
 }
+
 .id-value {
-    font-size: clamp(1rem, 1.7vw + 0.4rem, 1.7rem);
+    font-size: clamp(0.85rem, 2vw, 1.7rem);
     font-weight: bold;
 }
+
 .coat-of-arms {
     position: absolute;
     top: clamp(10px, 2.4vw, 20px);
     right: clamp(10px, 2.4vw, 20px);
-    width: clamp(120px, 23vw, 195px);
-    height: clamp(140px, 27vw, 230px);
+    width: clamp(70px, 18vw, 195px);
+    height: clamp(80px, 20vw, 230px);
 }
+
 .coat-of-arms img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
 .right-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: left;
-    margin-top: clamp(75px, 15.3vw, 130px);
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: clamp(5px, 1vw, 15px);
+    margin-top: 0;
 }
+
+@media (min-width: 900px) {
+    .right-section {
+        justify-content: space-between;
+        margin-top: clamp(75px, 15.3vw, 130px);
+    }
+}
+
 .age-section {
     text-align: left;
 }
+
 .age-label {
-    font-size: clamp(0.875rem, 1.3vw + 0.3rem, 1.3rem);
-    margin-bottom: clamp(0.5px, 0.12vw, 1px);
+    font-size: clamp(0.75rem, 2vw, 1.3rem);
+    margin-bottom: clamp(1px, 0.24vw, 3px);
 }
+
 .age-value {
-    font-size: clamp(1.125rem, 1.8vw + 0.4rem, 1.8rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.8rem);
     font-weight: bold;
 }
+
 .religion-section {
     text-align: left;
-    margin-top: clamp(3px, 0.6vw, 5px);
+    margin-top: 0;
 }
+
 .religion-label {
-    font-size: clamp(0.875rem, 1.3vw + 0.3rem, 1.3rem);
+    font-size: clamp(0.75rem, 2vw, 1.3rem);
     margin-bottom: clamp(2px, 0.36vw, 3px);
 }
+
 .religion-value {
-    font-size: clamp(1.125rem, 1.8vw + 0.4rem, 1.8rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.8rem);
     font-weight: bold;
 }
+
 .signature-section {
     text-align: left;
-    margin-top: clamp(3px, 0.6vw, 5px);
+    margin-top: 0;
+    width: 100%;
 }
+
 .signature-label {
-    font-size: clamp(0.875rem, 1.3vw + 0.3rem, 1.3rem);
+    font-size: clamp(0.75rem, 2vw, 1.3rem);
     margin-bottom: clamp(4px, 0.95vw, 8px);
 }
+
 .signature-box {
-    width: clamp(110px, 21vw, 180px);
-    height: clamp(50px, 9.5vw, 80px);
+    width: clamp(100px, 25vw, 180px);
+    height: clamp(50px, 12vw, 80px);
     background: #0000cc;
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: clamp(4px, 1vw, 8px);
     color: white;
-    font-size: clamp(1.25rem, 2vw + 0.5rem, 2rem);
+    font-size: clamp(1rem, 2.5vw, 2rem);
     font-weight: bold;
     border: clamp(1px, 0.24vw, 2px) solid #000;
 }

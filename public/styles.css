@@ -12,8 +12,8 @@ body {
     font-family: 'Georgia', serif;
 }
 .id-card {
-    width: 850px;
-    height: 550px;
+    width: clamp(500px, 100vw, 850px);
+    height: clamp(325px, 65vw, 550px);
     background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
     border: 10px solid #8b6f47;
     border-radius: 30px;
@@ -48,7 +48,7 @@ body {
 	object-fit: contain;
 }
 .photo-box {
-    width: 250px;
+    width: clamp(150px, 29vw, 250px);
     height: 100%;
     background: #0000cc;
     display: flex;
@@ -102,8 +102,8 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 195px;
-    height: 230px;
+    width: clamp(120px, 23vw, 195px);
+    height: clamp(140px, 27vw, 230px);
 }
 .coat-of-arms img {
     width: 100%;
@@ -149,8 +149,8 @@ body {
     margin-bottom: 8px;
 }
 .signature-box {
-    width: 180px;
-    height: 80px;
+    width: clamp(110px, 21vw, 180px);
+    height: clamp(50px, 9.5vw, 80px);
     background: #0000cc;
     display: flex;
     justify-content: left;

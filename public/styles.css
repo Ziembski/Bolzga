@@ -67,6 +67,7 @@ body {
     font-size: 3em;
     font-weight: bold;
     border: 2px solid #000;
+	object-fit: contain;
 }
 
 .info-section {
@@ -131,7 +132,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: left;
     margin-top: 130px;
 }
 

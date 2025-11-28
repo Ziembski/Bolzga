@@ -54,6 +54,7 @@ body {
     gap: 20px;
     justify-content: center;
     align-items: center;
+	object-fit: contain;
 }
 
 .photo-box {
@@ -92,20 +93,20 @@ body {
 .race-label,
 .marital-label,
 .id-label {
-    font-size: 1.0em;
+    font-size: 1.5em;
     margin-bottom: 1px;
 }
 
 .surname-value,
 .name-value {
-    font-size: 1.8em;
+    font-size: 2.3em;
     font-weight: bold;
 }
 
 .gender-value,
 .race-value,
 .marital-value {
-    font-size: 1.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -141,7 +142,7 @@ body {
 }
 
 .age-label {
-    font-size: 1em;
+    font-size: 1.5em;
     margin-bottom: 1px;
 }
 
@@ -156,7 +157,7 @@ body {
 }
 
 .religion-label {
-    font-size: 1em;
+    font-size: 1.5em;
     margin-bottom: 3px;
 }
 
@@ -171,13 +172,13 @@ body {
 }
 
 .signature-label {
-    font-size: 1em;
+    font-size: 1.5em;
     margin-bottom: 8px;
 }
 
 .signature-box {
     width: 180px;
-    height: 100px;
+    height: 80px;
     background: #0000cc;
     display: flex;
     justify-content: left;

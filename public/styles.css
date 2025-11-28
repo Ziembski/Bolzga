@@ -36,90 +36,102 @@ body {
     height: 100%;
 }
 
-.details-grid {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Header Title - Rzeczpospolita Bolzga */
-.details-grid::before {
-    content: 'Rzeczpospolita Bolzga';
+/* Header Section */
+.details-card h1 {
     position: absolute;
     top: 30px;
     left: 60px;
     font-size: 64px;
     font-weight: bold;
-    line-height: 1.2;
     color: #000000;
     letter-spacing: 1px;
+    margin: 0;
 }
 
-/* Header Subtitle - Dokument Obywatelski */
-.details-card::before {
-    content: 'Dokument Obywatelski';
+.details-card h2 {
     position: absolute;
     top: 106px;
     left: 60px;
     font-size: 64px;
     font-weight: bold;
-    line-height: 1.2;
     color: #000000;
     letter-spacing: 1px;
+    margin: 0;
 }
 
 /* Coat of Arms */
-.details-grid::after {
-    content: '';
+.coat-of-arms {
     position: absolute;
     top: 25px;
     right: 60px;
     width: 280px;
     height: 320px;
-    background-image: url('coat-of-arms.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+
+.coat-of-arms img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border: 3px solid #8B4513;
     border-radius: 5px;
 }
 
-/* COLUMN 1 - IMG1 (Photo box) */
-.field-imie::before {
-    content: '';
+/* Grid Container */
+.details-grid {
     position: absolute;
     top: 226px;
     left: 60px;
+    width: 1265px;
+    height: 576px;
+    display: grid;
+    grid-template-columns: 410px 450px 405px;
+    gap: 40px;
+}
+
+/* Column 1 - IMG1 */
+.column-1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.img1-container {
     width: 410px;
     height: 546px;
     background-color: #0000FF;
-    background-image: url('IMG1.png');
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-/* IMG1 Text overlay */
-.field-nazwisko::before {
-    content: 'IMG1';
-    position: absolute;
-    top: 226px;
-    left: 60px;
-    width: 410px;
-    height: 546px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+}
+
+.img1-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img1-placeholder {
     color: white;
     font-size: 72px;
     font-weight: bold;
-    pointer-events: none;
-    z-index: 1;
 }
 
-/* Field Labels and Values - Static positioning */
+/* Column 2 - Middle fields */
+.column-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Column 3 - Right fields */
+.column-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Field Item Styling */
 .detail-item {
-    position: absolute;
     display: flex;
     flex-direction: column;
 }
@@ -137,101 +149,50 @@ body {
     color: #000000;
 }
 
-/* COLUMN 2 - Middle column fields */
-
-/* Nazwisko field */
-.field-nazwisko {
-    top: 226px;
-    left: 510px;
-}
-
-/* Imię field */
-.field-imie {
-    top: 332px;
-    left: 510px;
-}
-
-/* Rasa field */
-.field-rasa {
-    top: 438px;
-    left: 510px;
-}
-
-/* Płeć field */
-.field-płec {
-    top: 544px;
-    left: 510px;
-}
-
-/* Stan cywilny field */
-.field-stan-cywilny {
-    top: 650px;
-    left: 510px;
-}
-
-/* Numer Identyfikacyjny field (using Podpis Obywatelski) */
-.field-podpis-obywatelski {
-    top: 756px;
-    left: 510px;
-}
-
+/* Specific field adjustments */
 .field-podpis-obywatelski label {
     font-size: 28px;
-    font-weight: normal;
-    color: #000000;
-    margin-bottom: 5px;
 }
 
 .field-podpis-obywatelski .detail-value {
     font-size: 48px;
-    font-weight: bold;
     letter-spacing: 2px;
 }
 
-/* COLUMN 3 - Right column fields */
-
-/* Wiek field */
-.field-wiek {
-    top: 226px;
-    left: 960px;
-}
-
-/* Wyznanie field */
-.field-wyznanie {
-    top: 332px;
-    left: 960px;
-}
-
-/* IMG2 - Signature box */
-.field-wiek::after {
-    content: 'IMG2';
-    position: absolute;
-    top: 212px;
-    left: 0;
-    width: 385px;
-    height: 146px;
-    background-color: #0000FF;
-    background-image: url('IMG2.png');
-    background-size: cover;
-    background-position: center;
+/* IMG2 Container */
+.img2-wrapper {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 56px;
-    font-weight: bold;
-    overflow: hidden;
+    flex-direction: column;
+    margin-top: 40px;
 }
 
-/* Podpis obywatelski label above IMG2 */
-.field-wyznanie::after {
-    content: 'Podpis obywatelski';
-    position: absolute;
-    top: 182px;
-    left: 0;
+.img2-label {
     font-size: 28px;
     font-weight: normal;
     color: #000000;
+    margin-bottom: 10px;
+}
+
+.img2-container {
+    width: 385px;
+    height: 146px;
+    background-color: #0000FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.img2-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img2-placeholder {
+    color: white;
+    font-size: 56px;
+    font-weight: bold;
 }
 
 /* Refresh Button */
@@ -254,8 +215,11 @@ body {
 }
 
 /* Loading state */
-.detail-value:empty::before {
-    content: 'Ładowanie...';
+.detail-value:empty {
     color: #666666;
     font-style: italic;
+}
+
+.detail-value:empty::before {
+    content: 'Ładowanie...';
 }

@@ -6,8 +6,8 @@
 
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: top;
     min-height: 100vh;
     background: #f0f0f0;
     font-family: 'Georgia', serif;
@@ -17,27 +17,26 @@ body {
     width: 850px;
     height: 550px;
     background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
-    border: 3px solid #8b6f47;
-    border-radius: 15px;
+    border: 10px solid #8b6f47;
+    border-radius: 30px;
     padding: 20px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .header {
-    text-align: center;
+    text-align: left;
     margin-bottom: 10px;
 }
 
 .header h1 {
-    font-size: 2.2em;
+    font-size: 2.5em;
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 2px;
 }
 
 .header h2 {
-    font-size: 1.9em;
+    font-size: 2.2em;
     font-weight: bold;
     letter-spacing: 1px;
 }
@@ -53,6 +52,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .photo-box {
@@ -90,13 +91,13 @@ body {
 .race-label,
 .marital-label,
 .id-label {
-    font-size: 0.9em;
+    font-size: 1.0em;
     margin-bottom: 1px;
 }
 
 .surname-value,
 .name-value {
-    font-size: 1.7em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -135,26 +136,26 @@ body {
 }
 
 .age-section {
-    text-align: right;
+    text-align: left;
 }
 
 .age-label {
     font-size: 1em;
-    margin-bottom: 3px;
+    margin-bottom: 1px;
 }
 
 .age-value {
-    font-size: 2.8em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
 .religion-section {
-    text-align: right;
+    text-align: left;
     margin-top: 15px;
 }
 
 .religion-label {
-    font-size: 0.9em;
+    font-size: 1em;
     margin-bottom: 3px;
 }
 
@@ -164,12 +165,12 @@ body {
 }
 
 .signature-section {
-    text-align: right;
+    text-align: left;
     margin-top: 15px;
 }
 
 .signature-label {
-    font-size: 0.85em;
+    font-size: 1em;
     margin-bottom: 8px;
 }
 
@@ -178,8 +179,8 @@ body {
     height: 100px;
     background: #0000cc;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     color: white;
     font-size: 2em;
     font-weight: bold;

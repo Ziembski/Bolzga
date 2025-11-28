@@ -52,8 +52,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    justify-content: center;
-    align-items: center;
 	object-fit: contain;
 }
 
@@ -74,7 +72,7 @@ body {
 .info-section {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
 }
 
 .surname-section,
@@ -142,7 +140,7 @@ body {
 }
 
 .age-label {
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin-bottom: 1px;
 }
 
@@ -153,11 +151,11 @@ body {
 
 .religion-section {
     text-align: left;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .religion-label {
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin-bottom: 3px;
 }
 
@@ -168,11 +166,11 @@ body {
 
 .signature-section {
     text-align: left;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .signature-label {
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin-bottom: 8px;
 }
 

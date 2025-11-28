@@ -1,72 +1,222 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokument Obywatelski</title>
+    <title>Szczegóły Wpisu - Widok 1</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="id-card">
-        <div class="coat-of-arms">
-            <img src="/img/godlo.png" alt="Herb">
+    <div class="container template1-view">
+        <nav class="breadcrumb">
+            <a href="index.html">← Powrót do listy</a>
+        </nav>
+        
+        <div id="entry-details" class="details-card">
+            <div class="details-grid">
+                <!-- 
+                    TEMPLATE 1 - MANUAL FIELD CONFIGURATION
+                    This is an independent view with its own field selection.
+                    Copy and paste field blocks to customize this view.
+                    
+                    Template structure:
+                    <div class="detail-item field-FIELDNAME" data-field="FIELDNAME">
+                        <label>DISPLAY_LABEL:</label>
+                        <span class="detail-value">Ładowanie...</span>
+                    </div>
+                -->
+                
+                <!-- Field: Agent -->
+                <div class="detail-item field-agent" data-field="Agent">
+                    <label>Przypisany agent:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Imię -->
+                <div class="detail-item field-imie" data-field="Imię">
+                    <label>Imię:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+				
+                <!-- Field: Nazwisko -->
+                <div class="detail-item field-nazwisko" data-field="Nazwisko">
+                    <label>Nazwisko:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+				
+                <!-- Field: Wiek -->
+                <div class="detail-item field-wiek" data-field="Wiek">
+                    <label>Wiek:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Płeć -->
+                <div class="detail-item field-płec" data-field="Płeć">
+                    <label>Płeć:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Rasa -->
+                <div class="detail-item field-rasa" data-field="Rasa">
+                    <label>Rasa:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Wyznanie -->
+                <div class="detail-item field-wyznanie" data-field="Wyznanie">
+                    <label>Wyznanie:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+                
+                <!-- Field: Stan cywilny -->
+                <div class="detail-item field-stan-cywilny" data-field="Stan cywilny">
+                    <label>Stan cywilny:</label>
+                    <span class="detail-value">Ładowanie...</span>
+                </div>
+
+                <!-- ADD MORE FIELDS FOR TEMPLATE 1 HERE -->
+                
+            </div>
         </div>
         
-        <div class="header">
-            <h1>Rzeczpospolita Bolzga</h1>
-            <h2>Dokument Obywatelski</h2>
-        </div>
-
-        <div class="content">
-            <div class="photo-section">
-                <img src="/img/Aslan_passport.png" alt="Fotka">
-            </div>
-
-            <div class="info-section">
-                <div class="surname-section">
-                    <div class="surname-label">Nazwisko</div>
-                    <div class="surname-value">KOWALSKI</div>
-                </div>
-                <div class="name-section">
-                    <div class="name-label">Imię</div>
-                    <div class="name-value">ASLAN</div>
-                </div>
-                <div class="gender-section">
-                    <div class="gender-label">Płeć</div>
-                    <div class="gender-value">mężczyzna</div>
-                </div>
-                <div class="race-section">
-                    <div class="race-label">Rasa</div>
-                    <div class="race-value">bożniak</div>
-                </div>
-                <div class="marital-section">
-                    <div class="marital-label">Stan cywilny</div>
-                    <div class="marital-value">kawaler</div>
-                </div>
-                <div class="id-section">
-                    <div class="id-label">Numer Identyfikacyjny</div>
-                    <div class="id-value">1234567890</div>
-                </div>
-            </div>
-
-            <div class="right-section">
-                <div>
-                    <div class="age-section">
-                        <div class="age-label">Wiek</div>
-                        <div class="age-value">30</div>
-                    </div>
-                    <div class="religion-section">
-                        <div class="religion-label">Wyznanie</div>
-                        <div class="religion-value">talib</div>
-                    </div>
-                </div>
-                <div class="signature-section">
-                    <div class="signature-label">Podpis obywatelski</div>
-                    <div class="signature-box">IMG2</div>
-                </div>
-            </div>
-        </div>
+        <button id="refresh-btn" class="refresh-button">Odśwież dane</button>
+        
+        <div id="last-update" class="last-update"></div>
     </div>
+
+    <script>
+        let currentData = null;
+        let currentRow = null;
+        let eventSource = null;
+        let updateDebounceTimer = null;
+        
+        function getRowNumber() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('row')) || 1;
+        }
+        
+        function updateFields(data, rowNumber) {
+            if (!data || !data.rows || rowNumber > data.rows.length) {
+                const detailItems = document.querySelectorAll('.detail-item[data-field]');
+                detailItems.forEach(item => {
+                    const valueElement = item.querySelector('.detail-value');
+                    if (valueElement) {
+                        valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+                        valueElement.classList.add('error-value');
+                    }
+                });
+                return;
+            }
+            
+            const row = data.rows[rowNumber - 1];
+            const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+            
+            fieldItems.forEach(item => {
+                const fieldName = item.getAttribute('data-field');
+                const fieldIndex = data.headers.indexOf(fieldName);
+                const valueElement = item.querySelector('.detail-value');
+                
+                if (!valueElement) return;
+                
+                if (fieldIndex >= 0) {
+                    const value = row[fieldIndex] || 'Brak danych';
+                    valueElement.textContent = value;
+                    valueElement.classList.remove('error-value');
+                    item.classList.remove('error-item');
+                } else {
+                    valueElement.textContent = 'Pole nie istnieje w CSV';
+                    valueElement.classList.add('error-value');
+                    item.classList.add('error-item');
+                }
+            });
+            
+            const now = new Date().toLocaleString('pl-PL');
+            document.getElementById('last-update').textContent = 
+                `Ostatnia aktualizacja: ${now}`;
+        }
+        
+        function debouncedUpdate(data) {
+            if (updateDebounceTimer) {
+                clearTimeout(updateDebounceTimer);
+            }
+            
+            updateDebounceTimer = setTimeout(() => {
+                currentData = data;
+                updateFields(data, currentRow);
+            }, 300);
+        }
+        
+        function initSSE() {
+            if (eventSource) {
+                eventSource.close();
+            }
+            
+            eventSource = new EventSource('/api/sse');
+            
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                debouncedUpdate(data);
+            };
+            
+            eventSource.onerror = (error) => {
+                console.error('SSE Error:', error);
+                eventSource.close();
+                setTimeout(initSSE, 5000);
+            };
+        }
+        
+        async function handleRefresh() {
+            const button = document.getElementById('refresh-btn');
+            button.disabled = true;
+            button.textContent = 'Odświeżanie...';
+            
+            try {
+                const response = await fetch('/api/refresh');
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentData = result.data;
+                    updateFields(currentData, currentRow);
+                    
+                    if (result.updated) {
+                        console.log('Data updated:', result.message);
+                        initSSE();
+                    } else {
+                        console.log('No update:', result.message);
+                        alert('Dane są już aktualne - nie ma nowszego znacznika czasu w arkuszu.');
+                    }
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                alert('Błąd podczas odświeżania danych');
+            } finally {
+                button.disabled = false;
+                button.textContent = 'Odśwież dane';
+            }
+        }
+        
+        async function init() {
+            currentRow = getRowNumber();
+            
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                currentData = data;
+                updateFields(data, currentRow);
+                
+                initSSE();
+                
+                document.getElementById('refresh-btn')
+                    .addEventListener('click', handleRefresh);
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('entry-details').innerHTML = 
+                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+            }
+        }
+        
+        init();
+    </script>
 </body>
 </html>

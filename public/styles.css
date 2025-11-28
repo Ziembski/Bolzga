@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -5,220 +6,274 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    background: #f0f0f0;
-    font-family: 'Georgia', serif;
-    padding: clamp(10px, 2vw, 20px);
+    font-family: 'Times New Roman', serif;
+    background-color: #f5f5f5;
+    overflow: auto;
 }
 
-.id-card {
-    width: clamp(280px, 95vw, 850px);
-    aspect-ratio: 1.55;
-    background: linear-gradient(135deg, #d4a574 0%, #c49a6c 100%);
-    border: clamp(3px, 1vw, 10px) solid #8b6f47;
-    border-radius: clamp(10px, 3vw, 30px);
-    padding: clamp(10px, 2vw, 25px);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.header {
-    text-align: left;
-    margin-bottom: clamp(3px, 1vw, 10px);
-    padding-right: clamp(80px, 20vw, 150px);
-    flex-shrink: 0;
-}
-
-.header h1 {
-    font-size: clamp(1rem, 3.5vw, 3rem);
-    font-weight: bold;
-    letter-spacing: clamp(0.5px, 0.12vw, 1px);
-    margin-bottom: 0;
-    line-height: 1;
-}
-
-.header h2 {
-    font-size: clamp(0.8rem, 2.8vw, 2.6rem);
-    font-weight: bold;
-    letter-spacing: clamp(0.5px, 0.12vw, 1px);
-    line-height: 1;
-}
-
-.content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: clamp(3px, 0.8vw, 15px);
-    margin-top: clamp(3px, 0.8vw, 10px);
-    flex: 1;
-    min-height: 0;
-}
-
-.photo-section {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(3px, 0.6vw, 8px);
-    min-height: 0;
-}
-
-.photo-box {
-    width: 0.8fr;
-    flex: 1;
-    background: #0000cc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: clamp(0.8rem, 2vw, 2rem);
-    font-weight: bold;
-    border: clamp(1px, 0.24vw, 2px) solid #000;
-    min-height: 0;
-}
-
-.photo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.info-section {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2px, 0.5vw, 5px);
-    overflow: hidden;
-}
-
-.surname-section,
-.name-section,
-.gender-section,
-.race-section,
-.marital-section,
-.id-section {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1px, 0.3vw, 2px);
-    min-height: 0;
-}
-
-.surname-label,
-.name-label,
-.gender-label,
-.race-label,
-.marital-label,
-.id-label {
-    font-size: clamp(0.6rem, 1.2vw, 1.3rem);
-    margin-bottom: 0;
-    line-height: 1;
-}
-
-.surname-value,
-.name-value {
-    font-size: clamp(0.85rem, 2vw, 2.3rem);
-    font-weight: bold;
-    line-height: 1;
-}
-
-.gender-value,
-.race-value,
-.marital-value {
-    font-size: clamp(0.7rem, 1.5vw, 1.8rem);
-    font-weight: bold;
-    line-height: 1;
-}
-
-.id-value {
-    font-size: clamp(0.65rem, 1.3vw, 1.7rem);
-    font-weight: bold;
-    line-height: 1;
-}
-
-.coat-of-arms {
+/* Document Container - Fixed dimensions */
+.template1-view {
     position: absolute;
-    top: clamp(8px, 1.5vw, 20px);
-    right: clamp(8px, 1.5vw, 20px);
-    width: clamp(50px, 12vw, 150px);
-    height: clamp(60px, 14vw, 180px);
-}
-
-.coat-of-arms img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.right-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: clamp(2px, 0.5vw, 8px);
-    margin-top: 0;
+    top: 0;
+    left: 0;
+    width: 1385px;
+    height: 862px;
+    background-color: #D2B48C;
     overflow: hidden;
 }
 
-.age-section {
-    text-align: left;
-    min-height: 0;
+/* Navigation - hidden for document view */
+.breadcrumb {
+    display: none;
 }
 
-.age-label {
-    font-size: clamp(0.6rem, 1.2vw, 1.3rem);
-    margin-bottom: 0;
-    line-height: 1;
-}
-
-.age-value {
-    font-size: clamp(0.7rem, 1.5vw, 1.8rem);
-    font-weight: bold;
-    line-height: 1;
-}
-
-.religion-section {
-    text-align: left;
-    margin-top: 0;
-    min-height: 0;
-}
-
-.religion-label {
-    font-size: clamp(0.6rem, 1.2vw, 1.3rem);
-    margin-bottom: 0;
-    line-height: 1;
-}
-
-.religion-value {
-    font-size: clamp(0.7rem, 1.5vw, 1.8rem);
-    font-weight: bold;
-    line-height: 1;
-}
-
-.signature-section {
-    text-align: left;
-    margin-top: 0;
+/* Details Card - Full document area */
+.details-card {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-height: 0;
+    height: 100%;
 }
 
-.signature-label {
-    font-size: clamp(0.6rem, 1.2vw, 1.3rem);
-    margin-bottom: clamp(2px, 0.5vw, 4px);
-    line-height: 1;
-}
-
-.signature-box {
+.details-grid {
+    position: relative;
     width: 100%;
-    flex: 1;
-    background: #0000cc;
+    height: 100%;
+}
+
+/* Header Title */
+.details-grid::before {
+    content: 'Rzeczpospolita Bolzga\ADokument Obywatelski';
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: #000000;
+    white-space: pre-line;
+    letter-spacing: 1px;
+}
+
+/* Coat of Arms */
+.details-grid::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: 60px;
+    width: 280px;
+    height: 320px;
+    background-image: url('/img/godlo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 3px solid #8B4513;
+    border-radius: 5px;
+}
+
+/* IMG1 - Photo box (left) */
+.field-imie::before {
+    content: '';
+    position: absolute;
+    top: 226px;
+    left: 60px;
+    width: 410px;
+    height: 546px;
+    background-color: #0000FF;
+    background-image: url('/img/Aslan_passport.png');
+    background-size: cover;
+    background-position: center;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: clamp(2px, 0.5vw, 5px);
+    align-items: center;
+    justify-content: center;
     color: white;
-    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+    font-size: 72px;
     font-weight: bold;
-    border: clamp(1px, 0.24vw, 2px) solid #000;
-    min-height: 0;
+    overflow: hidden;
+}
+
+/* IMG1 Text overlay */
+.field-nazwisko::before {
+    content: 'IMG1';
+    position: absolute;
+    top: 226px;
+    left: 60px;
+    width: 410px;
+    height: 546px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 72px;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Field Labels and Values - Static positioning */
+.detail-item {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-item label {
+    font-size: 28px;
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.detail-item .detail-value {
+    font-size: 42px;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Nazwisko field */
+.field-nazwisko {
+    top: 192px;
+    left: 515px;
+}
+
+/* Imię field */
+.field-imie {
+    top: 298px;
+    left: 515px;
+}
+
+/* Płeć field */
+.field-płec {
+    top: 192px;
+    right: 440px;
+    text-align: right;
+}
+
+.field-płec label,
+.field-płec .detail-value {
+    text-align: right;
+}
+
+/* Wiek field */
+.field-wiek {
+    top: 298px;
+    right: 440px;
+    text-align: right;
+}
+
+.field-wiek label,
+.field-wiek .detail-value {
+    text-align: right;
+}
+
+/* Rasa field */
+.field-rasa {
+    top: 404px;
+    left: 515px;
+}
+
+/* Wyznanie field */
+.field-wyznanie {
+    top: 404px;
+    right: 440px;
+    text-align: right;
+}
+
+.field-wyznanie label,
+.field-wyznanie .detail-value {
+    text-align: right;
+}
+
+/* Stan cywilny field */
+.field-stan-cywilny {
+    top: 510px;
+    left: 515px;
+}
+
+/* Numer Identyfikacyjny - Static Label */
+.field-stan-cywilny::after {
+    content: 'Numer Identyfikacyjny';
+    position: absolute;
+    top: 106px;
+    left: 0;
+    font-size: 28px;
+    font-weight: normal;
+    color: #000000;
+}
+
+/* Numer Identyfikacyjny - Value (using Podpis Obywatelski field) */
+.field-podpis-obywatelski {
+    top: 644px;
+    left: 515px;
+}
+
+.field-podpis-obywatelski label {
+    display: none;
+}
+
+.field-podpis-obywatelski .detail-value {
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* IMG2 - Signature box (right) */
+.field-podpis-obywatelski::after {
+    content: 'IMG2';
+    position: absolute;
+    top: 138px;
+    right: -445px;
+    width: 385px;
+    height: 146px;
+    background-color: #0000FF;
+    background-image: url('/img/Aslan_passport.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 56px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+/* Podpis obywatelski - Static Label */
+.field-podpis-obywatelski::before {
+    content: 'Podpis obywatelski';
+    position: absolute;
+    top: 108px;
+    right: -445px;
+    font-size: 28px;
+    font-weight: normal;
+    color: #000000;
+    text-align: right;
+    width: 385px;
+}
+
+/* Refresh Button */
+.refresh-button {
+    display: none;
+}
+
+/* Last Update */
+.last-update {
+    display: none;
+}
+
+/* Error states */
+.error-value {
+    color: #cc0000;
+}
+
+.error-item {
+    opacity: 0.6;
+}
+
+/* Loading state */
+.detail-value:empty::before {
+    content: 'Ładowanie...';
+    color: #666666;
+    font-style: italic;
 }

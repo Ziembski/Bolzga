@@ -111,7 +111,8 @@ body {
 .column-3 {
     display: flex;
     flex-direction: column;
-	justify-content: start;
+		justify-content: start;
+		gap: 5px
 }
 
 /* Field Item Styling */
@@ -132,6 +133,7 @@ body {
     font-weight: bold;
     color: #000000;
 		border-bottom: dashed;
+		margin-top: -5px
 }
 
 

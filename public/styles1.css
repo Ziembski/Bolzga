@@ -85,7 +85,7 @@ body {
     width: 1305px;
     height: 595px;
     display: grid;
-    grid-template-columns: 410px 400x 405px;
+    grid-template-columns: 410px 400px 405px;
     gap: 40px;
 }
 

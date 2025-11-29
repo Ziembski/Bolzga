@@ -127,6 +127,7 @@ body {
 
 .detail-item .detail-value {
     font-size: 60px;
+    font-family: "Courier New", monospace;
     font-weight: bold;
     color: #000000;
 }

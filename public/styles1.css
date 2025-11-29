@@ -64,10 +64,10 @@ body {
 /* Coat of Arms */
 .coat-of-arms {
     position: absolute;
-    top: 25px;
-    right: 25px;
-    width: 140px;
-    height: 160px;
+    top: 30px;
+    right: 30px;
+    width: 210px;
+    height: 240px;
 }
 
 .coat-of-arms img {
@@ -122,27 +122,18 @@ body {
 }
 
 .detail-item label {
-    font-size: 28px;
+    font-size: 42px;
     font-weight: normal;
     color: #000000;
     margin-bottom: 5px;
 }
 
 .detail-item .detail-value {
-    font-size: 42px;
+    font-size: 64px;
     font-weight: bold;
     color: #000000;
 }
 
-/* Specific field adjustments */
-.field-podpis-obywatelski label {
-    font-size: 28px;
-}
-
-.field-podpis-obywatelski .detail-value {
-    font-size: 48px;
-    letter-spacing: 2px;
-}
 
 /* IMG2 Container */
 .img2-wrapper {

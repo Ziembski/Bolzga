@@ -104,6 +104,7 @@ body {
 .column-2 {
     display: flex;
     flex-direction: column;
+		gap: 5px;
 }
 
 /* Column 3 - Right fields */

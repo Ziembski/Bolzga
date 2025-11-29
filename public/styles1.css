@@ -120,14 +120,13 @@ body {
 }
 
 .detail-item label {
-    font-size: 42px;
+    font-size: 40px;
     font-weight: normal;
     color: #000000;
-    margin-bottom: 5px;
 }
 
 .detail-item .detail-value {
-    font-size: 64px;
+    font-size: 60px;
     font-weight: bold;
     color: #000000;
 }

@@ -19,12 +19,12 @@ body {
     width: 1385px;
     height: 862px;
     background-color: #D2B48C;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 /* Navigation - hidden for document view */
 .breadcrumb {
-    display: none;
+/*    display: none; */
 }
 
 /* Details Card - Full document area */

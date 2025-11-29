@@ -120,13 +120,13 @@ body {
 }
 
 .detail-item label {
-    font-size: 40px;
+    font-size: 35px;
     font-weight: normal;
     color: #000000;
 }
 
 .detail-item .detail-value {
-    font-size: 60px;
+    font-size: 65px;
     font-family: "Courier New", monospace;
     font-weight: bold;
     color: #000000;

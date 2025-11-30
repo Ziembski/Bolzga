@@ -38,7 +38,9 @@ body {
 
 .details-card img {
 
-    width: 100%;    
+    width: 100%;
+    height: 100%;
+
 }
     
 
@@ -81,6 +83,20 @@ body {
 
 }
 
+/* Coat of Arms */
+.overlay-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1385px;
+    height: 862px;
+}
+
+.overlay-bg img {
+    width: 100%;
+    height: 100%;
+
+}
 /* Grid Container */
 .details-grid {
     position: absolute;

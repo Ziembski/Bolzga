@@ -20,6 +20,8 @@ body {
     height: 862px;
     background-color: #D2B48C;
     overflow: hidden; 
+	margin: 10px;
+    box-shadow: -1px 3px 7px 3px black;
 }
 
 /* Navigation - hidden for document view */
@@ -114,6 +116,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
+	box-shadow: -1px 1px 5px black;
 }
 
 .img1-container img{

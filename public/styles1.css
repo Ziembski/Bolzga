@@ -28,7 +28,6 @@ body {
 }
 
 
-
 /* Document Container - Fixed dimensions */
 .template1-view {
     position: absolute;
@@ -203,10 +202,10 @@ body {
 		
 }
 
-.detail-item.field-nazwisko .detail-value {
-
-	border: none;
+.field-pl-cd .detail-value {
+	border: 0px;
 }
+
 
 /* IMG2 Container */
 .img2-wrapper {

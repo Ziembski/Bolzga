@@ -14,10 +14,21 @@ body {
 
 .playing-card {
 	
+    margin-top: 15px;
     width: 100px;
-    height: 550px;
+	height: 862px;
 
 }
+
+.detail-item pl-cd {
+
+    width: 100px;
+    height: 550px;
+	align-items: center;
+    justify-content: center;
+
+}
+
 /* Document Container - Fixed dimensions */
 .template1-view {
     position: absolute;

@@ -18,12 +18,12 @@ body {
 	height: 862px;
 }
 
-.field-pl-cd .detail-value {
+.detail-item.field-pl-cd {
 
     width: 100px;
     height: 550px;
-	align-items: right;
-    justify-content: center;
+	align-items: center;
+    justify-content: right;
 
 }
 

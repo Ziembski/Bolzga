@@ -11,6 +11,13 @@ body {
     overflow: auto;
 }
 
+
+.playing-card {
+	
+    width: 100px;
+    height: 550px;
+
+}
 /* Document Container - Fixed dimensions */
 .template1-view {
     position: absolute;

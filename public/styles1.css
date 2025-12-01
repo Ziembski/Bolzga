@@ -199,11 +199,12 @@ body {
 .img2-container {
     width: 385px;
     height: 146px;
-    background-color: #0000FF;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    border-style: solid;
+    border-width: 3px;
 }
 
 .img2-container img {

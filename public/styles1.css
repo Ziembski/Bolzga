@@ -14,8 +14,9 @@ body {
 
 .playing-card {
     margin-top: 15px;
-    width: 100px;
-	height: 862px;
+    width: 394px;
+	height: 550px;
+	align-items: center;
 }
 
 .detail-item.field-pl-cd {
@@ -24,6 +25,7 @@ body {
     height: 550px;
 	align-items: center;
     justify-content: right;
+	border: none;
 
 }
 

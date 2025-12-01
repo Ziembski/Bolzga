@@ -13,18 +13,16 @@ body {
 
 
 .playing-card {
-	
     margin-top: 15px;
     width: 100px;
 	height: 862px;
-
 }
 
 .field-pl-cd .detail-value {
 
     width: 100px;
     height: 550px;
-	align-items: center;
+	align-items: right;
     justify-content: center;
 
 }

@@ -125,28 +125,23 @@ body {
 
 .pin1 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 410px;
-    height: 595px;
+    top: 10px;
+    left: 180px;
 }
 
 .pin1 img {
-
-
+	filter: drop-shadow(0 0 1px black);
 }
 
 .pin2 {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 410px;
-    height: 595px;
+    top: 560px;
+    left: 160px;
 }
 
 .pin2 img {
 	transform: rotate(180deg);
-
+	filter: drop-shadow(0 0 1px black);
 }
 
 

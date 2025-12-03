@@ -345,16 +345,26 @@ body {
 /* Caps */
 
 .cap-section {
+	
+    position: absolute;
+    top: 0;
+    left: 1850px;
+    width: 300px;
+    height: 862px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+	
+}
+
+
+.detail-item.field-kapsle {
 
 }
 
 .field-kapsle .detail-value {
 
-
-}
-
-.detail-item.field-kapsle {
-
+	border: 0px;
+	
 }
 
 .cap1 {

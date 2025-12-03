@@ -73,13 +73,6 @@ body {
 .detail-item.field-pl-cd {
     justify-content: start;
     height: 100px;
-	font-family: "Fraunces", serif;
-	font-optical-sizing: auto;
-	font-weight: 100;
-	font-style: normal;
-	font-variation-settings:
-    "SOFT" 0,
-    "WONK" 0;
 
 }
 

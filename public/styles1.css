@@ -32,7 +32,8 @@ body {
     box-shadow: -1px 3px 7px 1px black;
     border-radius: 18px;
 	contain: layout;
-	background-color: #fff8ed;
+    background-color: #ffffff;
+    transform: rotate(15deg);
 }
 
 .pc-inner-frame {
@@ -59,7 +60,7 @@ body {
 .pc-top-left {
 	
     position: absolute;
-    background: #fff8ed;
+    background-color: #ffffff;
     top: 30px;
     left: 10px;
     text-align: center;
@@ -71,7 +72,7 @@ body {
 
     position: absolute;
     transform: rotate(180deg);
-    background: #fff8ed;
+    background-color: #ffffff;
     right: 10px;
     bottom: 30px;
 	text-align: center;

@@ -152,6 +152,55 @@
 		</div>
 	
 	</div>
+	
+	<div class="caps-section">
+	
+		<div class="detail-item field-kapsle" data-field="Kapsle">
+			<label>Kapsle:</label>
+			<span class="detail-value">Ładowanie...</span>
+		</div>
+	
+		<div class="cap1">
+			<img src="/img/cap1.png" alt="Herb">
+		</div>
+		
+		<div class="cap2">
+			<img src="/img/cap2.png" alt="Herb">
+		</div>
+		
+		<div class="cap3">
+			<img src="/img/cap3.png" alt="Herb">
+		</div>
+		
+		<div class="cap4">
+			<img src="/img/cap4.png" alt="Herb">
+		</div>
+		
+		<div class="cap5">
+			<img src="/img/cap5.png" alt="Herb">
+		</div>
+		
+		<div class="cap6">
+			<img src="/img/cap6.png" alt="Herb">
+		</div>
+		
+		<div class="cap7">
+			<img src="/img/cap7.png" alt="Herb">
+		</div>
+		
+		<div class="cap8">
+			<img src="/img/cap8.png" alt="Herb">
+		</div>
+		
+		<div class="cap9">
+			<img src="/img/cap9.png" alt="Herb">
+		</div>
+		
+		<div class="cap10">
+			<img src="/img/cap10.png" alt="Herb">
+		</div>
+		
+	</div>
 
 	<button id="refresh-btn" class="refresh-button">Odśwież dane</button>
 	
@@ -186,75 +235,101 @@
             }
         }
         
-        function updateFields(data, rowNumber) {
-            if (!data || !data.rows || rowNumber > data.rows.length) {
-                const detailItems = document.querySelectorAll('.detail-item[data-field]');
-                detailItems.forEach(item => {
-                    const valueElement = item.querySelector('.detail-value');
-                    if (valueElement) {
-                        valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
-                        valueElement.classList.add('error-value');
-                    }
-                });
-                return;
-            }
-            
-            const row = data.rows[rowNumber - 1];
-            const fieldItems = document.querySelectorAll('.detail-item[data-field]');
-            
-            // Update text fields
-            fieldItems.forEach(item => {
-                const fieldName = item.getAttribute('data-field');
-                const fieldIndex = data.headers.indexOf(fieldName);
-                const valueElement = item.querySelector('.detail-value');
-                
-                if (!valueElement) return;
-                
-                if (fieldIndex >= 0) {
-                    const value = row[fieldIndex] || 'Brak danych';
-                    valueElement.textContent = value;
-                    valueElement.classList.remove('error-value');
-                    item.classList.remove('error-item');
-                } else {
-                    valueElement.textContent = 'Pole nie istnieje w CSV';
-                    valueElement.classList.add('error-value');
-                    item.classList.add('error-item');
-                }
-            });
-            
-            // Update IMG1 from "Img" field
-            const img1Index = data.headers.indexOf('Img');
-            if (img1Index >= 0) {
-                const img1Url = row[img1Index];
-                updateImage('img1-photo', '.img1-placeholder', img1Url);
-            }
-            
-            // Update IMG2 from "Img2" field (if exists)
-            const img2Index = data.headers.indexOf('Img2');
-            if (img2Index >= 0) {
-                const img2Url = row[img2Index];
-                updateImage('img2-signature', '.img2-placeholder', img2Url);
-            }
-            
-		   // Update IMG3 from "Img3" field (if exists) - BOTH instances
-		   const img3Index = data.headers.indexOf('Img3');
-		   if (img3Index >= 0) {
-			   const img3Url = row[img3Index];
-			   updateImage('img3-suit-top', '.img3-placeholder', img3Url);
-			   updateImage('img3-suit-bottom', '.img3-placeholder', img3Url);
-		   }
+		function updateFields(data, rowNumber) {
+			if (!data || !data.rows || rowNumber > data.rows.length) {
+				const detailItems = document.querySelectorAll('.detail-item[data-field]');
+				detailItems.forEach(item => {
+					const valueElement = item.querySelector('.detail-value');
+					if (valueElement) {
+						valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+						valueElement.classList.add('error-value');
+					}
+				});
+				return;
+			}
+			
+			const row = data.rows[rowNumber - 1];
+			const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+			
+			// Update text fields
+			fieldItems.forEach(item => {
+				const fieldName = item.getAttribute('data-field');
+				const fieldIndex = data.headers.indexOf(fieldName);
+				const valueElement = item.querySelector('.detail-value');
+				
+				if (!valueElement) return;
+				
+				if (fieldIndex >= 0) {
+					const value = row[fieldIndex] || 'Brak danych';
+					valueElement.textContent = value;
+					valueElement.classList.remove('error-value');
+					item.classList.remove('error-item');
+				} else {
+					valueElement.textContent = 'Pole nie istnieje w CSV';
+					valueElement.classList.add('error-value');
+					item.classList.add('error-item');
+				}
+			});
+			
+			// Update IMG1 from "Img" field
+			const img1Index = data.headers.indexOf('Img');
+			if (img1Index >= 0) {
+				const img1Url = row[img1Index];
+				updateImage('img1-photo', '.img1-placeholder', img1Url);
+			}
+			
+			// Update IMG2 from "Img2" field (if exists)
+			const img2Index = data.headers.indexOf('Img2');
+			if (img2Index >= 0) {
+				const img2Url = row[img2Index];
+				updateImage('img2-signature', '.img2-placeholder', img2Url);
+			}
+			
+			// Update IMG3 from "Img3" field (if exists) - BOTH instances
+			const img3Index = data.headers.indexOf('Img3');
+			if (img3Index >= 0) {
+				const img3Url = row[img3Index];
+				updateImage('img3-suit-top', '.img3-placeholder', img3Url);
+				updateImage('img3-suit-bottom', '.img3-placeholder', img3Url);
+			}
 			
 			// Update IMG4 from "Img4" field (if exists)
-            const img4Index = data.headers.indexOf('Img4');
-            if (img4Index >= 0) {
-                const img4Url = row[img4Index];
-                updateImage('img4-card', '.img4-placeholder', img4Url);
-            }
+			const img4Index = data.headers.indexOf('Img4');
+			if (img4Index >= 0) {
+				const img4Url = row[img4Index];
+				updateImage('img4-card', '.img4-placeholder', img4Url);
+			}
 			
-            const now = new Date().toLocaleString('pl-PL');
-            document.getElementById('last-update').textContent = 
-                `Ostatnia aktualizacja: ${now}`;
-        }
+			// Update caps visibility based on "Kapsle" field
+			const kapsleIndex = data.headers.indexOf('Kapsle');
+			if (kapsleIndex >= 0) {
+				const kapsleValue = parseInt(row[kapsleIndex]) || 0;
+				
+				// Loop through all 10 caps
+				for (let i = 1; i <= 10; i++) {
+					const capElement = document.querySelector(`.cap${i} img`);
+					if (capElement) {
+						if (i <= kapsleValue) {
+							capElement.style.display = 'block';
+						} else {
+							capElement.style.display = 'none';
+						}
+					}
+				}
+			} else {
+				// If "Kapsle" field doesn't exist, hide all caps
+				for (let i = 1; i <= 10; i++) {
+					const capElement = document.querySelector(`.cap${i} img`);
+					if (capElement) {
+						capElement.style.display = 'none';
+					}
+				}
+			}
+			
+			const now = new Date().toLocaleString('pl-PL');
+			document.getElementById('last-update').textContent = 
+				`Ostatnia aktualizacja: ${now}`;
+		}
         
         function debouncedUpdate(data) {
             if (updateDebounceTimer) {

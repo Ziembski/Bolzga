@@ -11,7 +11,7 @@
 }
 
 @font-face {
-  font-family: Butler; /* set name */
+  font-family: Butlerfont; /* set name */
   src: url('/fonts/Butler.woff'); /* url of the font */
 }
 
@@ -60,7 +60,7 @@ body {
     position: absolute;
     background: #fff8ed;
     font-size: 65px;
-	font-family: Elegant-tw;
+	font-family: Butlerfont;
     color: #292929;
     top: 30px;
     left: 10px;
@@ -74,7 +74,7 @@ body {
     transform: rotate(180deg);
     background: #fff8ed;
     font-size: 65px;
-	font-family: Elegant-tw;
+	font-family: Butlerfont;
     color: #292929;
     right: 10px;
     bottom: 30px;

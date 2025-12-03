@@ -5,7 +5,10 @@
     box-sizing: border-box;
 }
 
-
+@font-face {
+  font-family: Elegant-tw; /* set name */
+  src: url('/fonts/ELEGANT TYPEWRITER Regular.ttf'); /* url of the font */
+}
 
 body {
     font-family: 'Times New Roman', serif;
@@ -242,7 +245,7 @@ body {
 
 .detail-item .detail-value {
     font-size: 65px;
-    font-family: "Courier New", monospace;
+	font-family: Elegant-tw;
     font-weight: bold;
     color: #292929;
 	border-bottom: dashed;

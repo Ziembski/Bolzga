@@ -59,9 +59,6 @@ body {
 	
     position: absolute;
     background: #fff8ed;
-    font-size: 65px;
-	font-family: Butlerfont;
-    color: #292929;
     top: 30px;
     left: 10px;
     text-align: center;
@@ -73,9 +70,6 @@ body {
     position: absolute;
     transform: rotate(180deg);
     background: #fff8ed;
-    font-size: 65px;
-	font-family: Butlerfont;
-    color: #292929;
     right: 10px;
     bottom: 30px;
 	text-align: center;
@@ -85,6 +79,7 @@ body {
 .detail-item.field-pl-cd {
     justify-content: start;
     height: 100px;
+	
 
 }
 
@@ -264,6 +259,9 @@ body {
 
 .field-pl-cd .detail-value {
 	border: 0px;
+	font-size: 65px;
+	font-family: Butlerfont;
+	color: #292929;
 }
 
 

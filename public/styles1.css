@@ -84,7 +84,8 @@ body {
 .img3-wrapper {
     display: flex;
     flex-direction: column;
-
+    margin-top: -10px;
+    margin-bottom: 5px;
 }
 
 .img3-container {

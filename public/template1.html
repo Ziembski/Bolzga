@@ -22,8 +22,7 @@
 			
 			<div class="img3-wrapper">
 				<div class="img3-container">
-					<img id="img3-suit" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
-					<span class="img3-placeholder">IMG3</span>
+					<img id="img3-suit-top" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
 				</div>
 			</div>
 			
@@ -37,7 +36,7 @@
 			
 			<div class="img3-wrapper">
 				<div class="img3-container">
-					<img id="img3-suit" src="">
+					<img id="img3-suit-bottom" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
 					<span class="img3-placeholder">IMG3</span>
 				</div>
 			</div>
@@ -235,12 +234,13 @@
                 updateImage('img2-signature', '.img2-placeholder', img2Url);
             }
             
-            // Update IMG3 from "Img3" field (if exists)
-            const img3Index = data.headers.indexOf('Img3');
-            if (img3Index >= 0) {
-                const img3Url = row[img3Index];
-                updateImage('img3-suit', '.img3-placeholder', img3Url);
-            }
+		   // Update IMG3 from "Img3" field (if exists) - BOTH instances
+		   const img3Index = data.headers.indexOf('Img3');
+		   if (img3Index >= 0) {
+			   const img3Url = row[img3Index];
+			   updateImage('img3-suit-top', '.img3-placeholder', img3Url);
+			   updateImage('img3-suit-bottom', '.img3-placeholder', img3Url);
+		   }
 			
 			// Update IMG4 from "Img4" field (if exists)
             const img4Index = data.headers.indexOf('Img4');

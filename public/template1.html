@@ -20,12 +20,26 @@
 				<span class="detail-value">A4</span>
 			</div>
 			
+			<div class="img3-wrapper">
+				<div class="img3-container">
+					<img id="img3-signature" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+					<span class="img3-placeholder">IMG3</span>
+				</div>
+			</div>
+			
 		</div>
 		
 		<div class="pc-bottom-right">
 		
 			<div class="detail-item field-pl-cd" data-field="pl-cd">
 				<span class="detail-value">A4</span>
+			</div>
+			
+			<div class="img3-wrapper">
+				<div class="img3-container">
+					<img id="img3-signature" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+					<span class="img3-placeholder">IMG3</span>
+				</div>
 			</div>
 			
 		</div>
@@ -221,6 +235,20 @@
                 updateImage('img2-signature', '.img2-placeholder', img2Url);
             }
             
+            // Update IMG3 from "Img3" field (if exists)
+            const img3Index = data.headers.indexOf('Img3');
+            if (img3Index >= 0) {
+                const img3Url = row[img3Index];
+                updateImage('img3-suit', '.img3-placeholder', img3Url);
+            }
+			
+			// Update IMG4 from "Img4" field (if exists)
+            const img4Index = data.headers.indexOf('Img4');
+            if (img4Index >= 0) {
+                const img4Url = row[img4Index];
+                updateImage('img4-card', '.img4-placeholder', img4Url);
+            }
+			
             const now = new Date().toLocaleString('pl-PL');
             document.getElementById('last-update').textContent = 
                 `Ostatnia aktualizacja: ${now}`;

@@ -11,8 +11,8 @@
 }
 
 @font-face {
-  font-family: Butlerfont; /* set name */
-  src: url('/fonts/Butler.woff'); /* url of the font */
+  font-family: TheSoul; /* set name */
+  src: url('/fonts/The Soul Of Vodka.ttf'); /* url of the font */
 }
 
 body {
@@ -22,7 +22,7 @@ body {
 }
 
 
-.body-bg {
+.body-img {
     position: absolute;
     left: 0px;
     top: 0px;
@@ -30,7 +30,7 @@ body {
 
 }
 
-.body-bg img {
+.body-img img {
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -303,7 +303,7 @@ body {
 .field-pl-cd .detail-value {
     border: 0px;
     font-size: 45px;
-    font-family: Butlerfont;
+    font-family: TheSoul;
     color: #000000;
 }
 

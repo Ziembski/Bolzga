@@ -203,8 +203,10 @@
 		</a>
 	</div>
 
-	<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
-	
+	<div class="refresh-container">
+		<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
+	</div>
+		
 	<div id="last-update" class="last-update"></div>
 
     <script>
@@ -381,12 +383,10 @@
                         initSSE();
                     } else {
                         console.log('No update:', result.message);
-                        alert('Dane są już aktualne - nie ma nowszego znacznika czasu w arkuszu.');
                     }
                 }
             } catch (error) {
                 console.error('Refresh error:', error);
-                alert('Błąd podczas odświeżania danych');
             } finally {
                 refreshImg.style.opacity = '1';
                 refreshImg.style.pointerEvents = 'auto';

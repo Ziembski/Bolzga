@@ -138,6 +138,7 @@ body {
 	height: 862px;
 	border: 1px solid #f1f1f1;
 	perspective: 1000px; /* Remove this if you don't want the 3D effect */
+	
 }
 
 /* This container is needed to position the front and back side */
@@ -148,6 +149,7 @@ body {
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  { transform-origin: center right; }
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */

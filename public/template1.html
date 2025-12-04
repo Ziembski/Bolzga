@@ -367,7 +367,7 @@
         async function handleRefresh() {
             const refreshImg = document.getElementById('refresh-btn');
             const originalSrc = refreshImg.src;
-            refreshImg.style.opacity = '0.5';
+            refreshImg.style.scale = '120%';
             refreshImg.style.pointerEvents = 'none';
             
             try {
@@ -388,7 +388,7 @@
             } catch (error) {
                 console.error('Refresh error:', error);
             } finally {
-                refreshImg.style.opacity = '1';
+                refreshImg.style.scale = '100%';
                 refreshImg.style.pointerEvents = 'auto';
             }
         }

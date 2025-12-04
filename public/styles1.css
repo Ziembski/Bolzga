@@ -578,7 +578,7 @@ body {
     height: 100px;
     align-items: center;
     position: absolute;
-    top: 666px;
+	top: 366px;
     left: 18px;
 }
 
@@ -588,12 +588,12 @@ body {
 }
 
 .refresh-container {
-	width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     align-items: center;
     position: absolute;
-    top: 666px;
-    left: 18px;
+    top: 744px;
+    left: 1600px;
 }
 
 .refresh-container img{

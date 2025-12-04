@@ -139,6 +139,7 @@ body {
 	position: absolute;
     top: 30px;
     left: 135px;
+	perspective: 1500px;
 	
 }
 

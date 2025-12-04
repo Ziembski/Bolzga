@@ -558,6 +558,50 @@ body {
 	filter: drop-shadow(-1px 3px 7px black)
 }
 
+
+.go-back {
+	width: 100px;
+    height: 100px;
+    align-items: center;
+    position: absolute;
+    top: 666px;
+    left: 18px;
+}
+
+.go-back img{
+    width: 100%;
+    height: 100%;
+}
+
+.go-back {
+	width: 100px;
+    height: 100px;
+    align-items: center;
+    position: absolute;
+    top: 666px;
+    left: 18px;
+}
+
+.go-back img{
+    width: 100%;
+    height: 100%;
+}
+
+.refresh-container {
+	width: 100px;
+    height: 100px;
+    align-items: center;
+    position: absolute;
+    top: 666px;
+    left: 18px;
+}
+
+.refresh-container img{
+    width: 100%;
+    height: 100%;
+}
+
+
 /* Error states */
 .error-value {
     color: #cc0000;

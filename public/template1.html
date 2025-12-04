@@ -208,7 +208,7 @@
 		</a>
 	</div>
 
-	<button id="refresh-btn" class="refresh-button">Odśwież dane</button>
+	<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
 	
 	<div id="last-update" class="last-update"></div>
 
@@ -368,9 +368,10 @@
         }
         
         async function handleRefresh() {
-            const button = document.getElementById('refresh-btn');
-            button.disabled = true;
-            button.textContent = 'Odświeżanie...';
+            const refreshImg = document.getElementById('refresh-btn');
+            const originalSrc = refreshImg.src;
+            refreshImg.style.opacity = '0.5';
+            refreshImg.style.pointerEvents = 'none';
             
             try {
                 const response = await fetch('/api/refresh');
@@ -392,8 +393,8 @@
                 console.error('Refresh error:', error);
                 alert('Błąd podczas odświeżania danych');
             } finally {
-                button.disabled = false;
-                button.textContent = 'Odśwież dane';
+                refreshImg.style.opacity = '1';
+                refreshImg.style.pointerEvents = 'auto';
             }
         }
         

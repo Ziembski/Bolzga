@@ -15,11 +15,6 @@
   src: url('/fonts/The Soul Of Vodka.ttf'); /* url of the font */
 }
 
-@font-face {
-  font-family: Spice; /* set name */
-  src: url('/fonts/Spicy Sale.ttf'); /* url of the font */
-}
-
 body {
     font-family: 'Times New Roman', serif;
     background-color: #f5f5f5;
@@ -32,7 +27,6 @@ body {
     left: 0px;
     top: 0px;
     object-fit: contain;
-    width: 2165px;
 
 }
 
@@ -49,7 +43,7 @@ body {
     width: 374px;
     height: 550px;
     align-items: center;
-    box-shadow: -1px 3px 6px 0px black;
+    box-shadow: -1px 3px 7px 1px black;
     border-radius: 18px;
     contain: layout;
     background-color: #ffffff;
@@ -145,7 +139,7 @@ body {
     margin-top: 15px;
     margin-bottom: 15px;
     margin-right: 200px;
-    box-shadow: -1px 3px 6px 0px black;
+    box-shadow: -1px 3px 7px 3px black;
 }
 
 /* Navigation - hidden for document view */
@@ -377,20 +371,12 @@ body {
 }
 
 
-
 .detail-item.field-kapsle {
-
-    font-size: 35px;
-    font-family: Spice;
-    color: #ff9500;
 
 }
 
 .field-kapsle .detail-value {
 
-    font-size: 45px;
-    font-family: Spice;
-    color: #ff9500;
 	border: 0px;
 	
 }
@@ -408,7 +394,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap2 {
@@ -424,7 +410,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black);
 	
 }
 
@@ -441,7 +427,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap4 {
@@ -457,7 +443,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap5 {
@@ -473,7 +459,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap6 {
@@ -489,7 +475,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap7 {
@@ -505,7 +491,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap8 {
@@ -521,7 +507,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap9 {
@@ -537,7 +523,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 .cap10 {
@@ -553,50 +539,7 @@ body {
     width: 100%;
     height: 100%;
 	display: none;
-	filter: drop-shadow(-3px 6px 6px black);
-}
-
-
-.go-back {
-	width: 100px;
-    height: 100px;
-    align-items: center;
-    position: absolute;
-    top: 666px;
-    left: 18px;
-}
-
-.go-back img{
-    width: 100%;
-    height: 100%;
-}
-
-.go-back {
-	width: 100px;
-    height: 100px;
-    align-items: center;
-    position: absolute;
-    top: 666px;
-    left: 18px;
-}
-
-.go-back img{
-    width: 100%;
-    height: 100%;
-}
-
-.refresh-container {
-	width: 100px;
-    height: 100px;
-    align-items: center;
-    position: absolute;
-    top: 666px;
-    left: 18px;
-}
-
-.refresh-container img{
-    width: 100%;
-    height: 100%;
+	filter: drop-shadow(-1px 3px 7px black)
 }
 
 /* Error states */

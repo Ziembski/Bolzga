@@ -52,11 +52,11 @@ body {
 
 .pc-inner-frame {
 	
-    width: 334px;
-    height: 510px;
+    width: 324px;
+    height: 500px;
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 25px;
+    top: 25px;
     contain: paint;
     border: 2px solid #000000;
     border-radius: 15px;
@@ -75,8 +75,8 @@ body {
 	
     position: absolute;
     background-color: #ffffff;
-    top: 30px;
-    left: 4px;
+    top: 45px;
+    left: 10px;
     text-align: center;
     display: grid;
     grid-template-rows: 50px 35px;
@@ -87,8 +87,8 @@ body {
     position: absolute;
     transform: rotate(180deg);
     background-color: #ffffff;
-    right: 4px;
-    bottom: 30px;
+    right: 10px;
+    bottom: 45px;
     text-align: center;
     display: grid;
     grid-template-rows: 50px 35px;
@@ -122,7 +122,7 @@ body {
 .detail-item.field-pl-cd {
     justify-content: start;
     height: 100px;
-    margin-top: 2px;
+    margin-top: 5px;
 
 }
 

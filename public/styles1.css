@@ -371,110 +371,141 @@ body {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap1 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap2 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap2 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
+	
 }
 
 .cap3 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap3 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap4 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap4 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap5 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap5 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap6 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap6 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap7 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap7 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap8 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap8 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap9 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap9 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 .cap10 {
 	width: 190px;
     height: 190px;
     align-items: center;
+	position: absolute;
 }
 
 .cap10 img{
-
+    width: 100%;
+    height: 100%;
 	display: none
+	filter: drop-shadow(0 0 1px black);
 }
 
 /* Error states */

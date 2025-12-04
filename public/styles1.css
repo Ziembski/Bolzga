@@ -372,12 +372,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap1 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -386,12 +388,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap2 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 	
 }
@@ -401,12 +405,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap3 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -415,12 +421,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap4 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -429,12 +437,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap5 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -443,12 +453,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap6 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -457,12 +469,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap7 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -471,12 +485,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap8 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -485,12 +501,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap9 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 
@@ -499,12 +517,14 @@ body {
     height: 190px;
     align-items: center;
 	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
 .cap10 img{
     width: 100%;
     height: 100%;
-	display: none
+	display: none;
 	filter: drop-shadow(0 0 1px black);
 }
 

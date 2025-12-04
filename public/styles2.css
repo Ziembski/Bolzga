@@ -136,6 +136,9 @@ body {
 	background-color: transparent;
 	width: 1385px;
 	height: 862px;
+	position: absolute;
+    top: 30px;
+    left: 135px;
 	
 }
 
@@ -175,7 +178,23 @@ body {
 }
 
 /* Document Container - Fixed dimensions */
-.template1-view {
+.front-card-view {
+    position: absolute;
+    top: 0;
+    width: 1385px;
+    height: 862px;
+    overflow: hidden; 
+    box-shadow: -1px 3px 6px 0px black;
+}
+
+
+
+
+
+
+
+/* Document Container - Fixed dimensions */
+.back-card-view {
     position: absolute;
     top: 0;
     width: 1385px;

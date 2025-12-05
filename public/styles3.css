@@ -123,15 +123,17 @@ input {
 
 .front_cover_text1 {
 	
+
+}
+
+.front_cover_text1 label {
+ 
      width: 400px;
     font-size: 66px;
     text-wrap: auto;
     text-align: center;
     justify-self: center;
-}
-
-.front_cover_text1 label {
- 
+	
 }
 
 .front_cover_text2 {

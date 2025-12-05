@@ -204,43 +204,43 @@ input[type="checkbox"] {
     z-index: 2;
 }
 
-#cover_checkbox:checked ~ .flip-book-container #flip_book {
+#cover_checkbox:checked ~ #flip_book {
     transform: translateX(144px);
 }
 
-#cover_checkbox:checked ~ .flip-book-container #flip_book .front_cover {
+#cover_checkbox:checked ~ #flip_book .front_cover {
     transform: rotateY(-180deg);
     transition: transform 1.5s, z-index 0.5s 0.5s;
     z-index: 1;
 }
 
-#cover_checkbox:checked ~ .flip-book-container #flip_book #cover {
+#cover_checkbox:checked ~ #flip_book #cover {
     width: 80%;
     height: 80%;
     position: absolute;
 }
 
-#page1_checkbox:checked ~ .flip-book-container #flip_book #page1 {
+#page1_checkbox:checked ~ #flip_book #page1 {
     transform: rotateY(-180deg);
     z-index: 3;
 }
 
-#page2_checkbox:checked ~ .flip-book-container #flip_book #page2 {
+#page2_checkbox:checked ~ #flip_book #page2 {
     transform: rotateY(-180deg);
     z-index: 4;
 }
 
-#page3_checkbox:checked ~ .flip-book-container #flip_book #page3 {
+#page3_checkbox:checked ~ #flip_book #page3 {
     transform: rotateY(-180deg);
     z-index: 5;
 }
 
-#page4_checkbox:checked ~ .flip-book-container #flip_book #page4 {
+#page4_checkbox:checked ~ #flip_book #page4 {
     transform: rotateY(-180deg);
     z-index: 6;
 }
 
-#page5_checkbox:checked ~ .flip-book-container #flip_book #page5 {
+#page5_checkbox:checked ~ #flip_book #page5 {
     transform: rotateY(-180deg);
     z-index: 9;
 }

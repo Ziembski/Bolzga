@@ -92,7 +92,7 @@ input {
 
 
 
-.front_cover_content label {
+.front_cover_checkbox label {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -123,13 +123,36 @@ input {
 	
 }
 
-.back_cover_content label {
-    width: 100%;
-    height: 100%;
+
+.front_cover_text1 {
+	
     position: absolute;
-    top: 0px;
-    left: 0px;
-    cursor: pointer;
+    top: 85px;
+    width: 100%;
+    text-align: center;
+	
+}
+
+.front_cover_text1 label {
+	
+	font-size: 66px;
+    text-wrap: auto;
+ 
+}
+
+.front_cover_text2 {
+ 
+	position: absolute;
+    top: 550px;
+    width: 100%;
+    text-align: center;
+	
+}
+
+.front_cover_text2 label{
+	
+	font-size: 66px;
+    text-wrap: auto;
 }
 
 .page {

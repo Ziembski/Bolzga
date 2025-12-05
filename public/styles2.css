@@ -43,7 +43,7 @@ body {
 
 .playing-card {
     margin-top: 130px;
-    margin-left: 1480px;
+    margin-left: 1505px;
     margin-right: 130px;
     width: 374px;
     height: 550px;
@@ -138,8 +138,8 @@ body {
 	height: 862px;
 	position: absolute;
     top: 30px;
-    left: 135px;
-	perspective: 1500px;
+	left: 35px;
+	perspective: 10000px;
 	
 }
 
@@ -187,11 +187,6 @@ body {
     overflow: hidden; 
     box-shadow: -1px 3px 6px 0px black;
 }
-
-
-
-
-
 
 
 /* Document Container - Fixed dimensions */

@@ -26,7 +26,6 @@ body {
     overflow: auto;
 }
 
-
 .body-img {
     position: absolute;
     left: 0px;
@@ -253,6 +252,8 @@ body {
 
     border-radius: 18px;
     contain: size;
+}
+	
 
 /* Style the back side */
 .playing-card-backside img{

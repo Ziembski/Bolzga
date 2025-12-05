@@ -3,86 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Szczegóły Wpisu - Widok 1</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Szczegóły Wpisu - Widok 2</title>
+    <link rel="stylesheet" href="styles3.css">
 </head>
 <body>
-    <div class="container template1-view">
-        <nav class="breadcrumb">
-            <a href="index.html">← Powrót do listy</a>
-        </nav>
-        
-        <div id="entry-details" class="details-card">
-            <div class="details-grid">
-                <!-- 
-                    TEMPLATE 1 - MANUAL FIELD CONFIGURATION
-                    This is an independent view with its own field selection.
-                    Copy and paste field blocks to customize this view.
-                    
-                    Template structure:
-                    <div class="detail-item field-FIELDNAME" data-field="FIELDNAME">
-                        <label>DISPLAY_LABEL:</label>
-                        <span class="detail-value">Ładowanie...</span>
-                    </div>
-                -->
-                
-                <!-- Field: Agent -->
-                <div class="detail-item field-agent" data-field="Agent">
-                    <label>Przypisany agent:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-                
-                <!-- Field: Imię -->
-                <div class="detail-item field-imie" data-field="Imię">
-                    <label>Imię:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-				
-                <!-- Field: Nazwisko -->
-                <div class="detail-item field-nazwisko" data-field="Nazwisko">
-                    <label>Nazwisko:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-				
-                <!-- Field: Wiek -->
-                <div class="detail-item field-wiek" data-field="Wiek">
-                    <label>Wiek:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-                
-                <!-- Field: Płeć -->
-                <div class="detail-item field-płec" data-field="Płeć">
-                    <label>Płeć:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-                
-                <!-- Field: Rasa -->
-                <div class="detail-item field-rasa" data-field="Rasa">
-                    <label>Rasa:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-                
-                <!-- Field: Wyznanie -->
-                <div class="detail-item field-wyznanie" data-field="Wyznanie">
-                    <label>Wyznanie:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
-                
-                <!-- Field: Stan cywilny -->
-                <div class="detail-item field-stan-cywilny" data-field="Stan cywilny">
-                    <label>Stan cywilny:</label>
-                    <span class="detail-value">Ładowanie...</span>
-                </div>
 
-                <!-- ADD MORE FIELDS FOR TEMPLATE 1 HERE -->
-                
-            </div>
-        </div>
-        
-        <button id="refresh-btn" class="refresh-button">Odśwież dane</button>
-        
-        <div id="last-update" class="last-update"></div>
-    </div>
+<div class="body-img">
+	<img src="/img/layout/body-bg.png">
+</div>
+
+
+<div class="flip-playing-card">
+
+	<div class="flip-playing-card-inner">
+  
+		<div class="flip-playing-card-front">
+
+			<div class="playing-card">
+			
+				<div class="pc-inner-frame">
+					<img id="img4-card" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img4-placeholder').style.display='block';">
+				</div>
+			
+				<div class="pc-top-left">
+				
+					<div class="detail-item field-pl-cd" data-field="pl-cd">
+						<span class="detail-value">A4</span>
+					</div>
+					
+					<div class="img3-wrapper">
+						<div class="img3-container">
+							<img id="img3-suit-top" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="pc-bottom-right">
+				
+					<div class="detail-item field-pl-cd" data-field="pl-cd">
+						<span class="detail-value">A4</span>
+					</div>
+					
+					<div class="img3-wrapper">
+						<div class="img3-container">
+							<img id="img3-suit-bottom" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+							<span class="img3-placeholder">IMG3</span>
+						</div>
+					</div>
+					
+				</div>
+			
+			</div>
+			
+		</div>
+		
+		<div class="flip-playing-card-back">
+		
+			<div class="playing-card-backside">
+				<img src="/img/cards/Backside.png">
+			</div>
+		
+		</div>
+		
+	</div>
+</div>
+
+	
+	<div class="caps-section">
+	
+		<div class="cap1">
+			<img src="/img/caps/cap1.png" alt="Kapsel 1">
+		</div>
+		
+		<div class="cap2">
+			<img src="/img/caps/cap2.png" alt="Kapsel 2">
+		</div>
+		
+		<div class="cap3">
+			<img src="/img/caps/cap3.png" alt="Kapsel 3">
+		</div>
+		
+		<div class="cap4">
+			<img src="/img/caps/cap4.png" alt="Kapsel 4">
+		</div>
+		
+		<div class="cap5">
+			<img src="/img/caps/cap5.png" alt="Kapsel 5">
+		</div>
+		
+		<div class="cap6">
+			<img src="/img/caps/cap6.png" alt="Kapsel 6">
+		</div>
+		
+		<div class="cap7">
+			<img src="/img/caps/cap7.png" alt="Kapsel 7">
+		</div>
+		
+		<div class="cap8">
+			<img src="/img/caps/cap8.png" alt="Kapsel 8">
+		</div>
+		
+		<div class="cap9">
+			<img src="/img/caps/cap9.png" alt="Kapsel 9">
+		</div>
+		
+		<div class="cap10">
+			<img src="/img/caps/cap10.png" alt="Kapsel 10">
+		</div>
+		
+	</div>
+	
+	<div class="go-back">
+		<a href="index.html">
+			<img src="/img/arrows/back.png" alt="Powrót">
+		</a>
+	</div>
+
+	<div class="refresh-container">
+		<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
+	</div>
+		
+	<div id="last-update" class="last-update"></div>
 
     <script>
         let currentData = null;
@@ -95,45 +137,133 @@
             return parseInt(params.get('row')) || 1;
         }
         
-        function updateFields(data, rowNumber) {
-            if (!data || !data.rows || rowNumber > data.rows.length) {
-                const detailItems = document.querySelectorAll('.detail-item[data-field]');
-                detailItems.forEach(item => {
-                    const valueElement = item.querySelector('.detail-value');
-                    if (valueElement) {
-                        valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
-                        valueElement.classList.add('error-value');
-                    }
-                });
-                return;
-            }
+        function updateImage(imgId, url) {
+            const imgElement = document.getElementById(imgId);
             
-            const row = data.rows[rowNumber - 1];
-            const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+            if (!imgElement) return;
             
-            fieldItems.forEach(item => {
-                const fieldName = item.getAttribute('data-field');
-                const fieldIndex = data.headers.indexOf(fieldName);
-                const valueElement = item.querySelector('.detail-value');
-                
-                if (!valueElement) return;
-                
-                if (fieldIndex >= 0) {
-                    const value = row[fieldIndex] || 'Brak danych';
-                    valueElement.textContent = value;
-                    valueElement.classList.remove('error-value');
-                    item.classList.remove('error-item');
-                } else {
-                    valueElement.textContent = 'Pole nie istnieje w CSV';
-                    valueElement.classList.add('error-value');
-                    item.classList.add('error-item');
+            if (url && url.trim() !== '' && url !== 'Brak danych') {
+                imgElement.src = url;
+                imgElement.style.display = 'block';
+                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+                if (placeholder) {
+                    placeholder.style.display = 'none';
                 }
-            });
-            
-            const now = new Date().toLocaleString('pl-PL');
-            document.getElementById('last-update').textContent = 
-                `Ostatnia aktualizacja: ${now}`;
+            } else {
+                imgElement.style.display = 'none';
+                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+                if (placeholder) {
+                    placeholder.style.display = 'block';
+                }
+            }
         }
+        
+		function updateFields(data, rowNumber) {
+			if (!data || !data.rows || rowNumber > data.rows.length) {
+				const detailItems = document.querySelectorAll('.detail-item[data-field]');
+				detailItems.forEach(item => {
+					const valueElement = item.querySelector('.detail-value');
+					if (valueElement) {
+						valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+						valueElement.classList.add('error-value');
+					}
+				});
+				return;
+			}
+			
+			const row = data.rows[rowNumber - 1];
+			const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+			
+			// Update text fields
+			fieldItems.forEach(item => {
+				const fieldName = item.getAttribute('data-field');
+				const fieldIndex = data.headers.indexOf(fieldName);
+				const valueElement = item.querySelector('.detail-value');
+				
+				if (!valueElement) return;
+				
+				if (fieldIndex >= 0) {
+					let value = row[fieldIndex] || 'Brak danych';
+					
+					// Preserve line breaks by converting them to <br> tags
+					// This handles both \n and \r\n line breaks from CSV
+					if (typeof value === 'string') {
+						value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+						valueElement.innerHTML = value;
+					} else {
+						valueElement.textContent = value;
+					}
+					
+					valueElement.classList.remove('error-value');
+					item.classList.remove('error-item');
+				} else {
+					valueElement.textContent = 'Pole nie istnieje w CSV';
+					valueElement.classList.add('error-value');
+					item.classList.add('error-item');
+				}
+			});
+			
+			// Update IMG1 from "Img" field - BOTH front and back
+			const img1Index = data.headers.indexOf('Img');
+			if (img1Index >= 0) {
+				const img1Url = row[img1Index];
+				updateImage('img1-photo-front', img1Url);
+				updateImage('img1-photo-back', img1Url);
+			}
+			
+			// Update IMG2 from "Img2" field (if exists) - BOTH front and back
+			const img2Index = data.headers.indexOf('Img2');
+			if (img2Index >= 0) {
+				const img2Url = row[img2Index];
+				updateImage('img2-signature-front', img2Url);
+				updateImage('img2-signature-back', img2Url);
+			}
+			
+			// Update IMG3 from "Img3" field (if exists) - BOTH instances
+			const img3Index = data.headers.indexOf('Img3');
+			if (img3Index >= 0) {
+				const img3Url = row[img3Index];
+				updateImage('img3-suit-top', img3Url);
+				updateImage('img3-suit-bottom', img3Url);
+			}
+			
+			// Update IMG4 from "Img4" field (if exists)
+			const img4Index = data.headers.indexOf('Img4');
+			if (img4Index >= 0) {
+				const img4Url = row[img4Index];
+				updateImage('img4-card', img4Url);
+			}
+			
+			// Update caps visibility based on "Kapsle" field
+			const kapsleIndex = data.headers.indexOf('Kapsle');
+			if (kapsleIndex >= 0) {
+				const kapsleValue = parseInt(row[kapsleIndex]) || 0;
+				
+				// Loop through all 10 caps
+				for (let i = 1; i <= 10; i++) {
+					const capElement = document.querySelector(`.cap${i} img`);
+					if (capElement) {
+						if (i <= kapsleValue) {
+							capElement.style.display = 'block';
+						} else {
+							capElement.style.display = 'none';
+						}
+					}
+				}
+			} else {
+				// If "Kapsle" field doesn't exist, hide all caps
+				for (let i = 1; i <= 10; i++) {
+					const capElement = document.querySelector(`.cap${i} img`);
+					if (capElement) {
+						capElement.style.display = 'none';
+					}
+				}
+			}
+			
+			const now = new Date().toLocaleString('pl-PL');
+			document.getElementById('last-update').textContent = 
+				`Ostatnia aktualizacja: ${now}`;
+		}
         
         function debouncedUpdate(data) {
             if (updateDebounceTimer) {
@@ -166,9 +296,10 @@
         }
         
         async function handleRefresh() {
-            const button = document.getElementById('refresh-btn');
-            button.disabled = true;
-            button.textContent = 'Odświeżanie...';
+            const refreshImg = document.getElementById('refresh-btn');
+            const originalSrc = refreshImg.src;
+            refreshImg.style.scale = '120%';
+            refreshImg.style.pointerEvents = 'none';
             
             try {
                 const response = await fetch('/api/refresh');
@@ -183,15 +314,13 @@
                         initSSE();
                     } else {
                         console.log('No update:', result.message);
-                        alert('Dane są już aktualne - nie ma nowszego znacznika czasu w arkuszu.');
                     }
                 }
             } catch (error) {
                 console.error('Refresh error:', error);
-                alert('Błąd podczas odświeżania danych');
             } finally {
-                button.disabled = false;
-                button.textContent = 'Odśwież dane';
+                refreshImg.style.scale = '100%';
+                refreshImg.style.pointerEvents = 'auto';
             }
         }
         

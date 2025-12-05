@@ -77,12 +77,12 @@ input {
     justify-content: center;
     align-items: center;
     border-radius: 0px 20px 20px 0px;
-    background-image: url(./img/flip-book/flip_book_edge_shading.webp);
+    background-image: url(./img/flip-book/cover-material.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgb(220, 20, 60);
-    box-shadow: 0 0 5px 0 rgb(25, 25, 25, 0.25);
+    background-color: rgb(131 35 0);
+    box-shadow: -6px 6px 30px -3px black;
 }
 
 .front_cover {

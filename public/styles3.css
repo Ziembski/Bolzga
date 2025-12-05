@@ -1,36 +1,55 @@
 /* Reset and Base Styles */
-* {
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 @font-face {
-  font-family: Elegant-tw; /* set name */
-  src: url('/fonts/ELEGANT TYPEWRITER Regular.ttf'); /* url of the font */
+  font-family: Elegant-tw;
+  src: url('/fonts/ELEGANT TYPEWRITER Regular.ttf');
 }
 
 @font-face {
-  font-family: TheSoul; /* set name */
-  src: url('/fonts/The Soul Of Vodka.ttf'); /* url of the font */
+  font-family: TheSoul;
+  src: url('/fonts/The Soul Of Vodka.ttf');
 }
 
 @font-face {
-  font-family: Spice; /* set name */
-  src: url('/fonts/Spicy Sale.ttf'); /* url of the font */
+  font-family: Spice;
+  src: url('/fonts/Spicy Sale.ttf');
 }
 
 body {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     font-family: 'Times New Roman', serif;
+    font-size: 0.5rem;
     background-color: #f5f5f5;
     overflow: auto;
+    transition: background-color 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-color);
+}
+
+input[type="checkbox"] {
+    display: none;
 }
 
 .body-img {
     position: absolute;
     left: 0px;
     top: 0px;
-	width: 2155px;
+    width: 2155px;
     height: 961px;
 }
 
@@ -40,12 +59,198 @@ body {
     object-fit: fill;
 }
 
+/* ========== FLIP BOOK STYLES ========== */
+.flip-book-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+}
+
+#flip_book {
+    width: 298px;
+    height: 420px;
+    position: relative;
+    transition-duration: 1s;
+    perspective: 2000px;
+}
+
+.front_cover,
+.back_cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5px 5px 5px 2.5px;
+    background-image: url(./assets/images/flip_book_edge_shading.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(220, 20, 60);
+    box-shadow: 0 0 5px 0 rgb(25, 25, 25, 0.25);
+}
+
+.front_cover {
+    position: absolute;
+    cursor: pointer;
+    transform-origin: center left;
+    transition: transform 0.5s;
+    z-index: 99;
+}
+
+.front_cover label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.page {
+    width: 288px;
+    height: 400px;
+    position: absolute;
+    top: 10px;
+    left: 1px;
+    border-radius: 0 5px 5px 0;
+    background-color: white;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition-duration: 0.5s;
+}
+
+.front_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.back_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    z-index: 100;
+}
+
+.back_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.edge_shading {
+    width: 288px;
+    height: 400px;
+    position: absolute;
+    z-index: 98;
+}
+
+.front_content {
+    width: 287px;
+    height: 398px;
+    position: absolute;
+    top: 1px;
+    border-radius: 0 5px 5px 0;
+    z-index: 97;
+}
+
+.back_content {
+    width: 287px;
+    height: 398px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 5px 0 0 5px;
+    z-index: 97;
+}
+
+.back_cover {
+    position: relative;
+    z-index: -1;
+}
+
+#page1 {
+    z-index: 8;
+}
+
+#page2 {
+    z-index: 5;
+}
+
+#page3 {
+    z-index: 4;
+}
+
+#page4 {
+    z-index: 3;
+}
+
+#page5 {
+    z-index: 2;
+}
+
+#cover_checkbox:checked ~ .flip-book-container #flip_book {
+    transform: translateX(144px);
+}
+
+#cover_checkbox:checked ~ .flip-book-container #flip_book .front_cover {
+    transform: rotateY(-180deg);
+    transition: transform 1.5s, z-index 0.5s 0.5s;
+    z-index: 1;
+}
+
+#cover_checkbox:checked ~ .flip-book-container #flip_book #cover {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+}
+
+#page1_checkbox:checked ~ .flip-book-container #flip_book #page1 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+#page2_checkbox:checked ~ .flip-book-container #flip_book #page2 {
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+
+#page3_checkbox:checked ~ .flip-book-container #flip_book #page3 {
+    transform: rotateY(-180deg);
+    z-index: 5;
+}
+
+#page4_checkbox:checked ~ .flip-book-container #flip_book #page4 {
+    transform: rotateY(-180deg);
+    z-index: 6;
+}
+
+#page5_checkbox:checked ~ .flip-book-container #flip_book #page5 {
+    transform: rotateY(-180deg);
+    z-index: 9;
+}
+
+/* ========== PLAYING CARD STYLES ========== */
 .playing-card {
 
 }
 
 .pc-inner-frame {
-	
     width: 324px;
     height: 500px;
     position: absolute;
@@ -54,19 +259,14 @@ body {
     contain: paint;
     border: 2px solid #000000;
     border-radius: 15px;
-	
-
 }
 
 .pc-inner-frame img {
-
     width: 100%;
     height: 100%;
-	
 }
 
 .pc-top-left {
-	
     position: absolute;
     background-color: #ffffff;
     top: 45px;
@@ -74,10 +274,9 @@ body {
     text-align: center;
     display: grid;
     grid-template-rows: 50px 35px;
-
 }
-.pc-bottom-right {
 
+.pc-bottom-right {
     position: absolute;
     transform: rotate(180deg);
     background-color: #ffffff;
@@ -86,10 +285,8 @@ body {
     text-align: center;
     display: grid;
     grid-template-rows: 50px 35px;
-
 }
 
-/* IMG3 Container */
 .img3-wrapper {
     display: flex;
     flex-direction: column;
@@ -104,7 +301,6 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-
 }
 
 .img3-container img {
@@ -117,79 +313,8 @@ body {
     justify-content: start;
     height: 100px;
     margin-top: 8px;
-
 }
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card {
-	background-color: transparent;
-	width: 1385px;
-	height: 862px;
-	position: absolute;
-    top: 30px;
-	left: 35px;
-	perspective: 10000px;
-	
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  transform-origin: center right;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-
-}
-
-/* Style the back side */
-.flip-card-back {
-	
-  transform: rotateY(180deg);
-}
-
-/* Document Container - Fixed dimensions */
-.front-card-view {
-    position: absolute;
-    top: 0;
-    width: 1385px;
-    height: 862px;
-    overflow: hidden; 
-    box-shadow: -1px 3px 6px 0px black;
-}
-
-
-/* Document Container - Fixed dimensions */
-.back-card-view {
-    position: absolute;
-    top: 0;
-    width: 1385px;
-    height: 862px;
-    overflow: hidden; 
-    box-shadow: -1px 3px 6px 0px black;
-}
-
-
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-playing-card {
     background-color: transparent;
     width: 374px;
@@ -205,69 +330,51 @@ body {
     border-radius: 18px;
     contain: layout;
     transform: rotate(15deg);
-	
 }
 
-/* This container is needed to position the front and back side */
 .flip-playing-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  transform-origin: center right;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform-origin: center right;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-playing-card:hover .flip-playing-card-inner {
-  transform: translateX(-100%) rotateY(-180deg);
+    transform: translateX(-100%) rotateY(-180deg);
 }
 
-/* Position the front and back side */
 .flip-playing-card-front, .flip-playing-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-playing-card-front {
-
     background-color: #ffffff;
     border-radius: 18px;
     box-shadow: -1px 3px 6px 0px black;
-	
 }
 
-/* Style the back side */
 .flip-playing-card-back {
-	
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
-/* Style the back side */
 .playing-card-backside {
-
     border-radius: 18px;
     contain: size;
 }
-	
 
-/* Style the back side */
-.playing-card-backside img{
+.playing-card-backside img {
     width: 100%;
     border-radius: 18px;
     box-shadow: -1px 3px 6px 0px black;
 }
 
-/* Navigation - hidden for document view */
-.breadcrumb {
-/*    display: none; */
-}
-
-/* Details Card - Full document area */
+/* ========== DETAILS CARD STYLES ========== */
 .details-card {
     position: absolute;
     top: 0;
@@ -277,14 +384,10 @@ body {
 }
 
 .details-card img {
-
     width: 100%;
     height: 100%;
-
 }
-    
 
-/* Header Section */
 .details-card h1 {
     position: absolute;
     top: 18px;
@@ -307,7 +410,6 @@ body {
     margin: 0;
 }
 
-/* Coat of Arms */
 .coat-of-arms {
     position: absolute;
     top: 30px;
@@ -320,10 +422,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
-
 }
 
-/* Overlay bg*/
 .overlay-bg {
     position: absolute;
     top: 0;
@@ -335,9 +435,8 @@ body {
 .overlay-bg img {
     width: 100%;
     height: 100%;
-
 }
-/* Grid Container */
+
 .details-grid {
     position: absolute;
     top: 226px;
@@ -349,16 +448,15 @@ body {
     gap: 40px;
 }
 
-/* Column 1 - IMG1 */
 .column-1 {
     display: flex;
     flex-direction: column;
     justify-content: start;
-	box-shadow: -1px 1px 5px black;
+    box-shadow: -1px 1px 5px black;
 }
 
-.img1-container img{
-	width: 100%;
+.img1-container img {
+    width: 100%;
 }
 
 .pin1 {
@@ -368,7 +466,7 @@ body {
 }
 
 .pin1 img {
-	filter: drop-shadow(0 0 1px black);
+    filter: drop-shadow(0 0 1px black);
 }
 
 .pin2 {
@@ -378,27 +476,23 @@ body {
 }
 
 .pin2 img {
-	transform: rotate(180deg);
-	filter: drop-shadow(0 0 1px black);
+    transform: rotate(180deg);
+    filter: drop-shadow(0 0 1px black);
 }
 
-
-/* Column 2 - Middle fields */
 .column-2 {
     display: flex;
     flex-direction: column;
-		gap: 10px;
+    gap: 10px;
 }
 
-/* Column 3 - Right fields */
 .column-3 {
     display: flex;
     flex-direction: column;
-		justify-content: start;
-		gap: 10px;
+    justify-content: start;
+    gap: 10px;
 }
 
-/* Field Item Styling */
 .detail-item {
     display: flex;
     flex-direction: column;
@@ -412,14 +506,14 @@ body {
 
 .detail-item .detail-value {
     font-size: 65px;
-	font-family: Elegant-tw;
+    font-family: Elegant-tw;
     color: #292929;
-	border-bottom: dashed;
-	border-color: #292929;
-	margin-top: -7px;
-	line-height: 1.2;
-	white-space: pre-wrap;
-	word-wrap: break-word;
+    border-bottom: dashed;
+    border-color: #292929;
+    margin-top: -7px;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .field-pl-cd .detail-value {
@@ -429,12 +523,9 @@ body {
     color: #000000;
 }
 
-
-/* IMG2 Container */
 .img2-wrapper {
     display: flex;
     flex-direction: column;
-
 }
 
 .img2-label {
@@ -452,7 +543,7 @@ body {
     justify-content: center;
     overflow: hidden;
     border-style: solid;
-	border-color: #292929;
+    border-color: #292929;
     border-width: 3px;
 }
 
@@ -468,20 +559,8 @@ body {
     font-weight: bold;
 }
 
-/* Refresh Button */
-.refresh-button {
-
-}
-
-/* Last Update */
-.last-update {
-
-}
-
-/* Caps */
-
+/* ========== CAPS SECTION ========== */
 .caps-section {
-	
     position: absolute;
     top: 0;
     left: 1850px;
@@ -489,33 +568,24 @@ body {
     height: 862px;
     margin-top: 15px;
     margin-bottom: 15px;
-	
-}
-
-
-.detail-item.field-kapsle {
-
 }
 
 .detail-item.field-kapsle label {
-	
-	border: 0px;
-	font-size: 35px;
+    border: 0px;
+    font-size: 35px;
     font-family: Spice;
     color: #ff9500;
 }
 
 .field-kapsle .detail-value {
-
-	border: 0px;
-	font-size: 45px;
+    border: 0px;
+    font-size: 45px;
     font-family: Spice;
     color: #ff9500;
-	
 }
 
 .cap1 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -523,15 +593,15 @@ body {
     left: 101px;
 }
 
-.cap1 img{
+.cap1 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap2 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -539,16 +609,15 @@ body {
     left: 46px;
 }
 
-.cap2 img{
+.cap2 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black);
-	
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap3 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -556,15 +625,15 @@ body {
     left: 101px;
 }
 
-.cap3 img{
+.cap3 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap4 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -572,15 +641,15 @@ body {
     left: -10px;
 }
 
-.cap4 img{
+.cap4 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap5 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -588,15 +657,15 @@ body {
     left: 108px;
 }
 
-.cap5 img{
+.cap5 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap6 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -604,15 +673,15 @@ body {
     left: 115px;
 }
 
-.cap6 img{
+.cap6 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap7 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -620,15 +689,15 @@ body {
     left: -79px;
 }
 
-.cap7 img{
+.cap7 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap8 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -636,15 +705,15 @@ body {
     left: 11px;
 }
 
-.cap8 img{
+.cap8 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap9 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -652,15 +721,15 @@ body {
     left: -44px;
 }
 
-.cap9 img{
+.cap9 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
 .cap10 {
-	width: 190px;
+    width: 190px;
     height: 190px;
     align-items: center;
     position: absolute;
@@ -668,38 +737,24 @@ body {
     left: 18px;
 }
 
-.cap10 img{
+.cap10 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-1px 3px 7px black);
 }
 
-
+/* ========== NAVIGATION ========== */
 .go-back {
-	width: 100px;
+    width: 100px;
     height: 100px;
     align-items: center;
     position: absolute;
-    top: 666px;
+    top: 366px;
     left: 18px;
 }
 
-.go-back img{
-    width: 100%;
-    height: 100%;
-}
-
-.go-back {
-	width: 100px;
-    height: 100px;
-    align-items: center;
-    position: absolute;
-	top: 366px;
-    left: 18px;
-}
-
-.go-back img{
+.go-back img {
     width: 100%;
     height: 100%;
 }
@@ -713,13 +768,12 @@ body {
     left: 1600px;
 }
 
-.refresh-container img{
+.refresh-container img {
     width: 100%;
     height: 100%;
 }
 
-
-/* Error states */
+/* ========== ERROR AND LOADING STATES ========== */
 .error-value {
     color: #cc0000;
 }
@@ -728,7 +782,6 @@ body {
     opacity: 0.6;
 }
 
-/* Loading state */
 .detail-value:empty {
     color: #666666;
     font-style: italic;

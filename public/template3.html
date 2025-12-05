@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Szczegóły Wpisu - Widok 2</title>
     <link rel="stylesheet" href="styles3.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -12,21 +14,104 @@
 	<img src="/img/layout/body-bg.png">
 </div>
 
+<!-- Flip Book Section -->
+<div class="flip-book-container">
+    <input type="checkbox" id="cover_checkbox">
+    <input type="checkbox" id="page1_checkbox">
+    <input type="checkbox" id="page2_checkbox">
+    <input type="checkbox" id="page3_checkbox">
+    <input type="checkbox" id="page4_checkbox">
+    <input type="checkbox" id="page5_checkbox">
 
+    <div id="flip_book">
+        <div class="front_cover">
+            <label for="cover_checkbox" id="cover"></label>
+        </div>
+
+        <div class="page" id="page1">
+            <div class="front_page">
+                <label for="page1_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/front_page_edge_shading.webp" alt="Front page edge shading">
+                <img class="front_content" src="./assets/images/pages/page1.webp" alt="Front content">
+            </div>
+
+            <div class="back_page">
+                <label for="page1_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/back_page_edge_shading.webp" alt="Back page edge shading">
+                <img class="back_content" src="./assets/images/pages/page2.webp" alt="Back content">
+            </div>
+        </div>
+
+        <div class="page" id="page2">
+            <div class="front_page">
+                <label for="page2_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/front_page_edge_shading.webp" alt="Front page edge shading">
+                <img class="front_content" src="./assets/images/pages/page3.webp" alt="Front content">
+            </div>
+
+            <div class="back_page">
+                <label for="page2_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/back_page_edge_shading.webp" alt="Back page edge shading">
+                <img class="back_content" src="./assets/images/pages/page4.webp" alt="Back content">
+            </div>
+        </div>
+
+        <div class="page" id="page3">
+            <div class="front_page">
+                <label for="page3_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/front_page_edge_shading.webp" alt="Front page edge shading">
+                <img class="front_content" src="./assets/images/pages/page5.webp" alt="Front content">
+            </div>
+
+            <div class="back_page">
+                <label for="page3_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/back_page_edge_shading.webp" alt="Back page edge shading">
+                <img class="back_content" src="./assets/images/pages/page6.webp" alt="Back content">
+            </div>
+        </div>
+
+        <div class="page" id="page4">
+            <div class="front_page">
+                <label for="page4_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/front_page_edge_shading.webp" alt="Front page edge shading">
+                <img class="front_content" src="./assets/images/pages/page7.webp" alt="Front content">
+            </div>
+
+            <div class="back_page">
+                <label for="page4_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/back_page_edge_shading.webp" alt="Back page edge shading">
+                <img class="back_content" src="./assets/images/pages/page8.webp" alt="Back content">
+            </div>
+        </div>
+
+        <div class="page" id="page5">
+            <div class="front_page">
+                <label for="page5_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/front_page_edge_shading.webp" alt="Front page edge shading">
+                <img class="front_content" src="./assets/images/pages/page9.webp" alt="Front content">
+            </div>
+
+            <div class="back_page">
+                <label for="page5_checkbox"></label>
+                <img class="edge_shading" src="./assets/images/back_page_edge_shading.webp" alt="Back page edge shading">
+                <img class="back_content" src="./assets/images/pages/page10.webp" alt="Back content">
+            </div>
+        </div>
+
+        <div class="back_cover"></div>
+    </div>
+</div>
+
+<!-- Playing Card Section -->
 <div class="flip-playing-card">
-
 	<div class="flip-playing-card-inner">
-  
 		<div class="flip-playing-card-front">
-
 			<div class="playing-card">
-			
 				<div class="pc-inner-frame">
 					<img id="img4-card" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img4-placeholder').style.display='block';">
 				</div>
 			
 				<div class="pc-top-left">
-				
 					<div class="detail-item field-pl-cd" data-field="pl-cd">
 						<span class="detail-value">A4</span>
 					</div>
@@ -36,11 +121,9 @@
 							<img id="img3-suit-top" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
 						</div>
 					</div>
-					
 				</div>
 				
 				<div class="pc-bottom-right">
-				
 					<div class="detail-item field-pl-cd" data-field="pl-cd">
 						<span class="detail-value">A4</span>
 					</div>
@@ -51,301 +134,285 @@
 							<span class="img3-placeholder">IMG3</span>
 						</div>
 					</div>
-					
 				</div>
-			
 			</div>
-			
 		</div>
 		
 		<div class="flip-playing-card-back">
-		
 			<div class="playing-card-backside">
 				<img src="/img/cards/Backside.png">
 			</div>
-		
 		</div>
-		
 	</div>
 </div>
 
-	
-	<div class="caps-section">
-	
-		<div class="cap1">
-			<img src="/img/caps/cap1.png" alt="Kapsel 1">
-		</div>
-		
-		<div class="cap2">
-			<img src="/img/caps/cap2.png" alt="Kapsel 2">
-		</div>
-		
-		<div class="cap3">
-			<img src="/img/caps/cap3.png" alt="Kapsel 3">
-		</div>
-		
-		<div class="cap4">
-			<img src="/img/caps/cap4.png" alt="Kapsel 4">
-		</div>
-		
-		<div class="cap5">
-			<img src="/img/caps/cap5.png" alt="Kapsel 5">
-		</div>
-		
-		<div class="cap6">
-			<img src="/img/caps/cap6.png" alt="Kapsel 6">
-		</div>
-		
-		<div class="cap7">
-			<img src="/img/caps/cap7.png" alt="Kapsel 7">
-		</div>
-		
-		<div class="cap8">
-			<img src="/img/caps/cap8.png" alt="Kapsel 8">
-		</div>
-		
-		<div class="cap9">
-			<img src="/img/caps/cap9.png" alt="Kapsel 9">
-		</div>
-		
-		<div class="cap10">
-			<img src="/img/caps/cap10.png" alt="Kapsel 10">
-		</div>
-		
+<!-- Caps Section -->
+<div class="caps-section">
+	<div class="cap1">
+		<img src="/img/caps/cap1.png" alt="Kapsel 1">
 	</div>
 	
-	<div class="go-back">
-		<a href="index.html">
-			<img src="/img/arrows/back.png" alt="Powrót">
-		</a>
+	<div class="cap2">
+		<img src="/img/caps/cap2.png" alt="Kapsel 2">
 	</div>
+	
+	<div class="cap3">
+		<img src="/img/caps/cap3.png" alt="Kapsel 3">
+	</div>
+	
+	<div class="cap4">
+		<img src="/img/caps/cap4.png" alt="Kapsel 4">
+	</div>
+	
+	<div class="cap5">
+		<img src="/img/caps/cap5.png" alt="Kapsel 5">
+	</div>
+	
+	<div class="cap6">
+		<img src="/img/caps/cap6.png" alt="Kapsel 6">
+	</div>
+	
+	<div class="cap7">
+		<img src="/img/caps/cap7.png" alt="Kapsel 7">
+	</div>
+	
+	<div class="cap8">
+		<img src="/img/caps/cap8.png" alt="Kapsel 8">
+	</div>
+	
+	<div class="cap9">
+		<img src="/img/caps/cap9.png" alt="Kapsel 9">
+	</div>
+	
+	<div class="cap10">
+		<img src="/img/caps/cap10.png" alt="Kapsel 10">
+	</div>
+</div>
 
-	<div class="refresh-container">
-		<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
-	</div>
-		
-	<div id="last-update" class="last-update"></div>
+<!-- Navigation -->
+<div class="go-back">
+	<a href="index.html">
+		<img src="/img/arrows/back.png" alt="Powrót">
+	</a>
+</div>
 
-    <script>
-        let currentData = null;
-        let currentRow = null;
-        let eventSource = null;
-        let updateDebounceTimer = null;
+<!-- Refresh Button -->
+<div class="refresh-container">
+	<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
+</div>
+	
+<div id="last-update" class="last-update"></div>
+
+<script>
+    let currentData = null;
+    let currentRow = null;
+    let eventSource = null;
+    let updateDebounceTimer = null;
+    
+    function getRowNumber() {
+        const params = new URLSearchParams(window.location.search);
+        return parseInt(params.get('row')) || 1;
+    }
+    
+    function updateImage(imgId, url) {
+        const imgElement = document.getElementById(imgId);
         
-        function getRowNumber() {
-            const params = new URLSearchParams(window.location.search);
-            return parseInt(params.get('row')) || 1;
+        if (!imgElement) return;
+        
+        if (url && url.trim() !== '' && url !== 'Brak danych') {
+            imgElement.src = url;
+            imgElement.style.display = 'block';
+            const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+        } else {
+            imgElement.style.display = 'none';
+            const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+            if (placeholder) {
+                placeholder.style.display = 'block';
+            }
         }
-        
-        function updateImage(imgId, url) {
-            const imgElement = document.getElementById(imgId);
-            
-            if (!imgElement) return;
-            
-            if (url && url.trim() !== '' && url !== 'Brak danych') {
-                imgElement.src = url;
-                imgElement.style.display = 'block';
-                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
-                if (placeholder) {
-                    placeholder.style.display = 'none';
+    }
+    
+    function updateFields(data, rowNumber) {
+        if (!data || !data.rows || rowNumber > data.rows.length) {
+            const detailItems = document.querySelectorAll('.detail-item[data-field]');
+            detailItems.forEach(item => {
+                const valueElement = item.querySelector('.detail-value');
+                if (valueElement) {
+                    valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+                    valueElement.classList.add('error-value');
                 }
-            } else {
-                imgElement.style.display = 'none';
-                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
-                if (placeholder) {
-                    placeholder.style.display = 'block';
-                }
-            }
+            });
+            return;
         }
         
-		function updateFields(data, rowNumber) {
-			if (!data || !data.rows || rowNumber > data.rows.length) {
-				const detailItems = document.querySelectorAll('.detail-item[data-field]');
-				detailItems.forEach(item => {
-					const valueElement = item.querySelector('.detail-value');
-					if (valueElement) {
-						valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
-						valueElement.classList.add('error-value');
-					}
-				});
-				return;
-			}
-			
-			const row = data.rows[rowNumber - 1];
-			const fieldItems = document.querySelectorAll('.detail-item[data-field]');
-			
-			// Update text fields
-			fieldItems.forEach(item => {
-				const fieldName = item.getAttribute('data-field');
-				const fieldIndex = data.headers.indexOf(fieldName);
-				const valueElement = item.querySelector('.detail-value');
-				
-				if (!valueElement) return;
-				
-				if (fieldIndex >= 0) {
-					let value = row[fieldIndex] || 'Brak danych';
-					
-					// Preserve line breaks by converting them to <br> tags
-					// This handles both \n and \r\n line breaks from CSV
-					if (typeof value === 'string') {
-						value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
-						valueElement.innerHTML = value;
-					} else {
-						valueElement.textContent = value;
-					}
-					
-					valueElement.classList.remove('error-value');
-					item.classList.remove('error-item');
-				} else {
-					valueElement.textContent = 'Pole nie istnieje w CSV';
-					valueElement.classList.add('error-value');
-					item.classList.add('error-item');
-				}
-			});
-			
-			// Update IMG1 from "Img" field - BOTH front and back
-			const img1Index = data.headers.indexOf('Img');
-			if (img1Index >= 0) {
-				const img1Url = row[img1Index];
-				updateImage('img1-photo-front', img1Url);
-				updateImage('img1-photo-back', img1Url);
-			}
-			
-			// Update IMG2 from "Img2" field (if exists) - BOTH front and back
-			const img2Index = data.headers.indexOf('Img2');
-			if (img2Index >= 0) {
-				const img2Url = row[img2Index];
-				updateImage('img2-signature-front', img2Url);
-				updateImage('img2-signature-back', img2Url);
-			}
-			
-			// Update IMG3 from "Img3" field (if exists) - BOTH instances
-			const img3Index = data.headers.indexOf('Img3');
-			if (img3Index >= 0) {
-				const img3Url = row[img3Index];
-				updateImage('img3-suit-top', img3Url);
-				updateImage('img3-suit-bottom', img3Url);
-			}
-			
-			// Update IMG4 from "Img4" field (if exists)
-			const img4Index = data.headers.indexOf('Img4');
-			if (img4Index >= 0) {
-				const img4Url = row[img4Index];
-				updateImage('img4-card', img4Url);
-			}
-			
-			// Update caps visibility based on "Kapsle" field
-			const kapsleIndex = data.headers.indexOf('Kapsle');
-			if (kapsleIndex >= 0) {
-				const kapsleValue = parseInt(row[kapsleIndex]) || 0;
-				
-				// Loop through all 10 caps
-				for (let i = 1; i <= 10; i++) {
-					const capElement = document.querySelector(`.cap${i} img`);
-					if (capElement) {
-						if (i <= kapsleValue) {
-							capElement.style.display = 'block';
-						} else {
-							capElement.style.display = 'none';
-						}
-					}
-				}
-			} else {
-				// If "Kapsle" field doesn't exist, hide all caps
-				for (let i = 1; i <= 10; i++) {
-					const capElement = document.querySelector(`.cap${i} img`);
-					if (capElement) {
-						capElement.style.display = 'none';
-					}
-				}
-			}
-			
-			const now = new Date().toLocaleString('pl-PL');
-			document.getElementById('last-update').textContent = 
-				`Ostatnia aktualizacja: ${now}`;
-		}
+        const row = data.rows[rowNumber - 1];
+        const fieldItems = document.querySelectorAll('.detail-item[data-field]');
         
-        function debouncedUpdate(data) {
-            if (updateDebounceTimer) {
-                clearTimeout(updateDebounceTimer);
-            }
+        fieldItems.forEach(item => {
+            const fieldName = item.getAttribute('data-field');
+            const fieldIndex = data.headers.indexOf(fieldName);
+            const valueElement = item.querySelector('.detail-value');
             
-            updateDebounceTimer = setTimeout(() => {
-                currentData = data;
-                updateFields(data, currentRow);
-            }, 300);
-        }
-        
-        function initSSE() {
-            if (eventSource) {
-                eventSource.close();
-            }
+            if (!valueElement) return;
             
-            eventSource = new EventSource('/api/sse');
-            
-            eventSource.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                debouncedUpdate(data);
-            };
-            
-            eventSource.onerror = (error) => {
-                console.error('SSE Error:', error);
-                eventSource.close();
-                setTimeout(initSSE, 5000);
-            };
-        }
-        
-        async function handleRefresh() {
-            const refreshImg = document.getElementById('refresh-btn');
-            const originalSrc = refreshImg.src;
-            refreshImg.style.scale = '120%';
-            refreshImg.style.pointerEvents = 'none';
-            
-            try {
-                const response = await fetch('/api/refresh');
-                const result = await response.json();
+            if (fieldIndex >= 0) {
+                let value = row[fieldIndex] || 'Brak danych';
                 
-                if (result.success) {
-                    currentData = result.data;
-                    updateFields(currentData, currentRow);
-                    
-                    if (result.updated) {
-                        console.log('Data updated:', result.message);
-                        initSSE();
+                if (typeof value === 'string') {
+                    value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+                    valueElement.innerHTML = value;
+                } else {
+                    valueElement.textContent = value;
+                }
+                
+                valueElement.classList.remove('error-value');
+                item.classList.remove('error-item');
+            } else {
+                valueElement.textContent = 'Pole nie istnieje w CSV';
+                valueElement.classList.add('error-value');
+                item.classList.add('error-item');
+            }
+        });
+        
+        const img1Index = data.headers.indexOf('Img');
+        if (img1Index >= 0) {
+            const img1Url = row[img1Index];
+            updateImage('img1-photo-front', img1Url);
+            updateImage('img1-photo-back', img1Url);
+        }
+        
+        const img2Index = data.headers.indexOf('Img2');
+        if (img2Index >= 0) {
+            const img2Url = row[img2Index];
+            updateImage('img2-signature-front', img2Url);
+            updateImage('img2-signature-back', img2Url);
+        }
+        
+        const img3Index = data.headers.indexOf('Img3');
+        if (img3Index >= 0) {
+            const img3Url = row[img3Index];
+            updateImage('img3-suit-top', img3Url);
+            updateImage('img3-suit-bottom', img3Url);
+        }
+        
+        const img4Index = data.headers.indexOf('Img4');
+        if (img4Index >= 0) {
+            const img4Url = row[img4Index];
+            updateImage('img4-card', img4Url);
+        }
+        
+        const kapsleIndex = data.headers.indexOf('Kapsle');
+        if (kapsleIndex >= 0) {
+            const kapsleValue = parseInt(row[kapsleIndex]) || 0;
+            
+            for (let i = 1; i <= 10; i++) {
+                const capElement = document.querySelector(`.cap${i} img`);
+                if (capElement) {
+                    if (i <= kapsleValue) {
+                        capElement.style.display = 'block';
                     } else {
-                        console.log('No update:', result.message);
+                        capElement.style.display = 'none';
                     }
                 }
-            } catch (error) {
-                console.error('Refresh error:', error);
-            } finally {
-                refreshImg.style.scale = '100%';
-                refreshImg.style.pointerEvents = 'auto';
+            }
+        } else {
+            for (let i = 1; i <= 10; i++) {
+                const capElement = document.querySelector(`.cap${i} img`);
+                if (capElement) {
+                    capElement.style.display = 'none';
+                }
             }
         }
         
-        async function init() {
-            currentRow = getRowNumber();
+        const now = new Date().toLocaleString('pl-PL');
+        document.getElementById('last-update').textContent = 
+            `Ostatnia aktualizacja: ${now}`;
+    }
+    
+    function debouncedUpdate(data) {
+        if (updateDebounceTimer) {
+            clearTimeout(updateDebounceTimer);
+        }
+        
+        updateDebounceTimer = setTimeout(() => {
+            currentData = data;
+            updateFields(data, currentRow);
+        }, 300);
+    }
+    
+    function initSSE() {
+        if (eventSource) {
+            eventSource.close();
+        }
+        
+        eventSource = new EventSource('/api/sse');
+        
+        eventSource.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            debouncedUpdate(data);
+        };
+        
+        eventSource.onerror = (error) => {
+            console.error('SSE Error:', error);
+            eventSource.close();
+            setTimeout(initSSE, 5000);
+        };
+    }
+    
+    async function handleRefresh() {
+        const refreshImg = document.getElementById('refresh-btn');
+        const originalSrc = refreshImg.src;
+        refreshImg.style.scale = '120%';
+        refreshImg.style.pointerEvents = 'none';
+        
+        try {
+            const response = await fetch('/api/refresh');
+            const result = await response.json();
             
-            try {
-                const response = await fetch('/api/data');
-                const data = await response.json();
-                currentData = data;
-                updateFields(data, currentRow);
+            if (result.success) {
+                currentData = result.data;
+                updateFields(currentData, currentRow);
                 
-                initSSE();
-                
-                document.getElementById('refresh-btn')
-                    .addEventListener('click', handleRefresh);
-                
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('entry-details').innerHTML = 
-                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+                if (result.updated) {
+                    console.log('Data updated:', result.message);
+                    initSSE();
+                } else {
+                    console.log('No update:', result.message);
+                }
             }
+        } catch (error) {
+            console.error('Refresh error:', error);
+        } finally {
+            refreshImg.style.scale = '100%';
+            refreshImg.style.pointerEvents = 'auto';
         }
+    }
+    
+    async function init() {
+        currentRow = getRowNumber();
         
-        init();
-    </script>
+        try {
+            const response = await fetch('/api/data');
+            const data = await response.json();
+            currentData = data;
+            updateFields(data, currentRow);
+            
+            initSSE();
+            
+            document.getElementById('refresh-btn')
+                .addEventListener('click', handleRefresh);
+            
+        } catch (error) {
+            console.error('Error loading data:', error);
+            document.getElementById('entry-details').innerHTML = 
+                '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+        }
+    }
+    
+    init();
+</script>
 </body>
 </html>

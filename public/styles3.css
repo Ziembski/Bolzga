@@ -78,9 +78,7 @@ input {
     align-items: center;
     border-radius: 0px 20px 20px 0px;
     background-image: url(./img/flip-book/cover-material.webp);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-color: rgb(131 35 0);
     box-shadow: -6px 6px 30px -3px black;
 }
@@ -103,10 +101,16 @@ input {
 }
 
 .front_cover_content {
+	
+	    grid-template-rows: 50px 35px 50px;
 
 }
 
-.front_cover_content img {
+.front_cover_image {
+ 
+}
+
+.front_cover_image img {
  
 }
 
@@ -114,7 +118,15 @@ input {
  
 }
 
+.front_cover_text1 label {
+ 
+}
+
 .front_cover_text2 {
+ 
+}
+
+.front_cover_text2 label{
  
 }
 
@@ -165,8 +177,8 @@ input {
 }
 
 .edge_shading {
-    width: 288px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     position: absolute;
     z-index: 98;
 }
@@ -346,75 +358,6 @@ input {
     margin-top: 8px;
 
 }
-
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
-.flip-card {
-	background-color: transparent;
-	width: 1385px;
-	height: 862px;
-	position: absolute;
-    top: 30px;
-	left: 35px;
-	perspective: 10000px;
-	
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  transform-origin: center right;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: translateX(-100%) rotateY(-180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-
-}
-
-/* Style the back side */
-.flip-card-back {
-	
-  transform: rotateY(180deg);
-}
-
-/* Document Container - Fixed dimensions */
-.front-card-view {
-    position: absolute;
-    top: 0;
-    width: 1385px;
-    height: 862px;
-    overflow: hidden; 
-    box-shadow: -1px 3px 6px 0px black;
-}
-
-
-/* Document Container - Fixed dimensions */
-.back-card-view {
-    position: absolute;
-    top: 0;
-    width: 1385px;
-    height: 862px;
-    overflow: hidden; 
-    box-shadow: -1px 3px 6px 0px black;
-}
-
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-playing-card {

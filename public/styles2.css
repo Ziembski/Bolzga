@@ -249,13 +249,13 @@ body {
 }
 
 /* Style the back side */
-.flip-playing-card-backside {
+.playing-card-backside {
 
     box-shadow: -1px 3px 6px 0px black;
 }
 
 /* Style the back side */
-.flip-playing-card-backside img{
+.playing-card-backside img{
 	width: 100%;
     height: 100%;
     border-radius: 18px;

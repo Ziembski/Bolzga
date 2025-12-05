@@ -42,8 +42,8 @@ body {
 }
 
 .playing-card {
-    margin-top: 130px;
-    margin-left: 1505px;
+    margin-top: 45px;
+    margin-left: 1497px;
     margin-right: 130px;
     width: 374px;
     height: 550px;
@@ -583,8 +583,8 @@ body {
     height: 190px;
     align-items: center;
     position: absolute;
-    top: 498px;
-    left: -66px;
+    top: 504px;
+    left: -44px;
 }
 
 .cap9 img{

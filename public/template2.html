@@ -31,7 +31,7 @@
 						<!-- COLUMN 1: IMG1 -->
 						<div class="column-1">
 							<div class="img1-container">
-								<img id="img1-photo" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img1-placeholder').style.display='block';">
+								<img id="img1-photo-front" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img1-placeholder').style.display='block';">
 								<span class="img1-placeholder">IMG1</span>
 							</div>
 							
@@ -102,7 +102,7 @@
 							<div class="img2-wrapper">
 								<div class="img2-label">Podpis obywatelski:</div>
 								<div class="img2-container">
-									<img id="img2-signature" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img2-placeholder').style.display='block';">
+									<img id="img2-signature-front" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img2-placeholder').style.display='block';">
 									<span class="img2-placeholder">IMG2</span>
 								</div>
 							</div>
@@ -120,7 +120,7 @@
 	
 		<div class="flip-card-back">
 			<div class="container back-card-view">
-				<div id="entry-details" class="details-card">
+				<div id="entry-details-back" class="details-card">
 						<img src="/img/bg1.png">
 					<h1>Rzeczpospolita Bolzga</h1>
 					<h2>Dokument Obywatelski</h2>
@@ -133,7 +133,7 @@
 						<!-- COLUMN 1: IMG1 -->
 						<div class="column-1">
 							<div class="img1-container">
-								<img id="img1-photo" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img1-placeholder').style.display='block';">
+								<img id="img1-photo-back" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img1-placeholder').style.display='block';">
 								<span class="img1-placeholder">IMG1</span>
 							</div>
 							
@@ -204,7 +204,7 @@
 							<div class="img2-wrapper">
 								<div class="img2-label">Podpis obywatelski:</div>
 								<div class="img2-container">
-									<img id="img2-signature" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img2-placeholder').style.display='block';">
+									<img id="img2-signature-back" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img2-placeholder').style.display='block';">
 									<span class="img2-placeholder">IMG2</span>
 								</div>
 							</div>
@@ -327,20 +327,23 @@
             return parseInt(params.get('row')) || 1;
         }
         
-        function updateImage(imgId, placeholderId, url) {
+        function updateImage(imgId, url) {
             const imgElement = document.getElementById(imgId);
-            const placeholderElement = document.querySelector(placeholderId);
+            
+            if (!imgElement) return;
             
             if (url && url.trim() !== '' && url !== 'Brak danych') {
                 imgElement.src = url;
                 imgElement.style.display = 'block';
-                if (placeholderElement) {
-                    placeholderElement.style.display = 'none';
+                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+                if (placeholder) {
+                    placeholder.style.display = 'none';
                 }
             } else {
                 imgElement.style.display = 'none';
-                if (placeholderElement) {
-                    placeholderElement.style.display = 'block';
+                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+                if (placeholder) {
+                    placeholder.style.display = 'block';
                 }
             }
         }
@@ -370,8 +373,17 @@
 				if (!valueElement) return;
 				
 				if (fieldIndex >= 0) {
-					const value = row[fieldIndex] || 'Brak danych';
-					valueElement.textContent = value;
+					let value = row[fieldIndex] || 'Brak danych';
+					
+					// Preserve line breaks by converting them to <br> tags
+					// This handles both \n and \r\n line breaks from CSV
+					if (typeof value === 'string') {
+						value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+						valueElement.innerHTML = value;
+					} else {
+						valueElement.textContent = value;
+					}
+					
 					valueElement.classList.remove('error-value');
 					item.classList.remove('error-item');
 				} else {
@@ -381,33 +393,35 @@
 				}
 			});
 			
-			// Update IMG1 from "Img" field
+			// Update IMG1 from "Img" field - BOTH front and back
 			const img1Index = data.headers.indexOf('Img');
 			if (img1Index >= 0) {
 				const img1Url = row[img1Index];
-				updateImage('img1-photo', '.img1-placeholder', img1Url);
+				updateImage('img1-photo-front', img1Url);
+				updateImage('img1-photo-back', img1Url);
 			}
 			
-			// Update IMG2 from "Img2" field (if exists)
+			// Update IMG2 from "Img2" field (if exists) - BOTH front and back
 			const img2Index = data.headers.indexOf('Img2');
 			if (img2Index >= 0) {
 				const img2Url = row[img2Index];
-				updateImage('img2-signature', '.img2-placeholder', img2Url);
+				updateImage('img2-signature-front', img2Url);
+				updateImage('img2-signature-back', img2Url);
 			}
 			
 			// Update IMG3 from "Img3" field (if exists) - BOTH instances
 			const img3Index = data.headers.indexOf('Img3');
 			if (img3Index >= 0) {
 				const img3Url = row[img3Index];
-				updateImage('img3-suit-top', '.img3-placeholder', img3Url);
-				updateImage('img3-suit-bottom', '.img3-placeholder', img3Url);
+				updateImage('img3-suit-top', img3Url);
+				updateImage('img3-suit-bottom', img3Url);
 			}
 			
 			// Update IMG4 from "Img4" field (if exists)
 			const img4Index = data.headers.indexOf('Img4');
 			if (img4Index >= 0) {
 				const img4Url = row[img4Index];
-				updateImage('img4-card', '.img4-placeholder', img4Url);
+				updateImage('img4-card', img4Url);
 			}
 			
 			// Update caps visibility based on "Kapsle" field

@@ -354,7 +354,9 @@ body {
 	border-bottom: dashed;
 	border-color: #292929;
 	margin-top: -7px;
-		
+	line-height: 1.2;
+	white-space: pre-wrap;
+	word-wrap: break-word;
 }
 
 .field-pl-cd .detail-value {

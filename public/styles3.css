@@ -93,8 +93,7 @@ input {
     width: 585px;
     height: 780px;
     position: absolute;
-    top: 10px;
-    left: 1px;
+
     border-radius: 0 15px 15px 0;
     background-color: white;
     transform-origin: left;
@@ -103,6 +102,11 @@ input {
     transition-duration: 0.5s;
 }
 
+.inner {
+    position: absolute;
+    top: 10px;
+    
+}
 .front_page {
     width: 100%;
     height: 100%;

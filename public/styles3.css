@@ -187,7 +187,11 @@ input {
 }
 
 #cover_checkbox:checked~#flip_book {
-    transform: translateX(144px)
+    -webkit-transition: prop time;
+    -moz-transition: prop time;
+    -ms-transition: prop time;
+    -o-transition: prop time;
+    transition: prop time;form: translateX(144px)
 }
 
 #cover_checkbox:checked~#flip_book .front_cover {
@@ -205,6 +209,7 @@ input {
 #page1_checkbox:checked~#flip_book #page1 {
     transform: rotateY(-180deg);
     z-index: 3;
+    transition: prop time;form: translateX(144px);
 }
 
 #page2_checkbox:checked~#flip_book #page2 {

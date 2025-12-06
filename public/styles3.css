@@ -111,11 +111,12 @@ input {
     position: absolute;
     top: 100px;
     display: grid;
-    grid-row: 200px 200px 200px;
+    grid-row: 200px 300px 200px;
+    gap: 30px;
 }
 
 .coat {
-    height: 200px;
+    height: 300px;
     width: 500px;
     object-fit: contain;
     justify-content: center;
@@ -123,8 +124,24 @@ input {
 }
 
 .Title {
-    font-size: 72px;
+    font-size: 65px;
     width: 500px;
+    object-fit: contain;
+    background-image: url(./img/flip-book/gold_bg.webp);
+    background-clip: text;
+    color: rgb(0 0 0 / 20%);
+    text-align: center;
+    
+}
+
+.Subtitle {
+    font-size: 65px;
+    width: 500px;
+    object-fit: contain;
+    background-image: url(./img/flip-book/gold_bg.webp);
+    background-clip: text;
+    color: rgb(0 0 0 / 20%);
+    text-align: center;
     
 }
 

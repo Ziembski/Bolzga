@@ -120,6 +120,10 @@ input {
     width: 500px;
     object-fit: contain;
     justify-content: center;
+    mask-image: url(./img/layout/godlo-outline.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 300px 300px;
     
 }
 

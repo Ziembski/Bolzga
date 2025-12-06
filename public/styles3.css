@@ -335,10 +335,12 @@ input {
   transform-origin: center right;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-playing-card:hover .flip-playing-card-inner {
-  transform: translateX(-100%) rotateY(-180deg);
+
+#card_checkbox:checked~.flip-playing-card-inner {
+    transform: translateX(-100%) rotateY(-180deg);
+    z-index: 9;
 }
+
 
 /* Position the front and back side */
 .flip-playing-card-front, .flip-playing-card-back {
@@ -347,6 +349,14 @@ input {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+}
+
+.flip-playing-card-front label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -369,6 +379,14 @@ input {
 .flip-playing-card-back {
 	
   transform: rotateY(180deg);
+}
+
+.flip-playing-card-back label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
 }
 
 /* Style the back side */

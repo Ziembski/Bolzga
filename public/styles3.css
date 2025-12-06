@@ -128,7 +128,7 @@ input {
 }
 
 .Title {
-    font-size: 65px;
+    font-size: 62px;
     width: 500px;
     object-fit: contain;
     background-image: url(./img/flip-book/gold_bg.webp);

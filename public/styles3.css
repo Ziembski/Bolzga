@@ -135,6 +135,7 @@ input {
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
+    filter: drop-shadow(1px 1px red) drop-shadow(-1px -1px red);
     
 }
 

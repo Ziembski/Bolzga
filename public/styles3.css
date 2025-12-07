@@ -213,6 +213,12 @@ input {
     z-index: 97;
 }
 
+.back_content img {
+    
+ transform: translateX(-100%);
+ 
+}
+
 .back_cover {
     position: relative;
     z-index: -1;

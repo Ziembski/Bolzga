@@ -124,6 +124,8 @@ input {
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: 250px 300px;
+    filter: drop-shadow(1px -2px 1px black) drop-shadow(-1px 2px 1px white);
+    
     
 }
 
@@ -135,7 +137,7 @@ input {
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
-    filter: drop-shadow(1px 1px red) drop-shadow(-1px -1px red);
+    filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
     
 }
 
@@ -147,6 +149,8 @@ input {
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
+    filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
+    
     
 }
 

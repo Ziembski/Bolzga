@@ -270,6 +270,10 @@
 			const row = data.rows[rowNumber - 1];
 			const fieldItems = document.querySelectorAll('.detail-item[data-field]');
 			
+			// Get the pl-suit value for color logic
+			const plSuitIndex = data.headers.indexOf('pl-suit');
+			const plSuitValue = plSuitIndex >= 0 ? row[plSuitIndex] : null;
+			
 			// Update text fields
 			fieldItems.forEach(item => {
 				const fieldName = item.getAttribute('data-field');
@@ -296,6 +300,16 @@
 					valueElement.textContent = 'Pole nie istnieje w CSV';
 					valueElement.classList.add('error-value');
 					item.classList.add('error-item');
+				}
+			});
+			
+			// Apply color logic to pl-cd fields based on pl-suit value
+			const plCdItems = document.querySelectorAll('.detail-item.field-pl-cd .detail-value');
+			plCdItems.forEach(valueElement => {
+				if (plSuitValue === 'H' || plSuitValue === 'D') {
+					valueElement.style.color = 'd81b04';
+				} else {
+					valueElement.style.color = '000000';
 				}
 			});
 			

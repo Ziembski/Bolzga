@@ -55,9 +55,42 @@
 					<span class="page2_front_content Title">RZECZPOSPOLITA BOLZGA DOKUMENT OBYWATELSKI</span>
 					<img class="page2_front_content coat" src="./img/flip-book/godlo.png"></img>
 					<div class="page2_entries">
-						<div class="page2_colimn1"></div>
-						<div class="page2_colimn2"></div>
-						<div class="page2_colimn3"></div>
+						<div class="page2_colimn1">
+							<div class="img1-container">
+								<img id="img1-photo-back" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img1-placeholder').style.display='block';">
+								<span class="img1-placeholder">IMG1</span>
+							</div>
+							
+							<div class="pin1">
+								<img src="/img/pin.png">
+							</div>
+							
+							<div class="pin2">
+								<img src="/img/pin.png">
+							</div>
+							
+							<div class="img2-wrapper">
+								<div class="img2-label">Podpis obywatelski:</div>
+								<div class="img2-container">
+									<img id="img2-signature-back" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img2-placeholder').style.display='block';">
+									<span class="img2-placeholder">IMG2</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="page2_colimn2">
+							<div class="detail-item field-nazwisko" data-field="Nazwisko">
+								<label>Nazwisko:</label>
+								<span class="detail-value">Ładowanie...</span>
+							</div>
+						</div>
+						
+						<div class="page2_colimn3">
+								<div class="detail-item field-wiek" data-field="Wiek">
+								<label>Wiek:</label>
+								<span class="detail-value">Ładowanie...</span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

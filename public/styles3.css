@@ -183,12 +183,11 @@ input {
 	
 	left: 500px;
 	top: -50px;
-    transform: rotate(90deg);
-    width: 700px;
+	width: 600px;
     height: 150px;
     transform-origin: left;
 	transform: rotate(90deg);
-	font-size: 50px;
+	font-size: 45px;
 	text-align: start;
 	text-wrap: wrap;
 	
@@ -206,12 +205,15 @@ input {
 
 .page2_entries {
     
-    left: 500px;
-	top: -50px;
+	 position: absolute;
+    width: 720px;
+    height: 420px;
+    left: -113px;
+    top: 175px;
     transform: rotate(90deg);
     display: grid;
-    grid-column: 200px 200px 200px;
-    gap: 33px;
+    grid-template-columns: 220px 225px 225px;
+    gap: 25px;
 }
 
 .front_page {

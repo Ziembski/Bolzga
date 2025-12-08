@@ -270,6 +270,19 @@
 			const row = data.rows[rowNumber - 1];
 			const fieldItems = document.querySelectorAll('.detail-item[data-field]');
 			
+			// Update color card
+			
+		function updateCardColor(value) {
+			const cardElements = document.querySelectorAll('.field-pl-cd .detail-value');
+			cardElements.forEach(element => {
+				if (value === 'H' || value === 'D') {
+					element.style.color = '#ff0000'; // Red
+				} else {
+					element.style.color = '#000000'; // Black
+				}
+			});
+}
+			
 			// Update text fields
 			fieldItems.forEach(item => {
 				const fieldName = item.getAttribute('data-field');
@@ -298,6 +311,14 @@
 					item.classList.add('error-item');
 				}
 			});
+			
+			
+			// Update card color based on pl-cd field
+			const plCdIndex = data.headers.indexOf('pl-cd');
+			if (plCdIndex >= 0) {
+				const plCdValue = row[plCdIndex];
+				updateCardColor(plCdValue);
+			}
 			
 			// Update IMG1 from "Img" field - BOTH front and back
 			const img1Index = data.headers.indexOf('Img');

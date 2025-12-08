@@ -216,6 +216,28 @@ input {
     gap: 25px;
 }
 
+.page2_column1 {
+	
+	display: flex;
+    flex-direction: column;
+	gap: 10px;
+}	
+
+
+.page2_column2 {
+	
+	display: flex;
+    flex-direction: column;
+	gap: 10px	
+}	
+
+.page2_column w {
+	
+	display: flex;
+    flex-direction: column;
+	gap: 10px	
+}	
+
 .front_page {
     width: 100%;
     height: 100%;
@@ -398,10 +420,11 @@ input {
 }
 
 .detail-item.field-pl-cd {
-    justify-content: start;
-    height: 100px;
-    margin-top: 8px;
-
+	justify-content: center;
+    align-items: center;
+    height: 55px;
+    margin-top: 0px;
+    display: flex;
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */

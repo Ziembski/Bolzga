@@ -188,13 +188,15 @@ input {
     height: 50px;
     transform-origin: left;
 	transform: rotate(90deg);
+	font-size: 36px;
 	
 }
 
 
 .page2_front_content.coat {
-	
-	
+	width: 200px;
+	height 200px;
+	object-fit: contain;
 }
 
 .front_page {

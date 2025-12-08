@@ -76,10 +76,12 @@ input {
     justify-content: center;
     align-items: center;
     background-image: url(./img/flip-book/cover-material.webp);
+	box-shadow: -1px 3px 6px 0px black;
 }
 
 .front_page.cover_page {
     border-radius: 0px 20px 20px 0px;
+	
     
 }
 
@@ -100,6 +102,7 @@ input {
     transform-style: preserve-3d;
     transform: rotateY(0deg);
     transition-duration: 0.5s;
+
 }
 
 .inner {
@@ -120,7 +123,7 @@ input {
     width: 500px;
     object-fit: contain;
     justify-content: center;
-    filter: drop-shadow(1px -2px 1px black) drop-shadow(-1px 2px 1px white);
+    filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
     
     
 }

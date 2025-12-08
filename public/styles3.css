@@ -174,13 +174,20 @@ input {
 	
 		
 	position: absolute;
-	z-index: 5;
-	transform: rotate(45deg);
-	
+    z-index: 5;
+    width: 585px;
+    height: 770px;
 }
 
 .page2_front_content.Title {
 	
+	left: 550px;
+	top: -20px;
+    transform: rotate(90deg);
+    width: 770px;
+    height: 50px;
+    transform-origin: left;
+	transform: rotate(90deg);
 	
 }
 

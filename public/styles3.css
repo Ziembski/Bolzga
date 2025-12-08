@@ -224,16 +224,29 @@ input {
 }	
 
 .img1-container {
-    width: 100%;
+    width: 220px;
     height: 300px;
+    border: 1px;
 }
 
-#img1-photo {
+#img1-photo-back {
     height: 100%;
     widht: 100%;
     object-fit: contain;
 }
 
+
+.img2-container {
+    width: 220px;
+    height: 80px;
+    border: 1px;
+}
+
+#img2-signature-back {
+    height: 100%;
+    widht: 100%;
+    object-fit: contain;
+}
 
 .page2_column2 {
 	

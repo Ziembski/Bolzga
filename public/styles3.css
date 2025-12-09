@@ -24,7 +24,7 @@ body {
     font-family: 'Times New Roman', serif;
     background-color: #f5f5f5;
     overflow: auto;
-    width: 180vmin;
+    width: clamp(180vmin, 100vmax, 100vmax);
     height: 100vmin;
 }
 

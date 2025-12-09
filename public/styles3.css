@@ -57,10 +57,10 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 28vmin;
+    top: 22vmin;
     left: 64vmin;
     transform: translate(-50%, -50%);
-    scale: 0.78;
+    scale: 0.65;
 }
 
 #flip_book {
@@ -569,7 +569,7 @@ input {
     border-radius: 2.7vmin;
     contain: layout;
     transform: rotate(15deg) translateY(-50%);
-    scale: 0.6;
+    scale: 0.55;
 }
 
 .flip-playing-card-inner {

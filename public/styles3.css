@@ -6,18 +6,18 @@
 }
 
 @font-face {
-  font-family: Elegant-tw; /* set name */
-  src: url('/fonts/ELEGANT TYPEWRITER Regular.ttf'); /* url of the font */
+  font-family: Elegant-tw;
+  src: url('/fonts/ELEGANT TYPEWRITER Regular.ttf');
 }
 
 @font-face {
-  font-family: TheSoul; /* set name */
-  src: url('/fonts/The Soul Of Vodka.ttf'); /* url of the font */
+  font-family: TheSoul;
+  src: url('/fonts/The Soul Of Vodka.ttf');
 }
 
 @font-face {
-  font-family: Spice; /* set name */
-  src: url('/fonts/Spicy Sale.ttf'); /* url of the font */
+  font-family: Spice;
+  src: url('/fonts/Spicy Sale.ttf');
 }
 
 body {
@@ -54,147 +54,138 @@ input {
 */
 
 .flip_book_main {
-	
     position: absolute;
-    top: 3vmin;
-    left: 30vmax;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #flip_book {
-    width: 600px;
-    height: 800px;
+    width: 67.5vmin;
+    height: 90vmin;
     position: relative;
     transition-duration: 1s;
-    perspective: 2000px;
+    perspective: 225vmin;
 }
 
 .front_content_bg {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0px;
-    border-radius: 0 5px 5px 0;
-
+    top: 0;
+    border-radius: 0 0.56vmin 0.56vmin 0;
 }
 
 .back_content_bg {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0px;
-    border-radius: 5px 0 0 5px;
+    top: 0;
+    border-radius: 0.56vmin 0 0 0.56vmin;
     transform: scaleX(-1);
 }
 
 .front_page.cover_page, .back_page.cover_page {
-    width: 600px;
-    height: 800px;
+    width: 67.5vmin;
+    height: 90vmin;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url(./img/flip-book/cover-material.webp);
-	box-shadow: -1px 3px 6px 0px black;
+    box-shadow: -0.11vmin 0.34vmin 0.68vmin 0 black;
 }
 
 .front_page.cover_page {
-    border-radius: 0px 20px 20px 0px;
-	
-    
+    border-radius: 0 2.25vmin 2.25vmin 0;
 }
 
 .back_page.cover_page {
-    border-radius: 20px 0px 0px 20px;
-    
+    border-radius: 2.25vmin 0 0 2.25vmin;
 }
-    
 
 .page {
-    width: 585px;
-    height: 780px;
+    width: 65.81vmin;
+    height: 87.75vmin;
     position: absolute;
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 1.69vmin 1.69vmin 0;
     background-color: white;
     transform-origin: left;
     transform-style: preserve-3d;
     transform: rotateY(0deg);
     transition-duration: 0.5s;
-
 }
 
 .inner {
     position: absolute;
-    top: 10px;
-    
+    top: 1.13vmin;
 }
 
 .pin1 {
     position: absolute;
-    top: 119px;
-    left: 401px;
+    top: 13.39vmin;
+    left: 45.11vmin;
     z-index: 100;
     transform: rotate(90deg);
 }
 
 .pin1 img {
-	filter: drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
 }
 
 .pin2 {
-	position: absolute;
-    top: 146px;
-    left: 129px;
+    position: absolute;
+    top: 16.43vmin;
+    left: 14.51vmin;
     transform: rotate(270deg);
     z-index: 100;
 }
 
 .pin2 img {
-	filter: drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
 }
 
 .front_cover_content {
     position: absolute;
-    top: 100px;
+    top: 11.25vmin;
     display: grid;
-    grid-row: 200px 300px 200px;
-    gap: 30px;
+    grid-row: 22.5vmin 33.75vmin 22.5vmin;
+    gap: 3.38vmin;
 }
 
 .front_cover.coat {
-    height: 300px;
-    width: 500px;
+    height: 33.75vmin;
+    width: 56.25vmin;
     object-fit: contain;
     justify-content: center;
-    filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
-    
+    filter: drop-shadow(0.11vmin -0.11vmin 0.11vmin black) drop-shadow(-0.11vmin 0.11vmin 0.11vmin white);
 }
 
 .front_cover.Title {
-    font-size: 57px;
-    width: 500px;
-	height: 120px;
+    font-size: 6.41vmin;
+    width: 56.25vmin;
+    height: 13.5vmin;
     object-fit: contain;
     background-image: url(./img/flip-book/gold_bg.webp);
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
-    filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
-    
+    filter: drop-shadow(0.11vmin -0.11vmin 0.11vmin black) drop-shadow(-0.11vmin 0.11vmin 0.11vmin white);
 }
 
 .front_cover.Subtitle {
-    font-size: 60px;
-    width: 500px;
+    font-size: 6.75vmin;
+    width: 56.25vmin;
     object-fit: contain;
     background-image: url(./img/flip-book/gold_bg.webp);
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
-    filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
+    filter: drop-shadow(0.11vmin -0.11vmin 0.11vmin black) drop-shadow(-0.11vmin 0.11vmin 0.11vmin white);
 }
 
 #rotate_checkbox {
-    width: 585px;
+    width: 65.81vmin;
     height: 100%;
     position: static;
     cursor: pointer;
@@ -202,13 +193,12 @@ input {
 }
 
 #page2_standard_checkbox {
-    width: 585px;
+    width: 65.81vmin;
     height: 100%;
     position: static;
     cursor: pointer;
     z-index: 120;
 }
-
 
 .front_page {
     width: 100%;
@@ -226,81 +216,72 @@ input {
 }
 
 .page2_checks {
-	
     position: absolute;
-    width: 585px;
-    height: 770px;
+    width: 65.81vmin;
+    height: 86.63vmin;
     display: grid;
-    grid-template-rows: 240px 530px;
-	
+    grid-template-rows: 27vmin 59.63vmin;
 }
 
 .page2_front_content {
-	
-		
-	position: absolute;
+    position: absolute;
     z-index: 5;
-    width: 585px;
-    height: 770px;
+    width: 65.81vmin;
+    height: 86.63vmin;
 }
 
 .page2_front_content.Title {
-	
-	left: 500px;
-	top: -50px;
-	width: 600px;
-    height: 150px;
+    left: 56.25vmin;
+    top: -5.63vmin;
+    width: 67.5vmin;
+    height: 16.88vmin;
     transform-origin: left;
-	transform: rotate(90deg);
-	color: #292929;
-	font-size: 45px;
-	text-align: start;
-	text-wrap: wrap;
-	
+    transform: rotate(90deg);
+    color: #292929;
+    font-size: 5.06vmin;
+    text-align: start;
+    text-wrap: wrap;
 }
 
-
 .page2_front_content.coat {
-	width: 150px;
-	height: 150px;
-	object-fit: contain;
-	transform: rotate(90deg);
-	bottom: 5px;
-	right: 20px;
+    width: 16.88vmin;
+    height: 16.88vmin;
+    object-fit: contain;
+    transform: rotate(90deg);
+    bottom: 0.56vmin;
+    right: 2.25vmin;
 }
 
 .page2_column1 {
-	
-	display: flex;
+    display: flex;
     flex-direction: column;
-	gap: 10px;
-}	
+    gap: 1.13vmin;
+}
 
 .img1-container {
-    width: 220px;
-    height: 300px;
-
+    width: 24.75vmin;
+    height: 33.75vmin;
 }
 
 #img1-photo-back {
     height: 100%;
     width: 100%;
     object-fit: contain;
-	filter: drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
 }
 
 .img2-container {
     width: 100%;
-    height: 80px;
+    height: 9vmin;
 }
 
 .img2-label {
-	font-size: 20px;
+    font-size: 2.25vmin;
     font-weight: normal;
     color: #292929;
     position: static;
-    margin-top: -5px;
-	text-wrap: nowrap;
+    margin-top: -0.56vmin;
+    text-wrap: nowrap;
 }
 
 #img2-signature-back {
@@ -310,64 +291,54 @@ input {
 }
 
 .page2_column2 {
-	
-	display: flex;
+    display: flex;
     flex-direction: column;
-	gap: 30px	
-}	
+    gap: 3.38vmin;
+}
 
 .page2_entries {
-    
-	position: absolute;
-    width: 720px;
-    height: 420px;
-    left: -113px;
-    top: 175px;
+    position: absolute;
+    width: 81vmin;
+    height: 47.25vmin;
+    left: -12.71vmin;
+    top: 19.69vmin;
     transform: rotate(90deg);
     display: grid;
-    grid-template-columns: 220px 225px 225px;
-    gap: 25px;
+    grid-template-columns: 24.75vmin 25.31vmin 25.31vmin;
+    gap: 2.81vmin;
 }
 
 .detail-item {
-	
     display: flex;
     flex-direction: column;
-	
 }
 
 .detail-item label {
-	
-	font-size: 28px;
+    font-size: 3.15vmin;
     font-weight: normal;
     color: #292929;
-    margin-top: -18px;
+    margin-top: -2.03vmin;
     position: static;
 }
 
-
 .detail-item .detail-value {
-	
-	font-size: 35px;
+    font-size: 3.94vmin;
     font-family: Elegant-tw;
     color: #292929;
     border-bottom: dashed;
     border-color: #292929;
     text-align: start;
-    margin-top: 0px;
+    margin-top: 0;
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
 .page2_column3 {
-	
-	display: flex;
+    display: flex;
     flex-direction: column;
-	gap: 30px;
-	justify-content: end;
-}	
-
-
+    gap: 3.38vmin;
+    justify-content: end;
+}
 
 .back_page {
     width: 100%;
@@ -388,26 +359,26 @@ input {
 
 .pin3 {
     position: absolute;
-    top: 119px;
-    right: 401px;
+    top: 13.39vmin;
+    right: 45.11vmin;
     z-index: 100;
     transform: rotate(90deg);
 }
 
 .pin3 img {
-	filter: drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
 }
 
 .pin4 {
-	position: absolute;
-    top: 146px;
-    right: 129px;
+    position: absolute;
+    top: 16.43vmin;
+    right: 14.51vmin;
     transform: rotate(270deg);
     z-index: 100;
 }
 
 .pin4 img {
-	filter: drop-shadow(1px 1px 2px black);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
 }
 
 .edge_shading {
@@ -417,23 +388,21 @@ input {
     z-index: 98;
 }
 
-
 .rotate_checkbox {
-    width: 220px;
-    height: 300px;
+    width: 24.75vmin;
+    height: 33.75vmin;
     position: absolute;
     cursor: pointer;
     z-index: 120;
 }
 
 .page2_standard_checkbox {
-    width: 220px;
-    height: 300px;
+    width: 24.75vmin;
+    height: 33.75vmin;
     position: absolute;
     cursor: pointer;
     z-index: 120;
 }
-
 
 .back_cover {
     position: relative;
@@ -461,7 +430,7 @@ input {
 }
 
 #page1_checkbox:checked~#flip_book {
-    transform: translateX(144px)
+    transform: translateX(16.2vmin);
 }
 
 #page1_checkbox:checked~#flip_book #page1 {
@@ -475,7 +444,7 @@ input {
 }
 
 #page2_rotate_checkbox:checked~#flip_book {
-	transform: translateY(-150px) rotate(-90deg);
+    transform: translateY(-16.88vmin) rotate(-90deg);
 }
 
 #page2_rotate_checkbox:checked~#flip_book #page1 {
@@ -483,7 +452,7 @@ input {
 }
 
 #page2_checkbox:checked ~ #page2_rotate_checkbox:checked ~ #flip_book {
-    transform: translateY(0px) rotate(0deg) translateX(144px);
+    transform: translateY(0) rotate(0deg) translateX(16.2vmin);
 }
 
 #page2_checkbox:checked ~ #page2_rotate_checkbox:checked ~ #flip_book #page1 {
@@ -505,9 +474,6 @@ input {
     z-index: 9;
 }
 
-
-
-
 /*
 ############################################################
 ||                                                        ||
@@ -516,72 +482,57 @@ input {
 ############################################################
 */
 
-
-.playing-card {
-
-}
-
 .pc-inner-frame {
-	
-    width: 324px;
-    height: 500px;
+    width: 48.6vmin;
+    height: 75vmin;
     position: absolute;
-    left: 25px;
-    top: 25px;
+    left: 3.75vmin;
+    top: 3.75vmin;
     contain: paint;
-    border: 2px solid #000000;
-    border-radius: 15px;
-	
-
+    border: 0.3vmin solid #000000;
+    border-radius: 2.25vmin;
 }
 
 .pc-inner-frame img {
-
     width: 100%;
     height: 100%;
-	
 }
 
 .pc-top-left {
-	
     position: absolute;
     background-color: #ffffff;
-    top: 45px;
-    left: 10px;
+    top: 6.75vmin;
+    left: 1.5vmin;
     text-align: center;
     display: grid;
-    grid-template-rows: 50px 35px;
-
+    grid-template-rows: 7.5vmin 5.25vmin;
 }
-.pc-bottom-right {
 
+.pc-bottom-right {
     position: absolute;
     transform: rotate(180deg);
     background-color: #ffffff;
-    right: 10px;
-    bottom: 45px;
+    right: 1.5vmin;
+    bottom: 6.75vmin;
     text-align: center;
     display: grid;
-    grid-template-rows: 50px 35px;
-
+    grid-template-rows: 7.5vmin 5.25vmin;
 }
 
-/* IMG3 Container */
 .img3-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: -8px;
-    margin-bottom: 0px;
+    margin-top: -1.2vmin;
+    margin-bottom: 0;
 }
 
 .img3-container {
-    width: 30px;
-    height: 40px;
+    width: 4.5vmin;
+    height: 6vmin;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-
 }
 
 .img3-container img {
@@ -591,53 +542,47 @@ input {
 }
 
 .detail-item.field-pl-cd {
-	justify-content: center;
+    justify-content: center;
     align-items: center;
-    height: 55px;
-    margin-top: 0px;
+    height: 8.25vmin;
+    margin-top: 0;
     display: flex;
 }
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-playing-card {
-	background-color: transparent;
-    width: 374px;
-    height: 550px;
+    background-color: transparent;
+    width: 56.1vmin;
+    height: 82.5vmin;
     position: absolute;
-    perspective: 10000px;
+    perspective: 1500vmin;
     top: 3vmin;
     right: 14vmax;
     align-items: center;
-    border-radius: 18px;
+    border-radius: 2.7vmin;
     contain: layout;
-    transform: rotate(15deg);;
-	
+    transform: rotate(15deg);
 }
 
-/* This container is needed to position the front and back side */
 .flip-playing-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  transform-origin: center right;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform-origin: center right;
 }
-
 
 #card_checkbox:checked~.flip-playing-card-inner {
     transform: translateX(-100%) rotateY(-180deg);
     z-index: 9;
 }
 
-
-/* Position the front and back side */
 .flip-playing-card-front, .flip-playing-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .flip-playing-card-front label {
@@ -648,26 +593,21 @@ input {
     z-index: 100;
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-playing-card-front {
-
     background-color: #ffffff;
-    border-radius: 18px;
-    box-shadow: -1px 3px 6px 0px black;
-	
+    border-radius: 2.7vmin;
+    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;
 }
 
 .field-pl-cd .detail-value {
-    border: 0px;
-    font-size: 45px;
+    border: 0;
+    font-size: 6.75vmin;
     font-family: TheSoul;
     color: #000000;
 }
 
-/* Style the back side */
 .flip-playing-card-back {
-	
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .flip-playing-card-back label {
@@ -678,41 +618,15 @@ input {
     z-index: 100;
 }
 
-/* Style the back side */
 .playing-card-backside {
-
-    border-radius: 18px;
+    border-radius: 2.7vmin;
     contain: size;
 }
-	
 
-/* Style the back side */
-.playing-card-backside img{
+.playing-card-backside img {
     width: 100%;
-    border-radius: 18px;
-    box-shadow: -1px 3px 6px 0px black;
-}
-
-/*
-############################################################
-||                                                        ||
-||                      NAVIGATION                        ||
-||                                                        ||
-############################################################
-*/
-
-.breadcrumb {
-/*    display: none; */
-}
-
-/* Refresh Button */
-.refresh-button {
-
-}
-
-/* Last Update */
-.last-update {
-
+    border-radius: 2.7vmin;
+    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;
 }
 
 /*
@@ -724,230 +638,215 @@ input {
 */
 
 .caps-section {
-	
     position: absolute;
-    top: 1vmax;
-    right: 0vmax;
-    width: 300px;
-    height: 862px;
-	
-}
-
-
-.detail-item.field-kapsle {
-
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1vmax;
+    width: 33.75vmin;
+    height: 98vmin;
 }
 
 .detail-item.field-kapsle label {
-	
-	border: 0px;
-	font-size: 35px;
+    border: 0;
+    font-size: 3.94vmin;
     font-family: Spice;
     color: #ff9500;
 }
 
 .field-kapsle .detail-value {
-
-	border: 0px;
-	font-size: 45px;
+    border: 0;
+    font-size: 5.06vmin;
     font-family: Spice;
     color: #ff9500;
-	
 }
 
 .cap1 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: -3px;
-    left: 101px;
+    top: -0.34vmin;
+    left: 11.36vmin;
 }
 
-.cap1 img{
+.cap1 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap2 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 166px;
-    left: 46px;
+    top: 18.68vmin;
+    left: 5.18vmin;
 }
 
-.cap2 img{
+.cap2 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black);
-	
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap3 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 266px;
-    left: 101px;
+    top: 29.93vmin;
+    left: 11.36vmin;
 }
 
-.cap3 img{
+.cap3 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap4 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 417px;
-    left: -10px;
+    top: 46.91vmin;
+    left: -1.13vmin;
 }
 
-.cap4 img{
+.cap4 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap5 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 586px;
-    left: 108px;
+    top: 65.93vmin;
+    left: 12.15vmin;
 }
 
-.cap5 img{
+.cap5 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap6 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 406px;
-    left: 115px;
+    top: 45.68vmin;
+    left: 12.94vmin;
 }
 
-.cap6 img{
+.cap6 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap7 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 588px;
-    left: -79px;
+    top: 66.15vmin;
+    left: -8.89vmin;
 }
 
-.cap7 img{
+.cap7 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap8 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 747px;
-    left: 11px;
+    top: 84.04vmin;
+    left: 1.24vmin;
 }
 
-.cap8 img{
+.cap8 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap9 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 504px;
-    left: -44px;
+    top: 56.7vmin;
+    left: -4.95vmin;
 }
 
-.cap9 img{
+.cap9 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .cap10 {
-	width: 190px;
-    height: 190px;
+    width: 21.38vmin;
+    height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 666px;
-    left: 18px;
+    top: 74.93vmin;
+    left: 2.03vmin;
 }
 
-.cap10 img{
+.cap10 img {
     width: 100%;
     height: 100%;
-	display: none;
-	filter: drop-shadow(-1px 3px 7px black)
+    display: none;
+    filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
-
 .go-back {
-    width: 100px;
-    height: 100px;
+    width: 11.25vmin;
+    height: 11.25vmin;
     align-items: center;
     position: absolute;
     top: 18vmax;
     left: 1vmin;
 }
 
-.go-back img{
+.go-back img {
     width: 100%;
     height: 100%;
 }
 
-
-
-
 .refresh-container {
-    width: 120px;
-    height: 120px;
+    width: 13.5vmin;
+    height: 13.5vmin;
     align-items: center;
     position: absolute;
     bottom: 21vmin;
     right: 22vmax;
 }
 
-.refresh-container img{
+.refresh-container img {
     width: 100%;
     height: 100%;
 }
-
 
 /* Error states */
 .error-value {

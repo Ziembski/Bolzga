@@ -57,8 +57,8 @@ input {
 .flip_book_main {
 	
     position: absolute;
-    top: 56px;
-    left: 640px;
+    top: 3vw;
+    left: 30vw;
 }
 
 #flip_book {
@@ -601,20 +601,17 @@ input {
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-playing-card {
-    background-color: transparent;
+	background-color: transparent;
     width: 374px;
     height: 550px;
     position: absolute;
-    top: -2px;
-    left: 0px;
     perspective: 10000px;
-    margin-top: 45px;
-    margin-left: 1497px;
-    margin-right: 130px;
+    top: 3vw;
+    right: 14vw;
     align-items: center;
     border-radius: 18px;
     contain: layout;
-    transform: rotate(15deg);
+    transform: rotate(15deg);;
 	
 }
 
@@ -730,12 +727,10 @@ input {
 .caps-section {
 	
     position: absolute;
-    top: 0;
-    left: 1850px;
+    top: 1vw;
+    right: 0vw;
     width: 300px;
     height: 862px;
-    margin-top: 15px;
-    margin-bottom: 15px;
 	
 }
 
@@ -924,12 +919,12 @@ input {
 
 
 .go-back {
-	width: 100px;
+    width: 100px;
     height: 100px;
     align-items: center;
     position: absolute;
-    top: 666px;
-    left: 18px;
+    top: 18vw;
+    left: 1vw;
 }
 
 .go-back img{
@@ -937,27 +932,16 @@ input {
     height: 100%;
 }
 
-.go-back {
-	width: 100px;
-    height: 100px;
-    align-items: center;
-    position: absolute;
-	top: 366px;
-    left: 18px;
-}
 
-.go-back img{
-    width: 100%;
-    height: 100%;
-}
+
 
 .refresh-container {
     width: 120px;
     height: 120px;
     align-items: center;
     position: absolute;
-    top: 744px;
-    left: 1600px;
+    bottom: 21vw;
+    right: 22vw;
 }
 
 .refresh-container img{

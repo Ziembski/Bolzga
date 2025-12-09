@@ -184,6 +184,16 @@ input {
     z-index: 100;
 }
 
+.page2_checks {
+	
+	position: absolute;
+    width: 585px;
+    height: 770px;
+	display: grid;
+    grid-template-columns: 385px 385px;
+	
+}
+
 .page2_front_content {
 	
 		

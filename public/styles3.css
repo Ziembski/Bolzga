@@ -31,8 +31,8 @@ body {
 
 .body-img {
 	
-    width: 100%;
-    height: 100%;
+    width: 180vmin;
+    height: 100vmin;
 }
 
 .body-img img {
@@ -57,7 +57,7 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 44%;
+    top: 44vmin;
     left: 76vmin;
     transform: translate(-50%, -50%);
     scale: 0.9;
@@ -452,7 +452,7 @@ input {
 }
 
 #page2_rotate_checkbox:checked~#flip_book {
-    transform: translateY(-16.88vmin) rotate(-90deg);
+    transform: translateY(-23vmin) rotate(-90deg);
 }
 
 #page2_rotate_checkbox:checked~#flip_book #page1 {
@@ -460,7 +460,7 @@ input {
 }
 
 #page2_checkbox:checked ~ #page2_rotate_checkbox:checked ~ #flip_book {
-    transform: translateY(0) rotate(0deg) translateX(16.2vmin);
+    transform: translateY(0) rotate(0deg) translateX(23vmin);
 }
 
 #page2_checkbox:checked ~ #page2_rotate_checkbox:checked ~ #flip_book #page1 {
@@ -648,7 +648,7 @@ input {
 
 .caps-section {
     position: absolute;
-    top: 40%;
+    top: 40vmin;
     transform: translateY(-50%);
     left: 146vmin;
     width: 33.75vmin;

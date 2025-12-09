@@ -392,6 +392,10 @@ input {
     z-index: 4;
 }
 
+#page2_rotate_checkbox:checked~#flip_book {
+    transform: rotate(-90deg);
+}
+
 #page3_checkbox:checked~#flip_book #page3 {
     transform: rotateY(-180deg);
     z-index: 5;

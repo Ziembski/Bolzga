@@ -201,6 +201,7 @@ input {
     height: 150px;
     transform-origin: left;
 	transform: rotate(90deg);
+	color: #292929;
 	font-size: 45px;
 	text-align: start;
 	text-wrap: wrap;
@@ -248,6 +249,14 @@ input {
     width: 220px;
     height: 80px;
     border: 1px;
+}
+
+.img2-label {
+	font-size: 28px;
+    font-weight: normal;
+    color: #292929;
+    margin-top: -18px;
+    position: static;
 }
 
 #img2-signature-back {
@@ -310,7 +319,7 @@ input {
 	
 	display: flex;
     flex-direction: column;
-	gap: 30px	
+	gap: 30px;
 	justify-content: end;
 }	
 

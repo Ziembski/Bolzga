@@ -434,15 +434,19 @@ input {
 }
 
 #page2_rotate_checkbox:checked~#flip_book {
-	transform: translate(0px, -150px) rotate(-90deg);
+	transform: translateY(-150px) rotate(-90deg);
 }
 
 #page2_rotate_checkbox:checked~#flip_book #page1 {
     transform: rotateY(-110deg);
 }
 
-#page2_rotate_checkbox:checked ~ #page2_checkbox:checked~#flip_book #page1 {
-    transform: translate(0px, 150px) rotate(90deg);
+#page2_checkbox:checked ~ #page2_rotate_checkbox:checked ~ #flip_book {
+    transform: translateY(0px) rotate(0deg) translateX(144px);
+}
+
+#page2_checkbox:checked ~ #page2_rotate_checkbox:checked ~ #flip_book #page1 {
+    transform: rotateY(-180deg);
 }
 
 #page3_checkbox:checked~#flip_book #page3 {

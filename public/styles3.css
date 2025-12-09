@@ -360,7 +360,15 @@ input {
 }
 
 
-.rotate_checkbox label {
+.rotate_checkbox {
+    width: 220px;
+    height: 300px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 120;
+}
+
+.rotate_standard_checkbox {
     width: 220px;
     height: 300px;
     position: absolute;
@@ -410,7 +418,7 @@ input {
 
 #page2_rotate_checkbox:checked~#flip_book {
     transform: rotate(-90deg);
-	transform: translateY(100px);
+
 }
 
 #page3_checkbox:checked~#flip_book #page3 {

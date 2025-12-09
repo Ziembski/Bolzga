@@ -270,19 +270,19 @@ input {
 }	
 
 .detail-item label {
-    font-size: 35px;
+    font-size: 30px;
     font-weight: normal;
     color: #292929;
 }
 
 
 .detail-item .detail-value {
-    font-size: 65px;
+    font-size: 45px;
 	font-family: Elegant-tw;
     color: #292929;
 	border-bottom: dashed;
 	border-color: #292929;
-	margin-top: -7px;
+	margin-top: 0px;
 	line-height: 1.2;
 	white-space: pre-wrap;
 	word-wrap: break-word;

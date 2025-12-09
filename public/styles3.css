@@ -56,8 +56,8 @@ input {
 .flip_book_main {
 	
     position: absolute;
-    top: 3vw;
-    left: 30vw;
+    top: 3vmin;
+    left: 30vmax;
 }
 
 #flip_book {
@@ -605,8 +605,8 @@ input {
     height: 550px;
     position: absolute;
     perspective: 10000px;
-    top: 3vw;
-    right: 14vw;
+    top: 3vmin;
+    right: 14vmax;
     align-items: center;
     border-radius: 18px;
     contain: layout;
@@ -726,8 +726,8 @@ input {
 .caps-section {
 	
     position: absolute;
-    top: 1vw;
-    right: 0vw;
+    top: 1vmax;
+    right: 0vmax;
     width: 300px;
     height: 862px;
 	
@@ -922,8 +922,8 @@ input {
     height: 100px;
     align-items: center;
     position: absolute;
-    top: 18vw;
-    left: 1vw;
+    top: 18vmax;
+    left: 1vmin;
 }
 
 .go-back img{
@@ -939,8 +939,8 @@ input {
     height: 120px;
     align-items: center;
     position: absolute;
-    bottom: 21vw;
-    right: 22vw;
+    bottom: 21vmin;
+    right: 22vmax;
 }
 
 .refresh-container img{

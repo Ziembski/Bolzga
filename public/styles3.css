@@ -130,8 +130,10 @@ input {
 
 .pin1 {
     position: absolute;
-    top: 0px;
-    left: 68px;
+    top: 119px;
+    left: 401px;
+    z-index: 100;
+    transform: rotate(90deg);
 }
 
 .pin1 img {
@@ -139,10 +141,11 @@ input {
 }
 
 .pin2 {
-    position: absolute;
-    top: 280px;
-    left: 53px;
-    transform: rotate(180deg);
+	position: absolute;
+    top: 146px;
+    left: 129px;
+    transform: rotate(270deg);
+    z-index: 100;
 }
 
 .pin2 img {
@@ -402,6 +405,30 @@ input {
     position: absolute;
     cursor: pointer;
     z-index: 100;
+}
+
+.pin3 {
+    position: absolute;
+    top: 119px;
+    right: 401px;
+    z-index: 100;
+    transform: rotate(90deg);
+}
+
+.pin3 img {
+	filter: drop-shadow(1px 1px 2px black);
+}
+
+.pin4 {
+	position: absolute;
+    top: 146px;
+    right: 129px;
+    transform: rotate(270deg);
+    z-index: 100;
+}
+
+.pin4 img {
+	filter: drop-shadow(1px 1px 2px black);
 }
 
 .edge_shading {

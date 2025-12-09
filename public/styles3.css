@@ -30,11 +30,13 @@ body {
 }
 
 .body-img {
+	
     width: 100%;
     height: 100%;
 }
 
 .body-img img {
+	
     width: 100%;
     height: 100%;
     object-fit: fill;
@@ -55,9 +57,10 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 50%;
-    left: 88vmin;
+    top: 44%;
+    left: 76vmin;
     transform: translate(-50%, -50%);
+    scale: 0.9;
 }
 
 #flip_book {
@@ -127,6 +130,7 @@ input {
     left: 45.11vmin;
     z-index: 100;
     transform: rotate(90deg);
+	width: 10vmin;
 }
 
 .pin1 img {
@@ -139,7 +143,9 @@ input {
     left: 14.51vmin;
     transform: rotate(270deg);
     z-index: 100;
+	width: 10vmin;
 }
+
 
 .pin2 img {
     filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
@@ -363,6 +369,7 @@ input {
     right: 45.11vmin;
     z-index: 100;
     transform: rotate(90deg);
+	width: 10vmin;
 }
 
 .pin3 img {
@@ -375,6 +382,7 @@ input {
     right: 14.51vmin;
     transform: rotate(270deg);
     z-index: 100;
+	width: 10vmin;
 }
 
 .pin4 img {
@@ -555,12 +563,13 @@ input {
     height: 82.5vmin;
     position: absolute;
     perspective: 1500vmin;
-    top: 3vmin;
-    right: 14vmax;
+    top: -7%;
+    left: 114vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
     transform: rotate(15deg);
+    scale: 0.7;
 }
 
 .flip-playing-card-inner {
@@ -639,11 +648,12 @@ input {
 
 .caps-section {
     position: absolute;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
-    right: 1vmax;
+    left: 146vmin;
     width: 33.75vmin;
     height: 98vmin;
+    scale: 0.7;
 }
 
 .detail-item.field-kapsle label {

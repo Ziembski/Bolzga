@@ -170,17 +170,17 @@ input {
 }
 
 #rotate_checkbox {
-    width: 220px;
-    height: 300px;
-    position: absolute;
+    width: 585px;
+    height: 100%;
+    position: static;
     cursor: pointer;
     z-index: 120;
 }
 
 #page2_standard_checkbox {
-    width: 220px;
-    height: 300px;
-    position: absolute;
+    width: 585px;
+    height: 100%;
+    position: static;
     cursor: pointer;
     z-index: 120;
 }
@@ -203,11 +203,11 @@ input {
 
 .page2_checks {
 	
-	position: absolute;
+    position: absolute;
     width: 585px;
     height: 770px;
-	display: grid;
-    grid-template-columns: 385px 385px;
+    display: grid;
+    grid-template-rows: 240px 530px;
 	
 }
 

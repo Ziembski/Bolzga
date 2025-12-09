@@ -57,10 +57,10 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 22vmin;
-    left: 64vmin;
+    top: 41vmin;
+    left: 68vmin;
     transform: translate(-50%, -50%);
-    scale: 0.65;
+    scale: 0.83;
 }
 
 #flip_book {
@@ -563,13 +563,13 @@ input {
     height: 82.5vmin;
     position: absolute;
     perspective: 1500vmin;
-    top: 12vmin;
-    left: 102vmin;
+    top: 17.4vmin;
+    left: 105vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
     transform: rotate(15deg) translateY(-50%);
-    scale: 0.55;
+    scale: 0.65;
 }
 
 .flip-playing-card-inner {
@@ -648,12 +648,11 @@ input {
 
 .caps-section {
     position: absolute;
-    top: 20vmin;
-    transform: translateY(-50%);
-    left: 150vmin;
+    top: -3vmin;
+    left: 147vmin;
     width: 33.75vmin;
     height: 98vmin;
-    scale: 0.7;
+    scale: 0.9;
 }
 
 .detail-item.field-kapsle label {
@@ -860,7 +859,8 @@ input {
 }
 
 #last-update {
-	position: absolute;
+    position: absolute;
+    top: 0;
 }
 
 /* Error states */

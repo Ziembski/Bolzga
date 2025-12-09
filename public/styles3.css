@@ -235,6 +235,7 @@ input {
     height: 100%;
     width: 100%;
     object-fit: contain;
+	filter: drop-shadow(1px 1px 2px black);
 }
 
 .pin1 {
@@ -251,11 +252,11 @@ input {
 }
 
 .img2-label {
-	font-size: 28px;
+	font-size: 25px;
     font-weight: normal;
     color: #292929;
-    margin-top: -18px;
     position: static;
+    margin-top: -5px;
 }
 
 #img2-signature-back {

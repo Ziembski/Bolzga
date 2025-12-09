@@ -169,7 +169,7 @@ input {
     filter: drop-shadow(1px -1px 1px black) drop-shadow(-1px 1px 1px white);
 }
 
-.rotate_checkbox {
+#rotate_checkbox {
     width: 220px;
     height: 300px;
     position: absolute;
@@ -177,7 +177,7 @@ input {
     z-index: 120;
 }
 
-.page2_standard_checkbox {
+#page2_standard_checkbox {
     width: 220px;
     height: 300px;
     position: absolute;

@@ -58,9 +58,9 @@ input {
 .flip_book_main {
     position: absolute;
     top: 41vmin;
-    left: 68vmin;
+    left: 63vmin;
     transform: translate(-50%, -50%);
-    scale: 0.83;
+    scale: 0.8;
 }
 
 #flip_book {
@@ -564,11 +564,11 @@ input {
     position: absolute;
     perspective: 1500vmin;
     top: 17.4vmin;
-    left: 105vmin;
+    left: 100vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
-    transform: rotate(15deg) translateY(-50%);
+    transform: rotate(10deg) translateY(-50%);
     scale: 0.65;
 }
 
@@ -844,11 +844,11 @@ input {
 }
 
 .refresh-container {
-    width: 13.5vmin;
+	width: 13.5vmin;
     height: 13.5vmin;
     align-items: center;
     position: absolute;
-    bottom: 25vmin;
+    top: 71vmin;
     left: 113vmin;
 	
 }

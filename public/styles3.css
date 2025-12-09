@@ -276,25 +276,34 @@ input {
     gap: 25px;
 }
 
+.detail-item {
+	
+    display: flex;
+    flex-direction: column;
+	
+}
 
 .detail-item label {
-    font-size: 30px;
+	
+	font-size: 28px;
     font-weight: normal;
     color: #292929;
-    margin-bottom: 0px;
+    margin-top: -18px;
+    position: static;
 }
 
 
 .detail-item .detail-value {
-    font-size: 45px;
-	font-family: Elegant-tw;
+	
+	font-size: 35px;
+    font-family: Elegant-tw;
     color: #292929;
-	border-bottom: dashed;
-	border-color: #292929;
-	text-align: end;
-	margin-top: 0px;
-	white-space: pre-wrap;
-	word-wrap: break-word;
+    border-bottom: dashed;
+    border-color: #292929;
+    text-align: start;
+    margin-top: 0px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .page2_column3 {
@@ -302,6 +311,7 @@ input {
 	display: flex;
     flex-direction: column;
 	gap: 30px	
+	justify-content: end;
 }	
 
 

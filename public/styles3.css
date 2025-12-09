@@ -259,7 +259,7 @@ input {
 	
 	display: flex;
     flex-direction: column;
-	gap: 10px	
+	gap: 30px	
 }	
 
 .page2_column3 {
@@ -273,6 +273,7 @@ input {
     font-size: 30px;
     font-weight: normal;
     color: #292929;
+    margin-bottom: 0px;
 }
 
 
@@ -282,8 +283,8 @@ input {
     color: #292929;
 	border-bottom: dashed;
 	border-color: #292929;
-	margin-top: 10px;
-	line-height: 1.2;
+	text-align: end;
+	margin-top: 0px;
 	white-space: pre-wrap;
 	word-wrap: break-word;
 }

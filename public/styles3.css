@@ -21,18 +21,19 @@
 }
 
 body {
-    font-family: 'Times New Roman', serif;
+	
+	font-family: 'Times New Roman', serif;
     background-color: #f5f5f5;
     overflow: auto;
     width: clamp(180vmin, 100vmax, 100vmax);
-    height: 100vmin;
+    height: clamp(180vmin, 100vmax, 100vmax);
 }
 
 
 .body-img {
 	
     width: 100%;
-    height: 100vmin;
+    height: 100%;
 }
 
 .body-img img {
@@ -57,8 +58,8 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 41vmin;
-    left: 63vmin;
+    top: 37vmin;
+    left: 62vmin;
     transform: translate(-50%, -50%);
     scale: 0.8;
 }
@@ -563,12 +564,12 @@ input {
     height: 82.5vmin;
     position: absolute;
     perspective: 1500vmin;
-    top: 17.4vmin;
-    left: clamp(100vmin, 100vmin, 100vmin);
+    bottom: 23.4vmin;
+    right: 22vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
-    transform: rotate(10deg) translateY(-50%);
+    transform: rotate(10deg);
     scale: 0.65;
 }
 
@@ -647,9 +648,9 @@ input {
 */
 
 .caps-section {
-    position: absolute;
-    top: -3vmin;
-    left: clamp(130vmin, 147vmin, 147vmin);
+	position: absolute;
+    bottom: 1vmin;
+    right: 1vmin;
     width: 33.75vmin;
     height: 98vmin;
     scale: 0.9;

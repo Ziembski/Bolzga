@@ -82,7 +82,6 @@ input {
     height: 100%;
     position: absolute;
     top: 0px;
-    left: 1px;
     border-radius: 5px 0 0 5px;
     transform: scaleX(-1);
 }
@@ -112,7 +111,7 @@ input {
 
 .page {
     width: 585px;
-    height: 770px;
+    height: 780px;
     position: absolute;
     border-radius: 0 15px 15px 0;
     background-color: white;
@@ -279,11 +278,12 @@ input {
 }
 
 .img2-label {
-	font-size: 25px;
+	font-size: 20px;
     font-weight: normal;
     color: #292929;
     position: static;
     margin-top: -5px;
+	text-wrap: nowrap;
 }
 
 #img2-signature-back {

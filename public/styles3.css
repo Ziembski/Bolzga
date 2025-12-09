@@ -231,10 +231,17 @@ input {
 
 #img1-photo-back {
     height: 100%;
-    widht: 100%;
+    width: 100%;
     object-fit: contain;
 }
 
+.pin1 {
+    position: absolute;
+}
+
+.pin2 {
+    position: absolute;
+}
 
 .img2-container {
     width: 220px;
@@ -244,7 +251,7 @@ input {
 
 #img2-signature-back {
     height: 100%;
-    widht: 100%;
+    width: 100%;
     object-fit: contain;
 }
 

@@ -567,7 +567,7 @@ input {
     position: absolute;
     perspective: 1500vmin;
     top: -10vh;
-	left: clamp(104vmin, 129vmin, 129vmin);
+    left: clamp(104vmin, 124vmin, 124vmin);
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
@@ -652,7 +652,7 @@ input {
 .caps-section {
 	position: absolute;
     top: -4vh;
-    left: clamp(148vmin, 173vmin, 173vmin);
+    left: clamp(148vmin, 168vmin, 168vmin);
     width: 33.75vmin;
     height: 98vmin;
     scale: 0.9;

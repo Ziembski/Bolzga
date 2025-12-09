@@ -228,7 +228,7 @@ input {
 .img1-container {
     width: 220px;
     height: 300px;
-    border: 1px;
+
 }
 
 #img1-photo-back {
@@ -246,9 +246,8 @@ input {
 }
 
 .img2-container {
-    width: 220px;
+    width: 100%;
     height: 80px;
-    border: 1px;
 }
 
 .img2-label {

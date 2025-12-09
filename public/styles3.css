@@ -57,10 +57,10 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 44vmin;
-    left: 76vmin;
+    top: 28vmin;
+    left: 64vmin;
     transform: translate(-50%, -50%);
-    scale: 0.9;
+    scale: 0.78;
 }
 
 #flip_book {
@@ -563,13 +563,13 @@ input {
     height: 82.5vmin;
     position: absolute;
     perspective: 1500vmin;
-    top: -7%;
-    left: 114vmin;
+    top: 12vmin;
+    left: 102vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
-    transform: rotate(15deg);
-    scale: 0.7;
+    transform: rotate(15deg) translateY(-50%);
+    scale: 0.6;
 }
 
 .flip-playing-card-inner {
@@ -648,9 +648,9 @@ input {
 
 .caps-section {
     position: absolute;
-    top: 40vmin;
+    top: 20vmin;
     transform: translateY(-50%);
-    left: 146vmin;
+    left: 150vmin;
     width: 33.75vmin;
     height: 98vmin;
     scale: 0.7;

@@ -164,10 +164,6 @@ input {
 
 .front_cover_content {
     position: absolute;
-    top: 11.25vmin;
-    display: grid;
-    grid-row: 22.5vmin 33.75vmin 22.5vmin;
-    gap: 3.38vmin;
 }
 
 .front_cover.coat {
@@ -185,7 +181,7 @@ input {
     flex-direction: column;
     font-size: 6vmin;
     width: 100%;
-    margin-top: 12vmin;
+    margin-top: 2vmin;
     height: 18.5vmin;
     object-fit: contain;
     background-image: url(./img/flip-book/gold_bg.webp);
@@ -344,7 +340,7 @@ input {
 	font-size: 3.75vmin;
     font-weight: normal;
     color: #292929;
-    margin-top: -3.73vmin;
+    margin-top: -1.73vmin;
     position: static;
 }
 

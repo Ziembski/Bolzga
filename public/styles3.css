@@ -31,23 +31,8 @@ body {
 
 .main_content {
     
-  /* Width minimum inversely related to height */
-  --width-constant: 1000000;
-  --height-constant: 800000;
-  
-  width: clamp(
-    calc(var(--width-constant) * 1px / (100vh / 1px)),
-    100vw,
-    1920px
-  );
-  
-  height: clamp(
-    calc(var(--height-constant) * 1px / (100vw / 1px)),
-    100vh,
-    1200px
-  );
-	
-	
+	width: calc(96vmin + 77vmin * clamp(0, (100vw / 100vh - 0.55) / (1.66 - 0.55), 100));
+    height: calc(96vmin + 110vmin * clamp(0, (1.72 - (100vw / 100vh)) / (1.72 - 0.55), 100));	
     margin-left: 1vw;
     margin-top: 1vh;
     position: absolute;
@@ -676,7 +661,7 @@ input {
 
 .caps-section {
 	position: absolute;
-    bottom: 1vmin;
+    bottom: 2vmin;
 	right: 1vmin;
     width: 33.75vmin;
     height: 98vmin;

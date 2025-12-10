@@ -31,10 +31,10 @@ body {
 
 .main_content {
     
-    width: 95vw;
-    height: 95vh;
-    margin-left: 2.5vw;
-    margin-top: 2.5vh;
+    width: clamp(180vmin, 98vw, 98 ve);
+    height: clamp(163vmin, 98vh, 98vh);
+    margin-left: 1vw;
+    margin-top: 1vh;
     position: absolute;
 }
 
@@ -70,7 +70,7 @@ input {
     top: 33vmin;
     left: 30vmin;
     transform: translate(-50%, -50%);
-    scale: 0.69
+    scale: 1
 }
 
 #flip_book {

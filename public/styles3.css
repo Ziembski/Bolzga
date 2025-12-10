@@ -31,7 +31,7 @@ body {
 
 .main_content {
     
-    width: clamp(180vmin, 98vw, 98 ve);
+    width: clamp(180vmin, 98vw, 98vw);
     height: clamp(163vmin, 98vh, 98vh);
     margin-left: 1vw;
     margin-top: 1vh;

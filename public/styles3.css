@@ -31,8 +31,8 @@ body {
 
 .main_content {
     
-    width: clamp(calc(36vmin * (276vmin / 100vmax)), 100vw, 100vw);
-    height: clamp(calc(39vmin * (452vmin / 100vmax)), 98vh, 98vh);
+    width: clamp(calc(1vw * (98vmin / 1vh)), 98vw, 98vw);
+    height: clamp(calc(2.1vh * (98vmin / 1vw)), 98vh, 98vh);
     margin-left: 1vw;
     margin-top: 1vh;
     position: absolute;
@@ -71,6 +71,7 @@ input {
     left: 30vmin;
     transform: translate(-50%, -50%);
     scale: 0.70;
+	z-index: 5;
 }
 
 #flip_book {
@@ -581,6 +582,7 @@ input {
     contain: layout;
     transform: rotate(10deg);
     scale: 0.65;
+	z-index: 2;
 }
 
 .flip-playing-card-inner {
@@ -664,6 +666,7 @@ input {
     width: 33.75vmin;
     height: 98vmin;
     scale: 0.9;
+	z-index: 1;
 }
 
 .detail-item.field-kapsle label {

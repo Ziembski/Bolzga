@@ -31,10 +31,8 @@ body {
 
 .main_content {
     
-	width: clamp(calc(96vmin + 77vmin * (100vw / 100vh - 0.55) / (1.66 - 0.55)), 100vw, 100vw);
-    height: clamp(calc(96vmin + 110vmin * (1.72 - (100vw / 100vh)) / (1.72 - 0.55)), 99vh, 99vh);	
-    margin-left: 1vw;
-    margin-top: 1vh;
+    width: clamp(calc(96vmin + 77vmin * (100vw / 100vh - 0.55) / (1.66 - 0.55)), 100vw, 100vw);
+    height: clamp(calc(96vmin + 110vmin * (1.72 - (100vw / 100vh)) / (1.72 - 0.55)), 100vh, 100vh);
     position: absolute;
 }
 
@@ -146,6 +144,7 @@ input {
 
 .pin1 img {
     filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
+	width: 100%;
 }
 
 .pin2 {
@@ -160,6 +159,7 @@ input {
 
 .pin2 img {
     filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
+	width: 100%;
 }
 
 .front_cover_content {
@@ -171,33 +171,42 @@ input {
 }
 
 .front_cover.coat {
-    height: 33.75vmin;
-    width: 56.25vmin;
+	height: 27.75vmin;
+    width: 100%;
+    margin-top: 3vmin;
     object-fit: contain;
+    display: flex;
     justify-content: center;
     filter: drop-shadow(0.11vmin -0.11vmin 0.11vmin black) drop-shadow(-0.11vmin 0.11vmin 0.11vmin white);
 }
 
 .front_cover.Title {
-    font-size: 6.41vmin;
-    width: 56.25vmin;
-    height: 13.5vmin;
+	display: flex;
+    flex-direction: column;
+    font-size: 6vmin;
+    width: 100%;
+    margin-top: 12vmin;
+    height: 18.5vmin;
     object-fit: contain;
     background-image: url(./img/flip-book/gold_bg.webp);
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
+    justify-content: center;
     filter: drop-shadow(0.11vmin -0.11vmin 0.11vmin black) drop-shadow(-0.11vmin 0.11vmin 0.11vmin white);
 }
 
 .front_cover.Subtitle {
-    font-size: 6.75vmin;
-    width: 56.25vmin;
+	font-size: 6.75vmin;
     object-fit: contain;
+    display: flex;
+    width: 90%;
+    margin-top: 3vmin;
     background-image: url(./img/flip-book/gold_bg.webp);
     background-clip: text;
     color: rgb(0 0 0 / 2%);
     text-align: center;
+    justify-self: center;
     filter: drop-shadow(0.11vmin -0.11vmin 0.11vmin black) drop-shadow(-0.11vmin 0.11vmin 0.11vmin white);
 }
 
@@ -293,7 +302,7 @@ input {
 }
 
 .img2-label {
-    font-size: 2.25vmin;
+	font-size: 2.55vmin;
     font-weight: normal;
     color: #292929;
     position: static;
@@ -308,9 +317,10 @@ input {
 }
 
 .page2_column2 {
-    display: flex;
+	display: flex;
     flex-direction: column;
-    gap: 3.38vmin;
+    gap: 2.3vmin;
+    justify-content: end;
 }
 
 .page2_entries {
@@ -331,18 +341,18 @@ input {
 }
 
 .detail-item label {
-    font-size: 3.15vmin;
+	font-size: 3.75vmin;
     font-weight: normal;
     color: #292929;
-    margin-top: -2.03vmin;
+    margin-top: -3.73vmin;
     position: static;
 }
 
 .detail-item .detail-value {
-    font-size: 3.94vmin;
+	font-size: 4.1vmin;
     font-family: Elegant-tw;
     color: #292929;
-    border-bottom: dashed;
+    border-bottom: dashed 0.4vmin;
     border-color: #292929;
     text-align: start;
     margin-top: 0;
@@ -353,7 +363,7 @@ input {
 .page2_column3 {
     display: flex;
     flex-direction: column;
-    gap: 3.38vmin;
+    gap: 2.3vmin;
     justify-content: end;
 }
 
@@ -385,6 +395,7 @@ input {
 
 .pin3 img {
     filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
+	width: 100%;
 }
 
 .pin4 {
@@ -398,6 +409,7 @@ input {
 
 .pin4 img {
     filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
+	width: 100%;
 }
 
 .edge_shading {

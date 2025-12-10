@@ -180,7 +180,8 @@ input {
 	display: flex;
     flex-direction: column;
     font-size: 6vmin;
-    width: 100%;
+    width: 90%;
+    justify-self: center;
     margin-top: 2vmin;
     height: 18.5vmin;
     object-fit: contain;

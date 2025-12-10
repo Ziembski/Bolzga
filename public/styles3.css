@@ -31,7 +31,7 @@ body {
 
 .main_content {
     
-	width: clamp(calc(180vmin * (129vmin / 100vmax)), 100vw, 100vw);
+	width: clamp(calc(180vmin * (100vmin / 100vmax)), 98vw, 98vw);
 	height: clamp(calc(172vmin * (100vmin / 100vmax)), 98vh, 98vh);
     margin-left: 1vw;
     margin-top: 1vh;

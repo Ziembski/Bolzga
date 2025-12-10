@@ -859,9 +859,9 @@ input {
     height: 13.5vmin;
     align-items: center;
     position: absolute;
-    top: 71vmin;
-    left: 113vmin;
-	
+    top: 0vmin;
+    left: 0vmin;
+	display: none;
 }
 
 .refresh-container img {

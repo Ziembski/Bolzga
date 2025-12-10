@@ -29,10 +29,44 @@ body {
 	
 }
 
+:root {
+  /* Height function variables */
+  --base-height: 98vmin;
+  --max-height-x: 92vmin;
+  --height-curve-steepness: 3;
+  
+  /* Width function variables */
+  --base-width: 96vmin;
+  --max-width-x: 80vmin;
+  --width-curve-steepness: 3;
+}
+
 .main_content {
-    
-    width: clamp(calc(96vmin + 77vmin * (100vw / 100vh - 0.55) / (1.66 - 0.55)), 100vw, 100vw);
-    height: clamp(calc(96vmin + 110vmin * (1.72 - (100vw / 100vh)) / (1.72 - 0.55)), 100vh, 100vh);
+  /* Height: based on viewport width */
+  --height-width-range: var(--max-width-x);
+  --height-t: clamp(0, (100vw - var(--base-width)) / var(--height-width-range), 1);
+  
+  height: clamp(
+    calc(
+      var(--base-height) + 
+      var(--max-height-x) * (1 - var(--height-t)) / (1 + var(--height-curve-steepness) * var(--height-t))
+    ),
+    100vh,
+    100vh
+  );
+  
+  /* Width: based on viewport height */
+  --width-height-range: var(--max-height-x);
+  --width-t: clamp(0, (100vh - var(--base-height)) / var(--width-height-range), 1);
+  
+  width: clamp(
+    calc(
+      var(--base-width) + 
+      var(--max-width-x) * (1 - var(--width-t)) / (1 + var(--width-curve-steepness) * var(--width-t))
+    ),
+    100vw,
+    100vw
+  );
     position: absolute;
 }
 
@@ -65,8 +99,8 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 34vmin;
-    left: 30vmin;
+    top: 36vmin;
+    left: 32vmin;
     transform: translate(-50%, -50%);
     scale: 0.70;
 	z-index: 5;
@@ -676,6 +710,7 @@ input {
     height: 98vmin;
     scale: 0.9;
 	z-index: 1;
+	background: gray;
 }
 
 .detail-item.field-kapsle label {

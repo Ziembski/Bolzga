@@ -67,7 +67,7 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 33vmin;
+    top: 34vmin;
     left: 30vmin;
     transform: translate(-50%, -50%);
     scale: 0.70;
@@ -575,7 +575,7 @@ input {
     position: absolute;
     perspective: 1500vmin;
     bottom: 20vmin;
-    right: 20vw;
+    right: 25vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
@@ -659,8 +659,8 @@ input {
 
 .caps-section {
 	position: absolute;
-    bottom: 0vh;
-	right: 0vw;
+    bottom: 1vmin;
+	right: 1vmin;
     width: 33.75vmin;
     height: 98vmin;
     scale: 0.9;

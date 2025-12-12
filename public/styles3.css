@@ -419,8 +419,9 @@ input {
 .page2.detail-item  {
     display: grid;
     grid-template-columns: 18vmin 8vmin;
-    gap: 3vmin;
+    gap: 1vmin;
     position: relative;
+	text-align: center;
 }
 
 .page2.detail-item   label {
@@ -429,11 +430,12 @@ input {
     cursor: pointer;
     z-index: 100;
 	position: relative;
+	margin-top: 0;
 }
 
 
 .page2_back_content.stats_grid {
-	top: 17vmin;
+	top: 16vmin;
     display: grid;
     grid-template-columns: 30vmin 30vmin;
     justify-content: center;

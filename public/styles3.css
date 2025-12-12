@@ -421,6 +421,7 @@ input {
     grid-template-columns: 18vmin 8vmin;
     gap: 1vmin;
     position: relative;
+	text-align: end;
 
 }
 

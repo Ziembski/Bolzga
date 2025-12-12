@@ -606,8 +606,8 @@
         let animationId;
         let isMoving = false;
         let speed = 4;
-        let x = window.innerWidth / 2 - 25;
-        let y = window.innerHeight / 2 - 25;
+        let x = 25;
+        let y = 25;
         let dx = 1;
         let dy = 1;
         
@@ -701,8 +701,8 @@
                 stopSound();
                 
                 speed+= 2;
-                if (speed > 20) {
-                    speed = 1;
+                if (speed > 30) {
+                    speed = 4;
                 }
             } else {
                 isMoving = true;
@@ -710,7 +710,7 @@
                 stoppedImg.classList.add('hidden');
                 
                 initAudio().then(() => {
-                    playSound(1 + (speed - 1) * 0.02);
+                    playSound(1 + (speed - 1) * 0.1);
                 });
                 
                 const side = Math.floor(Math.random() * 4);

@@ -435,6 +435,11 @@ input {
 	text-align: end;
 }
 
+.page2.detail-value {
+    text-align: end;
+    
+}
+
 
 .page2_back_content.stats_grid {
 	top: 16vmin;

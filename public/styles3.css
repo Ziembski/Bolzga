@@ -416,7 +416,7 @@ input {
 	color: #292929;
 }
 
-.page2.detail-item  {
+.page2 .detail-item {
     display: grid;
     grid-template-columns: 18vmin 8vmin;
     gap: 1vmin;

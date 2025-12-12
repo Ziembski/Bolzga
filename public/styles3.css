@@ -710,7 +710,6 @@ input {
     height: 98vmin;
     scale: 0.9;
 	z-index: 1;
-	background: gray;
 }
 
 .detail-item.field-kapsle label {

@@ -620,7 +620,7 @@
                 gainNode.connect(audioContext.destination);
                 
                 try {
-                    const response = await fetch('.\img\layout\Fly_sound.mp3');
+                    const response = await fetch('./img/layout/Fly_sound.mp3');
                     const arrayBuffer = await response.arrayBuffer();
                     audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
                 } catch (e) {

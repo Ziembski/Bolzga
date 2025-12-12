@@ -435,6 +435,16 @@ input {
 
 }
 
+.page2.detail-item.field-talent1 {
+    
+    display: flex;
+}
+
+.page2.detail-item.field-talent1 label {
+    
+    justify-self: start;
+}
+
 .page2.detail-item.talent1, .page2.detail-item.talent2, .page2.detail-item.talent3, .page2.detail-item.talent4 {
     display: flex;
     position: relative;

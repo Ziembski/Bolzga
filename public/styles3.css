@@ -403,6 +403,8 @@ input {
     z-index: 4;
     width: 65.81vmin;
     height: 86.63vmin;
+    justify-content: center;
+    display: flex;
 }
 
 .page2_back_content.Title {

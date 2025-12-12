@@ -421,7 +421,7 @@ input {
     grid-template-columns: 18vmin 8vmin;
     gap: 1vmin;
     position: relative;
-	text-align: center;
+
 }
 
 .page2.detail-item   label {
@@ -431,6 +431,7 @@ input {
     z-index: 100;
 	position: relative;
 	margin-top: 0;
+	text-align: center;
 }
 
 

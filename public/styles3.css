@@ -413,6 +413,21 @@ input {
     text-align: start;
     text-wrap: wrap;
     position: relative;
+	color: #292929;
+}
+
+.detail-item.field-zwinnosc {
+    display: grid;
+    grid-template-columns: 18vmin 8vmin;
+    gap: 3vmin;
+    position: relative;
+}
+
+.detail-item.field-zwinnosc label {
+	width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 100;
 }
 
 

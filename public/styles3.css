@@ -409,7 +409,7 @@ input {
 .page2_back_content.Title {
 	left: 2.25vmin;
     top: 2.25vmin;
-    font-size: 5.06vmin;
+    font-size: 4.5vmin;
     text-align: start;
     text-wrap: wrap;
     position: relative;
@@ -421,7 +421,7 @@ input {
     grid-template-columns: 18vmin 8vmin;
     gap: 1vmin;
     position: relative;
-	text-align: end;
+	text-align: center;
 
 }
 
@@ -432,7 +432,7 @@ input {
     z-index: 100;
 	position: relative;
 	margin-top: 0;
-	text-align: center;
+	text-align: end;
 }
 
 

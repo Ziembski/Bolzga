@@ -398,6 +398,33 @@ input {
     justify-content: end;
 }
 
+.page2_back_content {
+    position: absolute;
+    z-index: 4;
+    width: 65.81vmin;
+    height: 86.63vmin;
+}
+
+.page2_back_content.Title {
+    left: 56.25vmin;
+    top: -5.63vmin;
+    width: 67.5vmin;
+    height: 16.88vmin;
+    transform-origin: left;
+    transform: rotate(90deg);
+    color: #292929;
+    font-size: 5.06vmin;
+    text-align: start;
+    text-wrap: wrap;
+}
+
+
+.page2_back_content.stats_grid {
+    display: grid;
+    grid-template-columns: 30vmin 30vmin;
+    justify-content: center;
+}
+
 .back_page {
     width: 100%;
     height: 100%;

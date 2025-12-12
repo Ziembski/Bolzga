@@ -410,13 +410,13 @@ input {
 	left: 2.25vmin;
     top: 2.25vmin;
     font-size: 4.5vmin;
-    text-align: start;
+    text-align: center;
     text-wrap: wrap;
     position: relative;
 	color: #292929;
 }
 
-.page2 .detail-item {
+.page2.detail-item {
     display: grid;
     grid-template-columns: 18vmin 8vmin;
     gap: 1vmin;

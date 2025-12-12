@@ -401,30 +401,32 @@ input {
 .page2_back_content {
     position: absolute;
     z-index: 4;
-    width: 65.81vmin;
+    width: 63.81vmin;
     height: 86.63vmin;
-    justify-content: center;
-    display: flex;
+    object-fit: contain;
 }
 
 .page2_back_content.Title {
-    left: 56.25vmin;
-    top: -5.63vmin;
-    width: 67.5vmin;
-    height: 16.88vmin;
-    transform-origin: left;
-    transform: rotate(90deg);
-    color: #292929;
+	left: 2.25vmin;
+    top: 2.25vmin;
     font-size: 5.06vmin;
     text-align: start;
     text-wrap: wrap;
+    position: relative;
 }
 
 
 .page2_back_content.stats_grid {
+	top: 17vmin;
     display: grid;
     grid-template-columns: 30vmin 30vmin;
     justify-content: center;
+}
+
+.stats_grid.row {
+    display: grid;
+    grid-template-columns: 18vmin 8vmin;
+    gap: 3vmin;
 }
 
 .back_page {

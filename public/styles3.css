@@ -944,6 +944,7 @@ input {
 	border-radius: 30%;
 	transition: opacity 0.3s;
 	transform: rotate(90deg);
+	pointer-events: none;
 	filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 

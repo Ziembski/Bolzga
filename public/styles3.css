@@ -935,7 +935,6 @@ input {
 	height: 8vmin;
 	cursor: pointer;
 	pointer-events: auto;
-	transform: rotate(90deg);
 	z-index: 110;
 }
 
@@ -944,7 +943,7 @@ input {
 	height: 100%;
 	border-radius: 30%;
 	transition: opacity 0.3s;
-
+	transform: rotate(90deg);
 }
 
 .target img.hidden {

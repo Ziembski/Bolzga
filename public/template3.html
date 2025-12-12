@@ -138,38 +138,38 @@
 					<span class="page2_back_content Title"></span>
 					<div class="page2_back_content stats_grid">
 						<div class="stats_grid column1">
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-zwinnosc" data-field="Zwinnośc">
+								<label>Zwinność:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-spryt" data-field="Spryt">
+								<label>Spryt:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-wola" data-field="Wola">
+								<label>Wola:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-sila" data-field="Siła">
+								<label>Siła:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
 						</div>
 						<div class="stats_grid column2">
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-wigor" data-field="Wigor">
+								<label>Wigor:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-tempo" data-field="Tempo">
+								<label>Tempo:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-garda" data-field="Garda">
+								<label>Garda:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
+							<div class="detail-item field-obrona" data-field="Obrona">
+								<label>Obrona:</label>
 								<span class="detail-value">Ładowanie...</span>
 							</div>
 						</div>
@@ -605,7 +605,7 @@
         
         let animationId;
         let isMoving = false;
-        let speed = 4;
+        let speed = 8;
         let x = 25;
         let y = 25;
         let dx = 1;
@@ -700,9 +700,9 @@
                 stoppedImg.classList.remove('hidden');
                 stopSound();
                 
-                speed+= 2;
-                if (speed > 30) {
-                    speed = 4;
+                speed+= 4;
+                if (speed > 48) {
+                    speed = 8;
                 }
             } else {
                 isMoving = true;

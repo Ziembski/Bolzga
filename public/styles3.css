@@ -435,6 +435,13 @@ input {
 
 }
 
+.page2.detail-item.talent1, .page2.detail-item.talent2, .page2.detail-item.talent3, .page2.detail-item.talent4 {
+    display: flex;
+    position: relative;
+	text-align: center;
+
+}
+
 .page2.detail-item   label {
 	width: 100%;
     height: 100%;

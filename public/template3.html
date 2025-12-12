@@ -358,10 +358,6 @@
 	</div>
 </div>
 
-<audio id="moveSound" loop>
-	<source src=".\img\layout\Fly_sound.mp3" type="audio/mpeg">
-</audio>
-
     <script>
         let currentData = null;
         let currentRow = null;
@@ -539,7 +535,6 @@
             };
             
             eventSource.onerror = (error) => {
-                console.error('SSE Error:', error);
                 eventSource.close();
                 setTimeout(initSSE, 5000);
             };
@@ -598,11 +593,15 @@
 		/* FLY */
 		
 		
-		const target = document.getElementById('target');
+        const target = document.getElementById('target');
         const container = document.getElementById('gameContainer');
         const movingImg = document.getElementById('movingImg');
         const stoppedImg = document.getElementById('stoppedImg');
-        const moveSound = document.getElementById('moveSound');
+        
+        let audioContext;
+        let audioBuffer;
+        let sourceNode;
+        let gainNode;
         
         let animationId;
         let isMoving = false;
@@ -613,6 +612,44 @@
         let dy = 1;
         
         const targetSize = 50;
+        
+        async function initAudio() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioContext.createGain();
+                gainNode.connect(audioContext.destination);
+                
+                try {
+                    const response = await fetch('YOUR_SOUND_FILE.mp3');
+                    const arrayBuffer = await response.arrayBuffer();
+                    audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+                } catch (e) {
+                    console.log('Audio loading failed:', e);
+                }
+            }
+        }
+        
+        function playSound(playbackRate) {
+            if (!audioBuffer) return;
+            
+            if (sourceNode) {
+                sourceNode.stop();
+            }
+            
+            sourceNode = audioContext.createBufferSource();
+            sourceNode.buffer = audioBuffer;
+            sourceNode.playbackRate.value = playbackRate;
+            sourceNode.loop = true;
+            sourceNode.connect(gainNode);
+            sourceNode.start(0);
+        }
+        
+        function stopSound() {
+            if (sourceNode) {
+                sourceNode.stop();
+                sourceNode = null;
+            }
+        }
         
         function addFuzziness() {
             const fuzzStrength = speed * 0.15;
@@ -661,8 +698,7 @@
                 cancelAnimationFrame(animationId);
                 movingImg.classList.add('hidden');
                 stoppedImg.classList.remove('hidden');
-                moveSound.pause();
-                moveSound.currentTime = 0;
+                stopSound();
                 
                 speed++;
                 if (speed > 20) {
@@ -673,10 +709,9 @@
                 movingImg.classList.remove('hidden');
                 stoppedImg.classList.add('hidden');
                 
-                moveSound.playbackRate = 1 + (speed - 1) * 0.1;
-                setTimeout(() => {
-                    moveSound.play().catch(e => {});
-                }, 10);
+                initAudio().then(() => {
+                    playSound(1 + (speed - 1) * 0.1);
+                });
                 
                 const side = Math.floor(Math.random() * 4);
                 if (side === 0) {

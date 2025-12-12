@@ -936,6 +936,7 @@ input {
 	height: 50px;
 	cursor: pointer;
 	pointer-events: auto;
+	z-index: 110;
 }
 
 .target img {
@@ -944,7 +945,7 @@ input {
 	border-radius: 50%;
 	transition: opacity 0.3s;
 	transform: rotate(90deg);
-	z-index: 100;
+
 }
 
 .target img.hidden {

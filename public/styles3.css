@@ -423,11 +423,12 @@ input {
     position: relative;
 }
 
-.detail-item.field-zwinnosc label {
+.page2.detail-item   label {
 	width: 100%;
     height: 100%;
     cursor: pointer;
     z-index: 100;
+	position: relative;
 }
 
 
@@ -440,8 +441,7 @@ input {
 
 .stats_grid.row {
     display: grid;
-    grid-template-columns: 18vmin 8vmin;
-    gap: 3vmin;
+
 }
 
 .back_page {

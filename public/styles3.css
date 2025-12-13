@@ -435,10 +435,6 @@ input {
 
 }
 
-.page2.detail-item.field-talent1 {
-    
-    display: flex;
-}
 
 .page2.detail-item.field-talent1 label {
     
@@ -447,8 +443,9 @@ input {
 
 .page2.detail-item.talent1, .page2.detail-item.talent2, .page2.detail-item.talent3, .page2.detail-item.talent4 {
     display: flex;
+    width: 100%;
     position: relative;
-	text-align: center;
+	text-align: start;
 
 }
 
@@ -481,7 +478,8 @@ input {
 }
 
 .page2_back_content.stats_grid.single {
-	top: 50vmin;
+	top: 35vmin;
+	left: 2.25vmin;
     display: grid;
     grid-template-columns: 30vmin 30vmin;
     justify-content: start;

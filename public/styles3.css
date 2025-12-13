@@ -510,6 +510,32 @@ input {
     gap: 3vmin;
 }
 
+.page3.status_indicators_container{
+    position: absolute;
+    top: 6vmin;
+    right: -10vmin;
+    justify-content: end;
+    display: grid;
+    grid-template-rows: 28vmin 28vmin 28vmin;
+    gap: 5px;
+}
+
+.can {
+    position: flex;
+    justify-content: end;
+    height: 28vmin;
+    width: 28vmin;
+    object-fit: contain;
+}
+
+.can img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transform: rotate(270deg);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
+}
+
 .back_page {
     width: 100%;
     height: 100%;

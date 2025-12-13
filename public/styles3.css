@@ -440,7 +440,15 @@ input {
 .page2.detail-item.field-talent1 label {
     
     justify-self: start;
+	text-align: start;
 }
+
+.page2.detail-item.field-Upos1 label {
+    
+    justify-self: start;
+	text-align: start;
+}
+
 
 .page2.detail-item.field-talent1, .page2.detail-item.field-talent2, .page2.detail-item.field-talent3, .page2.detail-item.field-talent4, .page2.detail-item.field-talent5, .page2.detail-item.field-talent6, .page2.detail-item.field-talent7, .page2.detail-item.field-talent8 {
     display: flex;
@@ -450,8 +458,8 @@ input {
 
 } 
 
-.page2.detail-item.field-talent1, .page2.detail-item.field-talent2, .page2.detail-item.field-talent3, .page2.detail-item.field-talent4, .page2.detail-item.field-talent5, .page2.detail-item.field-talent6, .page2.detail-item.field-talent7, .page2.detail-item.field-talent8 span {
-
+.page2_back.detail-value span {
+	
 	text-align: start;
 
 }
@@ -464,11 +472,6 @@ input {
 
 } 
 
-.page2.detail-item.field-Upos1, .page2.detail-item.field-Upos2, .page2.detail-item.field-Upos3, .page2.detail-item.field-Upos4, .page2.detail-item.field-Upos5, .page2.detail-item.field-Upos6, .page2.detail-item.field-Upos7, .page2.detail-item.field-Upos8 span {
-
-	text-align: start;
-
-}
 
 .page2.detail-item   label {
 	width: 100%;

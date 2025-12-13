@@ -419,7 +419,7 @@ input {
 	left: 15.75vmin;
     top: 2.25vmin;
     font-size: 4.2vmin;
-    width: 47vmin;
+    width: 50vmin;
     text-align: start;
     text-wrap: wrap;
     position: relative;
@@ -502,11 +502,12 @@ input {
 }
 
 .page2_back_content.stats_grid.single {
-	top: 35vmin;
+	top: 38vmin;
 	left: 2.25vmin;
     display: grid;
-    grid-template-columns: 30vmin 30vmin;
+    grid-template-columns: 28vmin 28vmin;
     justify-content: start;
+    gap: 3vmin;
 }
 
 .back_page {

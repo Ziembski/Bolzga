@@ -441,7 +441,7 @@ input {
     justify-self: start;
 }
 
-.page2.detail-item.talent1, .page2.detail-item.talent2, .page2.detail-item.talent3, .page2.detail-item.talent4 {
+.page2.detail-item.field-talent1, .page2.detail-item.field-talent2, .page2.detail-item.field-talent3, .page2.detail-item.field-talent4 {
     display: flex;
     width: 100%;
     position: relative;

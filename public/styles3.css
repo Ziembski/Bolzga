@@ -522,8 +522,29 @@ input {
     justify-content: end;
     display: grid;
     grid-template-rows: 28vmin 28vmin 28vmin;
-    gap: 5px;
+    gap: 15px;
+    
 }
+
+.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
+    position: absolute;
+    height: 5vmin;
+    width: 5vmin;
+}
+
+img.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
+    position: absolute;
+    object-fit: contain;
+    height: 5vmin;
+    width: 5vmin;
+}
+
+img.z0 {
+    top: 18vmin;
+    left: 8.5vmin;
+}
+
+
 
 .can {
     height: 28vmin;

@@ -654,6 +654,34 @@
 				}
 			}
 			
+			// Update can status rotations based on "status1", "status2", "status3" fields
+			const status1Index = data.headers.indexOf('status1');
+			const status2Index = data.headers.indexOf('status2');
+			const status3Index = data.headers.indexOf('status3');
+			
+			if (status1Index >= 0) {
+				const rotation1 = parseInt(row[status1Index]) || 0;
+				const canImg1 = document.querySelector('.can.status1 img');
+				if (canImg1) {
+					canImg1.style.transform = `rotate(${rotation1}deg)`;
+				}
+			}
+			
+			if (status2Index >= 0) {
+				const rotation2 = parseInt(row[status2Index]) || 0;
+				const canImg2 = document.querySelector('.can.status2 img');
+				if (canImg2) {
+					canImg2.style.transform = `rotate(${rotation2}deg)`;
+				}
+			}
+			
+			if (status3Index >= 0) {
+				const rotation3 = parseInt(row[status3Index]) || 0;
+				const canImg3 = document.querySelector('.can.status3 img');
+				if (canImg3) {
+					canImg3.style.transform = `rotate(${rotation3}deg)`;
+				}
+			}
 			const now = new Date().toLocaleString('pl-PL');
 			document.getElementById('last-update').textContent = 
 				`Ostatnia aktualizacja: ${now}`;

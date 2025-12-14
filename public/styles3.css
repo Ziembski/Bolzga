@@ -518,7 +518,7 @@ input {
 .page3.status_indicators_container{
     position: absolute;
     top: 6vmin;
-    right: -6vmin;
+    right: 1vmin;
     justify-content: end;
     display: grid;
     grid-template-rows: 28vmin 28vmin 28vmin;
@@ -526,15 +526,14 @@ input {
 }
 
 .can {
-    position: flex;
-    justify-content: end;
     height: 28vmin;
     width: 28vmin;
     object-fit: contain;
+    transform: rotate(270deg);
 }
 
 .can.status1 span {
-    left: -5vmin;
+    left: 2vmin;
 }
 
 .can span {
@@ -542,8 +541,7 @@ input {
     font-family: Marker;
     color: #292929;
     align-content: end;
-    transform: rotate(270deg);
-    left: -9.7vmin;
+    left: 7.3vmin;
     position: relative;
     top: 1vmin;
     height: 27vmin;
@@ -553,16 +551,15 @@ input {
     object-fit: contain;
     width: 100%;
     height: 100%;
-    transform: rotate(270deg);
     filter: drop-shadow(0.11vmin 0.11vmin 0.43vmin black);
 }
 
 .can.status1 img {
-   transform: rotate(225deg);	
+    transform: rotate(315deg);	
 }
 
 .can.status2 img {
-   transform: rotate(225deg);	
+    transform: rotate(315deg);
 }
 
 .stats_grid.skills {

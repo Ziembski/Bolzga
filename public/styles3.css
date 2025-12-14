@@ -503,9 +503,9 @@ input {
 
 .page2_back_content.stats_grid.single {
 	top: 38vmin;
-	left: 2.25vmin;
+    left: 3.45vmin;
     display: grid;
-    grid-template-columns: 28vmin 28vmin;
+    grid-template-columns: 27vmin 27vmin;
     justify-content: start;
     gap: 3vmin;
 }
@@ -513,7 +513,7 @@ input {
 .page3.status_indicators_container{
     position: absolute;
     top: 6vmin;
-    right: -10vmin;
+    right: -6vmin;
     justify-content: end;
     display: grid;
     grid-template-rows: 28vmin 28vmin 28vmin;
@@ -533,8 +533,25 @@ input {
     width: 100%;
     height: 100%;
     transform: rotate(270deg);
-    filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
+    filter: drop-shadow(0.11vmin 0.11vmin 0.43vmin black);
 }
+
+.can.status1 img {
+   transform: rotate(225deg);	
+}
+
+.can.status2 img {
+   transform: rotate(225deg);	
+}
+
+.stats_grid.skills {
+    position: absolute;
+    top: 4vmin;
+    left: 5vmin;
+    width: 40vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vmin;
 
 .back_page {
     width: 100%;

@@ -552,6 +552,7 @@ input {
     display: flex;
     flex-direction: column;
     gap: 0.2vmin;
+}
 
 .back_page {
     width: 100%;

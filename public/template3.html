@@ -511,6 +511,7 @@
         let currentRow = null;
         let eventSource = null;
         let updateDebounceTimer = null;
+        let previousKartaValue = null;
         
         function getRowNumber() {
             const params = new URLSearchParams(window.location.search);
@@ -538,21 +539,76 @@
             }
         }
         
-		function updateFields(data, rowNumber) {
-			if (!data || !data.rows || rowNumber > data.rows.length) {
-				const detailItems = document.querySelectorAll('.detail-item[data-field]');
-				detailItems.forEach(item => {
-					const valueElement = item.querySelector('.detail-value');
-					if (valueElement) {
-						valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
-						valueElement.classList.add('error-value');
-					}
-				});
-				return;
-			}
-			
-			const row = data.rows[rowNumber - 1];
-			const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+function updateFields(data, rowNumber) {
+    if (!data || !data.rows || rowNumber > data.rows.length) {
+        const detailItems = document.querySelectorAll('.detail-item[data-field]');
+        detailItems.forEach(item => {
+            const valueElement = item.querySelector('.detail-value');
+            if (valueElement) {
+                valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+                valueElement.classList.add('error-value');
+            }
+        });
+        return;
+    }
+    
+    const row = data.rows[rowNumber - 1];
+    
+    // NEW CODE - Check if "Karta" field has changed
+    const kartaIndex = data.headers.indexOf('Karta');
+    const currentKartaValue = kartaIndex >= 0 ? row[kartaIndex] : null;
+    
+    if (previousKartaValue !== null && currentKartaValue !== previousKartaValue) {
+        // Karta has changed - trigger animation
+        animateCardChange(() => {
+            updateFieldsContent(data, rowNumber, row);
+        });
+    } else {
+        // No change or first load - update directly
+        updateFieldsContent(data, rowNumber, row);
+    }
+    
+    previousKartaValue = currentKartaValue;
+}
+
+// NEW FUNCTION - Handles the card animation
+function animateCardChange(callback) {
+    const card = document.querySelector('.flip-playing-card');
+    if (!card) {
+        callback();
+        return;
+    }
+    
+    // Slide out to the right with rotation
+    card.style.transition = 'transform 0.8s ease-in, opacity 0.8s ease-in';
+    card.style.transform = 'translateX(150vw) rotate(180deg)';
+    card.style.opacity = '0';
+    
+    setTimeout(() => {
+        // Update content while off-screen
+        callback();
+        
+        // Position card off-screen to the left
+        card.style.transition = 'none';
+        card.style.transform = 'translateX(-150vw) rotate(-180deg)';
+        card.style.opacity = '0';
+        
+        // Force reflow
+        card.offsetHeight;
+        
+        // Slide in from the left with rotation to final position
+        setTimeout(() => {
+            card.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+            card.style.transform = 'translateX(0) rotate(10deg)';
+            card.style.opacity = '1';
+        }, 50);
+    }, 800);
+}
+
+// NEW FUNCTION - Contains all the original field update logic
+function updateFieldsContent(data, rowNumber, row) {
+    const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+    
 			
 			// Get the pl-suit value for color logic
 			const plSuitIndex = data.headers.indexOf('pl-suit');

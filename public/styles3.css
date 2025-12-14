@@ -528,6 +528,12 @@ input {
     object-fit: contain;
 }
 
+.can span{
+	font-size: 4.1vmin;
+    font-family: Elegant-tw;
+    color: #292929;
+}
+
 .can img {
     object-fit: contain;
     width: 100%;
@@ -548,7 +554,7 @@ input {
     position: absolute;
     top: 4vmin;
     left: 5vmin;
-    width: 40vmin;
+	width: 33vmin;
     display: flex;
     flex-direction: column;
     gap: 0.2vmin;

@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: Marker;
-  src: url('/fonts/Kid Marker.ttf');
+  src: url('/fonts/PENNARELO.ttf');
 }
 
 body {
@@ -536,6 +536,7 @@ input {
 .can.status1 span {
     left: -5vmin;
 }
+
 .can span {
     font-size: 4.1vmin;
     font-family: Marker;

@@ -20,6 +20,11 @@
   src: url('/fonts/Spicy Sale.ttf');
 }
 
+@font-face {
+  font-family: Marker;
+  src: url('/fonts/Kid Marker.ttf');
+}
+
 body {
 	
     font-family: 'Times New Roman', serif;
@@ -528,10 +533,19 @@ input {
     object-fit: contain;
 }
 
-.can span{
-	font-size: 4.1vmin;
-    font-family: Elegant-tw;
+.can.status1 span {
+    left: -5vmin;
+}
+.can span {
+    font-size: 4.1vmin;
+    font-family: Marker;
     color: #292929;
+    align-content: end;
+    transform: rotate(270deg);
+    left: -9.7vmin;
+    position: relative;
+    top: 1vmin;
+    height: 27vmin;
 }
 
 .can img {

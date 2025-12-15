@@ -849,6 +849,19 @@ function updateFieldsContent(data, rowNumber, row) {
         let dy = 1;
         
         const targetSize = 50;
+		
+		// Get safe bounds
+		function getBounds() {
+			return {
+				width: Math.min(window.innerWidth, document.documentElement.clientWidth),
+				height: Math.min(window.innerHeight, document.documentElement.clientHeight)
+			};
+		}
+
+		// Initialize position
+		const bounds = getBounds();
+		x = bounds.width / 2 - 25;
+		y = bounds.height / 2 - 25;
         
         async function initAudio() {
             if (!audioContext) {
@@ -903,29 +916,31 @@ function updateFieldsContent(data, rowNumber, row) {
         }
         
         function moveTarget() {
-            addFuzziness();
-            
-            x += dx;
-            y += dy;
-            
-            if (x <= 0 || x >= window.innerWidth - targetSize) {
-                dx = -dx;
-                x = Math.max(0, Math.min(x, window.innerWidth - targetSize));
-            }
-            
-            if (y <= 0 || y >= window.innerHeight - targetSize) {
-                dy = -dy;
-                y = Math.max(0, Math.min(y, window.innerHeight - targetSize));
-            }
-            
-            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-            target.style.transform = `rotate(${angle}deg)`;
-            
-            target.style.left = x + 'px';
-            target.style.top = y + 'px';
-            
-            if (isMoving) {
-                animationId = requestAnimationFrame(moveTarget);
+			addFuzziness();
+			
+			x += dx;
+			y += dy;
+			
+			const bounds = getBounds(); // Add this line
+			
+			if (x <= 0 || x >= bounds.width - targetSize) { // Changed
+				dx = -dx;
+				x = Math.max(0, Math.min(x, bounds.width - targetSize)); // Changed
+			}
+			
+			if (y <= 0 || y >= bounds.height - targetSize) { // Changed
+				dy = -dy;
+				y = Math.max(0, Math.min(y, bounds.height - targetSize)); // Changed
+			}
+			
+			const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+			target.style.transform = `rotate(${angle}deg)`;
+			
+			target.style.left = x + 'px';
+			target.style.top = y + 'px';
+			
+			if (isMoving) {
+				animationId = requestAnimationFrame(moveTarget);
             }
         }
         
@@ -949,20 +964,21 @@ function updateFieldsContent(data, rowNumber, row) {
                 initAudio().then(() => {
                     playSound(1 + (speed - 1) * 0.1);
                 });
-                
+				
+                const bounds = getBounds();
                 const side = Math.floor(Math.random() * 4);
                 if (side === 0) {
                     x = 0;
-                    y = Math.random() * (window.innerHeight - targetSize);
+                    y = Math.random() * (bounds.height - targetSize);
                 } else if (side === 1) {
-                    x = window.innerWidth - targetSize;
-                    y = Math.random() * (window.innerHeight - targetSize);
+                    x = bounds.width - targetSize;
+                    y = Math.random() * (bounds.height - targetSize);
                 } else if (side === 2) {
-                    x = Math.random() * (window.innerWidth - targetSize);
+                    x = Math.random() * (bounds.width - targetSize);
                     y = 0;
                 } else {
-                    x = Math.random() * (window.innerWidth - targetSize);
-                    y = window.innerHeight - targetSize;
+                    x = Math.random() * (bounds.width - targetSize);
+                    y = bounds.height - targetSize;
                 }
                 
                 target.style.left = x + 'px';
@@ -981,10 +997,11 @@ function updateFieldsContent(data, rowNumber, row) {
         target.style.left = x + 'px';
         target.style.top = y + 'px';
         
-        window.addEventListener('resize', () => {
-            x = Math.min(x, window.innerWidth - targetSize);
-            y = Math.min(y, window.innerHeight - targetSize);
-        });
+		window.addEventListener('resize', () => {
+			const bounds = getBounds();
+			x = Math.min(x, bounds.width - targetSize);
+			y = Math.min(y, bounds.height - targetSize);
+		});
 		
 		
 		

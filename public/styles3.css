@@ -556,64 +556,66 @@ img.page3_front_content.coat {
     width: 5vmin;
 }
 
-img.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
+span.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
     position: absolute;
     object-fit: contain;
     height: 5vmin;
     width: 5vmin;
+    font-family: Marker;
+    font-size: 6vmin;
 }
 
-img.z0 {
+span.z0 {
 	top: 47.3vmin;
     left: 12.1vmin;
 }
 
-img.z1 {
+span.z1 {
     top: 40.6vmin;
     left: 9.7vmin;
 }
 
-img.z2 {
+span.z2 {
     top: 34.4vmin;
     left: 12.7vmin;
 }
 
-img.zd {
+span.zd {
 	top: 32vmin;
     left: 18.8vmin;
 }
 
-img.r0 {
+span.r0 {
 	top: 77vmin;
     left: 12.1vmin;
 }
 
-img.r1 {
+span.r1 {
     top: 72.5vmin;
     left: 9.8vmin;
 }
 
-img.r2 {
+span.r2 {
     top: 67.3vmin;
     left: 10.5vmin;
 }
 
-img.r3 {
+span.r3 {
     top: 63.3vmin;
     left: 13.9vmin;
 }
 
-img.rd {
+span.rd {
     top: 61.5vmin;
     left: 18.8vmin;
 }
 
-img.g1 {
+span.g1 {
     top: 17.8vmin;
     left: 11.7vmin;
 }
 
-img.g2 {
+span.g2 {
     top: 11.3vmin;
     left: 9.6vmin;
 }

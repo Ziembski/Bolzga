@@ -616,6 +616,8 @@ img.g2 {
     height: 27vmin;
 }
 
+
+
 .can img {
     object-fit: contain;
     width: 100%;
@@ -687,6 +689,16 @@ img.g2 {
 .pin4 img {
     filter: drop-shadow(0.11vmin 0.11vmin 0.23vmin black);
 	width: 100%;
+}
+
+img.outline_watermark {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    object-fit: contain;
+    top: 22vmin;
+    left: 15vmin;
+    opacity: 10%;
 }
 
 .edge_shading {

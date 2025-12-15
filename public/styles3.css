@@ -671,10 +671,30 @@ img.g2 {
 }
 
 .page3-stamp {
+    position: absolute;
+    top: 66vmin;
+    left: 6vmin;
+    font-size: 6.75vmin;
+    font-family: Stamp;
+    height: 5vmin;
+    width: 10vmin;
+    color: #e50000;
+    opacity: 70%;
+	
+}
+
+.page3-stamp span {
 	position: absolute;
 	font-size: 6.75vmin;
     font-family: Stamp;
 	
+}
+
+#last-update {
+    position: absolute;
+    top: 6vmin;
+    font-size: 4.9vmin;
+    text-wrap: nowrap;
 }
 
 .back_page {
@@ -1204,10 +1224,7 @@ img.outline_watermark {
     height: 100%;
 }
 
-#last-update {
-    position: absolute;
-    top: 0;
-}
+
 
 .game-container {
 	position: absolute;

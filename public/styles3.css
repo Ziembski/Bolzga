@@ -612,7 +612,7 @@ img.g2 {
     align-content: end;
     left: 7.3vmin;
     position: relative;
-    top: 1vmin;
+    top: 2vmin;
     height: 27vmin;
 }
 
@@ -621,6 +621,9 @@ img.g2 {
     width: 100%;
     height: 100%;
     filter: drop-shadow(0.11vmin 0.11vmin 0.43vmin black);
+	position: absolute;
+    top: 7vmin;
+    left: 0vmin;
 }
 
 .can.status1 img {

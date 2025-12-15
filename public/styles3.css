@@ -336,6 +336,7 @@ img.front_cover_back.coat {
     transform: rotate(23deg);
     bottom: 10vmin;
     right: 10vmin;
+    opacity: 80%;
 }
 
 .page2_column1 {

@@ -632,7 +632,7 @@ img.g2 {
 .can span {
     font-size: 4.1vmin;
     font-family: Marker;
-    color: #292929;
+    color: #0023a9;
     align-content: end;
     left: 7.3vmin;
     position: relative;
@@ -664,7 +664,7 @@ img.g2 {
     position: absolute;
     top: 4vmin;
     left: 5vmin;
-	width: 33vmin;
+	width: 56vmin;
     display: flex;
     flex-direction: column;
     gap: 0.2vmin;
@@ -682,7 +682,8 @@ img.g2 {
     opacity: 70%;
     border: 0.8vmin dashed #e50000;
     border-top-width: 0;
-    transform: rotate(5deg);		
+    transform: rotate(5deg);
+    z-index: 103;	
 }
 
 .page3-stamp span {

@@ -337,6 +337,7 @@ img.front_cover_back.coat {
     top: 15vmin;
     right: 10vmin;
     opacity: 80%;
+    filter: blur(0.5px);
 }
 
 .page2_column1 {

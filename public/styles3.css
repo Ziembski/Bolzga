@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: Marker;
-  src: url('/fonts/PENNARELO.ttf');
+  src: url('/fonts/Mechanic_Pencil.ttf');
 }
 
 body {
@@ -541,10 +541,58 @@ img.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
 
 img.z0 {
     top: 18vmin;
-    left: 8.5vmin;
+    left: 12.1vmin;
 }
 
+img.z1 {
+    top: 11.5vmin;
+    left: 10vmin;
+}
 
+img.z2 {
+    top: 5vmin;
+    left: 12.5vmin;
+}
+
+img.zd {
+    top: 2.4vmin;
+    left: 18.8vmin;
+}
+
+img.r0 {
+    top: 47vmin;
+    left: 12.1vmin;
+}
+
+img.r1 {
+    top: 42.5vmin;
+    left: 10.2vmin;
+}
+
+img.r2 {
+    top: 37.5vmin;
+    left: 10.7vmin;
+}
+
+img.r3 {
+    top: 33.6vmin;
+    left: 13.9vmin;
+}
+
+img.rd {
+    top: 32.1vmin;
+    left: 18.8vmin;
+}
+
+img.g1 {
+    top: 70.3vmin;
+    left: 9.7vmin;
+}
+
+img.g2 {
+    top: 63.9vmin;
+    left: 12.5vmin;
+}
 
 .can {
     height: 28vmin;

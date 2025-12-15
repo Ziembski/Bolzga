@@ -329,6 +329,15 @@ img.front_cover_back.coat {
     right: 2.25vmin;
 }
 
+.page2_front_content.stamp {
+    width: 16.88vmin;
+    height: 16.88vmin;
+    object-fit: contain;
+    transform: rotate(23deg);
+    bottom: 10vmin;
+    right: 10vmin;
+}
+
 .page2_column1 {
     display: flex;
     flex-direction: column;

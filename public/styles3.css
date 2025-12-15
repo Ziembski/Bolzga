@@ -25,6 +25,11 @@
   src: url('/fonts/Mechanic_Pencil.ttf');
 }
 
+@font-face {
+  font-family: Stamp;
+  src: url('/fonts/stamp.ttf');
+}
+
 body {
 	
     font-family: 'Times New Roman', serif;
@@ -663,6 +668,13 @@ img.g2 {
     display: flex;
     flex-direction: column;
     gap: 0.2vmin;
+}
+
+.page3-stamp {
+	position: absolute;
+	font-size: 6.75vmin;
+    font-family: Stamp;
+	
 }
 
 .back_page {

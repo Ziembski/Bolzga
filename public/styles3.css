@@ -536,7 +536,7 @@ img.page3_front_content.coat {
 
 .page3.status_indicators_container{
     position: absolute;
-    top: 6vmin;
+	top: 2vmin;
     right: 1vmin;
     justify-content: end;
     display: grid;
@@ -559,47 +559,47 @@ img.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
 }
 
 img.z0 {
-    top: 18vmin;
-    left: 12.1vmin;
-}
-
-img.z1 {
-    top: 11.5vmin;
-    left: 10vmin;
-}
-
-img.z2 {
-    top: 5vmin;
-    left: 12.5vmin;
-}
-
-img.zd {
-    top: 2.4vmin;
-    left: 18.8vmin;
-}
-
-img.r0 {
     top: 47vmin;
     left: 12.1vmin;
 }
 
+img.z1 {
+    top: 40.5vmin;
+    left: 10vmin;
+}
+
+img.z2 {
+    top: 34vmin;
+    left: 12.5vmin;
+}
+
+img.zd {
+    top: 31.4vmin;
+    left: 18.8vmin;
+}
+
+img.r0 {
+	top: 77vmin;
+    left: 12.1vmin;
+}
+
 img.r1 {
-    top: 42.5vmin;
+    top: 72.5vmin;
     left: 10.2vmin;
 }
 
 img.r2 {
-    top: 37.5vmin;
+    top: 67.5vmin;
     left: 10.7vmin;
 }
 
 img.r3 {
-    top: 33.6vmin;
+    top: 63.6vmin;
     left: 13.9vmin;
 }
 
 img.rd {
-    top: 32.1vmin;
+    top: 62.1vmin;
     left: 18.8vmin;
 }
 

@@ -671,30 +671,34 @@ img.g2 {
 }
 
 .page3-stamp {
-    position: absolute;
-    top: 66vmin;
+	position: absolute;
+    top: 62vmin;
     left: 6vmin;
     font-size: 6.75vmin;
     font-family: Stamp;
-    height: 5vmin;
-    width: 10vmin;
+    height: 7.7vmin;
+    width: 37vmin;
     color: #e50000;
     opacity: 70%;
-	
+    border: 0.8vmin dashed #e50000;
+    border-top-width: 0;
+    transform: rotate(5deg);		
 }
 
 .page3-stamp span {
-	position: absolute;
-	font-size: 6.75vmin;
+    position: absolute;
+    font-size: 6.75vmin;
     font-family: Stamp;
+    top: -2.5vmin;
 	
 }
 
 #last-update {
     position: absolute;
-    top: 6vmin;
+    top: 2.4vmin;
     font-size: 4.9vmin;
     text-wrap: nowrap;
+    left: 0.8vmin;
 }
 
 .back_page {

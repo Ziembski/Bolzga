@@ -785,9 +785,8 @@ function updateFieldsContent(data, rowNumber, row) {
         }
         
         async function handleRefresh() {
-            const refreshImg = document.getElementById('refresh-btn');
+            const refreshImg = document.getElementById('last-update');
             const originalSrc = refreshImg.src;
-            refreshImg.style.scale = '120%';
             refreshImg.style.pointerEvents = 'none';
             
             try {
@@ -808,7 +807,6 @@ function updateFieldsContent(data, rowNumber, row) {
             } catch (error) {
                 console.error('Refresh error:', error);
             } finally {
-                refreshImg.style.scale = '100%';
                 refreshImg.style.pointerEvents = 'auto';
             }
         }
@@ -824,7 +822,7 @@ function updateFieldsContent(data, rowNumber, row) {
                 
                 initSSE();
                 
-                document.getElementById('refresh-btn')
+                document.getElementById('last-update')
                     .addEventListener('click', handleRefresh);
                 
             } catch (error) {
@@ -867,8 +865,8 @@ function updateFieldsContent(data, rowNumber, row) {
 
 		// Initialize position
 		const bounds = getBounds();
-		x = bounds.width / 2 - 25;
-		y = bounds.height / 2 - 25;
+		x = 25;
+		y = 25;
         
         async function initAudio() {
             if (!audioContext) {

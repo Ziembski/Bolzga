@@ -333,7 +333,7 @@ img.front_cover_back.coat {
     width: 16.88vmin;
     height: 16.88vmin;
     object-fit: contain;
-    transform: rotate(23deg);
+    transform: rotate(-23deg);
     bottom: 10vmin;
     left: 10vmin;
     opacity: 80%;

@@ -563,6 +563,8 @@ span.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
     width: 5vmin;
     font-family: Marker;
     font-size: 6vmin;
+    color: #001a40;
+    
 }
 
 span.z0 {
@@ -632,7 +634,7 @@ span.g2 {
 }
 
 .can span {
-    font-size: 4.1vmin;
+    font-size: 6vmin;
     font-family: Marker;
     color: #001a40;
     align-content: end;

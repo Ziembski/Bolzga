@@ -546,15 +546,17 @@ img.front_cover_back.coat {
 }
 
 img#refresh-icon {
-	height: 10vmin;
-	width: 5vmin;
-	object-fit: contain;
+    height: 13vmin;
+    width: 5vmin;
+    object-fit: contain;
     position: absolute;
-    right: -6.4vmin;
+    right: 17.2vmin;
     cursor: pointer;
+    transform: rotate(5deg);
+    top: 61vmin;
     z-index: 105;
     pointer-events: auto;
-	opacity: 80%;
+    opacity: 80%;
 	
 }
 

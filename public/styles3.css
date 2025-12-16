@@ -542,6 +542,15 @@ img.front_cover_back.coat {
     grid-template-columns: 27vmin 27vmin;
     justify-content: start;
     gap: 3vmin;
+	
+}
+
+img#refresh-icon {
+    height: 100%;
+    position: absolute;
+    right: -5.3vmin;
+    z-index: 20000;
+    pointer-events: auto;
 }
 
 img.page3_front_content.coat {

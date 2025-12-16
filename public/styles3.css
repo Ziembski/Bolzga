@@ -22,7 +22,7 @@
 
 @font-face {
   font-family: Marker;
-  src: url('/fonts/Mechanic_Pencil.ttf');
+  src: url('/fonts/ScribblesJE.ttf');
 }
 
 @font-face {
@@ -329,6 +329,17 @@ img.front_cover_back.coat {
     right: 2.25vmin;
 }
 
+.page2_front_content.stamp {
+    width: 16.88vmin;
+    height: 16.88vmin;
+    object-fit: contain;
+    transform: rotate(120deg);
+    top: 15vmin;
+    right: 10vmin;
+    opacity: 80%;
+    filter: blur(0.5px);
+}
+
 .page2_column1 {
     display: flex;
     flex-direction: column;
@@ -556,64 +567,68 @@ img.page3_front_content.coat {
     width: 5vmin;
 }
 
-img.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
+span.z0, .z1, .z2, .zd, .r0, .r1, .r2, .r3, .rd, .g1, .g2 {
     position: absolute;
     object-fit: contain;
     height: 5vmin;
     width: 5vmin;
+    font-family: Marker;
+    font-size: 6vmin;
+    color: #001a40;
+    
 }
 
-img.z0 {
+span.z0 {
 	top: 47.3vmin;
     left: 12.1vmin;
 }
 
-img.z1 {
+span.z1 {
     top: 40.6vmin;
     left: 9.7vmin;
 }
 
-img.z2 {
+span.z2 {
     top: 34.4vmin;
     left: 12.7vmin;
 }
 
-img.zd {
+span.zd {
 	top: 32vmin;
     left: 18.8vmin;
 }
 
-img.r0 {
+span.r0 {
 	top: 77vmin;
     left: 12.1vmin;
 }
 
-img.r1 {
+span.r1 {
     top: 72.5vmin;
     left: 9.8vmin;
 }
 
-img.r2 {
+span.r2 {
     top: 67.3vmin;
     left: 10.5vmin;
 }
 
-img.r3 {
+span.r3 {
     top: 63.3vmin;
     left: 13.9vmin;
 }
 
-img.rd {
+span.rd {
     top: 61.5vmin;
     left: 18.8vmin;
 }
 
-img.g1 {
+span.g1 {
     top: 17.8vmin;
     left: 11.7vmin;
 }
 
-img.g2 {
+span.g2 {
     top: 11.3vmin;
     left: 9.6vmin;
 }
@@ -630,9 +645,9 @@ img.g2 {
 }
 
 .can span {
-    font-size: 4.1vmin;
+    font-size: 6vmin;
     font-family: Marker;
-    color: #0023a9;
+    color: #001a40;
     align-content: end;
     left: 7.3vmin;
     position: relative;

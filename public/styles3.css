@@ -1015,6 +1015,7 @@ img.outline_watermark {
     font-size: 6.75vmin;
     font-family: TheSoul;
     color: #000000;
+	overflow: unset;
 }
 
 .flip-playing-card-back {

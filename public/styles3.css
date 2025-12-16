@@ -956,7 +956,7 @@ img.outline_watermark {
     justify-content: center;
     align-items: center;
     height: 8.25vmin;
-    margin-top: 0;
+    margin-top: -1.9vmin;
     display: flex;
 }
 

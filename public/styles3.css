@@ -420,6 +420,7 @@ img.front_cover_back.coat {
     margin-top: 0;
     white-space: pre-wrap;
     word-wrap: break-word;
+	text-wrap: nowrap;
 }
 
 .page2_column3 {

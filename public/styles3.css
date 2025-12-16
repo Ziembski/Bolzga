@@ -420,6 +420,7 @@ img.front_cover_back.coat {
     margin-top: 0;
     white-space: pre-wrap;
     overflow: clip;
+	text-wrap: nowrap;
     text-overflow: ellipsis;
     max-height: 4.9vmin;
 }

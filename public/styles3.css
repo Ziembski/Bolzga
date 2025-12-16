@@ -419,8 +419,9 @@ img.front_cover_back.coat {
     text-align: start;
     margin-top: 0;
     white-space: pre-wrap;
-    word-wrap: break-word;
-	text-wrap: nowrap;
+    overflow: clip;
+    text-overflow: ellipsis;
+    max-height: 4.9vmin;
 }
 
 .page2_column3 {

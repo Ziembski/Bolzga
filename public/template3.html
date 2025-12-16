@@ -755,7 +755,7 @@ function updateFieldsContent(data, rowNumber, row) {
 				}
 			}
 			const now = new Date().toLocaleString('pl-PL');
-			document.getElementById('last-update').textContent = 
+			document.getElementById('refresh-icon').textContent = 
 				`${now}`;
 		}
         
@@ -789,7 +789,7 @@ function updateFieldsContent(data, rowNumber, row) {
         }
         
         async function handleRefresh() {
-            const refreshImg = document.getElementById('last-update');
+            const refreshImg = document.getElementById('refresh-icon');
             const originalSrc = refreshImg.src;
             refreshImg.style.pointerEvents = 'none';
             
@@ -826,7 +826,7 @@ function updateFieldsContent(data, rowNumber, row) {
                 
                 initSSE();
                 
-                document.getElementById('last-update')
+                document.getElementById('refresh-icon')
                     .addEventListener('click', handleRefresh);
                 
             } catch (error) {

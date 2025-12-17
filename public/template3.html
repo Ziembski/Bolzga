@@ -819,6 +819,7 @@ function updateFieldsContent(data, rowNumber, row) {
             }
         }
         
+
         async function init() {
             currentRow = getRowNumber();
             
@@ -830,6 +831,19 @@ function updateFieldsContent(data, rowNumber, row) {
                 
                 initSSE();
                 
+                // Add event listeners for page2 and page3 checkboxes
+                const page2Checkbox = document.getElementById('page2_checkbox');
+                const page3Checkbox = document.getElementById('page3_checkbox');
+                
+                if (page2Checkbox) {
+                    page2Checkbox.addEventListener('change', handleRefresh);
+                }
+                
+                if (page3Checkbox) {
+                    page3Checkbox.addEventListener('change', handleRefresh);
+                }
+                
+                // Keep the refresh icon listener if you want to keep it as well
                 document.getElementById('refresh-icon')
                     .addEventListener('click', handleRefresh);
                 

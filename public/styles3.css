@@ -471,20 +471,20 @@ img.front_cover_back.coat {
 }
 
 
-.page2.detail-item.field-talent1 label {
+.page2.detail-item.field-cecha1 label {
     
     justify-self: start;
 	text-align: start;
 }
 
-.page2.detail-item.field-Upos1 label {
+.page2.detail-item.field-Ulom1 label {
     
     justify-self: start;
 	text-align: start;
 }
 
 
-.page2.detail-item.field-talent1, .page2.detail-item.field-talent2, .page2.detail-item.field-talent3, .page2.detail-item.field-talent4, .page2.detail-item.field-talent5, .page2.detail-item.field-talent6, .page2.detail-item.field-talent7, .page2.detail-item.field-talent8 {
+.page2.detail-item.field-cecha1, .page2.detail-item.field-cecha2, .page2.detail-item.field-cecha3, .page2.detail-item.field-cecha4, .page2.detail-item.field-cecha5, .page2.detail-item.field-cecha6, .page2.detail-item.field-cecha7, .page2.detail-item.field-cecha8 {
     display: flex;
     width: 100%;
     position: relative;
@@ -498,7 +498,7 @@ img.front_cover_back.coat {
 
 }
 
-.page2.detail-item.field-Upos1, .page2.detail-item.field-Upos2, .page2.detail-item.field-Upos3, .page2.detail-item.field-Upos4, .page2.detail-item.field-Upos5, .page2.detail-item.field-Upos6, .page2.detail-item.field-Upos7, .page2.detail-item.field-Upos8 {
+.page2.detail-item.field-Ulom1, .page2.detail-item.field-Ulom2, .page2.detail-item.field-Ulom3, .page2.detail-item.field-Ulom4, .page2.detail-item.field-Ulom5, .page2.detail-item.field-Ulom6, .page2.detail-item.field-Ulom7, .page2.detail-item.field-Ulom8 {
     display: flex;
     width: 100%;
     position: relative;

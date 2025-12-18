@@ -175,11 +175,10 @@ img.front_cover_back.coat {
     height: 87.75vmin;
     position: absolute;
     border-radius: 0 1.69vmin 1.69vmin 0;
-    background-color: white;
     transform-origin: left;
     transform-style: preserve-3d;
     transform: rotateY(0deg);
-    transition-duration: 0.8s;
+    transition-duration: 0.3s;
 }
 
 .inner {
@@ -302,7 +301,7 @@ img.front_cover_back.coat {
 
 .page2_front_content {
     position: absolute;
-    z-index: 5;
+    z-index: 97;
     width: 65.81vmin;
     height: 86.63vmin;
 }
@@ -443,7 +442,7 @@ img.front_cover_back.coat {
 
 .page2_back_content {
     position: absolute;
-    z-index: 4;
+    z-index: 97;
     width: 63.81vmin;
     height: 86.63vmin;
     object-fit: contain;

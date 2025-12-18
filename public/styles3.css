@@ -857,12 +857,12 @@ img.outline_watermark {
 
 #page1_checkbox:checked~#flip_book #page1 {
     transform: rotateY(-180deg);
-    z-index: 3;
+    z-index: 11;
 }
 
 #page2_checkbox:checked~#flip_book #page2 {
     transform: rotateY(-180deg);
-    z-index: 5;
+    z-index: 12;
 }
 
 #page2_rotate_checkbox:checked~#flip_book {
@@ -883,33 +883,33 @@ img.outline_watermark {
 
 #page3_checkbox:checked~#flip_book #page3 {
     transform: rotateY(-180deg);
-    z-index: 7;
+    z-index: 13;
 }
 
 #page4_checkbox:checked~#flip_book #page4 {
     transform: rotateY(-180deg);
-    z-index: 9;
+    z-index: 14;
 }
 
 #page5_checkbox:checked~#flip_book #page5 {
     transform: rotateY(-180deg);
-    z-index: 11;
+    z-index: 15;
 }
 
 #page6_checkbox:checked~#flip_book #page6 {
     transform: rotateY(-180deg);
-    z-index: 13;
+    z-index: 16;
 }
 
 #page7_checkbox:checked~#flip_book #page7 {
     transform: rotateY(-180deg);
-    z-index: 15;
+    z-index: 17;
 }
 
 
 #page8_checkbox:checked~#flip_book #page8 {
     transform: rotateY(-180deg);
-    z-index: 17;
+    z-index: 18;
 }
 
 

@@ -862,7 +862,7 @@ img.outline_watermark {
 
 #page2_checkbox:checked~#flip_book #page2 {
     transform: rotateY(-180deg);
-    z-index: 4;
+    z-index: 5;
 }
 
 #page2_rotate_checkbox:checked~#flip_book {
@@ -883,33 +883,33 @@ img.outline_watermark {
 
 #page3_checkbox:checked~#flip_book #page3 {
     transform: rotateY(-180deg);
-    z-index: 5;
+    z-index: 7;
 }
 
 #page4_checkbox:checked~#flip_book #page4 {
     transform: rotateY(-180deg);
-    z-index: 6;
+    z-index: 9;
 }
 
 #page5_checkbox:checked~#flip_book #page5 {
     transform: rotateY(-180deg);
-    z-index: 7;
+    z-index: 11;
 }
 
 #page6_checkbox:checked~#flip_book #page6 {
     transform: rotateY(-180deg);
-    z-index: 8;
+    z-index: 13;
 }
 
 #page7_checkbox:checked~#flip_book #page7 {
     transform: rotateY(-180deg);
-    z-index: 9;
+    z-index: 15;
 }
 
 
 #page8_checkbox:checked~#flip_book #page8 {
     transform: rotateY(-180deg);
-    z-index: 10;
+    z-index: 17;
 }
 
 

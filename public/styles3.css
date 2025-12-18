@@ -120,8 +120,7 @@ input {
     width: 67.5vmin;
     height: 90vmin;
     position: relative;
-    transition-duration: 1s;
-	transition: transform 1.05s ease-in-out;
+	transition: transform 1.0s ease-in-out, z-index 0.5s 0.5s; 
     perspective: 225vmin;
 }
 
@@ -179,7 +178,7 @@ img.front_cover_back.coat {
     transform-origin: left;
     transform-style: preserve-3d;
     transform: rotateY(0deg);
-    transition-duration: 1.05s;
+    transition-duration: 0.5s;
 }
 
 .inner {

@@ -743,9 +743,9 @@ span.g2 {
     object-fit: contain;
 }
 
-.page3.detail-item {
+.page3.detail-item.field-notatki1 {
     display: grid;
-    grid-template-rows: 10vmin 76vmin;
+    grid-template-rows: 5vmin 81vmin;
     gap: 1vmin;
     position: relative;
 	text-align: center;
@@ -763,7 +763,7 @@ span.g2 {
 
 .page4.detail-item {
     display: grid;
-    grid-template-rows: 10vmin 76vmin;
+    grid-template-rows: 5vmin 81vmin;
     gap: 1vmin;
     position: relative;
 	text-align: center;

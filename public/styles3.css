@@ -735,6 +735,41 @@ span.g2 {
     left: 0.8vmin;
 }
 
+.page3_back_content {
+    position: absolute;
+    z-index: 97;
+    width: 63.81vmin;
+    height: 86.63vmin;
+    object-fit: contain;
+}
+
+.page3.detail-item {
+    display: grid;
+    grid-template-rows: 10vmin 76vmin;
+    gap: 1vmin;
+    position: relative;
+	text-align: center;
+
+}
+
+
+.page4_front_content {
+    position: absolute;
+    z-index: 97;
+    width: 63.81vmin;
+    height: 86.63vmin;
+    object-fit: contain;
+}
+
+.page4.detail-item {
+    display: grid;
+    grid-template-rows: 10vmin 76vmin;
+    gap: 1vmin;
+    position: relative;
+	text-align: center;
+
+}
+
 .back_page {
     width: 100%;
     height: 100%;

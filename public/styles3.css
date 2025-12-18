@@ -820,22 +820,34 @@ img.outline_watermark {
 }
 
 #page1 {
-    z-index: 8;
+    z-index: 9;
 }
 
 #page2 {
-    z-index: 5;
+    z-index: 8;
 }
 
 #page3 {
-    z-index: 4;
+    z-index: 7;
 }
 
 #page4 {
-    z-index: 3;
+    z-index: 6;
 }
 
 #page5 {
+    z-index: 5;
+}
+
+#page6 {
+    z-index: 4;
+}
+
+#page7 {
+    z-index: 3;
+}
+
+#page8 {
     z-index: 2;
 }
 
@@ -882,6 +894,21 @@ img.outline_watermark {
 #page5_checkbox:checked~#flip_book #page5 {
     transform: rotateY(-180deg);
     z-index: 9;
+}
+
+#page6_checkbox:checked~#flip_book #page6 {
+    transform: rotateY(-180deg);
+    z-index: 12;
+}
+
+#page7_checkbox:checked~#flip_book #page7 {
+    transform: rotateY(-180deg);
+    z-index: 15;
+}
+
+#page8_checkbox:checked~#flip_book #page8 {
+    transform: rotateY(-180deg);
+    z-index: 18;
 }
 
 

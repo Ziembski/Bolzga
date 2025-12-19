@@ -746,7 +746,7 @@ position: absolute;
 }
 }
 
-.page3.detail-item.field-notatki1 {
+.page3_back.detail-item.field-notatki1 {
     display: grid;
     grid-template-rows: 5vmin 81vmin;
     gap: 1vmin;

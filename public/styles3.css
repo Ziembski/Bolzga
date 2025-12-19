@@ -753,7 +753,7 @@ span.g2 {
 
 }
 
-.page3.detail-item.field-notatki1 label {
+.page3_back.detail-item label {
 	width: 63.81vmin;
     position: relative;
 	text-align: start;
@@ -761,7 +761,7 @@ span.g2 {
 
 }
 
-.page3.detail-item.field-notatki1 span {
+span.page3_back.detail-value {
 	overflow: unset;
     text-wrap: wrap;
     text-overflow: ellipsis;

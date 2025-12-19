@@ -736,11 +736,14 @@ span.g2 {
 }
 
 .page3_back_content {
-    position: absolute;
+position: absolute;
     z-index: 97;
-    width: 63.81vmin;
-    height: 86.63vmin;
+    width: 60.81vmin;
+    height: 83.63vmin;
     object-fit: contain;
+    top: 3.3vmin;
+    left: 3vmin;
+}
 }
 
 .page3.detail-item.field-notatki1 {
@@ -754,27 +757,29 @@ span.g2 {
 }
 
 .page3_back.detail-item label {
-	width: 63.81vmin;
+	width: 100%;
     position: relative;
-	text-align: start;
-	text-wrap: wrap;
-
+    text-align: start;
+    text-wrap: wrap;
 }
 
 span.page3_back.detail-value {
-	overflow: unset;
-    text-wrap: wrap;
-    text-overflow: ellipsis;
+    overflow: auto;
+    text-wrap: auto;
+    text-overflow: clip;
     max-height: max-content;
+    border-bottom: 0vmin;
 }
 
 
 .page4_front_content {
-    position: absolute;
+	position: absolute;
     z-index: 97;
-    width: 63.81vmin;
-    height: 86.63vmin;
+    width: 60.81vmin;
+    height: 83.63vmin;
     object-fit: contain;
+    top: 3.3vmin;
+    left: 3vmin;
 }
 
 .page4.detail-item {
@@ -785,6 +790,21 @@ span.page3_back.detail-value {
 	text-align: start;
 	text-wrap: wrap;
 
+}
+
+.page4.detail-item label {
+	width: 100%;
+    position: relative;
+    text-align: start;
+    text-wrap: wrap;
+}
+
+span.page4.detail-value {
+    overflow: auto;
+    text-wrap: auto;
+    text-overflow: clip;
+    max-height: max-content;
+    border-bottom: 0vmin;
 }
 
 .back_page {

@@ -673,6 +673,17 @@ span.g2 {
     height: 27vmin;
 }
 
+.can text {
+    font-size: 5.3vmin;
+    font-family: Marker;
+    color: #001a40;
+    align-content: end;
+    left: 7.3vmin;
+    position: relative;
+    top: 2vmin;
+    height: 27vmin;
+}
+
 
 
 .can img {

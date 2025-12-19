@@ -753,6 +753,21 @@ span.g2 {
 
 }
 
+.page3.detail-item.field-notatki1 label {
+	width: 63.81vmin;
+    position: relative;
+	text-align: start;
+	text-wrap: wrap;
+
+}
+
+.page3.detail-item.field-notatki1 span {
+	overflow: unset;
+    text-wrap: wrap;
+    text-overflow: ellipsis;
+    max-height: max-content;
+}
+
 
 .page4_front_content {
     position: absolute;

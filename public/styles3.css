@@ -746,9 +746,9 @@ position: absolute;
 }
 }
 
-.page3_back.detail-item.field-notatki1 {
+.page3_back.detail-item {
     display: grid;
-    grid-template-rows: 5vmin 81vmin;
+    grid-template-rows: 2vmin 81vmin;
     gap: 1vmin;
     position: relative;
 	text-align: start;
@@ -784,7 +784,7 @@ span.page3_back.detail-value {
 
 .page4.detail-item {
     display: grid;
-    grid-template-rows: 5vmin 81vmin;
+    grid-template-rows: 2vmin 81vmin;
     gap: 1vmin;
     position: relative;
 	text-align: start;

@@ -818,6 +818,16 @@ span.page4.detail-value {
     border-bottom: 0vmin;
 }
 
+.page4_back_content {
+	position: absolute;
+    z-index: 97;
+    width: 60.81vmin;
+    height: 83.63vmin;
+    object-fit: contain;
+    top: 3.3vmin;
+    left: 3vmin;
+}
+
 .back_page {
     width: 100%;
     height: 100%;

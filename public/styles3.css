@@ -795,7 +795,6 @@ span.page3_back.detail-value {
 
 .page4.detail-item {
     display: grid;
-    grid-template-rows: 2vmin 81vmin;
     gap: 1vmin;
     position: relative;
 	text-align: start;

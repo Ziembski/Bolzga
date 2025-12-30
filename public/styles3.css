@@ -747,7 +747,7 @@ span.g2 {
 }
 
 .page3_back_content {
-position: absolute;
+	position: absolute;
     z-index: 97;
     width: 60.81vmin;
     height: 83.63vmin;
@@ -755,7 +755,7 @@ position: absolute;
     top: 3.3vmin;
     left: 3vmin;
 }
-}
+
 
 .page3_back.detail-item {
     display: grid;
@@ -861,6 +861,36 @@ span.page5.detail-value {
     top: 3.3vmin;
     left: 3vmin;
 }
+
+.reminders_title {
+    display: flex;
+    flex-direction: column;
+}
+
+.reminders_title label {
+	font-size: 3.75vmin;
+    font-weight: normal;
+    color: #292929;
+    margin-top: -1.73vmin;
+    position: static;
+}
+
+span.reminders_text {
+	font-size: 3.9vmin;
+    font-family: Elegant-tw;
+    color: #292929;
+    border-bottom: dashed 0.4vmin;
+    border-color: #292929;
+    text-align: start;
+    margin-top: 0;
+    white-space: pre-wrap;
+    overflow: clip;
+	text-wrap: nowrap;
+    text-overflow: ellipsis;
+    max-height: 4.9vmin;
+}
+
+
 
 .back_page {
     width: 100%;

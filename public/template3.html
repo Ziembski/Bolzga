@@ -1,1183 +1,1185 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paszport</title>
-    <link rel="stylesheet" href="styles3.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paszport</title>
+	<link rel="stylesheet" href="styles3.css">
 </head>
 
 <body>
-<div class="main_content">
-	
-
-<div class="body-img">
-	<img src="/img/layout/body-bg.png">
-</div>
-
-
-<div class="flip_book_main">
-	
-	<input type="checkbox" id="page1_checkbox">
-	<input type="checkbox" id="page2_checkbox">
-	<input type="checkbox" id="page2_rotate_checkbox">
-	<input type="checkbox" id="page3_checkbox">
-	<input type="checkbox" id="page4_checkbox">
-	<input type="checkbox" id="page5_checkbox">
-	<input type="checkbox" id="page6_checkbox">
-	<input type="checkbox" id="page7_checkbox">
-	<input type="checkbox" id="page8_checkbox">
-	
-
-	<!-- Flip Book -->
-	<div id="flip_book">
-
-		<div class="page" id="page1">
-			<div class="front_page cover_page">
-				<label for="page1_checkbox"></label>
-				<div class="front_cover_content">
-					<span class="front_cover Title">RZECZPOSPOLITA BOLZGA</span>
-					<img class="front_cover coat" src="./img/flip-book/gold_outline.webp"></img>
-					<span class="front_cover Subtitle">Dokument Obywatelski</span>
-				</div>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-			</div>
-			<div class="back_page cover_page">
-				<label for="page1_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<div class="front_cover_content">
-					<img class="front_cover_back coat" src="./img/flip-book/gold_outline.webp"></img>
-				</div>
-			</div>
+	<div class="main_content">
+		
+		
+		<div class="body-img">
+			<img src="/img/layout/body-bg.png">
 		</div>
-
-		<div class="page inner" id="page2">
-			<div class="front_page">
-				<div class="page2_checks">
-					<label id="rotate_checkbox" for="page2_rotate_checkbox"></label>
-					<label id="page2_standard_checkbox" for="page2_checkbox"></label>
-				</div>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="./img/flip-book/page1.jpeg" alt="Front content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page2_front_content">
-					<span class="page2_front_content Title">RZECZPOSPOLITA BOLZGA DOKUMENT OBYWATELSKI</span>
-					<img class="page2_front_content coat" src="./img/flip-book/godlo.png"></img>
+		
+		
+		<div class="flip_book_main">
+			
+			<input type="checkbox" id="page1_checkbox">
+			<input type="checkbox" id="page2_checkbox">
+			<input type="checkbox" id="page2_rotate_checkbox">
+			<input type="checkbox" id="page3_checkbox">
+			<input type="checkbox" id="page4_checkbox">
+			<input type="checkbox" id="page5_checkbox">
+			<input type="checkbox" id="page6_checkbox">
+			<input type="checkbox" id="page7_checkbox">
+			<input type="checkbox" id="page8_checkbox">
+			
+			
+			<!-- Flip Book -->
+			<div id="flip_book">
 				
-					<div class="pin1">
-						<img src="/img/flip-book/pin.png">
+				<div class="page" id="page1">
+					<div class="front_page cover_page">
+						<label for="page1_checkbox"></label>
+						<div class="front_cover_content">
+							<span class="front_cover Title">RZECZPOSPOLITA BOLZGA</span>
+							<img class="front_cover coat" src="./img/flip-book/gold_outline.webp"></img>
+							<span class="front_cover Subtitle">Dokument Obywatelski</span>
+						</div>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
 					</div>
-					
-					<div class="pin2">
-						<img src="/img/flip-book/pin.png">
+					<div class="back_page cover_page">
+						<label for="page1_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<div class="front_cover_content">
+							<img class="front_cover_back coat" src="./img/flip-book/gold_outline.webp"></img>
+						</div>
 					</div>
-					<div class="page2_entries">
-						<div class="page2_column1">
-							<div class="img1-container">
-								<img id="img1-photo-back" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img1-placeholder').style.display='block';">
-								<span class="img1-placeholder">IMG1</span>
+				</div>
+				
+				<div class="page inner" id="page2">
+					<div class="front_page">
+						<div class="page2_checks">
+							<label id="rotate_checkbox" for="page2_rotate_checkbox"></label>
+							<label id="page2_standard_checkbox" for="page2_checkbox"></label>
+						</div>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="./img/flip-book/page1.jpeg" alt="Front content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page2_front_content">
+							<span class="page2_front_content Title">RZECZPOSPOLITA BOLZGA DOKUMENT OBYWATELSKI</span>
+							<img class="page2_front_content coat" src="./img/flip-book/godlo.png"></img>
+							
+							<div class="pin1">
+								<img src="/img/flip-book/pin.png">
 							</div>
 							
-
-							
-							<div class="img2-wrapper">
-								<div class="img2-label">Podpis obywatelski:</div>
-								<div class="img2-container">
-									<img id="img2-signature-back" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img2-placeholder').style.display='block';">
-									<span class="img2-placeholder">IMG2</span>
+							<div class="pin2">
+								<img src="/img/flip-book/pin.png">
+							</div>
+							<div class="page2_entries">
+								<div class="page2_column1">
+									<div class="img1-container">
+										<img id="img1-photo-back" src="" alt="Zdjęcie" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img1-placeholder').style.display='block';">
+										<span class="img1-placeholder">IMG1</span>
+									</div>
+									
+									
+									
+									<div class="img2-wrapper">
+										<div class="img2-label">Podpis obywatelski:</div>
+										<div class="img2-container">
+											<img id="img2-signature-back" src="" alt="Podpis" style="display: none;" onerror="this.style.display='none'; this.parentElement.querySelector('.img2-placeholder').style.display='block';">
+											<span class="img2-placeholder">IMG2</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="page2_column2">
+									<div class="detail-item field-nazwisko" data-field="Nazwisko">
+										<label>Nazwisko:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-imie" data-field="Imię">
+										<label>Imię:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-rasa" data-field="Rasa">
+										<label>Rasa:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-plec" data-field="Płeć">
+										<label>Płeć:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-stan-cywilny" data-field="Stan cywilny">
+										<label>Stan cywilny:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+								</div>
+								
+								<div class="page2_column3">
+									<div class="detail-item field-wiek" data-field="Wiek">
+										<label>Wiek:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-wyznanie" data-field="Wyznanie">
+										<label>Wyznanie:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-NI" data-field="NI">
+										<label>Numer Id:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
+									<div class="detail-item field-agent" data-field="Agent">
+										<label>Agent BBC:</label>
+										<span class="detail-value">Ładowanie...</span>
+									</div>
 								</div>
 							</div>
+							<img class="page2_front_content stamp" src="./img/flip-book/godlo_stamp.png"></img>
 						</div>
-
-						<div class="page2_column2">
-							<div class="detail-item field-nazwisko" data-field="Nazwisko">
-								<label>Nazwisko:</label>
-								<span class="detail-value">Ładowanie...</span>
+					</div>
+					
+					<div class="back_page">
+						
+						<label for="page2_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="./img/flip-book/page1.jpeg" alt="Back content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page2_back_content">
+							<img class="page2_front_content coat2" src="./img/flip-book/godlo.png"></img>
+							<span class="page2_back_content Title">Subiektywna Tabela Atrybutów Tubylca</span>
+							<div class="page2_back_content stats_grid">
+								<div class="stats_grid column1">
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-gibkosc" data-field="Gibkość">
+											<label>Gibkość:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-spryt" data-field="Spryt">
+											<label>Spryt:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-wola" data-field="Wola">
+											<label>Wola:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-krzepa" data-field="Krzepa">
+											<label>Krzepa:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									
+								</div>
+								<div class="stats_grid column2">
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-hart" data-field="Hart">
+											<label>Hart:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-zwawosc" data-field="Żwawość">
+											<label>Żwawość:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-garda" data-field="Garda">
+											<label>Garda:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+									<div class="stats_grid row">
+										<div class="page2 detail-item field-obrona" data-field="Obrona">
+											<label>Obrona:</label>
+											<span class="page2 detail-value">Ładowanie...</span>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="detail-item field-imie" data-field="Imię">
-								<label>Imię:</label>
-								<span class="detail-value">Ładowanie...</span>
+							<div class="page2_back_content stats_grid single">
+								<div class="stats_grid single">
+									<div class="page2 detail-item field-cecha1" data-field="Cecha1">
+										<label>Cechy:</label>
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha2" data-field="Cecha2">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha3" data-field="Cecha3">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha4" data-field="Cecha4">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha5" data-field="Cecha5">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha6" data-field="Cecha6">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha7" data-field="Cecha7">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-cecha8" data-field="Cecha8">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+								</div>
+								<div class="stats_grid single">
+									<div class="page2 detail-item field-Ulom1" data-field="Ulom1">
+										<label>Ułomności:</label>
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom2" data-field="Ulom2">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom3" data-field="Ulom3">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom4" data-field="Ulom4">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom5" data-field="Ulom5">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom6" data-field="Ulom6">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom7" data-field="Ulom7">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+									<div class="page2 detail-item field-Ulom8" data-field="Ulom8">
+										<span class="page2_back detail-value">Ładowanie...</span>
+									</div>
+								</div>
 							</div>
-							<div class="detail-item field-rasa" data-field="Rasa">
-								<label>Rasa:</label>
-								<span class="detail-value">Ładowanie...</span>
+							<div class="pin3">
+								<img src="/img/flip-book/pin2.png">
 							</div>
-							<div class="detail-item field-plec" data-field="Płeć">
-								<label>Płeć:</label>
-								<span class="detail-value">Ładowanie...</span>
+							
+							<div class="pin4">
+								<img src="/img/flip-book/pin2.png">
 							</div>
-							<div class="detail-item field-stan-cywilny" data-field="Stan cywilny">
-								<label>Stan cywilny:</label>
-								<span class="detail-value">Ładowanie...</span>
+							<div class="page3-stamp">
+								<span>ZAKTUALIZOWANO</span>
+								<div id="last-update" class="last-update"></div>
+								
 							</div>
 						</div>
 						
-						<div class="page2_column3">
-							<div class="detail-item field-wiek" data-field="Wiek">
-								<label>Wiek:</label>
-								<span class="detail-value">Ładowanie...</span>
-							</div>
-							<div class="detail-item field-wyznanie" data-field="Wyznanie">
-								<label>Wyznanie:</label>
-								<span class="detail-value">Ładowanie...</span>
-							</div>
-							<div class="detail-item field-NI" data-field="NI">
-								<label>Numer Id:</label>
-								<span class="detail-value">Ładowanie...</span>
-							</div>
-							<div class="detail-item field-agent" data-field="Agent">
-								<label>Agent BBC:</label>
-								<span class="detail-value">Ładowanie...</span>
-							</div>
-						</div>
-					</div>
-					<img class="page2_front_content stamp" src="./img/flip-book/godlo_stamp.png"></img>
-				</div>
-			</div>
-
-			<div class="back_page">
-
-				<label for="page2_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="./img/flip-book/page1.jpeg" alt="Back content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page2_back_content">
-					<img class="page2_front_content coat2" src="./img/flip-book/godlo.png"></img>
-					<span class="page2_back_content Title">Subiektywna Tabela Atrybutów Tubylca</span>
-					<div class="page2_back_content stats_grid">
-						<div class="stats_grid column1">
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-gibkosc" data-field="Gibkość">
-									<label>Gibkość:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-spryt" data-field="Spryt">
-									<label>Spryt:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-wola" data-field="Wola">
-									<label>Wola:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-krzepa" data-field="Krzepa">
-									<label>Krzepa:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-
-						</div>
-						<div class="stats_grid column2">
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-hart" data-field="Hart">
-									<label>Hart:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-zwawosc" data-field="Żwawość">
-									<label>Żwawość:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-garda" data-field="Garda">
-									<label>Garda:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid row">
-								<div class="page2 detail-item field-obrona" data-field="Obrona">
-									<label>Obrona:</label>
-									<span class="page2 detail-value">Ładowanie...</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="page2_back_content stats_grid single">
-							<div class="stats_grid single">
-								<div class="page2 detail-item field-cecha1" data-field="Cecha1">
-									<label>Cechy:</label>
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha2" data-field="Cecha2">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha3" data-field="Cecha3">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha4" data-field="Cecha4">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha5" data-field="Cecha5">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha6" data-field="Cecha6">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha7" data-field="Cecha7">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-cecha8" data-field="Cecha8">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-							</div>
-							<div class="stats_grid single">
-								<div class="page2 detail-item field-Ulom1" data-field="Ulom1">
-									<label>Ułomności:</label>
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom2" data-field="Ulom2">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom3" data-field="Ulom3">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom4" data-field="Ulom4">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom5" data-field="Ulom5">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom6" data-field="Ulom6">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom7" data-field="Ulom7">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-								<div class="page2 detail-item field-Ulom8" data-field="Ulom8">
-									<span class="page2_back detail-value">Ładowanie...</span>
-								</div>
-							</div>
-					</div>
-					<div class="pin3">
-						<img src="/img/flip-book/pin2.png">
 					</div>
 					
-					<div class="pin4">
-						<img src="/img/flip-book/pin2.png">
-					</div>
-					<div class="page3-stamp">
-						<span>ZAKTUALIZOWANO</span>
-						<div id="last-update" class="last-update"></div>
-
-					</div>
-				</div>	
-
-			</div>
-
-		</div>
-
-		<div class="page inner" id="page3">
-			<div class="front_page">
-				<label for="page3_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="./img/flip-book/page2.jpeg" alt="Front content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-					<img class="page3_front_content coat" src="./img/flip-book/godlo.png"></img>
-							<div class="stats_grid skills">
-								<div class="page3 detail-item field-Umie1" data-field="Umie1">
-									<label>Umiejętności:</label>
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie2" data-field="Umie2">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie3" data-field="Umie3">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie4" data-field="Umie4">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie5" data-field="Umie5">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie6" data-field="Umie6">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie7" data-field="Umie7">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie8" data-field="Umie8">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie9" data-field="Umie9">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie10" data-field="Umie10">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie11" data-field="Umie11">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie12" data-field="Umie12">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie13" data-field="Umie13">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie14" data-field="Umie14">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
-								<div class="page3 detail-item field-Umie15" data-field="Umie15">
-									<span class="page3_front detail-value">Ładowanie...</span>
-								</div>
+				</div>
+				
+				<div class="page inner" id="page3">
+					<div class="front_page">
+						<label for="page3_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="./img/flip-book/page2.jpeg" alt="Front content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<img class="page3_front_content coat" src="./img/flip-book/godlo.png"></img>
+						<div class="stats_grid skills">
+							<div class="page3 detail-item field-Umie1" data-field="Umie1">
+								<label>Umiejętności:</label>
+								<span class="page3_front detail-value">Ładowanie...</span>
 							</div>
-							<div class="page3 status_indicators_container">
-								<span class="z0">0</span>
-								<span class="z1">1</span>
-								<span class="z2">2</span>
-								<span class="zd"><b>ß</b></span>
-								<span class="r0">0</span>
-								<span class="r1">1</span>
-								<span class="r2">2</span>
-								<span class="r3">3</span>
-								<span class="rd"><b>Ê</b></span>
-								<span class="g1"><b>Á</b></span>
-								<span class="g2"><b>Î</b></span>
-								
-								<div class="can status3">
-									<span>Szok</span>
-									<img src="./img/flip-book/can.png">
-								</div>
-								<div class="can status1">
-									<span>Wyczerpanie</span>
-									<img src="./img/flip-book/can.png">
-								</div>
-								<div class="can status2">
-									<span>Obrazenia</span>
-									<img src="./img/flip-book/can.png">
-								</div>
+							<div class="page3 detail-item field-Umie2" data-field="Umie2">
+								<span class="page3_front detail-value">Ładowanie...</span>
 							</div>
-
+							<div class="page3 detail-item field-Umie3" data-field="Umie3">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie4" data-field="Umie4">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie5" data-field="Umie5">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie6" data-field="Umie6">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie7" data-field="Umie7">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie8" data-field="Umie8">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie9" data-field="Umie9">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie10" data-field="Umie10">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie11" data-field="Umie11">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie12" data-field="Umie12">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie13" data-field="Umie13">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie14" data-field="Umie14">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+							<div class="page3 detail-item field-Umie15" data-field="Umie15">
+								<span class="page3_front detail-value">Ładowanie...</span>
+							</div>
+						</div>
+						<div class="page3 status_indicators_container">
+							<span class="z0">0</span>
+							<span class="z1">1</span>
+							<span class="z2">2</span>
+							<span class="zd"><b>ß</b></span>
+							<span class="r0">0</span>
+							<span class="r1">1</span>
+							<span class="r2">2</span>
+							<span class="r3">3</span>
+							<span class="rd"><b>Ê</b></span>
+							<span class="g1"><b>Á</b></span>
+							<span class="g2"><b>Î</b></span>
 							
-			</div>
-
-			<div class="back_page">
-				<label for="page3_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="./img/flip-book/page2.jpeg" alt="Back content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page3_back_content">
-					<div class="page3_back detail-item field-notatki1" data-field="Notatki1">
-						<label>Notatki:</label>
-						<span class="page3_back detail-value">Ładowanie...</span>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="page inner" id="page4">
-			<div class="front_page">
-				<label for="page4_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="./img/flip-book/page3.jpeg" alt="Front content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page4_front_content">
-					<div class="page4 detail-item field-notatki2" data-field="Notatki2">
-						<label>Notatki c.d.:</label>
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="back_page">
-				<label for="page4_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="./img/flip-book/page3.jpeg" alt="Back content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page4_back_content">
-					<div class="page4 detail-item field-wyja1" data-field="Wyja1">
-						<label>Wyjaśnienia cech:</label>
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja2" data-field="Wyja2">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja3" data-field="Wyja3">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja4" data-field="Wyja4">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja5" data-field="Wyja5">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja6" data-field="Wyja6">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja7" data-field="Wyja7">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page4 detail-item field-wyja8" data-field="Wyja8">
-						<span class="page4 detail-value">Ładowanie...</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="page inner" id="page5">
-			<div class="front_page">
-				<label for="page5_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="./img/flip-book/page2.jpeg" alt="Front content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page5_front_content">
-					<div class="page5 detail-item field-wyja9" data-field="Wyja9">
-						<label>Wyjaśnienia ułomności:</label>
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja10" data-field="Wyja10">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja11" data-field="Wyja11">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja12" data-field="Wyja12">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja13" data-field="Wyja13">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja14" data-field="Wyja14">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja15" data-field="Wyja15">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-					<div class="page5 detail-item field-wyja16" data-field="Wyja16">
-						<span class="page5 detail-value">Ładowanie...</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="back_page">
-				<label for="page5_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="./img/flip-book/page2.jpeg" alt="Back content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page5_back_content">
-					<div class="reminders_title">
-						<label>Upomnienia:</label>
-					</div>
-					<div class="reminders_text1">
-						<span class="reminders_text_span"><u><b>KAPSLE</b></u>: 3 na start, Dodatkowe od MG. <b>Efekty</b>: uniknięcie kryta i przerzut, dodatkowa karta, przerzut kości, wyjście z Szoku, usuń Rany: rzut na Hart.
-						<u><b>RZUTY</b></u>: <b>Cel</b> to 4. <b>As</b>: dod. rzut na maksie i suma. <b>Rajs</b>: +4 ponad Cel. <b>Osłona</b>: −2 /-4 /−6. <b>Widoczność</b>: −1 do −4. <b>Zasięg</b>: kary na średnim i dalekim strzale. <b>Przewaga</b>: +1-4 za kazdego.
-						<u><b>BOLZGA KOŚĆ</b></u>: dodatkowa Bolzga Kość (k6) przy testach Atrybutów i Umiejętności, wybiera lepszy wynik.
-						<u><b>KOLEJNOŚĆ</b></u>: Karty ustalają inicjatywę. Joker +2 do rzutów, +2 obrażen, +1 Kapsel.</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="page inner" id="page6">
-			<div class="front_page">
-				<label for="page6_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="./img/flip-book/page1.jpeg" alt="Front content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page6_front_content">
-					<div class="reminders_text">
-						<span class="reminders_text_span">DARMOWE AKCJE: Ruch, Bieg: Ruch +1k6 i -2 do akcji, Skok: 1m, 2m w Biegu, dodatk. rzut na Gibkość
-						AKCJE: Atak vs Garda (bitka) lub Cel (strzelanie). 3 akcje max — każda kolejna −2. Bieg: kość biegu, −2 do akcji. Obrona: +4 do Gardy. Celowanie: +2 do strzału bez ruchu. Test: Rozkojarzenie lub Wystawienie. Wspieranie: +1 / +2 do akcji przy Rajsie. Chwyt / Odepchnięcie / Obalenie: Spętanie lub Skrępowanie, Leżący na Rajsie. Czekam: działasz później.</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="back_page">
-				<label for="page6_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="./img/flip-book/page1.jpeg" alt="Back content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page6_back_content">
-					<div class="reminders_text">
-						<span class="reminders_text_span">AKCJE C.D.: Precyzyjny cios: -4 do rzutu, w ręce rozbrojenie, w głowę +4 obrażeń, lub omija opancerzenie. Na pełnej kurwie: +2 do ataku i obrażeń ale Wystawiony. Z zaskoczenia: +4 atak i obrażenia.
-						OBRAŻENIA (Krzepa + broń) ≥ Wytrzymałość → Szok, +1 Rajs → 1 Rana za każdy, Rajs na ataku → +1k6
-						Szok: brak akcji, rzut na Wolę na początku tury. Kolejny Szok → Rana. Rany: −1 do akcji i Ruchu za każdą, Postać może max 3, Przydupasy odpadają po 1. Wyczerpanie −1 za poziom, 3 to utrata przytomności: rzut na Hart, krwawienie na porażce.</span>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="page inner" id="page7">
-			<div class="front_page">
-				<label for="page7_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="./img/flip-book/page2.jpeg" alt="Front content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-				<div class="page7_front_content">
-					<div class="reminders_text">
-						<span class="reminders_text_span">STATUSY: Rozkojarzony: −2 do akcji. Wystawiony: +2 dla atakujących. Leżący: +2 do Celu z dystansu, +2 dla atakującego. Spętany: −2, ograniczony ruch. Skrępowany: brak ruchu i −2, Wystawiony. Ogłuszony: Szok + Rozkojarzony + Wystawiony. Krwawienie — rzut Hart co turę, na porażce rana permanentna lub śmierć. Leczenie: rzut, -1 bez Pierwszej Pomocy, stabilizacja krwawiącego, usunięcie rany, 2 na Rajsie
-						INNE: Noszenie przedmiotów: 10x Krzepa + 10, Rzut bez skilla: - 1k4 -2 + Bolzga Kość.</span>
-					</div>
-				</div>
-			</div>
-
-			<div class="back_page">
-				<label for="page7_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="./img/flip-book/page2.jpeg" alt="Back content">
-				<img class="outline_watermark" src="./img/layout/godlo-outline.png">
-			</div>
-		</div>
-		<div class="page" id="page8">
-			<div class="front_page cover_page">
-				<label for="page8_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
-				<img class="front_content_bg" src="" alt="Front content">
-			</div>
-
-			<div class="back_page cover_page">
-				<label for="page8_checkbox"></label>
-				<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
-				<img class="back_content_bg" src="" alt="Back content">
-			</div>
-		</div>
-
-	</div>
-</div>
-
-
-
-<div class="flip-playing-card">
-	
-	<input type="checkbox" id="card_checkbox">
-
-	<div class="flip-playing-card-inner">
-  
-		<div class="flip-playing-card-front">
-			
-			<label for="card_checkbox"></label>
-
-			<div class="playing-card">
-			
-				<div class="pc-inner-frame">
-					<img id="img4-card" src="">
-				</div>
-			
-				<div class="pc-top-left">
-				
-					<div class="detail-item field-pl-cd" data-field="pl-cd">
-						<span class="detail-value">A4</span>
+							<div class="can status3">
+								<span>Szok</span>
+								<img src="./img/flip-book/can.png">
+							</div>
+							<div class="can status1">
+								<span>Wyczerpanie</span>
+								<img src="./img/flip-book/can.png">
+							</div>
+							<div class="can status2">
+								<span>Obrazenia</span>
+								<img src="./img/flip-book/can.png">
+							</div>
+						</div>
+						
+						
 					</div>
 					
-					<div class="img3-wrapper">
-						<div class="img3-container">
-							<img id="img3-suit-top" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+					<div class="back_page">
+						<label for="page3_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="./img/flip-book/page2.jpeg" alt="Back content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page3_back_content">
+							<div class="page3_back detail-item field-notatki1" data-field="Notatki1">
+								<label>Notatki:</label>
+								<span class="page3_back detail-value">Ładowanie...</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="page inner" id="page4">
+					<div class="front_page">
+						<label for="page4_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="./img/flip-book/page3.jpeg" alt="Front content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page4_front_content">
+							<div class="page4 detail-item field-notatki2" data-field="Notatki2">
+								<label>Notatki c.d.:</label>
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
 						</div>
 					</div>
 					
-				</div>
-				
-				<div class="pc-bottom-right">
-				
-					<div class="detail-item field-pl-cd" data-field="pl-cd">
-						<span class="detail-value">A4</span>
+					<div class="back_page">
+						<label for="page4_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="./img/flip-book/page3.jpeg" alt="Back content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page4_back_content">
+							<div class="page4 detail-item field-wyja1" data-field="Wyja1">
+								<label>Wyjaśnienia cech:</label>
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja2" data-field="Wyja2">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja3" data-field="Wyja3">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja4" data-field="Wyja4">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja5" data-field="Wyja5">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja6" data-field="Wyja6">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja7" data-field="Wyja7">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page4 detail-item field-wyja8" data-field="Wyja8">
+								<span class="page4 detail-value">Ładowanie...</span>
+							</div>
+						</div>
 					</div>
-					
-					<div class="img3-wrapper">
-						<div class="img3-container">
-							<img id="img3-suit-bottom" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
-							<span class="img3-placeholder">IMG3</span>
+				</div>
+				<div class="page inner" id="page5">
+					<div class="front_page">
+						<label for="page5_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="./img/flip-book/page2.jpeg" alt="Front content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page5_front_content">
+							<div class="page5 detail-item field-wyja9" data-field="Wyja9">
+								<label>Wyjaśnienia ułomności:</label>
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja10" data-field="Wyja10">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja11" data-field="Wyja11">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja12" data-field="Wyja12">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja13" data-field="Wyja13">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja14" data-field="Wyja14">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja15" data-field="Wyja15">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
+							<div class="page5 detail-item field-wyja16" data-field="Wyja16">
+								<span class="page5 detail-value">Ładowanie...</span>
+							</div>
 						</div>
 					</div>
 					
+					<div class="back_page">
+						<label for="page5_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="./img/flip-book/page2.jpeg" alt="Back content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page5_back_content">
+							<div class="reminders_title">
+								<label>Upomnienia:</label>
+							</div>
+							<div class="reminders_text1">
+								<span class="reminders_text_span"><u><b>KAPSLE</b></u>: 3 na start, Dodatkowe od MG. <b>Efekty</b>: uniknięcie kryta i przerzut, dodatkowa karta, przerzut kości, wyjście z <i>Szoku</i>, usuń <i>Rany</i>: rzut na <i>Hart</i>.
+									<u><b>RZUTY</b></u>: <b>Cel</b> to 4. <b>As</b>: dod. rzut na maksie i suma. <b>Rajs</b>: +4 ponad <i>Cel</i>. <b>Osłona</b>: −2 /-4 /−6. <b>Widoczność</b>: −1 do −4. <b>Zasięg</b>: kary na średnim i dalekim strzale. <b>Przewaga</b>: +1-4 za kazdego.
+									<u><b>BOLZGA KOŚĆ</b></u>: dodatkowa Bolzga Kość (k6) przy testach <i>Atrybutów</i> i <i>Umiejętności</i>, wybiera lepszy wynik.
+									<u><b>KOLEJNOŚĆ</b></u>: Karty ustalają inicjatywę. Joker +2 do rzutów, +2 obrażen, +1 Kapsel.</span>
+							</div>
+						</div>
+					</div>
 				</div>
-			
-			</div>
-			
-		</div>
-		
-		<div class="flip-playing-card-back">
-			
-			<label for="card_checkbox"></label>
-			
-			<div class="playing-card-backside">
-				<img src="/img/cards/Backside.png">
-			</div>
-		
-		</div>
-		
-	</div>
-</div>
-
-	
-<div class="caps-section">
-
-	<div class="cap1">
-		<img src="/img/caps/cap1.png" alt="Kapsel 1">
-	</div>
-	
-	<div class="cap2">
-		<img src="/img/caps/cap2.png" alt="Kapsel 2">
-	</div>
-	
-	<div class="cap3">
-		<img src="/img/caps/cap3.png" alt="Kapsel 3">
-	</div>
-	
-	<div class="cap4">
-		<img src="/img/caps/cap4.png" alt="Kapsel 4">
-	</div>
-	
-	<div class="cap5">
-		<img src="/img/caps/cap5.png" alt="Kapsel 5">
-	</div>
-	
-	<div class="cap6">
-		<img src="/img/caps/cap6.png" alt="Kapsel 6">
-	</div>
-	
-	<div class="cap7">
-		<img src="/img/caps/cap7.png" alt="Kapsel 7">
-	</div>
-	
-	<div class="cap8">
-		<img src="/img/caps/cap8.png" alt="Kapsel 8">
-	</div>
-	
-	<div class="cap9">
-		<img src="/img/caps/cap9.png" alt="Kapsel 9">
-	</div>
-	
-	<div class="cap10">
-		<img src="/img/caps/cap10.png" alt="Kapsel 10">
-	</div>
-	
-</div>
-	
-<div class="go-back">
-	<a href="index.html">
-		<img src="/img/arrows/back.png" alt="Powrót">
-	</a>
-</div>
-
-<div class="refresh-container">
-	<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
-</div>
-		
-
-
-<div class="game-container" id="gameContainer">
-	<div class="target" id="target">
-		<img src=".\img\layout\Fly.png" alt="Moving" id="movingImg">
-		<img src=".\img\layout\Fly_stop.png" alt="Stopped" id="stoppedImg" class="hidden">
-	</div>
-</div>
-
-    <script>
-        let currentData = null;
-        let currentRow = null;
-        let eventSource = null;
-        let updateDebounceTimer = null;
-        let previousKartaValue = null;
-        
-        function getRowNumber() {
-            const params = new URLSearchParams(window.location.search);
-            return parseInt(params.get('row')) || 1;
-        }
-        
-        function updateImage(imgId, url) {
-            const imgElement = document.getElementById(imgId);
-            
-            if (!imgElement) return;
-            
-            if (url && url.trim() !== '' && url !== 'Brak danych') {
-                imgElement.src = url;
-                imgElement.style.display = 'block';
-                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
-                if (placeholder) {
-                    placeholder.style.display = 'none';
-                }
-            } else {
-                imgElement.style.display = 'none';
-                const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
-                if (placeholder) {
-                    placeholder.style.display = 'block';
-                }
-            }
-        }
-        
-function updateFields(data, rowNumber) {
-    if (!data || !data.rows || rowNumber > data.rows.length) {
-        const detailItems = document.querySelectorAll('.detail-item[data-field]');
-        detailItems.forEach(item => {
-            const valueElement = item.querySelector('.detail-value');
-            if (valueElement) {
-                valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
-                valueElement.classList.add('error-value');
-            }
-        });
-        return;
-    }
-    
-    const row = data.rows[rowNumber - 1];
-    
-    // NEW CODE - Check if "Karta" field has changed
-    const kartaIndex = data.headers.indexOf('Karta');
-    const currentKartaValue = kartaIndex >= 0 ? row[kartaIndex] : null;
-    
-    if (previousKartaValue !== null && currentKartaValue !== previousKartaValue) {
-        // Karta has changed - trigger animation
-        animateCardChange(() => {
-            updateFieldsContent(data, rowNumber, row);
-        });
-    } else {
-        // No change or first load - update directly
-        updateFieldsContent(data, rowNumber, row);
-    }
-    
-    previousKartaValue = currentKartaValue;
-}
-
-// NEW FUNCTION - Handles the card animation
-function animateCardChange(callback) {
-    const card = document.querySelector('.flip-playing-card');
-    if (!card) {
-        callback();
-        return;
-    }
-    
-    // Slide out to the right with rotation
-    card.style.transition = 'transform 0.8s ease-in, opacity 0.8s ease-in';
-    card.style.transform = 'translateX(150vw) rotate(180deg)';
-    card.style.opacity = '0';
-    
-    setTimeout(() => {
-        // Update content while off-screen
-        callback();
-        
-        // Position card off-screen to the left
-        card.style.transition = 'none';
-        card.style.transform = 'translateX(-150vw) rotate(-180deg)';
-        card.style.opacity = '0';
-        
-        // Force reflow
-        card.offsetHeight;
-        
-        // Slide in from the left with rotation to final position
-        setTimeout(() => {
-            card.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
-            card.style.transform = 'translateX(0) rotate(10deg)';
-            card.style.opacity = '1';
-        }, 50);
-    }, 800);
-}
-
-// NEW FUNCTION - Contains all the original field update logic
-function updateFieldsContent(data, rowNumber, row) {
-    const fieldItems = document.querySelectorAll('.detail-item[data-field]');
-    
-			
-			// Get the pl-suit value for color logic
-			const plSuitIndex = data.headers.indexOf('pl-suit');
-			const plSuitValue = plSuitIndex >= 0 ? row[plSuitIndex] : null;
-			
-			// Update text fields
-			fieldItems.forEach(item => {
-				const fieldName = item.getAttribute('data-field');
-				const fieldIndex = data.headers.indexOf(fieldName);
-				const valueElement = item.querySelector('.detail-value');
-				
-				if (!valueElement) return;
-				
-				if (fieldIndex >= 0) {
-					let value = row[fieldIndex] || 'Brak danych';
+				<div class="page inner" id="page6">
+					<div class="front_page">
+						<label for="page6_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="./img/flip-book/page1.jpeg" alt="Front content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page6_front_content">
+							<div class="reminders_text">
+								<span class="reminders_text_span"><b><u>DARMOWE AKCJE</b></u>: <b>Ruch</b>, <b>Bieg</b>: <i>Ruch</i> +1k6 i -2 do akcji, <b>Skok</b>: 1m, 2m w <i>Biegu</i>, dodatk. rzut na <i>Gibkość</i>.
+									<b><u>AKCJE</b></u>: <b>Atak</b> vs <i>Garda</i> (bitka) lub <i>Cel</i> (strzelanie). 3 akcje max — każda kolejna −2.<b>Obrona</b>: +4 do <i>Gardy</i>. <b>Celowanie</v>: +2 do strzału bez ruchu. <b>Test</b>: rzut na <i>Umiejętność</i>, daje <i>Rozkojarzenie</i> lub <i>Wystawienie</i>. <b>Wspieranie</b>: +1 / +2 do akcji przy Rajsie. <b>Chwyt / Odepchnięcie / Obalenie</b>: <i>Spętanie</i> lub <i>Skrępowanie</i>, <i>Leżący</i> na Rajsie. <b>Czekam</b>: działasz później.</span>
+							</div>
+						</div>
+					</div>
 					
-					// Preserve line breaks by converting them to <br> tags
-					// This handles both \n and \r\n line breaks from CSV
-					if (typeof value === 'string') {
-						value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
-						valueElement.innerHTML = value;
-					} else {
-						valueElement.textContent = value;
+					<div class="back_page">
+						<label for="page6_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="./img/flip-book/page1.jpeg" alt="Back content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page6_back_content">
+							<div class="reminders_text">
+								<span class="reminders_text_span"><b><u>AKCJE C.D.</b></u>: <b>Precyzyjny cios</b>: -4 do rzutu, w ręce rozbrojenie, w głowę +4 obrażeń, lub omija opancerzenie. <b>Na pełnej kurwie</b>: +2 do ataku i obrażeń ale <i>Wystawiony</i>. <b>Z zaskoczenia</b>: +4 atak i obrażenia.
+									<b><u>OBRAŻENIA</b></u> (Krzepa + broń) ≥ <i>Wytrzymałość</i> → <i>Szok</i>, +1 Rajs → 1 <i>Rana</i> za każdy, Rajs na ataku → +1k6
+									<b>Szok</b>: brak akcji, rzut na <i>Wolę</i> na początku tury. Kolejny <i>Szok</i> → <i>Ran</i>. <b>Rany</b>: −1 do akcji i <i>Ruchu</i> za każdą, Postać może max 3, Przydupasy odpadają po 1. <b>Wyczerpanie</b>: −1 za poziom, 3 to <b>utrata przytomności</b>: rzut na <i>Hart</i>, <i>krwawienie</i> na porażce.</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="page inner" id="page7">
+					<div class="front_page">
+						<label for="page7_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="./img/flip-book/page2.jpeg" alt="Front content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+						<div class="page7_front_content">
+							<div class="reminders_text">
+								<span class="reminders_text_span"><b><u>STATUSY</b></u>: <b>Rozkojarzony</b>: −2 do akcji. <b>Wystawiony<b>: +2 dla atakujących. <b>Leżący</b>: +2 do <i>Celu</i> z dystansu, +2 dla atakującego. <b>Spętany</b>: −2, ograniczony ruch. <b>Skrępowany</b>: brak ruchu i −2, <i>Wystawiony</i>. <b>Ogłuszony</b>: <i>Szok + Rozkojarzony + Wystawiony</i>. <b>Krwawienie</b>: rzuć <i>Hart</i> co turę, na porażce rana permanentna lub śmierć. <b>Leczenie</b>: rzut, -1 bez <i>Pierwszej Pomocy</i>, stabilizacja krwawiącego, usunięcie rany, 2 na Rajsie.
+									<b><u>INNE</u></b>: <b>Noszenie przedmiotów</b>: 10x Krzepa + 10, <b>Rzut bez skilla</b>: - 1k4 -2 + <i>Bolzga Kość</i>.</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="back_page">
+						<label for="page7_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="./img/flip-book/page2.jpeg" alt="Back content">
+						<img class="outline_watermark" src="./img/layout/godlo-outline.png">
+					</div>
+				</div>
+				<div class="page" id="page8">
+					<div class="front_page cover_page">
+						<label for="page8_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/front_page_edge_shading.webp" alt="Front page edge shading">
+						<img class="front_content_bg" src="" alt="Front content">
+					</div>
+					
+					<div class="back_page cover_page">
+						<label for="page8_checkbox"></label>
+						<img class="edge_shading" src="./img/flip-book/back_page_edge_shading.webp" alt="Back page edge shading">
+						<img class="back_content_bg" src="" alt="Back content">
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		
+		<div class="flip-playing-card">
+			
+			<input type="checkbox" id="card_checkbox">
+			
+			<div class="flip-playing-card-inner">
+				
+				<div class="flip-playing-card-front">
+					
+					<label for="card_checkbox"></label>
+					
+					<div class="playing-card">
+						
+						<div class="pc-inner-frame">
+							<img id="img4-card" src="">
+						</div>
+						
+						<div class="pc-top-left">
+							
+							<div class="detail-item field-pl-cd" data-field="pl-cd">
+								<span class="detail-value">A4</span>
+							</div>
+							
+							<div class="img3-wrapper">
+								<div class="img3-container">
+									<img id="img3-suit-top" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="pc-bottom-right">
+							
+							<div class="detail-item field-pl-cd" data-field="pl-cd">
+								<span class="detail-value">A4</span>
+							</div>
+							
+							<div class="img3-wrapper">
+								<div class="img3-container">
+									<img id="img3-suit-bottom" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+									<span class="img3-placeholder">IMG3</span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="flip-playing-card-back">
+					
+					<label for="card_checkbox"></label>
+					
+					<div class="playing-card-backside">
+						<img src="/img/cards/Backside.png">
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<div class="caps-section">
+			
+			<div class="cap1">
+				<img src="/img/caps/cap1.png" alt="Kapsel 1">
+			</div>
+			
+			<div class="cap2">
+				<img src="/img/caps/cap2.png" alt="Kapsel 2">
+			</div>
+			
+			<div class="cap3">
+				<img src="/img/caps/cap3.png" alt="Kapsel 3">
+			</div>
+			
+			<div class="cap4">
+				<img src="/img/caps/cap4.png" alt="Kapsel 4">
+			</div>
+			
+			<div class="cap5">
+				<img src="/img/caps/cap5.png" alt="Kapsel 5">
+			</div>
+			
+			<div class="cap6">
+				<img src="/img/caps/cap6.png" alt="Kapsel 6">
+			</div>
+			
+			<div class="cap7">
+				<img src="/img/caps/cap7.png" alt="Kapsel 7">
+			</div>
+			
+			<div class="cap8">
+				<img src="/img/caps/cap8.png" alt="Kapsel 8">
+			</div>
+			
+			<div class="cap9">
+				<img src="/img/caps/cap9.png" alt="Kapsel 9">
+			</div>
+			
+			<div class="cap10">
+				<img src="/img/caps/cap10.png" alt="Kapsel 10">
+			</div>
+			
+		</div>
+		
+		<div class="go-back">
+			<a href="index.html">
+				<img src="/img/arrows/back.png" alt="Powrót">
+			</a>
+		</div>
+		
+		<div class="refresh-container">
+			<img id="refresh-btn" class="refresh-button" src="/img/arrows/refresh.png" alt="Odśwież dane" style="cursor: pointer;">
+		</div>
+		
+		
+		
+		<div class="game-container" id="gameContainer">
+			<div class="target" id="target">
+				<img src=".\img\layout\Fly.png" alt="Moving" id="movingImg">
+				<img src=".\img\layout\Fly_stop.png" alt="Stopped" id="stoppedImg" class="hidden">
+			</div>
+		</div>
+		
+		<script>
+			let currentData = null;
+			let currentRow = null;
+			let eventSource = null;
+			let updateDebounceTimer = null;
+			let previousKartaValue = null;
+			
+			function getRowNumber() {
+				const params = new URLSearchParams(window.location.search);
+				return parseInt(params.get('row')) || 1;
+			}
+			
+			function updateImage(imgId, url) {
+				const imgElement = document.getElementById(imgId);
+				
+				if (!imgElement) return;
+				
+				if (url && url.trim() !== '' && url !== 'Brak danych') {
+					imgElement.src = url;
+					imgElement.style.display = 'block';
+					const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+					if (placeholder) {
+						placeholder.style.display = 'none';
 					}
-					
-					valueElement.classList.remove('error-value');
-					item.classList.remove('error-item');
 				} else {
-					valueElement.textContent = 'Pole nie istnieje w CSV';
-					valueElement.classList.add('error-value');
-					item.classList.add('error-item');
+					imgElement.style.display = 'none';
+					const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+					if (placeholder) {
+						placeholder.style.display = 'block';
+					}
 				}
-			});
+			}
 			
-			// Apply color logic to pl-cd fields based on pl-suit value
-			const plCdItems = document.querySelectorAll('.detail-item.field-pl-cd .detail-value');
-			plCdItems.forEach(valueElement => {
-				if (plSuitValue === 'H' || plSuitValue === 'D') {
-					valueElement.style.color = '#d81b04'; // Red for Hearts and Diamonds
-				} else if (plSuitValue === 'B') {
-					valueElement.style.color = '#0066cc'; // Blue for Blue Joker
-				} else {
-					valueElement.style.color = '#000000'; // Black for others
+			function updateFields(data, rowNumber) {
+				if (!data || !data.rows || rowNumber > data.rows.length) {
+					const detailItems = document.querySelectorAll('.detail-item[data-field]');
+					detailItems.forEach(item => {
+						const valueElement = item.querySelector('.detail-value');
+						if (valueElement) {
+							valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+							valueElement.classList.add('error-value');
+						}
+					});
+					return;
 				}
-			});
-			
-			// Update IMG1 from "Img" field - BOTH front and back
-			const img1Index = data.headers.indexOf('Img');
-			if (img1Index >= 0) {
-				const img1Url = row[img1Index];
-				updateImage('img1-photo-front', img1Url);
-				updateImage('img1-photo-back', img1Url);
-			}
-			
-			// Update IMG2 from "Img2" field (if exists) - BOTH front and back
-			const img2Index = data.headers.indexOf('Img2');
-			if (img2Index >= 0) {
-				const img2Url = row[img2Index];
-				updateImage('img2-signature-front', img2Url);
-				updateImage('img2-signature-back', img2Url);
-			}
-			
-			// Update IMG3 from "Img3" field (if exists) - BOTH instances
-			const img3Index = data.headers.indexOf('Img3');
-			if (img3Index >= 0) {
-				const img3Url = row[img3Index];
-				updateImage('img3-suit-top', img3Url);
-				updateImage('img3-suit-bottom', img3Url);
-			}
-			
-			// Update IMG4 from "Img4" field (if exists)
-			const img4Index = data.headers.indexOf('Img4');
-			if (img4Index >= 0) {
-				const img4Url = row[img4Index];
-				updateImage('img4-card', img4Url);
-			}
-			
-			// Update caps visibility based on "Kapsle" field
-			const kapsleIndex = data.headers.indexOf('Kapsle');
-			if (kapsleIndex >= 0) {
-				const kapsleValue = parseInt(row[kapsleIndex]) || 0;
 				
-				// Loop through all 10 caps
-				for (let i = 1; i <= 10; i++) {
-					const capElement = document.querySelector(`.cap${i} img`);
-					if (capElement) {
-						if (i <= kapsleValue) {
-							capElement.style.display = 'block';
+				const row = data.rows[rowNumber - 1];
+				
+				// NEW CODE - Check if "Karta" field has changed
+				const kartaIndex = data.headers.indexOf('Karta');
+				const currentKartaValue = kartaIndex >= 0 ? row[kartaIndex] : null;
+				
+				if (previousKartaValue !== null && currentKartaValue !== previousKartaValue) {
+					// Karta has changed - trigger animation
+					animateCardChange(() => {
+						updateFieldsContent(data, rowNumber, row);
+					});
+				} else {
+					// No change or first load - update directly
+					updateFieldsContent(data, rowNumber, row);
+				}
+				
+				previousKartaValue = currentKartaValue;
+			}
+			
+			// NEW FUNCTION - Handles the card animation
+			function animateCardChange(callback) {
+				const card = document.querySelector('.flip-playing-card');
+				if (!card) {
+					callback();
+					return;
+				}
+				
+				// Slide out to the right with rotation
+				card.style.transition = 'transform 0.8s ease-in, opacity 0.8s ease-in';
+				card.style.transform = 'translateX(150vw) rotate(180deg)';
+				card.style.opacity = '0';
+				
+				setTimeout(() => {
+					// Update content while off-screen
+					callback();
+					
+					// Position card off-screen to the left
+					card.style.transition = 'none';
+					card.style.transform = 'translateX(-150vw) rotate(-180deg)';
+					card.style.opacity = '0';
+					
+					// Force reflow
+					card.offsetHeight;
+					
+					// Slide in from the left with rotation to final position
+					setTimeout(() => {
+						card.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+						card.style.transform = 'translateX(0) rotate(10deg)';
+						card.style.opacity = '1';
+					}, 50);
+				}, 800);
+			}
+			
+			// NEW FUNCTION - Contains all the original field update logic
+			function updateFieldsContent(data, rowNumber, row) {
+				const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+				
+				
+				// Get the pl-suit value for color logic
+				const plSuitIndex = data.headers.indexOf('pl-suit');
+				const plSuitValue = plSuitIndex >= 0 ? row[plSuitIndex] : null;
+				
+				// Update text fields
+				fieldItems.forEach(item => {
+					const fieldName = item.getAttribute('data-field');
+					const fieldIndex = data.headers.indexOf(fieldName);
+					const valueElement = item.querySelector('.detail-value');
+					
+					if (!valueElement) return;
+					
+					if (fieldIndex >= 0) {
+						let value = row[fieldIndex] || 'Brak danych';
+						
+						// Preserve line breaks by converting them to <br> tags
+						// This handles both \n and \r\n line breaks from CSV
+						if (typeof value === 'string') {
+							value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+							valueElement.innerHTML = value;
 						} else {
+							valueElement.textContent = value;
+						}
+						
+						valueElement.classList.remove('error-value');
+						item.classList.remove('error-item');
+					} else {
+						valueElement.textContent = 'Pole nie istnieje w CSV';
+						valueElement.classList.add('error-value');
+						item.classList.add('error-item');
+					}
+				});
+				
+				// Apply color logic to pl-cd fields based on pl-suit value
+				const plCdItems = document.querySelectorAll('.detail-item.field-pl-cd .detail-value');
+				plCdItems.forEach(valueElement => {
+					if (plSuitValue === 'H' || plSuitValue === 'D') {
+						valueElement.style.color = '#d81b04'; // Red for Hearts and Diamonds
+					} else if (plSuitValue === 'B') {
+						valueElement.style.color = '#0066cc'; // Blue for Blue Joker
+					} else {
+						valueElement.style.color = '#000000'; // Black for others
+					}
+				});
+				
+				// Update IMG1 from "Img" field - BOTH front and back
+				const img1Index = data.headers.indexOf('Img');
+				if (img1Index >= 0) {
+					const img1Url = row[img1Index];
+					updateImage('img1-photo-front', img1Url);
+					updateImage('img1-photo-back', img1Url);
+				}
+				
+				// Update IMG2 from "Img2" field (if exists) - BOTH front and back
+				const img2Index = data.headers.indexOf('Img2');
+				if (img2Index >= 0) {
+					const img2Url = row[img2Index];
+					updateImage('img2-signature-front', img2Url);
+					updateImage('img2-signature-back', img2Url);
+				}
+				
+				// Update IMG3 from "Img3" field (if exists) - BOTH instances
+				const img3Index = data.headers.indexOf('Img3');
+				if (img3Index >= 0) {
+					const img3Url = row[img3Index];
+					updateImage('img3-suit-top', img3Url);
+					updateImage('img3-suit-bottom', img3Url);
+				}
+				
+				// Update IMG4 from "Img4" field (if exists)
+				const img4Index = data.headers.indexOf('Img4');
+				if (img4Index >= 0) {
+					const img4Url = row[img4Index];
+					updateImage('img4-card', img4Url);
+				}
+				
+				// Update caps visibility based on "Kapsle" field
+				const kapsleIndex = data.headers.indexOf('Kapsle');
+				if (kapsleIndex >= 0) {
+					const kapsleValue = parseInt(row[kapsleIndex]) || 0;
+					
+					// Loop through all 10 caps
+					for (let i = 1; i <= 10; i++) {
+						const capElement = document.querySelector(`.cap${i} img`);
+						if (capElement) {
+							if (i <= kapsleValue) {
+								capElement.style.display = 'block';
+							} else {
+								capElement.style.display = 'none';
+							}
+						}
+					}
+				} else {
+					// If "Kapsle" field doesn't exist, hide all caps
+					for (let i = 1; i <= 10; i++) {
+						const capElement = document.querySelector(`.cap${i} img`);
+						if (capElement) {
 							capElement.style.display = 'none';
 						}
 					}
 				}
-			} else {
-				// If "Kapsle" field doesn't exist, hide all caps
-				for (let i = 1; i <= 10; i++) {
-					const capElement = document.querySelector(`.cap${i} img`);
-					if (capElement) {
-						capElement.style.display = 'none';
+				
+				// Update can status rotations based on "status1", "status2", "status3" fields
+				const status1Index = data.headers.indexOf('status1');
+				const status2Index = data.headers.indexOf('status2');
+				const status3Index = data.headers.indexOf('status3');
+				
+				if (status1Index >= 0) {
+					const rotation1 = parseInt(row[status1Index]) || 0;
+					const canImg1 = document.querySelector('.can.status1 img');
+					if (canImg1) {
+						canImg1.style.transform = `rotate(${rotation1}deg)`;
+					}
+				}
+				
+				if (status2Index >= 0) {
+					const rotation2 = parseInt(row[status2Index]) || 0;
+					const canImg2 = document.querySelector('.can.status2 img');
+					if (canImg2) {
+						canImg2.style.transform = `rotate(${rotation2}deg)`;
+					}
+				}
+				
+				if (status3Index >= 0) {
+					const rotation3 = parseInt(row[status3Index]) || 0;
+					const canImg3 = document.querySelector('.can.status3 img');
+					if (canImg3) {
+						canImg3.style.transform = `rotate(${rotation3}deg)`;
+					}
+				}
+				const now = new Date().toLocaleString('pl-PL');
+				document.getElementById('last-update').textContent =
+					`${now}`;
+			}
+			
+			function debouncedUpdate(data) {
+				if (updateDebounceTimer) {
+					clearTimeout(updateDebounceTimer);
+				}
+				
+				updateDebounceTimer = setTimeout(() => {
+					currentData = data;
+					updateFields(data, currentRow);
+				}, 300);
+			}
+			
+			function initSSE() {
+				if (eventSource) {
+					eventSource.close();
+				}
+				
+				eventSource = new EventSource('/api/sse');
+				
+				eventSource.onmessage = (event) => {
+					const data = JSON.parse(event.data);
+					debouncedUpdate(data);
+				};
+				
+				eventSource.onerror = (error) => {
+					eventSource.close();
+					setTimeout(initSSE, 5000);
+				};
+			}
+			
+			async function handleRefresh() {
+				const refreshImg = document.getElementById('refresh-icon');
+				const originalSrc = refreshImg.src;
+				refreshImg.style.pointerEvents = 'none';
+				
+				try {
+					const response = await fetch('/api/refresh');
+					const result = await response.json();
+					
+					if (result.success) {
+						currentData = result.data;
+						updateFields(currentData, currentRow);
+						
+						if (result.updated) {
+							console.log('Data updated:', result.message);
+							initSSE();
+						} else {
+							console.log('No update:', result.message);
+						}
+					}
+				} catch (error) {
+					console.error('Refresh error:', error);
+				} finally {
+					refreshImg.style.pointerEvents = 'auto';
+				}
+			}
+			
+			
+			async function init() {
+				currentRow = getRowNumber();
+				
+				try {
+					const response = await fetch('/api/data');
+					const data = await response.json();
+					currentData = data;
+					updateFields(data, currentRow);
+					
+					initSSE();
+					
+					// Add event listeners for page2 and page3 checkboxes
+					const page2Checkbox = document.getElementById('page2_checkbox');
+					const page3Checkbox = document.getElementById('page3_checkbox');
+					
+					if (page2Checkbox) {
+						page2Checkbox.addEventListener('change', handleRefresh);
+					}
+					
+					if (page3Checkbox) {
+						page3Checkbox.addEventListener('change', handleRefresh);
+					}
+					
+					// Keep the refresh icon listener if you want to keep it as well
+					document.getElementById('refresh-icon')
+						.addEventListener('click', handleRefresh);
+					
+				} catch (error) {
+					console.error('Error loading data:', error);
+					document.getElementById('entry-details').innerHTML =
+						'<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+				}
+			}
+			
+			/* FLY */
+			
+			
+			const target = document.getElementById('target');
+			const container = document.getElementById('gameContainer');
+			const movingImg = document.getElementById('movingImg');
+			const stoppedImg = document.getElementById('stoppedImg');
+			
+			let audioContext;
+			let audioBuffer;
+			let sourceNode;
+			let gainNode;
+			
+			let animationId;
+			let isMoving = false;
+			let speed = 8;
+			let x = 25;
+			let y = 25;
+			let dx = 1;
+			let dy = 1;
+			
+			const targetSize = 50;
+			
+			// Get safe bounds
+			function getBounds() {
+				return {
+					width: Math.min(window.innerWidth, document.documentElement.clientWidth),
+					height: Math.min(window.innerHeight, document.documentElement.clientHeight)
+				};
+			}
+			
+			// Initialize position
+			const bounds = getBounds();
+			x = 25;
+			y = 25;
+			
+			async function initAudio() {
+				if (!audioContext) {
+					audioContext = new(window.AudioContext || window.webkitAudioContext)();
+					gainNode = audioContext.createGain();
+					gainNode.connect(audioContext.destination);
+					
+					try {
+						const response = await fetch('./img/layout/Fly_sound.mp3');
+						const arrayBuffer = await response.arrayBuffer();
+						audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+					} catch (e) {
+						console.log('Audio loading failed:', e);
 					}
 				}
 			}
 			
-			// Update can status rotations based on "status1", "status2", "status3" fields
-			const status1Index = data.headers.indexOf('status1');
-			const status2Index = data.headers.indexOf('status2');
-			const status3Index = data.headers.indexOf('status3');
+			function playSound(playbackRate) {
+				if (!audioBuffer) return;
+				
+				if (sourceNode) {
+					sourceNode.stop();
+				}
+				
+				sourceNode = audioContext.createBufferSource();
+				sourceNode.buffer = audioBuffer;
+				sourceNode.playbackRate.value = playbackRate;
+				sourceNode.loop = true;
+				sourceNode.connect(gainNode);
+				sourceNode.start(0);
+			}
 			
-			if (status1Index >= 0) {
-				const rotation1 = parseInt(row[status1Index]) || 0;
-				const canImg1 = document.querySelector('.can.status1 img');
-				if (canImg1) {
-					canImg1.style.transform = `rotate(${rotation1}deg)`;
+			function stopSound() {
+				if (sourceNode) {
+					sourceNode.stop();
+					sourceNode = null;
 				}
 			}
 			
-			if (status2Index >= 0) {
-				const rotation2 = parseInt(row[status2Index]) || 0;
-				const canImg2 = document.querySelector('.can.status2 img');
-				if (canImg2) {
-					canImg2.style.transform = `rotate(${rotation2}deg)`;
+			function addFuzziness() {
+				const fuzzStrength = speed * 0.15;
+				dx += (Math.random() - 0.5) * fuzzStrength;
+				dy += (Math.random() - 0.5) * fuzzStrength;
+				
+				const maxSpeed = speed * 0.8;
+				const currentSpeed = Math.sqrt(dx * dx + dy * dy);
+				
+				if (currentSpeed > maxSpeed) {
+					dx = (dx / currentSpeed) * maxSpeed;
+					dy = (dy / currentSpeed) * maxSpeed;
 				}
 			}
 			
-			if (status3Index >= 0) {
-				const rotation3 = parseInt(row[status3Index]) || 0;
-				const canImg3 = document.querySelector('.can.status3 img');
-				if (canImg3) {
-					canImg3.style.transform = `rotate(${rotation3}deg)`;
+			function moveTarget() {
+				addFuzziness();
+				
+				x += dx;
+				y += dy;
+				
+				const bounds = getBounds(); // Add this line
+				
+				if (x <= 0 || x >= bounds.width - targetSize) { // Changed
+					dx = -dx;
+					x = Math.max(0, Math.min(x, bounds.width - targetSize)); // Changed
+				}
+				
+				if (y <= 0 || y >= bounds.height - targetSize) { // Changed
+					dy = -dy;
+					y = Math.max(0, Math.min(y, bounds.height - targetSize)); // Changed
+				}
+				
+				const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+				target.style.transform = `rotate(${angle}deg)`;
+				
+				target.style.left = x + 'px';
+				target.style.top = y + 'px';
+				
+				if (isMoving) {
+					animationId = requestAnimationFrame(moveTarget);
 				}
 			}
-			const now = new Date().toLocaleString('pl-PL');
-			document.getElementById('last-update').textContent = 
-				`${now}`;
-		}
-        
-        function debouncedUpdate(data) {
-            if (updateDebounceTimer) {
-                clearTimeout(updateDebounceTimer);
-            }
-            
-            updateDebounceTimer = setTimeout(() => {
-                currentData = data;
-                updateFields(data, currentRow);
-            }, 300);
-        }
-        
-        function initSSE() {
-            if (eventSource) {
-                eventSource.close();
-            }
-            
-            eventSource = new EventSource('/api/sse');
-            
-            eventSource.onmessage = (event) => {
-                const data = JSON.parse(event.data);
-                debouncedUpdate(data);
-            };
-            
-            eventSource.onerror = (error) => {
-                eventSource.close();
-                setTimeout(initSSE, 5000);
-            };
-        }
-        
-        async function handleRefresh() {
-            const refreshImg = document.getElementById('refresh-icon');
-            const originalSrc = refreshImg.src;
-            refreshImg.style.pointerEvents = 'none';
-            
-            try {
-                const response = await fetch('/api/refresh');
-                const result = await response.json();
-                
-                if (result.success) {
-                    currentData = result.data;
-                    updateFields(currentData, currentRow);
-                    
-                    if (result.updated) {
-                        console.log('Data updated:', result.message);
-                        initSSE();
-                    } else {
-                        console.log('No update:', result.message);
-                    }
-                }
-            } catch (error) {
-                console.error('Refresh error:', error);
-            } finally {
-                refreshImg.style.pointerEvents = 'auto';
-            }
-        }
-        
-
-        async function init() {
-            currentRow = getRowNumber();
-            
-            try {
-                const response = await fetch('/api/data');
-                const data = await response.json();
-                currentData = data;
-                updateFields(data, currentRow);
-                
-                initSSE();
-                
-                // Add event listeners for page2 and page3 checkboxes
-                const page2Checkbox = document.getElementById('page2_checkbox');
-                const page3Checkbox = document.getElementById('page3_checkbox');
-                
-                if (page2Checkbox) {
-                    page2Checkbox.addEventListener('change', handleRefresh);
-                }
-                
-                if (page3Checkbox) {
-                    page3Checkbox.addEventListener('change', handleRefresh);
-                }
-                
-                // Keep the refresh icon listener if you want to keep it as well
-                document.getElementById('refresh-icon')
-                    .addEventListener('click', handleRefresh);
-                
-            } catch (error) {
-                console.error('Error loading data:', error);
-                document.getElementById('entry-details').innerHTML = 
-                    '<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
-            }
-        }
-        
-		/* FLY */
-		
-		
-        const target = document.getElementById('target');
-        const container = document.getElementById('gameContainer');
-        const movingImg = document.getElementById('movingImg');
-        const stoppedImg = document.getElementById('stoppedImg');
-        
-        let audioContext;
-        let audioBuffer;
-        let sourceNode;
-        let gainNode;
-        
-        let animationId;
-        let isMoving = false;
-        let speed = 8;
-        let x = 25;
-        let y = 25;
-        let dx = 1;
-        let dy = 1;
-        
-        const targetSize = 50;
-		
-		// Get safe bounds
-		function getBounds() {
-			return {
-				width: Math.min(window.innerWidth, document.documentElement.clientWidth),
-				height: Math.min(window.innerHeight, document.documentElement.clientHeight)
-			};
-		}
-
-		// Initialize position
-		const bounds = getBounds();
-		x = 25;
-		y = 25;
-        
-        async function initAudio() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                gainNode = audioContext.createGain();
-                gainNode.connect(audioContext.destination);
-                
-                try {
-                    const response = await fetch('./img/layout/Fly_sound.mp3');
-                    const arrayBuffer = await response.arrayBuffer();
-                    audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-                } catch (e) {
-                    console.log('Audio loading failed:', e);
-                }
-            }
-        }
-        
-        function playSound(playbackRate) {
-            if (!audioBuffer) return;
-            
-            if (sourceNode) {
-                sourceNode.stop();
-            }
-            
-            sourceNode = audioContext.createBufferSource();
-            sourceNode.buffer = audioBuffer;
-            sourceNode.playbackRate.value = playbackRate;
-            sourceNode.loop = true;
-            sourceNode.connect(gainNode);
-            sourceNode.start(0);
-        }
-        
-        function stopSound() {
-            if (sourceNode) {
-                sourceNode.stop();
-                sourceNode = null;
-            }
-        }
-        
-        function addFuzziness() {
-            const fuzzStrength = speed * 0.15;
-            dx += (Math.random() - 0.5) * fuzzStrength;
-            dy += (Math.random() - 0.5) * fuzzStrength;
-            
-            const maxSpeed = speed * 0.8;
-            const currentSpeed = Math.sqrt(dx * dx + dy * dy);
-            
-            if (currentSpeed > maxSpeed) {
-                dx = (dx / currentSpeed) * maxSpeed;
-                dy = (dy / currentSpeed) * maxSpeed;
-            }
-        }
-        
-        function moveTarget() {
-			addFuzziness();
 			
-			x += dx;
-			y += dy;
-			
-			const bounds = getBounds(); // Add this line
-			
-			if (x <= 0 || x >= bounds.width - targetSize) { // Changed
-				dx = -dx;
-				x = Math.max(0, Math.min(x, bounds.width - targetSize)); // Changed
+			function toggleMovement() {
+				if (isMoving) {
+					isMoving = false;
+					cancelAnimationFrame(animationId);
+					movingImg.classList.add('hidden');
+					stoppedImg.classList.remove('hidden');
+					stopSound();
+					
+					speed += 4;
+					if (speed > 48) {
+						speed = 8;
+					}
+				} else {
+					isMoving = true;
+					movingImg.classList.remove('hidden');
+					stoppedImg.classList.add('hidden');
+					
+					initAudio().then(() => {
+						playSound(1 + (speed - 1) * 0.1);
+					});
+					
+					const bounds = getBounds();
+					const side = Math.floor(Math.random() * 4);
+					if (side === 0) {
+						x = 0;
+						y = Math.random() * (bounds.height - targetSize);
+					} else if (side === 1) {
+						x = bounds.width - targetSize;
+						y = Math.random() * (bounds.height - targetSize);
+					} else if (side === 2) {
+						x = Math.random() * (bounds.width - targetSize);
+						y = 0;
+					} else {
+						x = Math.random() * (bounds.width - targetSize);
+						y = bounds.height - targetSize;
+					}
+					
+					target.style.left = x + 'px';
+					target.style.top = y + 'px';
+					
+					const angle = Math.random() * Math.PI * 2;
+					dx = Math.cos(angle) * (speed * 0.3);
+					dy = Math.sin(angle) * (speed * 0.3);
+					
+					moveTarget();
+				}
 			}
 			
-			if (y <= 0 || y >= bounds.height - targetSize) { // Changed
-				dy = -dy;
-				y = Math.max(0, Math.min(y, bounds.height - targetSize)); // Changed
-			}
-			
-			const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-			target.style.transform = `rotate(${angle}deg)`;
+			target.addEventListener('click', toggleMovement);
 			
 			target.style.left = x + 'px';
 			target.style.top = y + 'px';
 			
-			if (isMoving) {
-				animationId = requestAnimationFrame(moveTarget);
-            }
-        }
-        
-        function toggleMovement() {
-            if (isMoving) {
-                isMoving = false;
-                cancelAnimationFrame(animationId);
-                movingImg.classList.add('hidden');
-                stoppedImg.classList.remove('hidden');
-                stopSound();
-                
-                speed+= 4;
-                if (speed > 48) {
-                    speed = 8;
-                }
-            } else {
-                isMoving = true;
-                movingImg.classList.remove('hidden');
-                stoppedImg.classList.add('hidden');
-                
-                initAudio().then(() => {
-                    playSound(1 + (speed - 1) * 0.1);
-                });
-				
-                const bounds = getBounds();
-                const side = Math.floor(Math.random() * 4);
-                if (side === 0) {
-                    x = 0;
-                    y = Math.random() * (bounds.height - targetSize);
-                } else if (side === 1) {
-                    x = bounds.width - targetSize;
-                    y = Math.random() * (bounds.height - targetSize);
-                } else if (side === 2) {
-                    x = Math.random() * (bounds.width - targetSize);
-                    y = 0;
-                } else {
-                    x = Math.random() * (bounds.width - targetSize);
-                    y = bounds.height - targetSize;
-                }
-                
-                target.style.left = x + 'px';
-                target.style.top = y + 'px';
-                
-                const angle = Math.random() * Math.PI * 2;
-                dx = Math.cos(angle) * (speed * 0.3);
-                dy = Math.sin(angle) * (speed * 0.3);
-                
-                moveTarget();
-            }
-        }
-        
-        target.addEventListener('click', toggleMovement);
-        
-        target.style.left = x + 'px';
-        target.style.top = y + 'px';
-        
-		window.addEventListener('resize', () => {
-			const bounds = getBounds();
-			x = Math.min(x, bounds.width - targetSize);
-			y = Math.min(y, bounds.height - targetSize);
-		});
-		
-		
-		
-		
-        init();
-    </script>
-</div>
+			window.addEventListener('resize', () => {
+				const bounds = getBounds();
+				x = Math.min(x, bounds.width - targetSize);
+				y = Math.min(y, bounds.height - targetSize);
+			});
+			
+			
+			
+			
+			init();
+		</script>
+	</div>
 </body>
+
 </html>

@@ -885,11 +885,13 @@ span.page5.detail-value {
     position: static;
 }
 
-.reminders_text_span {
+.reminders_text1 {
 	font-size: 3.9vmin;
     font-family: Elegant-tw;
     color: #292929;
+    margin-top: 3vmin;
 }
+
 
 span.reminders_text_span {
 	font-size: 3.9vmin;

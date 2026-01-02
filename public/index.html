@@ -68,8 +68,9 @@
                 return;
             }
             
-            // Find the index of "Imię" column to use as display name
+            // Find the indices of "Imię" and "Nazwisko" columns
             const imieIndex = data.headers.indexOf('Imię');
+            const nazwiskoIndex = data.headers.indexOf('Nazwisko');
             
             // Find all entry cards that have been manually added to the HTML
             const entryCards = document.querySelectorAll('.entry-card[data-row]');
@@ -79,9 +80,21 @@
                 
                 if (rowNumber > 0 && rowNumber <= data.rows.length) {
                     const row = data.rows[rowNumber - 1];
-                    const displayName = imieIndex >= 0 && row[imieIndex] 
-                        ? row[imieIndex] 
-                        : `Wpis ${rowNumber}`;
+                    
+                    // Build display name from Imię and Nazwisko
+                    let displayName = '';
+                    const imie = imieIndex >= 0 && row[imieIndex] ? row[imieIndex].trim() : '';
+                    const nazwisko = nazwiskoIndex >= 0 && row[nazwiskoIndex] ? row[nazwiskoIndex].trim() : '';
+                    
+                    if (imie && nazwisko) {
+                        displayName = `${imie} ${nazwisko}`;
+                    } else if (imie) {
+                        displayName = imie;
+                    } else if (nazwisko) {
+                        displayName = nazwisko;
+                    } else {
+                        displayName = `Wpis ${rowNumber}`;
+                    }
                     
                     // Update the entry name
                     const nameElement = card.querySelector('.entry-name');

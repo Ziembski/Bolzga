@@ -808,10 +808,10 @@
 				// Apply color logic to pl-cd fields based on pl-suit value
 				const plCdItems = document.querySelectorAll('.detail-item.field-pl-cd .detail-value');
 				plCdItems.forEach(valueElement => {
-					if (plSuitValue === 'H' || plSuitValue === 'D') {
+					if (plSuitValue === 'H' || plSuitValue === 'D'|| plSuitValue === 'R') {
 						valueElement.style.color = '#d81b04'; // Red for Hearts and Diamonds
 					} else if (plSuitValue === 'U') {
-						valueElement.style.color = '#0066cc'; // Blue for Blue Joker
+						valueElement.style.color = '#24b0ee'; // Blue for Blue Joker
 					} else {
 						valueElement.style.color = '#000000'; // Black for others
 					}

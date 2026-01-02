@@ -1,0 +1,119 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Elegant-tw;
+  src: url('/fonts/ELEGANT TYPEWRITER Regular.ttf');
+}
+
+@font-face {
+  font-family: TheSoul;
+  src: url('/fonts/The Soul Of Vodka.ttf');
+}
+
+@font-face {
+  font-family: Spice;
+  src: url('/fonts/Spicy Sale.ttf');
+}
+
+@font-face {
+  font-family: Marker;
+  src: url('/fonts/ScribblesJE.ttf');
+}
+
+@font-face {
+  font-family: Stamp;
+  src: url('/fonts/stamp.ttf');
+}
+
+body {
+	
+    font-family: 'Times New Roman', serif;
+    background-color: #f5f5f5;
+    overflow: auto;
+   
+	
+}
+
+:root {
+  /* Height function variables */
+  --base-height: 98vmin;
+  --max-height-x: 92vmin;
+  --height-curve-steepness: 3;
+  
+  /* Width function variables */
+  --base-width: 96vmin;
+  --max-width-x: 80vmin;
+  --width-curve-steepness: 3;
+}
+
+.main_content {
+  /* Height: based on viewport width */
+  --height-width-range: var(--max-width-x);
+  --height-t: clamp(0, (100vw - var(--base-width)) / var(--height-width-range), 1);
+  
+  height: clamp(
+    calc(
+      var(--base-height) + 
+      var(--max-height-x) * (1 - var(--height-t)) / (1 + var(--height-curve-steepness) * var(--height-t))
+    ),
+    100vh,
+    100vh
+  );
+  
+  /* Width: based on viewport height */
+  --width-height-range: var(--max-height-x);
+  --width-t: clamp(0, (100vh - var(--base-height)) / var(--width-height-range), 1);
+  
+  width: clamp(
+    calc(
+      var(--base-width) + 
+      var(--max-width-x) * (1 - var(--width-t)) / (1 + var(--width-curve-steepness) * var(--width-t))
+    ),
+    100vw,
+    100vw
+  );
+    position: absolute;
+}
+
+
+.body-img {
+	background: pink;
+    width: 100%;
+    height: 100%;
+}
+
+.body-img img {
+	
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+input {
+    display: none;
+}
+
+
+/* Error states */
+.error-value {
+    color: #cc0000;
+}
+
+.error-item {
+    opacity: 0.6;
+}
+
+/* Loading state */
+.detail-value:empty {
+    color: #666666;
+    font-style: italic;
+}
+
+.detail-value:empty::before {
+    content: 'Ładowanie...';
+}

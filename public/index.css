@@ -103,6 +103,11 @@ input {
 }
 
 .table1-inner {
+  position: absolute;
+  
+}
+
+.table1-inner img{
   
 }
 

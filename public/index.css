@@ -99,11 +99,14 @@ input {
 }
 
 .table1 {
+  position: absolute;
   
 }
 
-.table1-inner {
+img.table1bg {
   position: absolute;
+  object-fit: contain;
+  width: 100%;
   
 }
 

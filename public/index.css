@@ -106,6 +106,7 @@ input {
   width: 70vmin;
   height: 85vmin;
   background: gray;
+  object-fit: contain;
   
 }
 
@@ -138,6 +139,7 @@ input {
 }
 
 .entries-grid {
+  
   
 }
 

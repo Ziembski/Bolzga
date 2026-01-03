@@ -118,7 +118,10 @@ input {
 }
 
 .table1-inner img{
-  
+  pposition: absolute;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
 .header1 {

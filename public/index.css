@@ -107,7 +107,7 @@ input {
   height: 96vmin;
   background: gray;
   object-fit: fill;
-
+  z-index: 9;
   
 }
 

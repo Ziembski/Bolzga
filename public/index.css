@@ -106,7 +106,6 @@ input {
   width: 55vmin;
   height: 96vmin;
   background: gray;
-  object-fit: fill;
   z-index: 9;
   
 }
@@ -123,6 +122,7 @@ input {
   height: 100%;
   width: 100%;
   z-index: 9;
+  object-fit: fill;
   
 }
 

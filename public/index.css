@@ -110,6 +110,12 @@ input {
   
 }
 
+.table1 img{
+  position: absolute;
+  object-fit: contain;
+  
+}
+
 .table1bg img{
   position: absolute;
   object-fit: contain;

@@ -187,7 +187,6 @@ input {
 .number label {
   text-align: center;
   background: antiquewhite;
-  filter: drop-shadow(-0.11vmin 0.34vmin 0.1vmin black);
   border: solid 0.2vmin red;
 }
 

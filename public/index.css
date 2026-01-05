@@ -137,6 +137,7 @@ input {
   align-self: center;
   text-align: center;
   background: antiquewhite;
+  filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 .entries-grid {
@@ -182,14 +183,18 @@ input {
 .number label {
   text-align: center;
   background: antiquewhite;
+  filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
   opacity: 80%;
+  border: solid 0.2vmin red;
 }
 
 span.entry-name {
   background: antiquewhite;
   opacity: 80%;
-  width: 100%;
+  filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
+  
 }
+
 
 /* Error states */
 .error-value {

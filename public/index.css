@@ -75,6 +75,8 @@ body {
     100vw
   );
     position: absolute;
+	top: 0;
+    left: 0;
 }
 
 .body-img {
@@ -158,19 +160,23 @@ input {
 @media (orientation: landscape) and (min-width: 120vmin) {
   .entries-grid {
     grid-template-columns: repeat(2, 1fr);
+	height: 84vmin;
   }
 }
 
 @media (orientation: portrait), (max-width: 119vmin) {
   .entries-grid {
     grid-template-columns: 1fr;
+	height: 84vmin;
   }
 }
 
 .number {
-  display: grid;
-  grid-template-columns: 4vmin 1fr;
-  gap: 1vmin;
+    display: grid;
+    grid-template-columns: 4vmin 1fr;
+    gap: 1vmin;
+    justify-content: center;
+    align-content: center;
 }
 
 .number label {

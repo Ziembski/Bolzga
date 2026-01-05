@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -31,12 +31,9 @@
 }
 
 body {
-	
     font-family: 'Times New Roman', serif;
     background-color: #f5f5f5;
     overflow: auto;
-   
-	
 }
 
 :root {
@@ -80,16 +77,14 @@ body {
     position: absolute;
 }
 
-
 .body-img {
-	background: pink;
+    background: pink;
     width: 100%;
     height: 100%;
     position: absolute;
 }
 
 .body-img img {
-	
     width: 100%;
     height: 100%;
     object-fit: fill;
@@ -103,11 +98,11 @@ input {
   position: absolute;
   margin-left: 4vmin;
   margin-top: 2vmin;
-  width: 55vmin;
+  /* Responsive width - wider in landscape */
+  width: clamp(55vmin, 55vmin + (100vw - 100vh) * 0.5, 110vmin);
   height: 96vmin;
   background: gray;
   z-index: 9;
-  
 }
 
 .table1 img{
@@ -123,55 +118,63 @@ input {
   width: 100%;
   z-index: 9;
   object-fit: fill;
-  
 }
 
 .table1-inner {
   z-index: 90;
   position: relative;
+  margin-top: 3vmin;
 }
 
-
 .header1 {
-  
-  	display: flex;
-    flex-direction: column;
-    font-size: 4.5vmin;
-    width: 80%;
-    justify-self: center;
-    align-self: center;
-    text-align: center;
-    margin-top: 1vmin;
-    background: antiquewhite;
-  
+  display: flex;
+  flex-direction: column;
+  font-size: 4.5vmin;
+  width: 80%;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  background: antiquewhite;
 }
 
 .entries-grid {
-  
   display: grid;
-  
-    font-size: 2.5vmin;
-    height: 88vmin;
-    width: 90%;
-    justify-self: center;
-    align-self: center;
-    text-align: start;
-    margin-top: 1vmin;
-    background: antiquewhite;
-    gap: 0.3vmin;
-  
+  /* Responsive columns - 2 columns in landscape, 1 in portrait */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 45vmin), 1fr));
+  font-size: 2.5vmin;
+  height: 88vmin;
+  width: 90%;
+  justify-self: center;
+  align-self: center;
+  text-align: start;
+  margin-top: 1vmin;
+  background: antiquewhite;
+  gap: 0.3vmin;
+  /* Enable scrolling if content overflows */
+  overflow-y: auto;
+}
+
+/* Alternative approach using media query for more control */
+@media (orientation: landscape) and (min-width: 120vmin) {
+  .entries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (orientation: portrait), (max-width: 119vmin) {
+  .entries-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .number {
   display: grid;
-  grid-template-columns: 4vmin 35vmin;
+  grid-template-columns: 4vmin 1fr;
   gap: 1vmin;
-  
 }
 
 .number label {
   text-align: center;
-  
 }
 
 span.entry-name {

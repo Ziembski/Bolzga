@@ -150,7 +150,7 @@ input {
   align-self: center;
   text-align: start;
   margin-top: 1vmin;
-  background: antiquewhite;
+  
   gap: 0.3vmin;
   /* Enable scrolling if content overflows */
   overflow-y: auto;
@@ -181,10 +181,14 @@ input {
 
 .number label {
   text-align: center;
+  background: antiquewhite;
+  opacity: 80%;
 }
 
 span.entry-name {
-  
+  background: antiquewhite;
+  opacity: 80%;
+  width: 100%;
 }
 
 /* Error states */

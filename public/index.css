@@ -139,6 +139,11 @@ input {
   background: antiquewhite;
   filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
   border: solid 0.5vmin red ;
+  object-fit: fill;
+}
+
+.header1 img {
+  position: absolute;
 }
 
 .entries-grid {
@@ -174,6 +179,7 @@ input {
 }
 
 .number {
+  
     display: grid;
     grid-template-columns: 4vmin 1fr;
     gap: 1vmin;
@@ -185,6 +191,10 @@ input {
   width: 100%;
   z-index: 9;
   object-fit: fill;
+}
+
+.number img {
+  position: absolute;
 }
 
 .number label {

@@ -128,7 +128,7 @@ input {
 
 .table1-inner {
   z-index: 90;
-  
+  position: relative;
 }
 
 

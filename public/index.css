@@ -209,7 +209,7 @@ span.header1  {
   margin-left: 1.5vmin;
 }
 
-span.entry-name {
+.entry-name span {
 	position: relative;
     z-index: 90;
   

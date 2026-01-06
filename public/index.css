@@ -201,9 +201,12 @@ input {
   text-align: center;
   background: antiquewhite;
   border: solid 0.2vmin red;
+      z-index: 90;
 }
 
 span.entry-name {
+	position: relative;
+    z-index: 90;
   
 }
 

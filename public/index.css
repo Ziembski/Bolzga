@@ -187,7 +187,7 @@ span.header1  {
 .number {
   
     display: grid;
-    grid-template-columns: 4vmin 1fr;
+    grid-template-columns: 4.5vmin 1fr;
     gap: 1vmin;
     justify-content: center;
     align-content: center;
@@ -206,7 +206,7 @@ span.header1  {
 .number label {
   text-align: center;
   z-index: 90;
-  margin-left: 1vmin;
+  margin-left: 1.5vmin;
 }
 
 span.entry-name {

@@ -138,8 +138,8 @@ input {
   text-align: center;
   background: antiquewhite;
   filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
-  border: solid 0.5vmin red ;
   object-fit: fill;
+  z-index: 90;
 }
 
 .header1 img {

@@ -130,7 +130,7 @@ input {
 
 .header1 {
   display: flex;
-	position: absolute;
+	position: relative;
   flex-direction: column;
   font-size: 4.5vmin;
   width: 80%;
@@ -139,11 +139,17 @@ input {
   text-align: center;
   filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
   object-fit: fill;
-  z-index: 90;
+
 }
 
 .header1 img {
   position: absolute;
+    z-index: 1;
+}
+
+span.header1  {
+  position: relative;
+    z-index: 90;
 }
 
 .entries-grid {

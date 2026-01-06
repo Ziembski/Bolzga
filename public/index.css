@@ -147,7 +147,7 @@ input {
     z-index: 1;
 }
 
-.header1 span {
+span.header1  {
   position: relative;
     z-index: 90;
 }
@@ -209,7 +209,7 @@ input {
   margin-left: 1.5vmin;
 }
 
-.entry-name span {
+span.entry-name  {
 	position: relative;
     z-index: 90;
   

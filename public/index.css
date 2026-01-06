@@ -147,7 +147,7 @@ input {
     z-index: 1;
 }
 
-span.header1  {
+.header1 span {
   position: relative;
     z-index: 90;
 }

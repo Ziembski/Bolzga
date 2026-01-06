@@ -137,7 +137,7 @@ input {
   justify-self: center;
   align-self: center;
   text-align: center;
-  filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
+
   object-fit: fill;
 
 }
@@ -145,6 +145,7 @@ input {
 .header1 img {
   position: absolute;
     z-index: 1;
+	 filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
 }
 
 span.header1  {

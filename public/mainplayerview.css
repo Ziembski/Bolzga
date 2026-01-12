@@ -117,9 +117,10 @@ input {
     display: flex;
     justify-content: center;
     pointer-events: none;
-	transition: transform 0.8s;
+	transition: transform 1.0s ease-in-out;
     transform-style: preserve-3d;
     transform-origin: center;
+    
 
 }
 
@@ -270,9 +271,10 @@ input {
 
 #dice_tray_checkbox:checked~#dice_tray_main {
 	
-    top: 69vmin;
+    transform: translateY(69vmin);
 	
 }
+
 
 /*
 ############################################################

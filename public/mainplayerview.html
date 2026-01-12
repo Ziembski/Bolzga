@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="mainplayerview.css">
 </head>
 
-<body>
+<body onload="main.init()">
 	<div class="main_content">
 		
 		
@@ -16,7 +16,20 @@
 			<img src="/img/layout/body-bg.png">
 		</div>
 		
+			<!-- Dice tray -->
 		
+		<div class="dice_tray_main">
+		
+			<div class="dice_tray">
+
+			
+			</div>
+			
+		
+		
+		</div>
+		
+			<!-- Flip Book -->
 		<div class="flip_book_main">
 			
 			<input type="checkbox" id="page1_checkbox">
@@ -30,7 +43,7 @@
 			<input type="checkbox" id="page8_checkbox">
 			
 			
-			<!-- Flip Book -->
+
 			<div id="flip_book">
 				
 				<div class="page" id="page1">
@@ -668,6 +681,13 @@
 			</div>
 		</div>
 		
+		<script src="/libs/three.min.js"></script>
+		<script src="/libs/cannon.min.js"></script>
+		<script src="/libs/teal.js"></script>
+		<script src="dice.js"></script>
+		<script src="main.js"></script>
+	
+	
 		<script>
 			let currentData = null;
 			let currentRow = null;

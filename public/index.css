@@ -177,6 +177,7 @@ span.header1  {
         grid-template-columns: repeat(2, 1fr);
         gap: 0;
         height: 84vmin;
+		overflow: clip;
   }
 }
 
@@ -185,6 +186,7 @@ span.header1  {
     grid-template-columns: 1fr;
 	        gap: 0;
 	height: 84vmin;
+	overflow: clip;
   }
 }
 
@@ -202,7 +204,11 @@ span.header1  {
 }
 
 .number img {
-  position: absolute;
+position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  
 }
 
 .number label {
@@ -228,6 +234,7 @@ span.header1  {
     width: 100%;
     align-content: center;
     justify-self: center;
+	margin-left: 0.5vmin;
 }
 
 span.entry-name  {
@@ -235,6 +242,7 @@ span.entry-name  {
     text-wrap: nowrap;
     position: relative;
     z-index: 90;
+
   
 }
 

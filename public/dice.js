@@ -28,7 +28,7 @@ const DICE = (function() {
 
     var vars = { //todo: make these configurable on init
         frame_rate: 1 / 60,
-        scale: 100, //dice size
+        scale: 180, //dice size
         
         material_options: {
             specular: 0x172022,
@@ -36,12 +36,12 @@ const DICE = (function() {
             shininess: 40,
             shading: THREE.FlatShading,
         },
-        label_color: '#aaaaaa', //numbers on dice
-        dice_color: '#202020',
+        label_color: '#161512', //numbers on dice
+        dice_color: '#FAEBD7',
         ambient_light_color: 0xf0f0f0,
         spot_light_color: 0xefefef,
         desk_color: '#101010', //canvas background
-        desk_opacity: 0.5,
+        desk_opacity: 0.0,
         use_shadows: true,
         use_adapvite_timestep: true //todo: setting this to false improves performace a lot. but the dice rolls don't look as natural...
 

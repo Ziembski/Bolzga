@@ -108,13 +108,13 @@ input {
 
 .dice_tray_main {
 	
-    position: absolute;
+	position: absolute;
     top: 0;
-    left: 13vmin;
-    width: 87.2vmin;
+    left: 3vmin;
+    width: 89.2vmin;
     height: 100%;
     z-index: 100;
-	display: flex;
+    display: flex;
     justify-content: center;
 }
 

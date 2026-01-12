@@ -109,14 +109,34 @@ input {
 .dice_tray_main {
 	
 	position: absolute;
-    top: 0;
+    top: 0px;
     left: 3vmin;
     width: 89.2vmin;
-    height: 100%;
+    height: 75vmin;
     z-index: 100;
     display: flex;
     justify-content: center;
+    pointer-events: none;
+	transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform-origin: center;
+
 }
+
+#dice_tray_checkbox:checked~.dice_tray_main {
+    top: translateY(69vmin);
+}
+
+
+.diceRollerUI label {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+	bottom: 0px;
+    cursor: pointer;
+    z-index: 100;
+}
+
 
 
 

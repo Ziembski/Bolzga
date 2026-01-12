@@ -146,7 +146,7 @@ input {
 .header1 img {
   position: absolute;
     z-index: 1;
-	 filter: drop-shadow(-0.11vmin 0.34vmin 0.79vmin black);
+
 }
 
 span.header1  {
@@ -174,14 +174,16 @@ span.header1  {
 /* Alternative approach using media query for more control */
 @media (orientation: landscape) and (min-width: 120vmin) {
   .entries-grid {
-    grid-template-columns: repeat(2, 1fr);
-	height: 84vmin;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        height: 84vmin;
   }
 }
 
 @media (orientation: portrait), (max-width: 119vmin) {
   .entries-grid {
     grid-template-columns: 1fr;
+	        gap: 0;
 	height: 84vmin;
   }
 }
@@ -190,15 +192,13 @@ span.header1  {
   
     display: grid;
     grid-template-columns: 4.5vmin 1fr;
-    gap: 1vmin;
     justify-content: center;
-    align-content: center;
-    background: antiquewhite;
-  filter: drop-shadow(-0.11vmin 0.34vmin 0.1vmin black);
-  height: 100%;
-  width: 100%;
-  z-index: 9;
-  object-fit: fill;
+    height: 100%;
+    width: 100%;
+    z-index: 9;
+    object-fit: fill;
+    border-top: #C31514 0vmin solid;
+	
 }
 
 .number img {
@@ -206,13 +206,34 @@ span.header1  {
 }
 
 .number label {
-  text-align: center;
-  z-index: 90;
-  margin-left: 1.5vmin;
+    position: relative;
+    display: flex;
+    z-index: 90;
+    justify-content: center;
+}
+
+.flat {
+    position: relative;
+    display: block;
+    background: #c31515;
+    color: white;
+    font-family: monospace;
+    align-content: center;
+}
+
+.family {
+    position: relative;
+    display: initial;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    justify-self: center;
 }
 
 span.entry-name  {
-	position: relative;
+	
+    text-wrap: nowrap;
+    position: relative;
     z-index: 90;
   
 }

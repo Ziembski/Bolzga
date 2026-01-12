@@ -136,12 +136,12 @@ input {
 
 .dice_tray {
 	
-    position: absolute;
-    top: 0;
+	position: absolute;
     width: 100%;
-    height: 100%;
-    z-index: 1;
-    filter: drop-shadow(2px 4px 5px black);
+    top: 8vmin;
+    height: 65vmin;
+    z-index: -1;
+    filter: drop-shadow(-9px 9px 7px black);
 	
 }
 

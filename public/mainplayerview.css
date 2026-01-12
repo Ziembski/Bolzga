@@ -268,7 +268,7 @@ input {
     font-size: 2.5vmin;
 }
 
-#dice_tray_checkbox:checked~.dice_tray_main {
+#dice_tray_checkbox:checked~#dice_tray_main {
 	
     transform: translateY(69vmin);
 	

@@ -38,8 +38,8 @@ const DICE = (function() {
         },
         label_color: '#161512', //numbers on dice
         dice_color: '#FAEBD7',
-        ambient_light_color: '',
-        spot_light_color: '',
+        ambient_light_color: '#000000',
+        spot_light_color: '#000000',
         desk_color: '#101010', //canvas background
         desk_opacity: 0.0,
         use_shadows: true,

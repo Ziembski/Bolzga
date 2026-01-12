@@ -124,11 +124,11 @@ input {
 }
 
 #dice_tray_checkbox:checked~.dice_tray_main {
-    top: translateY(69vmin);
+    transform: translateY(69vmin);
 }
 
 
-.diceRollerUI label {
+label.dice_tray_main {
     width: 100%;
     height: 10%;
     position: absolute;

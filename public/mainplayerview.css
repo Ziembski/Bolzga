@@ -98,7 +98,129 @@ input {
     display: none;
 }
 
+/*
+############################################################
+||                                                        ||
+||                      DICE ROLLER                       ||
+||                                                        ||
+############################################################
+*/
 
+.dice_tray_main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vmin;
+    height: 50vmin;
+    z-index: 4;
+}
+
+/* Dice Roller Canvas */
+#diceRoller {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Dice Roller UI Overlay */
+#diceRollerUI {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+#diceRollerUI * {
+    pointer-events: auto;
+}
+
+.dice_top_field {
+    text-align: center;
+    width: 100%;
+    background-color: rgba(150, 150, 150, 0.1);
+    border-radius: 0.5vmin;
+}
+
+#diceRollerUI #textInput {
+    text-align: center;
+    border: none;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(199, 199, 199, 0.7);
+    width: 100%;
+    text-overflow: ellipsis;
+    padding: 0.5vmin;
+    text-decoration: none;
+    font-size: 2.5vmin;
+    display: block;
+    border-radius: 0.5vmin;
+}
+
+#diceRollerUI #textInput:focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+
+.dice_center_field {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.dice_center_field * {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 1vmin 2vmin;
+    user-select: none;
+}
+
+#instructions {
+    background: none;
+    height: 100%;
+    width: 100%;
+}
+
+#instructions p {
+    color: rgb(255, 255, 255);
+    background: none;
+    margin: auto;
+    top: 35%;
+    padding: 1vmin;
+    font-size: 2vmin;
+}
+
+.dice_bottom_field {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    min-height: 5vmin;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    padding: 0;
+    border-radius: 0.5vmin;
+}
+
+#diceRollerUI #result {
+    position: relative;
+    display: block;
+    min-height: 3vmin;
+    bottom: 0;
+    word-spacing: 0.5em;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 1vmin;
+    margin-left: 0.5vmin;
+    margin-right: 0.5vmin;
+    font-size: 2.5vmin;
+}
 
 
 /*

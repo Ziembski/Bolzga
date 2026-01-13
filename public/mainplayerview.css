@@ -445,11 +445,12 @@ img.front_cover_back.coat {
 }
 
 #page2_standard_checkbox {
-    width: 65.81vmin;
+    width: 20%;
     height: 100%;
-    position: static;
+    position: absolute;
     cursor: pointer;
     z-index: 120;
+    right: 0;
 }
 
 .front_page {

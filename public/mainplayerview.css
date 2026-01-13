@@ -460,9 +460,10 @@ img.front_cover_back.coat {
 }
 
 .front_page label {
-    width: 100%;
+	width: 20%;
     height: 100%;
     position: absolute;
+    right: 0;
     cursor: pointer;
     z-index: 100;
 }
@@ -1116,9 +1117,10 @@ span.reminders_text_span {
 }
 
 .back_page label {
-    width: 100%;
+	width: 20%;
     height: 100%;
     position: absolute;
+    left: 0;
     cursor: pointer;
     z-index: 100;
 }

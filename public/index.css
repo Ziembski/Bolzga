@@ -252,7 +252,9 @@ span.entry-name  {
 	
     text-wrap: nowrap;
     position: relative;
+    margin-left: 1vmin;
     z-index: 90;
+    font-family: Marker;
 
   
 }

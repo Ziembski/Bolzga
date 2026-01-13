@@ -480,7 +480,7 @@ img.front_cover_back.coat {
     position: absolute;
     right: 0;
     cursor: pointer;
-    z-index: 100;
+    z-index: 120;
 }
 
 .page2_checks {
@@ -1139,7 +1139,7 @@ span.reminders_text_span {
     position: absolute;
     left: 0;
     cursor: pointer;
-    z-index: 100;
+    z-index: 120;
 }
 
 .pin3 {

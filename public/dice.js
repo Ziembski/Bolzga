@@ -96,8 +96,8 @@ const DICE = (function() {
         this.world.broadphase = new CANNON.NaiveBroadphase();
         this.world.solver.iterations = 16;
 
-        var ambientLight = new THREE.AmbientLight(vars.ambient_light_color);
-        this.scene.add(ambientLight);
+        //var ambientLight = new THREE.AmbientLight(vars.ambient_light_color);
+        //this.scene.add(ambientLight);
 
         this.dice_body_material = new CANNON.Material();
         var desk_body_material = new CANNON.Material();

@@ -28,12 +28,12 @@ const DICE = (function() {
 
     var vars = { //todo: make these configurable on init
         frame_rate: 1 / 60,
-        scale: 330, //dice size
+        scale: 1000, //dice size
         
         material_options: {
             specular: 0x172022,
             color: 0xf0f0f0,
-            shininess: 10,
+            shininess: 1,
             shading: THREE.FlatShading,
         },
         label_color: '#161512', //numbers on dice

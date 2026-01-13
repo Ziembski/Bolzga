@@ -24,6 +24,7 @@
 			<label for="dice_tray_checkbox"></label>
 			
 			<img class="dice_tray" src="./img/layout/tray.png"></img>
+			<img class="dice_tray_shadow" src="./img/layout/tray_shadow.png"></img>
 			<div id="diceRoller">
 
 				<!-- dice_box gets created here by dice.js -->
@@ -1218,29 +1219,35 @@
 			
 			
 			function updateDiceInput(spanElement, addBolzgaDice = false) {
-			const textInput = document.getElementById('textInput');
-			if (!textInput) return;
-			
-			const fullText = spanElement.textContent.trim();
-			const lastSpaceIndex = fullText.lastIndexOf(' ');
-			
-			let diceNotation;
-			if (lastSpaceIndex !== -1) {
-				// Take text after last space
-				diceNotation = fullText.substring(lastSpaceIndex + 1);
-			} else {
-				// If no space found, use the whole text
-				diceNotation = fullText;
+				const textInput = document.getElementById('textInput');
+				if (!textInput) return;
+				
+				const fullText = spanElement.textContent.trim();
+				const lastSpaceIndex = fullText.lastIndexOf(' ');
+				
+				let diceNotation;
+				if (lastSpaceIndex !== -1) {
+					// Take text after last space
+					diceNotation = fullText.substring(lastSpaceIndex + 1);
+				} else {
+					// If no space found, use the whole text
+					diceNotation = fullText;
+				}
+				
+				// Add Bolzga Dice if parameter is true
+				if (addBolzgaDice) {
+					diceNotation += '+d6';
+				}
+				
+				// Update the text input
+				textInput.value = diceNotation;
+				
+				// Trigger the input event to update the size
+				textInput.dispatchEvent(new Event('input'));
+				
+				// THIS IS THE KEY FIX: Call main.setInput() to actually set the dice
+				main.setInput();
 			}
-			
-			// Add Bolzga Dice if parameter is true
-			if (addBolzgaDice) {
-				diceNotation += '+d6';
-			}
-			
-			//textInput.value = diceNotation;
-			setDice(diceNotation);
-		}
 			
 			
 			init();

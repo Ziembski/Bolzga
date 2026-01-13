@@ -163,6 +163,18 @@ input {
 	
 }
 
+.dice_tray_shadow {
+	
+	position: absolute;
+    width: 100%;
+    top: 8vmin;
+    height: 65vmin;
+    z-index: 100;
+    pointer-events: none;
+	opacity: 30%;
+	
+}
+
 /* Dice Roller UI Overlay */
 #diceRollerUI {
 	

@@ -110,7 +110,7 @@ input {
 #dice_tray_main {
 	
     position: absolute;
-    top: 0;
+    bottom: 34vmin;
     right: -60.5vmin;
     width: 70.2vmin;
     height: 70.2vmin;
@@ -1388,13 +1388,13 @@ img.outline_watermark {
 }
 
 .flip-playing-card {
-    background-color: transparent;
+background-color: transparent;
     width: 56.1vmin;
     height: 82.5vmin;
     position: absolute;
     perspective: 1500vmin;
-    bottom: 19vmin;
-    right: 7vmin;
+    bottom: 17vmin;
+    right: 13vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;

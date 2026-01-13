@@ -38,8 +38,8 @@ const DICE = (function() {
         },
         label_color: '#161512', //numbers on dice
         dice_color: '#FAEBD7',
-        ambient_light_color: '',
-        spot_light_color: '',
+        ambient_light_color: '#FAEBD7',
+        spot_light_color: '#FAEBD7',
         desk_color: '#101010', //canvas background
         desk_opacity: 0.0,
         use_shadows: true,
@@ -96,8 +96,8 @@ const DICE = (function() {
         this.world.broadphase = new CANNON.NaiveBroadphase();
         this.world.solver.iterations = 16;
 
-        //var ambientLight = new THREE.AmbientLight(vars.ambient_light_color);
-        //this.scene.add(ambientLight);
+        var ambientLight = new THREE.AmbientLight(vars.ambient_light_color);
+        this.scene.add(ambientLight);
 
         this.dice_body_material = new CANNON.Material();
         var desk_body_material = new CANNON.Material();
@@ -156,7 +156,7 @@ const DICE = (function() {
 
         var mw = Math.max(this.w, this.h);
         if (this.light) this.scene.remove(this.light);
-        this.light = new THREE.SpotLight(vars.spot_light_color, 2.0);
+        //this.light = new THREE.SpotLight(vars.spot_light_color, 2.0);
         this.light.position.set(-mw / 2, mw / 2, mw * 2);
         this.light.target.position.set(0, 0, 0);
         this.light.distance = mw * 5;

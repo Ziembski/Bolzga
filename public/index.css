@@ -184,7 +184,7 @@ span.header1  {
   width: 90%;
   justify-self: center;
   align-self: center;
-  text-align: center;
+  text-align: start;
   margin-top: 1vmin;
   
   gap: 0.3vmin;

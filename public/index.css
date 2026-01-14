@@ -79,26 +79,7 @@ body {
     left: 0;
 }
 
-/* unvisited link */
-a:link {
-  color: #292929;
-}
 
-/* visited link */
-a:visited {
-  color: #292929;
-}
-
-/* mouse over link */
-a:hover {
-  color: #292929;
-  filter: drop-shadow(0px 0px 0.5vmin #3243F4);
-}
-
-a:active {
-  color: #292929;
-  filter: drop-shadow(0px 0px 0.5vmin #3243F4);
-}
 
 .body-img {
     background: pink;

@@ -79,6 +79,27 @@ body {
     left: 0;
 }
 
+/* unvisited link */
+a:link {
+  color: #292929;
+}
+
+/* visited link */
+a:visited {
+  color: #292929;
+}
+
+/* mouse over link */
+a:hover {
+  color: #292929;
+  filter: drop-shadow(0px 0px 0.5vmin #3243F4);
+}
+
+a:active {
+  color: #292929;
+  filter: drop-shadow(0px 0px 0.5vmin #3243F4);
+}
+
 .body-img {
     background: pink;
     width: 100%;
@@ -132,7 +153,7 @@ input {
   display: flex;
 	position: relative;
   flex-direction: column;
-  font-size: 4.vmin;
+  font-size: 4vmin;
   color: white;
   width: 80%;
   justify-self: center;
@@ -163,7 +184,7 @@ span.header1  {
   width: 90%;
   justify-self: center;
   align-self: center;
-  text-align: start;
+  text-align: center;
   margin-top: 1vmin;
   
   gap: 0.3vmin;

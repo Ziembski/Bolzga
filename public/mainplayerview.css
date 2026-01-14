@@ -47,7 +47,7 @@ body {
   
   /* Width function variables */
   --base-width: 96vmin;
-  --max-width-x: 80vmin;
+  --max-width-x: 96vmin;
   --width-curve-steepness: 3;
 }
 

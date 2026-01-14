@@ -28,7 +28,7 @@ const DICE = (function() {
 
     var vars = { //todo: make these configurable on init
         frame_rate: 1 / 60,
-        scale: 1000, //dice size
+        scale: 10, //dice size
         
         material_options: {
             specular: 0x172022,

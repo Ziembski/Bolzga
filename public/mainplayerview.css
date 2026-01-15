@@ -1394,7 +1394,7 @@ img.outline_watermark {
     position: absolute;
     perspective: 1500vmin;
     bottom: 17vmin;
-    right: 48vmin;
+    right: 45vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
@@ -1450,6 +1450,8 @@ img.outline_watermark {
 .flip-playing-card-back {
 	object-fit: contain;
     transform: rotateY(180deg);
+    width: 56.1vmin;
+    height: 82.5vmin;
 }
 
 
@@ -1464,6 +1466,8 @@ img.outline_watermark {
 .playing-card-backside {
     border-radius: 2.7vmin;
     object-fit: contain;
+    width: 56.1vmin;
+    height: 82.5vmin;
 }
 
 .playing-card-backside img {

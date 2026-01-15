@@ -1448,8 +1448,10 @@ img.outline_watermark {
 }
 
 .flip-playing-card-back {
+	object-fit: contain;
     transform: rotateY(180deg);
 }
+
 
 .flip-playing-card-back label {
     width: 100%;
@@ -1461,10 +1463,11 @@ img.outline_watermark {
 
 .playing-card-backside {
     border-radius: 2.7vmin;
-    contain: size;
+    object-fit: contain;
 }
 
 .playing-card-backside img {
+	height: 100%;
     width: 100%;
     border-radius: 2.7vmin;
     box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;

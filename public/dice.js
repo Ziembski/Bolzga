@@ -255,7 +255,7 @@ const DICE = (function() {
                     if (notation.constant > 0) res += ' +' + notation.constant;
                     else res += ' -' + Math.abs(notation.constant);
                 }                
-                notation.resultTotal = (result.reduce(function(s, a) { return s + a; }) + notation.constant);
+                notation.resultTotal = (Math.max.apply(Math, result) + notation.constant);
                 if (result.length > 1 || notation.constant) {
                     res += ' = ' + notation.resultTotal;
                 }

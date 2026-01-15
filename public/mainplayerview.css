@@ -47,7 +47,7 @@ body {
   
   /* Width function variables */
   --base-width: 96vmin;
-  --max-width-x: 96vmin;
+  --max-width-x: 100vmin;
   --width-curve-steepness: 3;
 }
 
@@ -1388,17 +1388,17 @@ img.outline_watermark {
 }
 
 .flip-playing-card {
-background-color: transparent;
+    background-color: transparent;
     width: 56.1vmin;
     height: 82.5vmin;
     position: absolute;
     perspective: 1500vmin;
     bottom: 17vmin;
-    right: 13vmin;
+    right: 49vmin;
     align-items: center;
     border-radius: 2.7vmin;
     contain: layout;
-    transform: rotate(25deg);
+    transform: rotate(344deg);
     scale: 0.65;
     z-index: 2;
 }
@@ -1479,13 +1479,12 @@ background-color: transparent;
 */
 
 .caps-section {
-	position: absolute;
-    bottom: 2vmin;
-	right: 1vmin;
-    width: 33.75vmin;
-    height: 98vmin;
-    scale: 0.9;
-	z-index: 1;
+position: absolute;
+    bottom: 0vmin;
+    right: 0vmin;
+    width: 99.75vmin;
+    height: 30vmin;
+    z-index: 1;
 }
 
 .detail-item.field-kapsle label {
@@ -1507,8 +1506,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 82.66vmin;
-    left: 14.36vmin;
+    top: 7vmin;
+    right: 0.36vmin;
 }
 
 .cap1 img {
@@ -1523,8 +1522,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 73.68vmin;
-    left: -5.82vmin;
+    top: 0vmin;
+    right: 20.36vmin;
 }
 
 .cap2 img {
@@ -1539,8 +1538,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 83.93vmin;
-    left: -7.64vmin;
+    top: 8vmin;
+    right: 22.36vmin;
 }
 
 .cap3 img {
@@ -1555,8 +1554,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 72.91vmin;
-    left: -26.13vmin;
+    top: 8vmin;
+    right: 57.36vmin;
 }
 
 .cap4 img {
@@ -1571,8 +1570,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 82.93vmin;
-    left: -44.85vmin;
+    top: -6vmin;
+    right: 41.36vmin;
 }
 
 .cap5 img {
@@ -1587,8 +1586,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 84.68vmin;
-    left: -28.06vmin;
+    top: 9vmin;
+    right: 42.36vmin;
 }
 
 .cap6 img {
@@ -1599,12 +1598,12 @@ background-color: transparent;
 }
 
 .cap7 {
-	width: 21.38vmin;
+    width: 21.38vmin;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 61.15vmin;
-    left: 11.11vmin;
+    top: 8vmin;
+    right: 78.36vmin;
 }
 
 .cap7 img {
@@ -1619,8 +1618,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 72.04vmin;
-    left: 10.24vmin;
+    top: 8vmin;
+    right: 66.36vmin;
 }
 
 .cap8 img {
@@ -1635,8 +1634,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 62.7vmin;
-    left: -45.95vmin;
+    top: -14vmin;
+    right: 4.36vmin;
 }
 
 .cap9 img {
@@ -1651,8 +1650,8 @@ background-color: transparent;
     height: 21.38vmin;
     align-items: center;
     position: absolute;
-    top: 71.93vmin;
-    left: -42.97vmin;
+    top: -5vmin;
+    right: 6.36vmin;
 }
 
 .cap10 img {

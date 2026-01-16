@@ -269,6 +269,70 @@ input {
 	    display: none;
 }
 
+.dice_tray_d4 {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_d6 {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_d8 {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_d10 {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_d12 {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_plus {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_minus {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
+.dice_tray_x {
+	
+	position: absolute;	
+    width: 5vmin;
+    height: 5vmin;
+	
+}
+
 #diceRollerUI #result {
     position: relative;
     display: block;

@@ -1217,36 +1217,111 @@
 			
 			
 			
-			function updateDiceInput(spanElement, addBolzgaDice = false) {
-				const textInput = document.getElementById('textInput');
-				if (!textInput) return;
+function updateDiceInput(spanElement, addBolzgaDice = false) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    const fullText = spanElement.textContent.trim();
+    const lastSpaceIndex = fullText.lastIndexOf(' ');
+    
+    let diceNotation;
+    if (lastSpaceIndex !== -1) {
+        // Take text after last space
+        diceNotation = fullText.substring(lastSpaceIndex + 1);
+    } else {
+        // If no space found, use the whole text
+        diceNotation = fullText;
+    }
+    
+    // Add Bolzga Dice if parameter is true
+    if (addBolzgaDice) {
+        // Extract any modifier from the original dice notation
+        const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
+        let modifier = '';
+        
+        if (modifierMatch) {
+            modifier = modifierMatch[1];
+        }
+        
+        // Add Bolzga Dice with the same modifier applied to both dice
+        diceNotation = diceNotation + '+d6' + modifier;
+    }
+    
+    // Update the text input
+    textInput.value = diceNotation;
+    
+    // Trigger the input event to update the size
+    textInput.dispatchEvent(new Event('input'));
+    
+    // THIS IS THE KEY FIX: Call main.setInput() to actually set the dice
+    main.setInput();
+}
+
+	function addDiceOrModifier(parameter) {
+		const textInput = document.getElementById('textInput');
+		if (!textInput) return;
+		
+		let currentValue = textInput.value.trim();
+		
+		// Handle "clear" parameter
+		if (parameter === 'clear') {
+			textInput.value = '';
+			textInput.dispatchEvent(new Event('input'));
+			main.setInput();
+			return;
+		}
+		
+		// Handle modifier adjustments (+1 or -1)
+		if (parameter === '+1' || parameter === '-1') {
+			const adjustment = parameter === '+1' ? 1 : -1;
+			
+			// Find all modifiers in the current notation
+			// Match patterns like +2, -3, etc.
+			const modifierRegex = /([+\-])(\d+)/g;
+			let newValue = currentValue;
+			let match;
+			let replacements = [];
+			
+			// Collect all matches first to avoid regex issues during replacement
+			while ((match = modifierRegex.exec(currentValue)) !== null) {
+				const sign = match[1];
+				const value = parseInt(match[2]);
+				const fullMatch = match[0];
+				const newValue = value + adjustment;
 				
-				const fullText = spanElement.textContent.trim();
-				const lastSpaceIndex = fullText.lastIndexOf(' ');
-				
-				let diceNotation;
-				if (lastSpaceIndex !== -1) {
-					// Take text after last space
-					diceNotation = fullText.substring(lastSpaceIndex + 1);
-				} else {
-					// If no space found, use the whole text
-					diceNotation = fullText;
-				}
-				
-				// Add Bolzga Dice if parameter is true
-				if (addBolzgaDice) {
-					diceNotation += '+d6';
-				}
-				
-				// Update the text input
-				textInput.value = diceNotation;
-				
-				// Trigger the input event to update the size
-				textInput.dispatchEvent(new Event('input'));
-				
-				// THIS IS THE KEY FIX: Call main.setInput() to actually set the dice
-				main.setInput();
+				replacements.push({
+					original: fullMatch,
+					index: match.index,
+					replacement: sign + newValue
+				});
 			}
+			
+			// Replace from end to start to maintain correct indices
+			for (let i = replacements.length - 1; i >= 0; i--) {
+				const r = replacements[i];
+				newValue = newValue.substring(0, r.index) + r.replacement + newValue.substring(r.index + r.original.length);
+			}
+			
+			textInput.value = newValue;
+			textInput.dispatchEvent(new Event('input'));
+			main.setInput();
+			return;
+		}
+		
+		// Handle adding a die type (like d6, d8, d20, etc.)
+		if (parameter.match(/^d\d+$/i)) {
+			if (currentValue === '') {
+				textInput.value = parameter;
+			} else {
+				textInput.value = currentValue + '+' + parameter;
+			}
+			textInput.dispatchEvent(new Event('input'));
+			main.setInput();
+			return;
+		}
+		
+		console.warn('Invalid parameter for addDiceOrModifier:', parameter);
+}
 			
 			
 			init();

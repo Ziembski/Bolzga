@@ -331,10 +331,13 @@ app.get('/api/sync-from-google', async (req, res) => {
 
 /**
  * NEW: API endpoint to modify a cell value
+ * Supports both POST and GET methods with flexible parameters
+ * 
  * POST /api/modify
  * Body: { "row": 5, "field": "Kapsle", "delta": 1 }
- * OR
+ * 
  * GET /api/modify?row=5&field=Kapsle&delta=1
+ * GET /api/modify/5/Kapsle/1
  */
 app.post('/api/modify', async (req, res) => {
   try {
@@ -362,7 +365,7 @@ app.post('/api/modify', async (req, res) => {
   }
 });
 
-// Also support GET for modify (easier for quick testing)
+// Support GET with query parameters
 app.get('/api/modify', async (req, res) => {
   try {
     const { row, field, delta } = req.query;
@@ -373,6 +376,26 @@ app.get('/api/modify', async (req, res) => {
         error: 'Missing required parameters: row, field, delta'
       });
     }
+    
+    const result = await modifyCSVValue(
+      parseInt(row),
+      field,
+      parseFloat(delta)
+    );
+    
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// Support GET with path parameters: /api/modify/:row/:field/:delta
+app.get('/api/modify/:row/:field/:delta', async (req, res) => {
+  try {
+    const { row, field, delta } = req.params;
     
     const result = await modifyCSVValue(
       parseInt(row),

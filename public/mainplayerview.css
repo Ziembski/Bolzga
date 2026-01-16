@@ -275,7 +275,8 @@ input {
 	height: 7vmin;
 	bottom: 5.5vmin;
 	left: 14vmin;
-	z-index: 130;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_d6 {
@@ -284,6 +285,8 @@ input {
 	height: 7vmin;
 	bottom: 5.5vmin;
 	left: 23.5vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_d8 {
@@ -292,6 +295,8 @@ input {
 	height: 7vmin;
 	bottom: 5.5vmin;
 	left: 31.5vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_d10 {
@@ -300,6 +305,8 @@ input {
 	height: 7vmin;
 	bottom: 5.5vmin;
 	left: 39.5vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_d12 {
@@ -308,6 +315,8 @@ input {
 	height: 7vmin;
 	bottom: 5.5vmin;
 	left: 48vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_plus {
@@ -316,6 +325,8 @@ input {
 	height: 7vmin;
 	top: 4vmin;
 	left: 18vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_minus {
@@ -324,6 +335,8 @@ input {
 	height: 2vmin;
 	top: 6vmin;
 	left: 45vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 .dice_tray_x {
@@ -332,6 +345,8 @@ input {
 	height: 10vmin;
 	top: 29vmin;
 	left: 57vmin;
+	z-index: 121;
+	pointer-events: auto;
 }
 
 #diceRollerUI #result {

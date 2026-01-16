@@ -925,9 +925,9 @@
 				}
 				
 				// Update can status rotations based on "status1", "status2", "status3" fields
-				const status1Index = data.headers.indexOf('Wyczerpanie');
-				const status2Index = data.headers.indexOf('Rany');
-				const status3Index = data.headers.indexOf('Szok');
+				const status1Index = data.headers.indexOf('status1');
+				const status2Index = data.headers.indexOf('status2');
+				const status3Index = data.headers.indexOf('status3');
 				
 				if (status1Index >= 0) {
 					const rotation1 = parseInt(row[status1Index]) || 0;

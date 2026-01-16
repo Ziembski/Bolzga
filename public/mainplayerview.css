@@ -196,22 +196,21 @@ input {
 }
 
 .dice_top_field {
-    text-align: center;
-    width: 18%;
-    height: 5%;
-    background-color: rgba(150, 150, 150, 0.01);
+	text-align: center;
+    width: 54%;
+    height: 9%;
+    background-color: rgba(150, 150, 150, 0);
     border-radius: 0.5vmin;
     position: absolute;
-    top: 4.1vmin;
-    left: 30vmin;
-	
+    top: 4vmin;
+    left: 16vmin;
 }
 
 #diceRollerUI #textInput {
-	text-align: center;
+    text-align: center;
     border: none;
     color: rgba(0, 0, 0, 0.8);
-    background-color: rgba(199, 199, 199, 0.4);
+    background-color: rgba(199, 199, 199, 0.2);
     width: 100%;
     height: 100%;
     text-overflow: ellipsis;
@@ -320,33 +319,33 @@ input {
 }
 
 .dice_tray_plus {
-	position: absolute;
-	width: 10vmin;
-	height: 7vmin;
-	top: 4vmin;
-	left: 18vmin;
-	z-index: 121;
-	pointer-events: auto;
+    position: absolute;
+    width: 10vmin;
+    height: 7vmin;
+    top: 18vmin;
+    left: 57.5vmin;
+    z-index: 121;
+    pointer-events: auto;
 }
 
 .dice_tray_minus {
-	position: absolute;
-	width: 6vmin;
-	height: 2vmin;
-	top: 6vmin;
-	left: 45vmin;
-	z-index: 121;
-	pointer-events: auto;
+    position: absolute;
+    width: 6vmin;
+    height: 2vmin;
+    top: 32vmin;
+    left: 60vmin;
+    z-index: 121;
+    pointer-events: auto;
 }
 
 .dice_tray_x {
-	position: absolute;
-	width: 11vmin;
-	height: 10vmin;
-	top: 29vmin;
-	left: 57vmin;
-	z-index: 121;
-	pointer-events: auto;
+    position: absolute;
+    width: 11vmin;
+    height: 10vmin;
+    top: 42vmin;
+    left: 57vmin;
+    z-index: 121;
+    pointer-events: auto;
 }
 
 #diceRollerUI #result {

@@ -270,67 +270,68 @@ input {
 }
 
 .dice_tray_d4 {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 7vmin;
+	height: 7vmin;
+	bottom: 5.5vmin;
+	left: 14vmin;
+	z-index: 130;
 }
 
 .dice_tray_d6 {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 7vmin;
+	height: 7vmin;
+	bottom: 5.5vmin;
+	left: 23.5vmin;
 }
 
 .dice_tray_d8 {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 7vmin;
+	height: 7vmin;
+	bottom: 5.5vmin;
+	left: 31.5vmin;
 }
 
 .dice_tray_d10 {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 7vmin;
+	height: 7vmin;
+	bottom: 5.5vmin;
+	left: 39.5vmin;
 }
 
 .dice_tray_d12 {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 7vmin;
+	height: 7vmin;
+	bottom: 5.5vmin;
+	left: 48vmin;
 }
 
 .dice_tray_plus {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 10vmin;
+	height: 7vmin;
+	top: 4vmin;
+	left: 18vmin;
 }
 
 .dice_tray_minus {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 6vmin;
+	height: 2vmin;
+	top: 6vmin;
+	left: 45vmin;
 }
 
 .dice_tray_x {
-	
-	position: absolute;	
-    width: 5vmin;
-    height: 5vmin;
-	
+	position: absolute;
+	width: 11vmin;
+	height: 10vmin;
+	top: 29vmin;
+	left: 57vmin;
 }
 
 #diceRollerUI #result {

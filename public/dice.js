@@ -246,55 +246,27 @@ const DICE = (function() {
 
         //@param request_results (optional) - pass in an array of desired roll results
         //todo: when this param is used, animation isn't as smooth (uat not used?)
-		function roll(request_results) {
-			box.clear();
-			box.roll(vectors, request_results || notation.result, function(result) {
-				notation.result = result;
-				
-				// Calculate result considering each modifier separately
-				var resultParts = [];
-				var total = 0;
-				
-				for (var i = 0; i < result.length; i++) {
-					var dieResult = result[i];
-					var modifier = notation.modifiers[i] || 0;
-					var dieTotal = dieResult + modifier;
-					total += dieTotal;
-					
-					// Build display string for this die
-					if (modifier !== 0) {
-						resultParts.push(dieResult + (modifier > 0 ? '+' : '') + modifier);
-					} else {
-						resultParts.push(dieResult.toString());
-					}
-				}
-				
-				// Use max of all die totals instead of sum
-				var maxDieTotal = Math.max.apply(Math, result.map(function(val, idx) {
-					return val + (notation.modifiers[idx] || 0);
-				}));
-				
-				var res = resultParts.join(' ');
-				
-				if (notation.constant) {
-					if (notation.constant > 0) res += ' +' + notation.constant;
-					else res += ' -' + Math.abs(notation.constant);
-					maxDieTotal += notation.constant;
-				}
-				
-				notation.resultTotal = maxDieTotal;
-				
-				if (result.length > 1 || notation.constant || notation.modifiers.some(m => m !== 0)) {
-					res += ' = ' + notation.resultTotal;
-				}
-				notation.resultString = res;
+        function roll(request_results) {
+            box.clear();
+            box.roll(vectors, request_results || notation.result, function(result) {
+                notation.result = result;
+                var res = result.join(' ');
+                if (notation.constant) {
+                    if (notation.constant > 0) res += ' +' + notation.constant;
+                    else res += ' -' + Math.abs(notation.constant);
+                }                
+                notation.resultTotal = (Math.max.apply(Math, result) + notation.constant);
+                if (result.length > 1 || notation.constant) {
+                    res += ' = ' + notation.resultTotal;
+                }
+                notation.resultString = res;
 
-				if (after_roll) after_roll(notation);
+                if (after_roll) after_roll(notation);
 
-				box.rolling = false;
-				vars.use_adapvite_timestep = uat;
-			});
-		}
+                box.rolling = false;
+                vars.use_adapvite_timestep = uat;
+            });
+        }
     }
        
     //todo: the rest of these don't need to be public, but need to read the this properties
@@ -466,47 +438,38 @@ const DICE = (function() {
 
     //validates dice notation input
     //notation should be in format "1d4+2d6"
-that.parse_notation = function(notation) {
-    var no = notation.split('@');
-    var dr0 = /\s*(\d*)([a-z]+)(\d+)(\s*(\+|\-)\s*(\d+)){0,1}\s*(\+|$)/gi;
-    var dr1 = /(\b)*(\d+)(\b)*/gi;
-    var ret = { 
-        set: [], //set of dice to roll
-        modifiers: [], //array of modifiers for each die
-        constant: 0, //global constant (not tied to specific dice)
-        result: [], //array of results of each die
-        resultTotal: 0, //dice results + modifiers
-        resultString: '', //printable result
-        error: false //input errors are ignored gracefully
-    }; 
-    var res;
-    //looks at each piece of the notation and adds dice and modifiers to results
-    while (res = dr0.exec(no[0])) {
-        var command = res[2];
-        if (command != 'd') { ret.error = true; continue; }
-        var count = parseInt(res[1]);
-        if (res[1] == '') count = 1;
-        var type = 'd' + res[3];
-        if (CONSTS.known_types.indexOf(type) == -1) { ret.error = true; continue; }
-        
-        // Get the modifier for this die (if any)
-        var modifier = 0;
-        if (res[5] && res[6]) {
-            if (res[5] == '+') modifier = parseInt(res[6]);
-            else modifier = -parseInt(res[6]);
+    that.parse_notation = function(notation) {
+        var no = notation.split('@');
+        var dr0 = /\s*(\d*)([a-z]+)(\d+)(\s*(\+|\-)\s*(\d+)){0,1}\s*(\+|$)/gi;
+        var dr1 = /(\b)*(\d+)(\b)*/gi;
+        var ret = { 
+            set: [], //set of dice to roll
+            constant: 0, //modifier to add to result
+            result: [], //array of results of each die
+            resultTotal: 0, //dice results + constant
+            resultString: '', //printable result
+            error: false //input errors are ignored gracefully
+        }; 
+        var res;
+        //looks at each peice of the notation and adds dice and constants to results
+        while (res = dr0.exec(no[0])) {
+            var command = res[2];
+            if (command != 'd') { ret.error = true; continue; }
+            var count = parseInt(res[1]);
+            if (res[1] == '') count = 1;
+            var type = 'd' + res[3];
+            if (CONSTS.known_types.indexOf(type) == -1) { ret.error = true; continue; }
+            while (count--) ret.set.push(type);
+            if (res[5] && res[6]) {
+                if (res[5] == '+') ret.constant += parseInt(res[6]);
+                else ret.constant -= parseInt(res[6]);
+            }
         }
-        
-        // Add each die with its modifier
-        while (count--) {
-            ret.set.push(type);
-            ret.modifiers.push(modifier);
+        while (res = dr1.exec(no[1])) {
+            ret.result.push(parseInt(res[2]));
         }
+        return ret;
     }
-    while (res = dr1.exec(no[1])) {
-        ret.result.push(parseInt(res[2]));
-    }
-    return ret;
-}
 
     that.stringify_notation = function(nn) {
         var dict = {}, notation = '';

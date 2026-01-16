@@ -1266,44 +1266,6 @@ function updateDiceInput(spanElement, addBolzgaDice = false) {
     main.setInput();
 }
 
-function updateDiceInput(spanElement, addBolzgaDice = false) {
-    const textInput = document.getElementById('textInput');
-    if (!textInput) return;
-    
-    const fullText = spanElement.textContent.trim();
-    const lastSpaceIndex = fullText.lastIndexOf(' ');
-    
-    let diceNotation;
-    if (lastSpaceIndex !== -1) {
-        // Take text after last space
-        diceNotation = fullText.substring(lastSpaceIndex + 1);
-    } else {
-        // If no space found, use the whole text
-        diceNotation = fullText;
-    }
-    
-    // Add Bolzga Dice if parameter is true
-    if (addBolzgaDice) {
-        // Extract any modifier from the original dice notation
-        const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
-        let modifier = '';
-        
-        if (modifierMatch) {
-            modifier = modifierMatch[1];
-        }
-        
-        // Add Bolzga Dice with the same modifier applied to both dice
-        diceNotation = diceNotation + '+d6' + modifier;
-    }
-    
-    // Update the text input
-    textInput.value = diceNotation;
-    
-    // Trigger the input event to update the size
-    textInput.dispatchEvent(new Event('input'));
-    main.setInput();
-}
-
 function addDiceOrModifier(parameter) {
     const textInput = document.getElementById('textInput');
     if (!textInput) return;

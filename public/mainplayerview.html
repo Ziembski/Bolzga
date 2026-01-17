@@ -1282,31 +1282,45 @@ function addDiceOrModifier(parameter) {
         return;
     }
     
-    // Handle modifier adjustments (+1 or -1)
-    if (parameter === '+1' || parameter === '-1') {
-        const adjustment = parseInt(parameter);
+// Handle modifier adjustments (+1 or -1)
+if (parameter === '+1' || parameter === '-1') {
+    const adjustment = parseInt(parameter);
+    
+    // Check if there's already a modifier at the end
+    const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
+    
+    if (modifierMatch) {
+        // Adjust existing modifier at the end
+        const sign = modifierMatch[1];
+        const value = parseInt(modifierMatch[2]);
+        // Calculate existing modifier as a signed number
+        const existingModifier = sign === '-' ? -value : value;
+        const newModifier = existingModifier + adjustment;
+        const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
         
-        // Check if there's already a modifier at the end
-        const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
-        
-        if (modifierMatch) {
-            // Adjust existing modifier at the end
-            const sign = modifierMatch[1];
-            const value = parseInt(modifierMatch[2]);
-            const newValue = value + adjustment;
-            const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
-            
-            textInput.value = baseNotation + sign + newValue;
+        if (newModifier === 0) {
+            // Remove modifier entirely if it becomes 0
+            textInput.value = baseNotation;
+        } else if (newModifier > 0) {
+            // Positive modifier
+            textInput.value = baseNotation + '+' + newModifier;
         } else {
-            // No modifier exists - add one at the end
-            const sign = adjustment > 0 ? '+' : '';
-            textInput.value = currentValue + sign + adjustment;
+            // Negative modifier
+            textInput.value = baseNotation + newModifier;
         }
-        
-        textInput.dispatchEvent(new Event('input'));
-        main.setInput();
-        return;
+    } else {
+        // No modifier exists - add one at the end
+        if (adjustment > 0) {
+            textInput.value = currentValue + '+' + adjustment;
+        } else {
+            textInput.value = currentValue + adjustment;
+        }
     }
+    
+    textInput.dispatchEvent(new Event('input'));
+    main.setInput();
+    return;
+}
     
     // Handle adding a die type (like d6, d8, d20, etc.)
     if (parameter.match(/^d\d+$/i)) {

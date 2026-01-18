@@ -1875,56 +1875,49 @@ position: absolute;
     content: 'Ładowanie...';
 }
 
+/*
+############################################################
+||                                                        ||
+||                    PHONE                               ||
+||                                                        ||
+############################################################
+*/
+
+.phone_container {
+    position: absolute;
+    top: 45vmin;
+    left: 45vmin;
+    object-fit: contain;
+    width: 20vmin;
+    height: 60vmin;
+}
+
+.phone_container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+}
+
+
 .game-logs-container {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    height: 200px;
-    background-color: rgba(16, 16, 16, 0.95);
-    border-top: 2px solid #FAEBD7;
+    height: 18vmin;
     z-index: 9999;
     display: flex;
     flex-direction: column;
 }
 
-.game-logs-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    background-color: rgba(30, 30, 30, 0.95);
-    border-bottom: 1px solid #FAEBD7;
-}
-
-.game-logs-header h3 {
-    margin: 0;
-    color: #FAEBD7;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-}
-
-.game-logs-header button {
-    background-color: #d81b04;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
-    font-size: 12px;
-}
-
-.game-logs-header button:hover {
-    background-color: #a01503;
-}
 
 .game-logs-display {
     flex: 1;
     overflow-y: auto;
-    padding: 10px 15px;
     font-family: Nokia;
-    font-size: 13px;
-    color: #FAEBD7;
-    line-height: 1.6;
+    font-size: 3vmin;
+    color: #1E1E1E;
+
 }
 
 .game-logs-display::-webkit-scrollbar {

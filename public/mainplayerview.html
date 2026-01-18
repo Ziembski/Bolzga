@@ -1311,8 +1311,7 @@ async function logDiceRoll(input, result) {
             console.error('Failed to log dice roll');
         }
         
-        // Clear the field after logging
-        lastClickedField = '';
+
     } catch (error) {
         console.error('Error logging dice roll:', error);
     }
@@ -1346,6 +1345,7 @@ function addDiceOrModifier(parameter) {
         textInput.value = '';
         textInput.dispatchEvent(new Event('input'));
         main.setInput();
+        lastClickedField = '';
         return;
     }
     

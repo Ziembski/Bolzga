@@ -1904,9 +1904,9 @@ position: absolute;
 .game-logs-container {
     position: absolute;
     top: 15vmin;
-    left: 6vmin;
+    left: 6.5vmin;
     height: 9vmin;
-    width: 16vmin;
+    width: 15vmin;
     z-index: 9999;
     display: flex;
     flex-direction: column;

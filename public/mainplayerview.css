@@ -1122,6 +1122,8 @@ span.page4.detail-value {
     position: absolute;
     top: 7vmin;
     left: 0vmin;
+    width: 5vmin;
+    height: 5vmin;
     
 }
 
@@ -1130,6 +1132,8 @@ span.page4.detail-value {
     position: absolute;
     top: 7vmin;
     left: 0vmin;
+    width: 5vmin;
+    height: 5vmin;
     
 }
 
@@ -1138,7 +1142,8 @@ span.page4.detail-value {
     position: absolute;
     top: 7vmin;
     left: 0vmin;
-    
+    width: 5vmin;
+    height: 5vmin;
 }
 
 

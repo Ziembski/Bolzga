@@ -6,8 +6,13 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+const fs = require('fs').promises;
+const fsSync = require('fs');
+const path = require('path');
+
 // Path to local CSV file
 const LOCAL_CSV_PATH = path.join(__dirname, 'data.csv');
+const GAME_LOGS_PATH = path.join(__dirname, 'game-logs.txt'); 
 
 // Store the current data in memory
 let currentData = {
@@ -18,6 +23,7 @@ let currentData = {
 
 // SSE clients tracking
 let sseClients = [];
+let logSseClients = [];
 
 // Google Sheets CSV URL
 const SHEETS_CSV_URL = process.env.SHEETS_CSV_URL || 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS86NCiI89lss8zi8Z1K1GHRyQmUvQqFCWnPOdXGzrWUUsadr7hif9lLfc4vI1b3A/pub?gid=1665360733&single=true&output=csv';
@@ -235,6 +241,10 @@ async function modifyCSVValue(rowIndex, fieldName, delta) {
     // Notify all SSE clients
     notifyAllClients();
     
+    const characterName = getCharacterName(rowIndex);
+    await appendToGameLog(`${characterName} ${fieldName}: ${currentValue} -> ${newValue}`);
+    
+    
     console.log(`Modified row ${rowIndex}, field "${fieldName}": ${currentValue} → ${newValue} (${delta >= 0 ? '+' : ''}${delta}), timestamp updated to ${newTimestamp}`);
     
     return {
@@ -440,6 +450,150 @@ app.get('/api/sse', (req, res) => {
   console.log(`SSE client ${clientId} connected. Active clients: ${sseClients.length}`);
 });
 
+
+/**
+ * Append a message to game logs with timestamp
+ */
+async function appendToGameLog(message) {
+  try {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const timestamp = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    const logEntry = `[${timestamp}] ${message}\n`;
+    
+    await fs.appendFile(GAME_LOGS_PATH, logEntry, 'utf-8');
+    
+    // Notify all log SSE clients
+    notifyLogClients(logEntry.trim());
+    
+    console.log('Game log:', logEntry.trim());
+  } catch (error) {
+    console.error('Error writing to game log:', error);
+  }
+}
+
+/**
+ * Notify all connected log SSE clients
+ */
+function notifyLogClients(logEntry) {
+  logSseClients.forEach(client => {
+    try {
+      client.res.write(`data: ${JSON.stringify({ entry: logEntry })}\n\n`);
+    } catch (error) {
+      console.error('Error notifying log client:', error);
+    }
+  });
+}
+
+/**
+ * Get character name from a specific row
+ */
+function getCharacterName(rowIndex) {
+  try {
+    if (rowIndex < 1 || rowIndex > currentData.rows.length) {
+      return 'Unknown';
+    }
+    
+    // Find "Imię" column
+    const imieIndex = currentData.headers.indexOf('Imię');
+    if (imieIndex === -1) return 'Unknown';
+    
+    const name = currentData.rows[rowIndex - 1][imieIndex];
+    return name && name.trim() !== '' ? name.trim() : 'Unknown';
+  } catch (error) {
+    console.error('Error getting character name:', error);
+    return 'Unknown';
+  }
+}
+
+
+/**
+ * API endpoint to log dice rolls
+ * POST /api/log-dice-roll
+ * Body: { "name": "Geralt", "field": "Gibkość", "input": "d8+d6", "result": "5, 4 = 9", "row": 1 }
+ */
+app.post('/api/log-dice-roll', async (req, res) => {
+  try {
+    const { name, field, input, result, row } = req.body;
+    
+    // Get character name from row if not provided
+    const characterName = name || (row ? getCharacterName(row) : 'Unknown');
+    
+    // Build log message
+    let message = `${characterName} rzucił`;
+    if (field && field.trim() !== '') {
+      message += ` ${field}`;
+    }
+    message += ` - ${input} - ${result}`;
+    
+    await appendToGameLog(message);
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error logging dice roll:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+/**
+ * API endpoint to get game logs
+ * GET /api/game-logs
+ */
+app.get('/api/game-logs', async (req, res) => {
+  try {
+    // Check if file exists
+    try {
+      await fs.access(GAME_LOGS_PATH);
+    } catch {
+      // File doesn't exist, return empty
+      return res.json({ logs: [] });
+    }
+    
+    const content = await fs.readFile(GAME_LOGS_PATH, 'utf-8');
+    const logs = content.split('\n').filter(line => line.trim() !== '');
+    
+    res.json({ logs });
+  } catch (error) {
+    console.error('Error reading game logs:', error);
+    res.status(500).json({ error: 'Failed to read game logs' });
+  }
+});
+
+/**
+ * SSE endpoint for real-time game log updates
+ * GET /api/game-logs-sse
+ */
+app.get('/api/game-logs-sse', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  
+  const clientId = Date.now();
+  const newClient = {
+    id: clientId,
+    res
+  };
+  
+  logSseClients.push(newClient);
+  
+  // Send initial connection confirmation
+  res.write(`data: ${JSON.stringify({ entry: 'Connected to game logs' })}\n\n`);
+  
+  req.on('close', () => {
+    logSseClients = logSseClients.filter(client => client.id !== clientId);
+    console.log(`Log SSE client ${clientId} disconnected. Active log clients: ${logSseClients.length}`);
+  });
+  
+  console.log(`Log SSE client ${clientId} connected. Active log clients: ${logSseClients.length}`);
+});
+
+
 /**
  * Initialize server - load or create local CSV
  */
@@ -462,16 +616,19 @@ async function initializeServer() {
 
 // Start server
 initializeServer().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log('API Endpoints:');
-    console.log('  GET  /api/data - Get current data');
-    console.log('  GET  /api/refresh - Reload from local CSV');
-    console.log('  GET  /api/sse - Server-Sent Events for real-time updates');
-    console.log('  GET  /api/sync-from-google - Overwrite local CSV with Google Sheets data');
-    console.log('  POST /api/modify - Modify a cell value (body: {row, field, delta})');
-    console.log('  GET  /api/modify?row=X&field=Y&delta=Z - Modify a cell value');
-  });
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log('API Endpoints:');
+  console.log('  GET  /api/data - Get current data');
+  console.log('  GET  /api/refresh - Reload from local CSV');
+  console.log('  GET  /api/sse - Server-Sent Events for real-time updates');
+  console.log('  GET  /api/sync-from-google - Overwrite local CSV with Google Sheets data');
+  console.log('  POST /api/modify - Modify a cell value (body: {row, field, delta})');
+  console.log('  GET  /api/modify?row=X&field=Y&delta=Z - Modify a cell value');
+  console.log('  POST /api/log-dice-roll - Log a dice roll'); // ADD THIS
+  console.log('  GET  /api/game-logs - Get all game logs'); // ADD THIS
+  console.log('  GET  /api/game-logs-sse - SSE for real-time log updates'); // ADD THIS
+});
 }).catch(error => {
   console.error('Failed to initialize server:', error);
   process.exit(1);

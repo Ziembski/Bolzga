@@ -711,6 +711,14 @@
 			</div>
 		</div>
 		
+		<div class="game-logs-container">
+			<div class="game-logs-header">
+				<h3>Dziennik Gry</h3>
+				<button id="clear-logs-btn" style="cursor: pointer;">Wyczyść</button>
+			</div>
+			<div id="game-logs-display" class="game-logs-display"></div>
+		</div>
+		
 		<script src="/libs/three.min.js"></script>
 		<script src="/libs/cannon.min.js"></script>
 		<script src="/libs/teal.js"></script>
@@ -724,6 +732,7 @@
 			let eventSource = null;
 			let updateDebounceTimer = null;
 			let previousKartaValue = null;
+			let lastClickedField = '';
 			
 			function getRowNumber() {
 				const params = new URLSearchParams(window.location.search);
@@ -1245,6 +1254,13 @@ function updateDiceInput(spanElement, addBolzgaDice = false) {
         diceNotation = fullText;
     }
     
+    const detailItem = spanElement.closest('.detail-item');
+    if (detailItem) {
+        lastClickedField = detailItem.getAttribute('data-field') || '';
+    } else {
+        lastClickedField = '';
+    }
+    
     // Add Bolzga Dice if parameter is true
     if (addBolzgaDice) {
         // Extract any modifier from the end of notation
@@ -1269,6 +1285,54 @@ function updateDiceInput(spanElement, addBolzgaDice = false) {
     
     // THIS IS THE KEY FIX: Call main.setInput() to actually set the dice
     main.setInput();
+}
+
+async function logDiceRoll(input, result) {
+    try {
+        const characterName = currentData && currentRow 
+            ? getCharacterName(currentRow) 
+            : 'Unknown';
+        
+        const response = await fetch('/api/log-dice-roll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: characterName,
+                field: lastClickedField,
+                input: input,
+                result: result,
+                row: currentRow
+            })
+        });
+        
+        if (!response.ok) {
+            console.error('Failed to log dice roll');
+        }
+        
+        // Clear the field after logging
+        lastClickedField = '';
+    } catch (error) {
+        console.error('Error logging dice roll:', error);
+    }
+}
+
+function getCharacterName(rowIndex) {
+    try {
+        if (!currentData || !currentData.rows || rowIndex < 1 || rowIndex > currentData.rows.length) {
+            return 'Unknown';
+        }
+        
+        const imieIndex = currentData.headers.indexOf('Imię');
+        if (imieIndex === -1) return 'Unknown';
+        
+        const name = currentData.rows[rowIndex - 1][imieIndex];
+        return name && name.trim() !== '' ? name.trim() : 'Unknown';
+    } catch (error) {
+        console.error('Error getting character name:', error);
+        return 'Unknown';
+    }
 }
 
 function addDiceOrModifier(parameter) {
@@ -1356,6 +1420,72 @@ if (parameter === '+1' || parameter === '-1') {
     
     console.warn('Invalid parameter for addDiceOrModifier:', parameter);
 }
+			
+			// Game Logs Viewer
+let logEventSource = null;
+
+function initGameLogs() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    // Load existing logs
+    fetch('/api/game-logs')
+        .then(response => response.json())
+        .then(data => {
+            if (data.logs && data.logs.length > 0) {
+                data.logs.forEach(log => {
+                    appendLogEntry(log);
+                });
+            }
+        })
+        .catch(error => console.error('Error loading game logs:', error));
+    
+    // Connect to SSE for real-time updates
+    if (logEventSource) {
+        logEventSource.close();
+    }
+    
+    logEventSource = new EventSource('/api/game-logs-sse');
+    
+    logEventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.entry && data.entry !== 'Connected to game logs') {
+            appendLogEntry(data.entry);
+        }
+    };
+    
+    logEventSource.onerror = (error) => {
+        console.error('Log SSE error:', error);
+        logEventSource.close();
+        setTimeout(initGameLogs, 5000);
+    };
+    
+    // Clear logs button
+    const clearBtn = document.getElementById('clear-logs-btn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            if (confirm('Czy na pewno chcesz wyczyścić dziennik gry?')) {
+                logsDisplay.innerHTML = '';
+            }
+        });
+    }
+}
+
+function appendLogEntry(logText) {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.textContent = logText;
+    logsDisplay.appendChild(entry);
+    
+    // Auto-scroll to bottom
+    logsDisplay.scrollTop = logsDisplay.scrollHeight;
+}
+
+// Initialize logs when page loads
+initGameLogs();
 			
 			
 			init();

@@ -189,6 +189,12 @@ window.onkeydown = function(e) {
             elem.result.innerHTML = "Oops, your dice fell off the table. <br> Refresh and roll again."
         } else {
             elem.result.innerHTML = notation.resultString;
+        
+                if (typeof logDiceRoll === 'function') {
+            // Get the original input (without the auto-added d9s for d100)
+            const originalInput = elem.textInput.value.replace(/\+d9/g, '');
+            logDiceRoll(originalInput, notation.resultString);
+            }
         }
     }
 

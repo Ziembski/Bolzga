@@ -1886,10 +1886,11 @@ position: absolute;
 .phone_container {
     position: absolute;
     top: 45vmin;
-    left: 45vmin;
+    left: 15vmin;
     object-fit: contain;
-    width: 20vmin;
-    height: 60vmin;
+    width: 30vmin;
+    height: 75vmin;
+    z-index: 150;
 }
 
 .phone_container img {
@@ -1902,7 +1903,7 @@ position: absolute;
 
 .game-logs-container {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     height: 18vmin;
     z-index: 9999;
@@ -1921,23 +1922,19 @@ position: absolute;
 }
 
 .game-logs-display::-webkit-scrollbar {
-    width: 8px;
+    width: 0.3vmin;
 }
 
 .game-logs-display::-webkit-scrollbar-track {
-    background: rgba(30, 30, 30, 0.5);
+    background: 0;
 }
 
 .game-logs-display::-webkit-scrollbar-thumb {
-    background: #FAEBD7;
-    border-radius: 4px;
-}
-
-.game-logs-display::-webkit-scrollbar-thumb:hover {
-    background: #d4c5a9;
+    background: #1E1E1E;
+    border-radius: 0.1vmin;
 }
 
 .log-entry {
-    margin-bottom: 5px;
-    padding: 3px 0;
+    margin-bottom: 0.1vmin;
+    padding: 0.1vmin 0;
 }

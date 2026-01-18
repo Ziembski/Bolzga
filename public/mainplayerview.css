@@ -1109,6 +1109,30 @@ span.page4.detail-value {
     left: 3vmin;
 }
 
+.canhead1 {
+    
+    position: absolute;
+    top: 7vmin;
+    left: 0vmin;
+    
+}
+
+.canhead2 {
+    
+    position: absolute;
+    top: 7vmin;
+    left: 0vmin;
+    
+}
+
+.canhead3 {
+    
+    position: absolute;
+    top: 7vmin;
+    left: 0vmin;
+    
+}
+
 
 .page5.detail-item {
     display: grid;

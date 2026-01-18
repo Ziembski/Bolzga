@@ -1903,9 +1903,10 @@ position: absolute;
 
 .game-logs-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 18vmin;
+    top: 15vmin;
+    left: 3vmin;
+    height: 12vmin;
+    width: 24vmin;
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -1916,7 +1917,7 @@ position: absolute;
     flex: 1;
     overflow-y: auto;
     font-family: Nokia;
-    font-size: 3vmin;
+    font-size: 2vmin;
     color: #1E1E1E;
 
 }

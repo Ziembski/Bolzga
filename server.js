@@ -527,7 +527,7 @@ app.post('/api/log-dice-roll', async (req, res) => {
     if (field && field.trim() !== '') {
       message += ` ${field}`;
     }
-    message += ` - ${input} - ${result}`;
+    message += ` ${input} = ${result}`;
     
     await appendToGameLog(message);
     

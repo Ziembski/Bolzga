@@ -30,6 +30,14 @@
   src: url('/fonts/stamp.ttf');
 }
 
+@font-face {
+  font-family: Nokia;
+  src: url('/fonts/NokiaSansWide-Regular.ttf');
+}
+
+
+
+
 body {
 	
     font-family: 'Times New Roman', serif;

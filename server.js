@@ -1,18 +1,15 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-const fs = require('fs').promises;
-const fsSync = require('fs');
-const path = require('path');
-
 // Path to local CSV file
 const LOCAL_CSV_PATH = path.join(__dirname, 'data.csv');
-const GAME_LOGS_PATH = path.join(__dirname, 'game-logs.txt'); 
+const GAME_LOGS_PATH = path.join(__dirname, 'game-logs.txt');
 
 // Store the current data in memory
 let currentData = {

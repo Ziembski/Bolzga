@@ -1246,20 +1246,34 @@ function updateDiceInput(spanElement, addBolzgaDice = false) {
     const lastSpaceIndex = fullText.lastIndexOf(' ');
     
     let diceNotation;
+    let fieldNameForLog = '';
+    
     if (lastSpaceIndex !== -1) {
-        // Take text after last space
+        // Text has a space - split into name and dice notation
+        const textBeforeDice = fullText.substring(0, lastSpaceIndex).trim();
         diceNotation = fullText.substring(lastSpaceIndex + 1);
+        
+        // Check if there's actual text before the dice notation
+        if (textBeforeDice && textBeforeDice !== '') {
+            // Case 2: Use the text before dice notation (e.g., "krycie się" from "krycie się d4")
+            fieldNameForLog = textBeforeDice;
+        }
     } else {
-        // If no space found, use the whole text
+        // No space found - the whole text is just the dice notation
         diceNotation = fullText;
     }
     
-    const detailItem = spanElement.closest('.detail-item');
-    if (detailItem) {
-        lastClickedField = detailItem.getAttribute('data-field') || '';
-    } else {
-        lastClickedField = '';
+    // If we didn't find a field name in the content, use data-field attribute
+    if (fieldNameForLog === '') {
+        const detailItem = spanElement.closest('.detail-item');
+        if (detailItem) {
+            // Case 1: Use data-field attribute (e.g., "Gibkość")
+            fieldNameForLog = detailItem.getAttribute('data-field') || '';
+        }
     }
+    
+    // Store the field name for logging
+    lastClickedField = fieldNameForLog;
     
     // Add Bolzga Dice if parameter is true
     if (addBolzgaDice) {
@@ -1283,7 +1297,7 @@ function updateDiceInput(spanElement, addBolzgaDice = false) {
     // Trigger the input event to update the size
     textInput.dispatchEvent(new Event('input'));
     
-    // THIS IS THE KEY FIX: Call main.setInput() to actually set the dice
+    // Call main.setInput() to actually set the dice
     main.setInput();
 }
 

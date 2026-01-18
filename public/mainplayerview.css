@@ -395,7 +395,7 @@ input {
 
 .flip_book_main {
     position: absolute;
-    top: 36vmin;
+    top: 18vmin;
     left: 32vmin;
     transform: translate(-50%, -50%);
     scale: 0.70;
@@ -1384,7 +1384,7 @@ img.outline_watermark {
 }
 
 #page2_rotate_checkbox:checked~#flip_book {
-    transform: translateY(-33vmin) translateX(10vmin) rotate(-90deg);
+    transform: translateY(-51vmin) translateX(10vmin) rotate(-90deg);
 }
 
 #page2_rotate_checkbox:checked~#flip_book #page1 {
@@ -1885,12 +1885,13 @@ position: absolute;
 
 .phone_container {
     position: absolute;
-    top: 45vmin;
-    left: 15vmin;
+    top: 60vmin;
+    left: 25vmin;
     object-fit: contain;
     width: 27vmin;
     height: 68vmin;
     z-index: 150;
+    transform: rotate(90deg);
 }
 
 .phone_container img {

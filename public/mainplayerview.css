@@ -1888,8 +1888,8 @@ position: absolute;
     top: 45vmin;
     left: 15vmin;
     object-fit: contain;
-    width: 30vmin;
-    height: 75vmin;
+    width: 27vmin;
+    height: 68vmin;
     z-index: 150;
 }
 
@@ -1903,10 +1903,10 @@ position: absolute;
 
 .game-logs-container {
     position: absolute;
-    top: 15.5vmin;
-    left: 8vmin;
-    height: 10vmin;
-    width: 20vmin;
+    top: 15vmin;
+    left: 6vmin;
+    height: 9vmin;
+    width: 16vmin;
     z-index: 9999;
     display: flex;
     flex-direction: column;
@@ -1917,7 +1917,7 @@ position: absolute;
     flex: 1;
     overflow-y: auto;
     font-family: Nokia;
-    font-size: 2vmin;
+    font-size: 1.8vmin;
     color: #1E1E1E;
 
 }

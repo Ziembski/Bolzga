@@ -1513,7 +1513,17 @@ function appendLogEntry(logText) {
     
     // Auto-scroll to bottom
     logsDisplay.scrollTop = logsDisplay.scrollHeight;
-
+    
+    // Play notification sound
+    const notificationSound = document.getElementById('notification-sound');
+    if (notificationSound) {
+        notificationSound.currentTime = 0; // Reset to start
+        notificationSound.volume = 0.3; // Adjust volume (0.0 to 1.0)
+        notificationSound.play().catch(err => {
+            console.log('Audio playback failed:', err);
+        });
+    }
+    
     // Trigger phone buzz animation
     const phoneContainer = document.querySelector('.phone_container');
     if (phoneContainer) {
@@ -1531,15 +1541,7 @@ function appendLogEntry(logText) {
         }, 500); // Match animation duration
     }
     
-    // Play notification sound
-    const notificationSound = document.getElementById('notification-sound');
-    if (notificationSound) {
-        notificationSound.currentTime = 0; // Reset to start
-        notificationSound.volume = 0.3; // Adjust volume (0.0 to 1.0)
-        notificationSound.play().catch(err => {
-            console.log('Audio playback failed:', err);
-        });
-    }
+
 	
 	
 }

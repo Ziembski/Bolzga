@@ -1901,7 +1901,7 @@ position: absolute;
     height: 100%;
     position: absolute;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 1000;
 }
 
 .phone_container img {

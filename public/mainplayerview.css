@@ -1954,15 +1954,25 @@ position: absolute;
 /* Phone buzzing animation - CLOSED state (default) */
 @keyframes phone-buzz-closed {
     0%, 100% { transform: rotate(90deg); }
-    10% { transform: rotate(89deg) translateY(-0.3vmin); }
-    20% { transform: rotate(91deg) translateY(0.3vmin); }
-    30% { transform: rotate(89deg) translateY(-0.2vmin); }
+    5% { transform: rotate(89deg) translateY(-0.3vmin); }
+    10% { transform: rotate(91deg) translateY(0.3vmin); }
+    15% { transform: rotate(89deg) translateY(-0.2vmin); }
+    20% { transform: rotate(91deg) translateY(0.2vmin); }
+    25% { transform: rotate(89deg) translateY(-0.3vmin); }
+    30% { transform: rotate(91deg) translateY(0.3vmin); }
+    35% { transform: rotate(89deg) translateY(-0.2vmin); }
     40% { transform: rotate(91deg) translateY(0.2vmin); }
+    45% { transform: rotate(89deg) translateY(-0.1vmin); }
     50% { transform: rotate(89deg) translateY(-0.3vmin); }
-    60% { transform: rotate(91deg) translateY(0.3vmin); }
-    70% { transform: rotate(89deg) translateY(-0.2vmin); }
-    80% { transform: rotate(91deg) translateY(0.2vmin); }
-    90% { transform: rotate(89deg) translateY(-0.1vmin); }
+    55% { transform: rotate(91deg) translateY(0.3vmin); }
+    65% { transform: rotate(89deg) translateY(-0.2vmin); }
+    70% { transform: rotate(91deg) translateY(0.2vmin); }
+    75% { transform: rotate(89deg) translateY(-0.3vmin); }
+    80% { transform: rotate(91deg) translateY(0.3vmin); }
+    85% { transform: rotate(89deg) translateY(-0.2vmin); }
+    90% { transform: rotate(91deg) translateY(0.2vmin); }
+    95% { transform: rotate(89deg) translateY(-0.1vmin); }
+
 }
 
 /* Phone buzzing animation - OPEN state */

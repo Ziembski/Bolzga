@@ -1892,6 +1892,8 @@ position: absolute;
     height: 68vmin;
     z-index: 150;
     transform: rotate(90deg);
+        transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .phone_container label {
@@ -1969,5 +1971,5 @@ position: absolute;
 
 
 #phone_checkbox:checked~.phone_container {
-    transform: translateX(35vmin) rotate(5deg);
+    transform: translateX(-21.5vmin) translateY(-15vmin) rotate(5deg);
 }

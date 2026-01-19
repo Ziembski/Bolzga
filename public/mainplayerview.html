@@ -1510,10 +1510,18 @@ function appendLogEntry(logText) {
     // Auto-scroll to bottom
     logsDisplay.scrollTop = logsDisplay.scrollHeight;
 
-	// Trigger phone buzz animation
+    // Trigger phone buzz animation
     const phoneContainer = document.querySelector('.phone_container');
     if (phoneContainer) {
+        // Remove class if it exists to restart animation
+        phoneContainer.classList.remove('buzzing');
+        
+        // Force reflow to restart animation
+        void phoneContainer.offsetWidth;
+        
+        // Add buzzing class
         phoneContainer.classList.add('buzzing');
+        
         setTimeout(() => {
             phoneContainer.classList.remove('buzzing');
         }, 500); // Match animation duration

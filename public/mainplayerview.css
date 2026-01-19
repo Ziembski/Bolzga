@@ -1951,16 +1951,16 @@ position: absolute;
 
 /* Phone buzzing animation */
 @keyframes phone-buzz {
-    0%, 100% { transform: translateX(35vmin) rotate(95deg); }
-    10% { transform: translateX(35vmin) rotate(94deg) translateY(-0.3vmin); }
-    20% { transform: translateX(35vmin) rotate(96deg) translateY(0.3vmin); }
-    30% { transform: translateX(35vmin) rotate(94deg) translateY(-0.2vmin); }
-    40% { transform: translateX(35vmin) rotate(96deg) translateY(0.2vmin); }
-    50% { transform: translateX(35vmin) rotate(94deg) translateY(-0.3vmin); }
-    60% { transform: translateX(35vmin) rotate(96deg) translateY(0.3vmin); }
-    70% { transform: translateX(35vmin) rotate(94deg) translateY(-0.2vmin); }
-    80% { transform: translateX(35vmin) rotate(96deg) translateY(0.2vmin); }
-    90% { transform: translateX(35vmin) rotate(94deg) translateY(-0.1vmin); }
+    0%, 100% { transform: rotate(95deg); }
+    10% { transform: rotate(94deg) translateY(-0.3vmin); }
+    20% { transform: rotate(96deg) translateY(0.3vmin); }
+    30% { transform: rotate(94deg) translateY(-0.2vmin); }
+    40% { transform: rotate(96deg) translateY(0.2vmin); }
+    50% { transform: rotate(94deg) translateY(-0.3vmin); }
+    60% { transform: rotate(96deg) translateY(0.3vmin); }
+    70% { transform: rotate(94deg) translateY(-0.2vmin); }
+    80% { transform: rotate(96deg) translateY(0.2vmin); }
+    90% { transform: rotate(94deg) translateY(-0.1vmin); }
 }
 
 .phone_container.buzzing {

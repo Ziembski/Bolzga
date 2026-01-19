@@ -1517,7 +1517,7 @@ function appendLogEntry(logText) {
     // Play notification sound
     const notificationSound = document.getElementById('notification-sound');
     if (notificationSound) {
-        notificationSound.currentTime = 0; // Reset to start
+        notificationSound.currentTime = 0.2; // Reset to start
         notificationSound.volume = 0.3; // Adjust volume (0.0 to 1.0)
         notificationSound.play().catch(err => {
             console.log('Audio playback failed:', err);
@@ -1538,7 +1538,7 @@ function appendLogEntry(logText) {
         
         setTimeout(() => {
             phoneContainer.classList.remove('buzzing');
-        }, 500); // Match animation duration
+        }, 1000); // Match animation duration
     }
     
 

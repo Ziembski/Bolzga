@@ -1510,6 +1510,27 @@ function appendLogEntry(logText) {
     
     // Auto-scroll to bottom
     logsDisplay.scrollTop = logsDisplay.scrollHeight;
+
+	// Trigger phone buzz animation
+    const phoneContainer = document.querySelector('.phone_container');
+    if (phoneContainer) {
+        phoneContainer.classList.add('buzzing');
+        setTimeout(() => {
+            phoneContainer.classList.remove('buzzing');
+        }, 500); // Match animation duration
+    }
+    
+    // Play notification sound
+    const notificationSound = document.getElementById('notification-sound');
+    if (notificationSound) {
+        notificationSound.currentTime = 0; // Reset to start
+        notificationSound.volume = 0.3; // Adjust volume (0.0 to 1.0)
+        notificationSound.play().catch(err => {
+            console.log('Audio playback failed:', err);
+        });
+    }
+	
+	
 }
 
 // Initialize logs when page loads

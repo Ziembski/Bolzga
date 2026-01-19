@@ -1949,6 +1949,25 @@ position: absolute;
     padding: 0.1vmin 0;
 }
 
+/* Phone buzzing animation */
+@keyframes phone-buzz {
+    0%, 100% { transform: translateX(35vmin) rotate(5deg); }
+    10% { transform: translateX(35vmin) rotate(4deg) translateY(-0.3vmin); }
+    20% { transform: translateX(35vmin) rotate(6deg) translateY(0.3vmin); }
+    30% { transform: translateX(35vmin) rotate(4deg) translateY(-0.2vmin); }
+    40% { transform: translateX(35vmin) rotate(6deg) translateY(0.2vmin); }
+    50% { transform: translateX(35vmin) rotate(4deg) translateY(-0.3vmin); }
+    60% { transform: translateX(35vmin) rotate(6deg) translateY(0.3vmin); }
+    70% { transform: translateX(35vmin) rotate(4deg) translateY(-0.2vmin); }
+    80% { transform: translateX(35vmin) rotate(6deg) translateY(0.2vmin); }
+    90% { transform: translateX(35vmin) rotate(4deg) translateY(-0.1vmin); }
+}
+
+.phone_container.buzzing {
+    animation: phone-buzz 0.5s ease-in-out;
+}
+
+
 #phone_checkbox:checked~.phone_container {
     transform: translateX(35vmin) rotate(5deg);
 }

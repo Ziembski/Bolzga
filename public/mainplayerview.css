@@ -380,7 +380,7 @@ input {
 
 #dice_tray_checkbox:checked~#dice_tray_main {
 	
-    transform: translateX(-64.5vmin);
+    transform: translateX(-60.5vmin);
 	
 }
 

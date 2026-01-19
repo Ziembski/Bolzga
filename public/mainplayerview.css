@@ -1991,7 +1991,7 @@ position: absolute;
 
 /* Apply buzz animation based on phone state */
 .phone_container.buzzing {
-    animation: phone-buzz-closed 1s ease-in-out;
+    animation: phone-buzz-closed 2s ease-in-out;
 }
 
 #phone_checkbox:checked ~ .phone_container.buzzing {

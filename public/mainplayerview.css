@@ -1892,7 +1892,7 @@ position: absolute;
     height: 68vmin;
     z-index: 150;
     transform: rotate(90deg);
-        transition: transform 0.8s;
+        transition: transform 1.5s;
     transform-style: preserve-3d;
 }
 

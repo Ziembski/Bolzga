@@ -1933,6 +1933,106 @@ position: absolute;
     transform-style: preserve-3d;
 }
 
+.phone_d4 {
+	position: absolute;
+	width: 9vmin;
+	height: 9vmin;
+	bottom: 9.5vmin;
+	left: 12vmin;
+	z-index: 121;
+	pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+
+}
+
+.phone_d6 {
+	position: absolute;
+	width: 9vmin;
+	height: 9vmin;
+	bottom: 9.5vmin;
+	left: 20.8vmin;
+	z-index: 121;
+	pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+	
+}
+
+.phone_d8 {
+	position: absolute;
+	width: 8.4vmin;
+	height: 8.4vmin;
+	bottom: 9.5vmin;
+	left: 30.4vmin;
+	z-index: 121;
+	pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+}
+
+.phone_d10 {
+	position: absolute;
+	width: 9vmin;
+	height: 9vmin;
+	bottom: 9.5vmin;
+	left: 38.6vmin;
+	z-index: 121;
+	pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+}
+
+.phone_d12 {
+	position: absolute;
+	width: 8.5vmin;
+	height: 8.5vmin;
+	bottom: 9.5vmin;
+	left: 47.7vmin;
+	z-index: 121;
+	pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+}
+
+.phone_plus {
+    position: absolute;
+    width: 14vmin;
+    height: 14vmin;
+    top: 14vmin;
+    left: 58.5vmin;
+    z-index: 121;
+    pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+
+}
+
+.phone_minus {
+    position: absolute;
+    width: 14vmin;
+    height: 14vmin;
+    top: 26.5vmin;
+    left: 58.5vmin;
+    z-index: 121;
+    pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+}
+
+.phone_x {
+    position: absolute;
+    width: 14vmin;
+    height: 14vmin;
+    top: 39vmin;
+    left: 58.5vmin;
+    z-index: 121;
+    pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+}
+
+
 
 .game-logs-container {
     position: absolute;

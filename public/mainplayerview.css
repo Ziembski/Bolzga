@@ -122,8 +122,8 @@ input {
 #dice_tray_main {
 	
     position: absolute;
-    bottom: 32vmin;
-    right: -60.5vmin;
+    bottom: 30vmin;
+    right: -50.5vmin;
     width: 70.2vmin;
     height: 70.2vmin;
     z-index: 100;
@@ -141,7 +141,7 @@ input {
 
 
 #dice_tray_main label{
-    width: 15%;
+    width: 25%;
     height: 100%;
     position: absolute;
     pointer-events: all;
@@ -169,13 +169,14 @@ input {
 
 .dice_tray {
 	
-    position: relative;
-    width: 65vmin;
-    height: 65vmin;
+    position: absolute;
+    top: 0;
+    width: 71vmin;
+    height: 76vmin;
     z-index: -1;
-    filter: drop-shadow(-9px 9px 7px black);
     justify-self: center;
     align-self: center;
+    opacity: 0.95;
 	
 }
 
@@ -389,7 +390,7 @@ filter: brightness(1.15);
 
 #dice_tray_checkbox:checked~#dice_tray_main {
 	
-    transform: translateX(-60.5vmin);
+    transform: translateX(-49.5vmin);
 	
 }
 
@@ -1918,7 +1919,7 @@ position: absolute;
     position: absolute;
     width: 100%;
     height: 100%;
-    filter: drop-shadow(-9px 9px 7px black);
+	filter: drop-shadow(9px 9px 7px black);
 }
 
 
@@ -2000,4 +2001,5 @@ position: absolute;
 
 #phone_checkbox:checked ~ .phone_container {
     transform: translateX(-21.5vmin) translateY(-15vmin) rotate(5deg);
+	filter: drop-shadow(-9px 9px 7px black);
 }

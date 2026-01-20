@@ -155,10 +155,10 @@ input {
 /* Dice Roller Canvas */
 #diceRoller {
     position: absolute;
-    top: 10vmin;
-    right: 10vmin;
-    width: 49.2vmin;
-    height: 49.2vmin;
+    top: 12vmin;
+    right: 12vmin;
+    width: 38.2vmin;
+    height: 38.2vmin;
     z-index: -1;
     overflow: hidden;
     object-fit: fill;

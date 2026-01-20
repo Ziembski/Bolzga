@@ -2012,7 +2012,6 @@ position: absolute;
 
 #phone_checkbox:checked ~ .phone_container {
     transform: translateX(-21.5vmin) translateY(-19vmin) rotate(5deg);
-	filter: drop-shadow(-9px 9px 7px black);
 }
 
 #phone_checkbox:checked ~ .phone_container img {

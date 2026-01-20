@@ -247,7 +247,7 @@ input {
     text-align: center;
     width: 100%;
     z-index: 100;
-	display: none;
+
 }
 
 .dice_center_field * {
@@ -261,6 +261,7 @@ input {
     background: none;
     height: 100%;
     width: 100%;
+
 }
 
 #instructions p {
@@ -269,7 +270,7 @@ input {
     margin: auto;
     top: 35%;
     padding: 1vmin;
-    font-size: 2vmin;
+	font-size: 0vmin;
 }
 
 .dice_bottom_field {
@@ -283,100 +284,97 @@ input {
     display: none;
 }
 
-.dice_tray_d4 {
+.phone_d4 {
 	position: absolute;
-	width: 9vmin;
-	height: 9vmin;
-	bottom: 9.5vmin;
-	left: 12vmin;
-	z-index: 121;
+	width: 7vmin;
+	height: 4vmin;
+	bottom: 24.9vmin;
+	left: 2.6vmin;
+	z-index: 1001;
 	pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
-
+	filter: brightness(2.25) grayscale(1);
+	opacity: 0.8;
 }
 
-.dice_tray_d6 {
+.phone_d6 {
 	position: absolute;
-	width: 9vmin;
-	height: 9vmin;
-	bottom: 9.5vmin;
-	left: 20.8vmin;
-	z-index: 121;
+	width: 7vmin;
+	height: 4vmin;
+	bottom: 23.9vmin;
+	left: 9.8vmin;
+	z-index: 1001;
 	pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
-	
+	filter: brightness(2.25) grayscale(1);
+	opacity: 0.8;
 }
 
-.dice_tray_d8 {
+.phone_d8 {
 	position: absolute;
-	width: 8.4vmin;
-	height: 8.4vmin;
-	bottom: 9.5vmin;
-	left: 30.4vmin;
-	z-index: 121;
+	width: 7vmin;
+	height: 4vmin;
+	bottom: 24.9vmin;
+	left: 17.4vmin;
+	z-index: 1001;
 	pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
+	filter: brightness(2.25) grayscale(1);
+	opacity: 0.8;
 }
 
-.dice_tray_d10 {
+.phone_d10 {
 	position: absolute;
-	width: 9vmin;
-	height: 9vmin;
-	bottom: 9.5vmin;
-	left: 38.6vmin;
-	z-index: 121;
+	width: 7vmin;
+	height: 4vmin;
+	bottom: 20.1vmin;
+	left: 2.6vmin;
+	z-index: 1001;
 	pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
+	filter: brightness(2.25) grayscale(1);
+	opacity: 0.8;
 }
 
-.dice_tray_d12 {
+.phone_d12 {
 	position: absolute;
-	width: 8.5vmin;
-	height: 8.5vmin;
-	bottom: 9.5vmin;
-	left: 47.7vmin;
-	z-index: 121;
+	width: 7vmin;
+	height: 4vmin;
+	bottom: 19.1vmin;
+	left: 9.8vmin;
+	z-index: 1001;
 	pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
+	filter: brightness(2.25) grayscale(1);
+	opacity: 0.8;
 }
 
-.dice_tray_plus {
+.phone_plus {
     position: absolute;
-    width: 14vmin;
-    height: 14vmin;
-    top: 14vmin;
-    left: 58.5vmin;
-    z-index: 121;
-    pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
-
-}
-
-.dice_tray_minus {
-    position: absolute;
-    width: 14vmin;
-    height: 14vmin;
-    top: 26.5vmin;
-    left: 58.5vmin;
-    z-index: 121;
+    width: 7vmin;
+    height: 4vmin;
+    bottom: 15.8vmin;
+    left: 2.6vmin;
+    z-index: 1001;
     pointer-events: auto;
     filter: brightness(2.25) grayscale(1);
     opacity: 0.8;
 }
 
-.dice_tray_x {
+.phone_minus {
     position: absolute;
-    width: 14vmin;
-    height: 14vmin;
-    top: 39vmin;
-    left: 58.5vmin;
-    z-index: 121;
+    width: 7vmin;
+    height: 4vmin;
+    left: 17.4vmin;
+    bottom: 15.8vmin;
+    z-index: 1001;
+    pointer-events: auto;
+    filter: brightness(2.25) grayscale(1);
+    opacity: 0.8;
+}
+
+.phone_x {
+    position: absolute;
+    width: 7vmin;
+    height: 4vmin;
+    bottom: 9.8vmin;
+    left: 9.8vmin;
+    z-index: 1001;
     pointer-events: auto;
     filter: brightness(2.25) grayscale(1);
     opacity: 0.8;

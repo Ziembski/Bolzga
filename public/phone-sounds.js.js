@@ -1,4 +1,4 @@
-// sound configuration
+// Phone button sound configuration
 // Easy configuration: Just change the sound path for each button
 const buttonSounds = {
     'd4': './sounds/dial1.mp3',
@@ -25,8 +25,9 @@ const phoneAudio = {
     }
 };
 
-// Add click listeners to phone buttons
-document.addEventListener('DOMContentLoaded', function() {
+// Add click listeners to phone buttons immediately
+// (No need for DOMContentLoaded since script is at the end of body)
+(function() {
     // Map phone button classes to their types
     const buttonMap = {
         'phone_d4': 'd4',
@@ -48,4 +49,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-});
+})();
+
+/* 
+USAGE INSTRUCTIONS:
+===================
+
+1. To change a button's sound, modify the path in the buttonSounds object above.
+   Example:
+   'd4': './sounds/beep.mp3',
+   'd6': './sounds/click.mp3',
+
+2. To adjust volume for all sounds, change the 'volume' value (0.0 to 1.0)
+
+3. To disable sound for a specific button, set its sound to null:
+   'd4': null,
+
+4. Add this script to your HTML before the closing </body> tag:
+   <script src="phone-sounds.js"></script>
+*/

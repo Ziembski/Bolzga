@@ -742,7 +742,6 @@
 		<script src="/libs/teal.js"></script>
 		<script src="dice.js"></script>
 		<script src="main.js"></script>
-		<script src="phone-sounds.js"></script>
 	
 	
 		<script>
@@ -1368,6 +1367,27 @@ function getCharacterName(rowIndex) {
 }
 
 function addDiceOrModifier(parameter) {
+
+    // Play sound for this button
+    const soundMap = {
+        'd4': './sounds/dial1.mp3',
+        'd6': './sounds/dial2.mp3',
+        'd8': './sounds/dial3.mp3',
+        'd10': './sounds/dial4.mp3',
+        'd12': './sounds/dial5.mp3',
+        '+1': './sounds/dial6.mp3',
+        '-1': './sounds/dial7.mp3',
+        'clear': './sounds/dial8.mp3'
+    };
+    
+    const soundPath = soundMap[parameter];
+    if (soundPath) {
+        const audio = new Audio(soundPath);
+        audio.volume = 0.5;
+        audio.play().catch(err => console.log('Audio failed:', err));
+    }
+	
+	
     const textInput = document.getElementById('textInput');
     if (!textInput) return;
     

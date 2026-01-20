@@ -1817,7 +1817,7 @@ position: absolute;
     height: 68vmin;
     z-index: 150;
     transform: rotate(90deg);
-        transition: transform 1.5s;
+    transition: transform 1.5s;
     transform-style: preserve-3d;
 }
 
@@ -1934,6 +1934,17 @@ position: absolute;
     opacity: 0.8;
 }
 
+.phone_container #textInput {
+    text-align: center;
+    border: none;
+    color: #1E1E1E;
+    width: 100%;
+    height: 100%;
+    font-family: Nokia;
+    font-size: 1.8vmin;
+    display: block;
+}
+
 
 .game-logs-container {
     position: absolute;
@@ -1990,16 +2001,16 @@ position: absolute;
 
 /* Phone buzzing animation - OPEN state */
 @keyframes phone-buzz-open {
-    0%, 100% { transform: translateX(-21.5vmin) translateY(-15vmin) rotate(5deg); }
-    10% { transform: translateX(-21.5vmin) translateY(-15.3vmin) rotate(4deg); }
-    20% { transform: translateX(-21.5vmin) translateY(-14.7vmin) rotate(6deg); }
-    30% { transform: translateX(-21.5vmin) translateY(-15.2vmin) rotate(4deg); }
-    40% { transform: translateX(-21.5vmin) translateY(-14.8vmin) rotate(6deg); }
-    50% { transform: translateX(-21.5vmin) translateY(-15.3vmin) rotate(4deg); }
-    60% { transform: translateX(-21.5vmin) translateY(-14.7vmin) rotate(6deg); }
-    70% { transform: translateX(-21.5vmin) translateY(-15.2vmin) rotate(4deg); }
-    80% { transform: translateX(-21.5vmin) translateY(-14.8vmin) rotate(6deg); }
-    90% { transform: translateX(-21.5vmin) translateY(-15.1vmin) rotate(4deg); }
+    0%, 100% { transform: translateX(-21.5vmin) translateY(-19vmin) rotate(5deg); }
+    10% { transform: translateX(-21.5vmin) translateY(-19.3vmin) rotate(4deg); }
+    20% { transform: translateX(-21.5vmin) translateY(-18.7vmin) rotate(6deg); }
+    30% { transform: translateX(-21.5vmin) translateY(-19.2vmin) rotate(4deg); }
+    40% { transform: translateX(-21.5vmin) translateY(-18.8vmin) rotate(6deg); }
+    50% { transform: translateX(-21.5vmin) translateY(-19.3vmin) rotate(4deg); }
+    60% { transform: translateX(-21.5vmin) translateY(-18.7vmin) rotate(6deg); }
+    70% { transform: translateX(-21.5vmin) translateY(-19.2vmin) rotate(4deg); }
+    80% { transform: translateX(-21.5vmin) translateY(-18.8vmin) rotate(6deg); }
+    90% { transform: translateX(-21.5vmin) translateY(-19.1vmin) rotate(4deg); }
 }
 
 /* Apply buzz animation based on phone state */

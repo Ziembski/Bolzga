@@ -734,6 +734,11 @@
 			value="d6">
 			<div class="game-logs-container">
 				<div id="game-logs-display" class="game-logs-display"></div>
+				    <div class="log-nav-controls" style="display: flex; justify-content: space-between; align-items: center; padding: 5px; background: rgba(0,0,0,0.3); border-radius: 5px 5px 0 0;">
+						<button id="log-prev-btn" onclick="showPreviousLog()" style="cursor: pointer; padding: 5px 10px;">◀</button>
+						<span id="log-nav-info" style="color: #fff; font-size: 12px;">0 / 0</span>
+						<button id="log-next-btn" onclick="showNextLog()" style="cursor: pointer; padding: 5px 10px;">▶</button>
+					</div>
 			</div>
 		</div>
 		
@@ -1477,6 +1482,11 @@ if (parameter === '+1' || parameter === '-1') {
 			// Game Logs Viewer
 let logEventSource = null;
 
+// Game Logs Viewer with navigation
+let logEventSource = null;
+let allLogs = []; // Store all logs
+let currentLogIndex = -1; // -1 means showing latest
+
 function initGameLogs() {
     const logsDisplay = document.getElementById('game-logs-display');
     if (!logsDisplay) return;
@@ -1486,9 +1496,9 @@ function initGameLogs() {
         .then(response => response.json())
         .then(data => {
             if (data.logs && data.logs.length > 0) {
-                data.logs.forEach(log => {
-                    appendLogEntry(log);
-                });
+                allLogs = data.logs;
+                currentLogIndex = allLogs.length - 1; // Start with latest
+                displayCurrentLog();
             }
         })
         .catch(error => console.error('Error loading game logs:', error));
@@ -1503,7 +1513,19 @@ function initGameLogs() {
     logEventSource.onmessage = (event) => {
         const data = JSON.parse(event.data);
         if (data.entry && data.entry !== 'Connected to game logs') {
-            appendLogEntry(data.entry);
+            allLogs.push(data.entry);
+            
+            // Always play notification effects for new log
+            playNotificationEffects();
+            
+            // If viewing latest, update to new log
+            if (currentLogIndex === allLogs.length - 2 || currentLogIndex === -1) {
+                currentLogIndex = allLogs.length - 1;
+                displayCurrentLog();
+            } else {
+                // Just update navigation info to show there's a new log
+                updateNavButtons();
+            }
         }
     };
     
@@ -1512,35 +1534,59 @@ function initGameLogs() {
         logEventSource.close();
         setTimeout(initGameLogs, 5000);
     };
-    
-    // Clear logs button
-    const clearBtn = document.getElementById('clear-logs-btn');
-    if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-            if (confirm('Czy na pewno chcesz wyczyścić dziennik gry?')) {
-                logsDisplay.innerHTML = '';
-            }
-        });
-    }
 }
 
-function appendLogEntry(logText) {
+function displayCurrentLog() {
     const logsDisplay = document.getElementById('game-logs-display');
     if (!logsDisplay) return;
     
+    logsDisplay.innerHTML = ''; // Clear previous
+    
+    if (allLogs.length === 0) {
+        logsDisplay.textContent = 'Brak wpisów w dzienniku';
+        return;
+    }
+    
+    // Ensure index is valid
+    if (currentLogIndex < 0) currentLogIndex = 0;
+    if (currentLogIndex >= allLogs.length) currentLogIndex = allLogs.length - 1;
+    
     const entry = document.createElement('div');
     entry.className = 'log-entry';
-    entry.textContent = logText;
+    entry.textContent = allLogs[currentLogIndex];
     logsDisplay.appendChild(entry);
     
-    // Auto-scroll to bottom
-    logsDisplay.scrollTop = logsDisplay.scrollHeight;
+    // Update navigation info
+    const navInfo = document.getElementById('log-nav-info');
+    if (navInfo) {
+        navInfo.textContent = `${currentLogIndex + 1} / ${allLogs.length}`;
+    }
     
+    // Update button states
+    updateNavButtons();
+}
+
+function updateNavButtons() {
+    const prevBtn = document.getElementById('log-prev-btn');
+    const nextBtn = document.getElementById('log-next-btn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentLogIndex <= 0;
+        prevBtn.style.opacity = currentLogIndex <= 0 ? '0.3' : '1';
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentLogIndex >= allLogs.length - 1;
+        nextBtn.style.opacity = currentLogIndex >= allLogs.length - 1 ? '0.3' : '1';
+    }
+}
+
+function playNotificationEffects() {
     // Play notification sound
     const notificationSound = document.getElementById('notification-sound');
     if (notificationSound) {
-        notificationSound.currentTime = 0.2; // Reset to start
-        notificationSound.volume = 0.3; // Adjust volume (0.0 to 1.0)
+        notificationSound.currentTime = 0.2;
+        notificationSound.volume = 0.3;
         notificationSound.play().catch(err => {
             console.log('Audio playback failed:', err);
         });
@@ -1549,25 +1595,39 @@ function appendLogEntry(logText) {
     // Trigger phone buzz animation
     const phoneContainer = document.querySelector('.phone_container');
     if (phoneContainer) {
-        // Remove class if it exists to restart animation
         phoneContainer.classList.remove('buzzing');
-        
-        // Force reflow to restart animation
         void phoneContainer.offsetWidth;
-        
-        // Add buzzing class
         phoneContainer.classList.add('buzzing');
         
         setTimeout(() => {
             phoneContainer.classList.remove('buzzing');
-        }, 1000); // Match animation duration
+        }, 1000);
     }
-    
+}
 
+// Navigation functions - attach these to your onclick elements
+function showPreviousLog() {
+    if (currentLogIndex > 0) {
+        currentLogIndex--;
+        displayCurrentLog();
+    }
+}
 
+function showNextLog() {
+    if (currentLogIndex < allLogs.length - 1) {
+        currentLogIndex++;
+        displayCurrentLog();
+    }
+}
 
-	
-	
+function showLatestLog() {
+    currentLogIndex = allLogs.length - 1;
+    displayCurrentLog();
+}
+
+function showOldestLog() {
+    currentLogIndex = 0;
+    displayCurrentLog();
 }
 
 // Initialize logs when page loads

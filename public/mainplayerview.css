@@ -1810,11 +1810,11 @@ position: absolute;
 
 .phone_container {
     position: absolute;
-    top: 50vmin;
+    top: 64vmin;
     left: 25vmin;
     object-fit: contain;
     width: 27vmin;
-    height: 68vmin;
+    height: 53vmin;
     z-index: 150;
     transform: rotate(90deg);
     transition: transform 1.5s;
@@ -1832,9 +1832,8 @@ position: absolute;
 .phone_container img {
     position: absolute;
     width: 100%;
-    height: 100%;
-	filter: drop-shadow(9px 9px 7px black);
-	transition: filter 1.5s;
+    filter: drop-shadow(9px 9px 7px black);
+    transition: filter 1.5s;
     transform-style: preserve-3d;
 }
 
@@ -1842,7 +1841,7 @@ position: absolute;
 	position: absolute;
 	width: 7vmin;
 	height: 4vmin;
-	bottom: 24.9vmin;
+	bottom: 16.4vmin;
 	left: 2.6vmin;
 	z-index: 1001;
 	pointer-events: auto;
@@ -1852,9 +1851,9 @@ position: absolute;
 
 .phone_d6 {
 	position: absolute;
-	width: 7vmin;
+	width: 7.8vmin;
 	height: 4vmin;
-	bottom: 23.9vmin;
+	bottom: 16vmin;
 	left: 9.8vmin;
 	z-index: 1001;
 	pointer-events: auto;
@@ -1866,7 +1865,7 @@ position: absolute;
 	position: absolute;
 	width: 7vmin;
 	height: 4vmin;
-	bottom: 24.9vmin;
+	bottom: 16.4vmin;
 	left: 17.4vmin;
 	z-index: 1001;
 	pointer-events: auto;
@@ -1878,7 +1877,7 @@ position: absolute;
 	position: absolute;
 	width: 7vmin;
 	height: 4vmin;
-	bottom: 20.1vmin;
+	bottom: 11.9vmin;
 	left: 2.6vmin;
 	z-index: 1001;
 	pointer-events: auto;
@@ -1888,9 +1887,9 @@ position: absolute;
 
 .phone_d12 {
 	position: absolute;
-	width: 7vmin;
+	width: 7.8vmin;
 	height: 4vmin;
-	bottom: 19.1vmin;
+	bottom: 11.7vmin;
 	left: 9.8vmin;
 	z-index: 1001;
 	pointer-events: auto;
@@ -1902,8 +1901,8 @@ position: absolute;
     position: absolute;
     width: 7vmin;
     height: 4vmin;
-    bottom: 15.8vmin;
-    left: 2.6vmin;
+    bottom: 7.8vmin;
+    left: 17.4vmin;
     z-index: 1001;
     pointer-events: auto;
     filter: brightness(2.25) grayscale(1);
@@ -1914,8 +1913,8 @@ position: absolute;
     position: absolute;
     width: 7vmin;
     height: 4vmin;
-    left: 17.4vmin;
-    bottom: 15.8vmin;
+    left: 2.6vmin;
+    bottom: 7.8vmin;
     z-index: 1001;
     pointer-events: auto;
     filter: brightness(2.25) grayscale(1);
@@ -1924,9 +1923,9 @@ position: absolute;
 
 .phone_x {
     position: absolute;
-    width: 7vmin;
+    width: 7.8vmin;
     height: 4vmin;
-    bottom: 9.8vmin;
+    bottom: 7.3vmin;
     left: 9.8vmin;
     z-index: 1001;
     pointer-events: auto;
@@ -1936,13 +1935,13 @@ position: absolute;
 
 
 .phone_container #textInput {
-    text-align: center;
-    top: 11.9vmin;
-    left: 7.7vmin;
+text-align: center;
+    top: 8.3vmin;
+    left: 5.7vmin;
     border: none;
     color: #1E1E1E;
     height: 2vmin;
-    width: 9.5vmin;
+    width: 13vmin;
     font-family: Nokia;
     font-size: 1.4vmin;
     display: block;
@@ -1954,9 +1953,9 @@ position: absolute;
 
 .game-logs-container {
     position: absolute;
-    top: 15vmin;
-    left: 6.5vmin;
-    height: 9vmin;
+    top: 10.4vmin;
+    left: 5.9vmin;
+    height: 9.2vmin;
     width: 15vmin;
     z-index: 9999;
     display: flex;

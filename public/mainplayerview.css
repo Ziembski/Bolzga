@@ -1847,7 +1847,7 @@ position: absolute;
 .phone_container img {
     position: absolute;
     width: 100%;
-    filter: drop-shadow(9px 9px 7px black);
+    filter: drop-shadow(2vmin 2vmin 1vmin black);
     transition: filter 1.5s;
     transform-style: preserve-3d;
 }
@@ -2087,5 +2087,5 @@ position: absolute;
 }
 
 #phone_checkbox:checked ~ .phone_container img {
-	filter: drop-shadow(-9px 9px 7px black);
+	filter: drop-shadow(-2vmin 2vmin 1vmin black);
 }

@@ -37,11 +37,11 @@ const DICE = (function() {
             shading: THREE.FlatShading,
         },
         label_color: '#161512', //numbers on dice
-        dice_color: '#FFFFED',
+        dice_color: '#fff6ca',
         ambient_light_color: '#FFFCEB',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
-        desk_opacity: 0.2,
+        desk_opacity: 0.15,
         use_shadows: true,
         use_adapvite_timestep: true //todo: setting this to false improves performace a lot. but the dice rolls don't look as natural...
 
@@ -157,7 +157,7 @@ const DICE = (function() {
         var mw = Math.max(this.w, this.h);
         if (this.light) this.scene.remove(this.light);
         this.light = new THREE.SpotLight(vars.spot_light_color, 2.0);
-        this.light.position.set(mw / 1, mw / 1, mw * 3);
+        this.light.position.set(mw / 1, mw / 1, mw * 3.5);
         this.light.target.position.set(mw / 1, mw / 1, mw * 2);
         this.light.distance = mw * 5;
         this.light.castShadow = true;
@@ -165,7 +165,7 @@ const DICE = (function() {
         this.light.shadowCameraFar = mw * 5;
         this.light.shadowCameraFov = 50;
         this.light.shadowBias = 0.001;
-        this.light.shadowDarkness = 3;
+        this.light.shadowDarkness = 5;
         this.light.shadowMapWidth = 1024;
         this.light.shadowMapHeight = 1024;
         this.scene.add(this.light);

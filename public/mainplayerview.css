@@ -2068,7 +2068,7 @@ position: absolute;
 }
 
 #phone_checkbox:checked ~ .phone_container {
-    transform: translateX(-14.5vmin) translateY(-19vmin) rotate(5deg);
+    transform: translateX(-14.5vmin) translateY(-13vmin) rotate(5deg);
 }
 
 #phone_checkbox:checked ~ .phone_container img {

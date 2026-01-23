@@ -41,7 +41,7 @@ const DICE = (function() {
         ambient_light_color: '#FFFCEB',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
-        desk_opacity: 0.1,
+        desk_opacity: 0.5,
         use_shadows: true,
         use_adapvite_timestep: true //todo: setting this to false improves performace a lot. but the dice rolls don't look as natural...
 

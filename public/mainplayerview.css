@@ -1935,13 +1935,13 @@ position: absolute;
 
 
 .phone_container #textInput {
-text-align: center;
+    text-align: center;
     top: 8.3vmin;
     left: 5.7vmin;
     border: none;
     color: #1E1E1E;
     height: 2vmin;
-    width: 13vmin;
+    width: 12vmin;
     font-family: Nokia;
     font-size: 1.4vmin;
     display: block;
@@ -1960,11 +1960,12 @@ text-align: center;
     z-index: 9999;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    justify-content: center;
 }
 
 
 .game-logs-display {
-    flex: 1;
     overflow-y: auto;
     font-family: Nokia;
     font-size: 1.8vmin;
@@ -1988,20 +1989,43 @@ text-align: center;
 .log-entry {
     margin-bottom: 0.1vmin;
     padding: 0.1vmin 0;
+    justify-self: center;
 }
 
 #log-prev-btn {
 	
+    position: absolute;
+    top: 23vmin;
+    left: 9vmin;
+    height: 5vmin;
+    width: 9.3vmin;
+    border-top-left-radius: 8vmin;
+    border-top-right-radius: 8vmin;
+    z-index: 1001;
 	
 }
 
 #log-nav-info {
 	
-	
+	   
+	position: absolute;
+    top: 8.6vmin;
+    left: 17.9vmin;
+    color: #1E1E1E;
+    font-size: 1.2vmin;
+    font-family: 'Nokia';
 }
 
 #log-next-btn {
 	
+	position: absolute;
+    top: 27.7vmin;
+    left: 9vmin;
+    height: 5vmin;
+    width: 9.3vmin;
+    border-bottom-left-radius: 8vmin;
+    border-bottom-right-radius: 8vmin;
+	z-index: 1001;
 	
 }
 

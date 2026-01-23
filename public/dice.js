@@ -38,7 +38,7 @@ const DICE = (function() {
         },
         label_color: '#161512', //numbers on dice
         dice_color: '#ffe8ca',
-        ambient_light_color: '#ffe8ca',
+        ambient_light_color: '#D6E8FF',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
         desk_opacity: 0.15,

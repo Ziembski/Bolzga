@@ -37,7 +37,7 @@ const DICE = (function() {
             shading: THREE.FlatShading,
         },
         label_color: '#161512', //numbers on dice
-        dice_color: '#fff6ca',
+        dice_color: '#ffe8ca',
         ambient_light_color: '#FFFCEB',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background

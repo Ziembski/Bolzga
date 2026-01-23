@@ -157,7 +157,7 @@ const DICE = (function() {
         var mw = Math.max(this.w, this.h);
         if (this.light) this.scene.remove(this.light);
         this.light = new THREE.SpotLight(vars.spot_light_color, 2.0);
-        this.light.position.set(-mw / 2, mw / 2, mw * 2);
+        this.light.position.set(-mw / 1, mw / 1, mw * 2);
         this.light.target.position.set(0, 0, 0);
         this.light.distance = mw * 5;
         this.light.castShadow = true;
@@ -165,7 +165,7 @@ const DICE = (function() {
         this.light.shadowCameraFar = mw * 5;
         this.light.shadowCameraFov = 50;
         this.light.shadowBias = 0.001;
-        this.light.shadowDarkness = 1.1;
+        this.light.shadowDarkness = 3;
         this.light.shadowMapWidth = 1024;
         this.light.shadowMapHeight = 1024;
         this.scene.add(this.light);

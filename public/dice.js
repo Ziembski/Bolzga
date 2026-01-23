@@ -157,7 +157,7 @@ const DICE = (function() {
         var mw = Math.max(this.w, this.h);
         if (this.light) this.scene.remove(this.light);
         this.light = new THREE.SpotLight(vars.spot_light_color, 2.0);
-        this.light.position.set(mw / 1, mw / 1, mw * 2);
+        this.light.position.set(mw / 1, mw / 1, mw * 4);
         this.light.target.position.set(mw / 1, mw / 1, mw * 2);
         this.light.distance = mw * 5;
         this.light.castShadow = true;

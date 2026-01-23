@@ -1044,39 +1044,44 @@ span.page4.detail-value {
 .canhead1 {
     
     position: absolute;
-    top: 7vmin;
-    left: 0vmin;
+    top: 3vmin;
+    left: -5vmin;
     width: 25vmin;
     object-fit: contain;
-		pointer-events: none;
+    pointer-events: none;
+    z-index: 100;
     
 }
 
 .canhead2 {
     
     position: absolute;
-    top: 7vmin;
-    left: 0vmin;
+    top: 33vmin;
+    left: -5vmin;
     width: 25vmin;
     object-fit: contain;
-		pointer-events: none;
+    pointer-events: none;
+    z-index: 100;
+		
     
 }
 
 .canhead3 {
     
     position: absolute;
-    top: 7vmin;
-    left: 0vmin;
+    top: 62vmin;
+    left: -5vmin;
     width: 25vmin;
     object-fit: contain;
-	pointer-events: none;
+    pointer-events: none;
+	z-index: 100;
 }
 
 .canhead3 img, .canhead2 img, .canhead1 img {
     
     width: 100%;
     height: 100%;
+	filter: drop-shadow(-0.19vmin 0.31vmin 0.33vmin black);
 
 }
 

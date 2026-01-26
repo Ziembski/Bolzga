@@ -120,13 +120,13 @@ body {
 
         .player-row {
             background: white;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 1.1vmin;
+            padding: 1vmin;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: filter 0.3s, opacity 0.3s;
             display: flex;
-            gap: 20px;
-            align-items: flex-start;
+            gap: 1vmin;
+            align-items: center;
         }
 
         .player-row.inactive {
@@ -135,7 +135,7 @@ body {
         }
 
         .checkbox-container {
-            display: flex;
+            display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -160,22 +160,21 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            min-width: 120px;
+            gap: 0.8vmin;
+            justify-self: center;
         }
 
         .player-img {
-            width: 100px;
-            height: 100px;
+            width: 10vmin;
+            height: 10vmin;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #ddd;
+            border: 0.5vmin solid #ddd;
             background: #eee;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #999;
-            font-size: 12px;
         }
 
         .player-img img {
@@ -186,7 +185,7 @@ body {
         }
 
         .player-name {
-            font-size: 14px;
+            font-size: 1.5vmin;
             font-weight: bold;
             color: #333;
             text-align: center;
@@ -203,16 +202,16 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 12px;
+            padding: 0.6vmin;
             background: #f9f9f9;
-            border-radius: 8px;
+            border-radius: 0.7vmin;
         }
 
         .stat-label {
-            font-size: 11px;
+            font-size: 1vmin;
             font-weight: bold;
             color: #666;
-            margin-bottom: 8px;
+            margin-bottom: 0.8vmin;
             text-transform: uppercase;
         }
 
@@ -220,14 +219,14 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
+            gap: 0.5vmin;
         }
 
         .stat-value {
-            font-size: 28px;
+            font-size: 3vmin;
             font-weight: bold;
             color: #333;
-            min-width: 50px;
+            min-width: 5.5vmin;
             text-align: center;
         }
 
@@ -251,7 +250,7 @@ body {
 
         .arrow-up {
             background: #4CAF50;
-            border-radius: 5px;
+            border-radius: 0.7vmin;
             position: relative;
         }
 
@@ -267,7 +266,7 @@ body {
 
         .arrow-down {
             background: #F44336;
-            border-radius: 5px;
+            border-radius: 0.7vmin;
             position: relative;
         }
 
@@ -296,8 +295,8 @@ body {
             color: #2196F3;
             text-align: center;
             padding: 8px;
-            border: 2px solid #2196F3;
-            border-radius: 5px;
+            border: 0.1vmin solid #2196F3;
+            border-radius: 0.8vmin;
             background: white;
             width: 10vmin;
             box-sizing: border-box;

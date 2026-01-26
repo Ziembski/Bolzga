@@ -20,13 +20,7 @@
 	-->
 	<div class="player-row" data-row="1">
 		<!-- IsActive Checkbox -->
-		<div class="checkbox-container">
-			<input type="checkbox" 
-				   class="isactive-checkbox" 
-				   checked 
-				   onchange="toggleActive(this)">
-			<div class="checkbox-label">Active</div>
-		</div>
+
 
 		<!-- Player Info (IMG1 + Name) -->
 		<div class="player-info">
@@ -35,6 +29,13 @@
 				<span class="player-img-placeholder">IMG1</span>
 			</div>
 			<div class="player-name">Ładowanie...</div>
+			<div class="checkbox-container">
+				<input type="checkbox" 
+					   class="isactive-checkbox" 
+					   checked 
+					   onchange="toggleActive(this)">
+				<div class="checkbox-label">Active</div>
+			</div>
 		</div>
 
 		<!-- Stats Container -->
@@ -43,11 +44,12 @@
 			<div class="stat-item">
 				<div class="stat-label">Szok</div>
 				<div class="stat-control">
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(1, 'Szok', -1)"></div>
-					<div class="stat-value" data-field="Szok">0</div>
 					<div class="arrow-btn arrow-up" 
 						 onclick="modifyField(1, 'Szok', 1)"></div>
+					<div class="stat-value" data-field="Szok">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(1, 'Szok', -1)"></div>
+
 				</div>
 			</div>
 
@@ -55,11 +57,11 @@
 			<div class="stat-item">
 				<div class="stat-label">Rany</div>
 				<div class="stat-control">
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(1, 'Rany', -1)"></div>
-					<div class="stat-value" data-field="Rany">0</div>
 					<div class="arrow-btn arrow-up" 
 						 onclick="modifyField(1, 'Rany', 1)"></div>
+					<div class="stat-value" data-field="Rany">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(1, 'Rany', -1)"></div>
 				</div>
 			</div>
 
@@ -67,11 +69,11 @@
 			<div class="stat-item">
 				<div class="stat-label">Wyczerpanie</div>
 				<div class="stat-control">
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(1, 'Wyczerpanie', -1)"></div>
-					<div class="stat-value" data-field="Wyczerpanie">0</div>
 					<div class="arrow-btn arrow-up" 
 						 onclick="modifyField(1, 'Wyczerpanie', 1)"></div>
+					<div class="stat-value" data-field="Wyczerpanie">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(1, 'Wyczerpanie', -1)"></div>
 				</div>
 			</div>
 
@@ -79,11 +81,13 @@
 			<div class="stat-item">
 				<div class="stat-label">Kapsle</div>
 				<div class="stat-control">
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(1, 'Kapsle', -1)"></div>
-					<div class="stat-value" data-field="Kapsle">0</div>
+
+
 					<div class="arrow-btn arrow-up" 
 						 onclick="modifyField(1, 'Kapsle', 1)"></div>
+					<div class="stat-value" data-field="Kapsle">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(1, 'Kapsle', -1)"></div>
 				</div>
 			</div>
 

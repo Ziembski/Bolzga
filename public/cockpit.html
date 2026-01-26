@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paszport</title>
+	<link rel="stylesheet" href="cockpit.css">
+</head>
+
+<body onload="main.init(); diceRollerInit()">
+	<div class="main_content">
+		
+		
+		<div class="body-img">
+			<img src="/img/layout/body-bg.png">
+		</div>
+		
+		
+		<!-- Dice tray -->
+		<input type="checkbox" id="dice_tray_checkbox">
+		<div id="dice_tray_main">
+
+			<label for="dice_tray_checkbox"></label>
+			
+			<img class="dice_tray" src="./img/layout/tray2.png"></img>
+			
+			<div id="diceRoller">
+
+				<!-- dice_box gets created here by dice.js -->
+			</div>
+
+			<div id="diceRollerUI">
+				<div class="dice_top_field">
+
+				</div>
+				<div id='center_div' class="dice_center_field">
+					<div id="instructions" style="display: none">
+						<p></p>
+					</div>
+				</div> 
+				<div class="dice_bottom_field">
+					<span id="result"></span>
+				</div>  
+
+			</div>
+			
+		</div>
+		
+		<div class="flip-playing-card">
+			
+			<input type="checkbox" id="card_checkbox" checked>
+			
+			<div class="flip-playing-card-inner">
+				
+				<div class="flip-playing-card-front">
+					
+					<label for="card_checkbox"></label>
+					
+					<div class="playing-card">
+						
+						<div class="pc-inner-frame">
+							<img id="img4-card" src="">
+						</div>
+						
+						<div class="pc-top-left">
+							
+							<div class="detail-item field-pl-cd" data-field="pl-cd">
+								<span class="detail-value">A4</span>
+							</div>
+							
+							<div class="img3-wrapper">
+								<div class="img3-container">
+									<img id="img3-suit-top" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+								</div>
+							</div>
+							
+						</div>
+						
+						<div class="pc-bottom-right">
+							
+							<div class="detail-item field-pl-cd" data-field="pl-cd">
+								<span class="detail-value">A4</span>
+							</div>
+							
+							<div class="img3-wrapper">
+								<div class="img3-container">
+									<img id="img3-suit-bottom" src="" style="display: none;" onerror="this.style.display='none'; document.querySelector('.img3-placeholder').style.display='block';">
+									<span class="img3-placeholder">IMG3</span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+				</div>
+				
+				<div class="flip-playing-card-back">
+					
+					<label for="card_checkbox"></label>
+					
+					<div class="playing-card-backside">
+						<img src="/img/cards/Backside.png">
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<div class="caps-section">
+			
+			<div class="cap1">
+				<img src="/img/caps/cap1.png" alt="Kapsel 1">
+			</div>
+			
+			<div class="cap2">
+				<img src="/img/caps/cap2.png" alt="Kapsel 2">
+			</div>
+			
+			<div class="cap3">
+				<img src="/img/caps/cap3.png" alt="Kapsel 3">
+			</div>
+			
+			<div class="cap4">
+				<img src="/img/caps/cap4.png" alt="Kapsel 4">
+			</div>
+			
+			<div class="cap5">
+				<img src="/img/caps/cap5.png" alt="Kapsel 5">
+			</div>
+			
+			<div class="cap6">
+				<img src="/img/caps/cap6.png" alt="Kapsel 6">
+			</div>
+			
+			<div class="cap7">
+				<img src="/img/caps/cap7.png" alt="Kapsel 7">
+			</div>
+			
+			<div class="cap8">
+				<img src="/img/caps/cap8.png" alt="Kapsel 8">
+			</div>
+			
+			<div class="cap9">
+				<img src="/img/caps/cap9.png" alt="Kapsel 9">
+			</div>
+			
+			<div class="cap10">
+				<img src="/img/caps/cap10.png" alt="Kapsel 10">
+			</div>
+			
+		</div>
+		
+		<div class="go-back">
+			<a href="index.html">
+				<img src="/img/arrows/back.png" alt="Powrót">
+			</a>
+		</div>
+		
+		
+		
+	<audio id="notification-sound" preload="auto">
+    <source src="/sounds/notification.mp3" type="audio/mpeg">
+    <source src="/sounds/notification.ogg" type="audio/ogg">
+	</audio>
+		
+		<input type="checkbox" id="phone_checkbox">
+		<div class="phone_container">
+			
+		<label for="phone_checkbox"></label>
+			
+			<img src=".\img\layout\phone.png">
+			<div class="phone_d4" onclick="playButtonSound('d4'); addDiceOrModifier('d4')" style="cursor: pointer;"></div>
+			<div class="phone_d6" onclick="playButtonSound('d6'); addDiceOrModifier('d6')" style="cursor: pointer;"></div>
+			<div class="phone_d8" onclick="playButtonSound('d8'); addDiceOrModifier('d8')" style="cursor: pointer;"></div>
+			<div class="phone_d10" onclick="playButtonSound('d10'); addDiceOrModifier('d10')" style="cursor: pointer;"></div>
+			<div class="phone_d12" onclick="playButtonSound('d12'); addDiceOrModifier('d12')" style="cursor: pointer;"></div>
+			<div class="phone_plus" onclick="playButtonSound('+1'); addDiceOrModifier('+1')" style="cursor: pointer;"></div>
+			<div class="phone_minus" onclick="playButtonSound('-1'); addDiceOrModifier('-1')" style="cursor: pointer;"></div>
+			<div class="phone_x" onclick="playButtonSound('clear'); addDiceOrModifier('clear')" style="cursor: pointer;"></div>
+			<input type="text" id="textInput" 
+			spellcheck="false"
+			inputmode="none"
+			virtualkeyboardpolicy="manual"
+			value="d6">
+			<div class="game-logs-container">
+				<div id="game-logs-display" class="game-logs-display"></div>
+			</div>
+			<span id="log-nav-info" style="color: #1E1E1E; font-size: 1.2vmin;">0/0</span>
+			<div id="log-next-btn" onclick="playButtonSound('next-log'); showNextLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+			<div id="log-prev-btn" onclick="playButtonSound('prev-log'); showPreviousLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+		</div>
+
+	</div>
+		
+		<script src="/libs/three.min.js"></script>
+		<script src="/libs/cannon.min.js"></script>
+		<script src="/libs/teal.js"></script>
+		<script src="dice.js"></script>
+		<script src="main.js"></script>
+	
+	
+		<script>
+			let currentData = null;
+			let currentRow = null;
+			let eventSource = null;
+			let updateDebounceTimer = null;
+			let previousKartaValue = null;
+			let lastClickedField = '';
+			
+			
+			// Generic function to play sounds - can be used with ANY button
+			function playButtonSound(soundKey) {
+				const soundMap = {
+					'd4': './sounds/dial1.mp3',
+					'd6': './sounds/dial2.mp3',
+					'd8': './sounds/dial3.mp3',
+					'd10': './sounds/dial4.mp3',
+					'd12': './sounds/dial5.mp3',
+					'+1': './sounds/dial6.mp3',
+					'-1': './sounds/dial7.mp3',
+					'clear': './sounds/dial8.mp3',
+					// Add more sounds here for other buttons:
+					'next-log': './sounds/dial9.mp3',
+					'prev-log': './sounds/dial2.mp3',
+				};
+				
+				const soundPath = soundMap[soundKey];
+				if (soundPath) {
+					const audio = new Audio(soundPath);
+					audio.volume = 0.5;
+					audio.play().catch(err => console.log('Audio failed:', err));
+				}
+			}
+			
+			function getRowNumber() {
+				const params = new URLSearchParams(window.location.search);
+				return parseInt(params.get('row')) || 1;
+			}
+			
+			function updateImage(imgId, url) {
+				const imgElement = document.getElementById(imgId);
+				
+				if (!imgElement) return;
+				
+				if (url && url.trim() !== '' && url !== 'Brak danych') {
+					imgElement.src = url;
+					imgElement.style.display = 'block';
+					const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+					if (placeholder) {
+						placeholder.style.display = 'none';
+					}
+				} else {
+					imgElement.style.display = 'none';
+					const placeholder = imgElement.parentElement.querySelector('.img1-placeholder, .img2-placeholder, .img3-placeholder, .img4-placeholder');
+					if (placeholder) {
+						placeholder.style.display = 'block';
+					}
+				}
+			}
+			
+			function updateFields(data, rowNumber) {
+				if (!data || !data.rows || rowNumber > data.rows.length) {
+					const detailItems = document.querySelectorAll('.detail-item[data-field]');
+					detailItems.forEach(item => {
+						const valueElement = item.querySelector('.detail-value');
+						if (valueElement) {
+							valueElement.textContent = 'Nie znaleziono danych dla tego wpisu';
+							valueElement.classList.add('error-value');
+						}
+					});
+					return;
+				}
+				
+				const row = data.rows[rowNumber - 1];
+				
+				// NEW CODE - Check if "Karta" field has changed
+				const kartaIndex = data.headers.indexOf('Karta');
+				const currentKartaValue = kartaIndex >= 0 ? row[kartaIndex] : null;
+				
+				if (previousKartaValue !== null && currentKartaValue !== previousKartaValue) {
+					// Karta has changed - trigger animation
+					animateCardChange(() => {
+						updateFieldsContent(data, rowNumber, row);
+					});
+				} else {
+					// No change or first load - update directly
+					updateFieldsContent(data, rowNumber, row);
+				}
+				
+				previousKartaValue = currentKartaValue;
+			}
+			
+			// NEW FUNCTION - Handles the card animation
+			function animateCardChange(callback) {
+				const card = document.querySelector('.flip-playing-card');
+				if (!card) {
+					callback();
+					return;
+				}
+				
+				// Slide out to the right with rotation
+				card.style.transition = 'transform 0.8s ease-in, opacity 0.8s ease-in';
+				card.style.transform = 'translateX(150vw) rotate(180deg)';
+				card.style.opacity = '0';
+				
+				setTimeout(() => {
+					// Update content while off-screen
+					callback();
+					
+					// Position card off-screen to the left
+					card.style.transition = 'none';
+					card.style.transform = 'translateX(-150vw) rotate(-180deg)';
+					card.style.opacity = '0';
+					
+					// Force reflow
+					card.offsetHeight;
+					
+					// Slide in from the left with rotation to final position
+					setTimeout(() => {
+						card.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+						card.style.transform = 'translateX(0) rotate(10deg)';
+						card.style.opacity = '1';
+					}, 50);
+				}, 800);
+			}
+			
+			// NEW FUNCTION - Contains all the original field update logic
+			function updateFieldsContent(data, rowNumber, row) {
+				const fieldItems = document.querySelectorAll('.detail-item[data-field]');
+				
+				
+				// Get the pl-suit value for color logic
+				const plSuitIndex = data.headers.indexOf('pl-suit');
+				const plSuitValue = plSuitIndex >= 0 ? row[plSuitIndex] : null;
+				
+				// Update text fields
+				fieldItems.forEach(item => {
+					const fieldName = item.getAttribute('data-field');
+					const fieldIndex = data.headers.indexOf(fieldName);
+					const valueElement = item.querySelector('.detail-value');
+					
+					if (!valueElement) return;
+					
+					if (fieldIndex >= 0) {
+						let value = row[fieldIndex] || 'Brak danych';
+						
+						// Preserve line breaks by converting them to <br> tags
+						// This handles both \n and \r\n line breaks from CSV
+						if (typeof value === 'string') {
+							value = value.replace(/\r\n/g, '\n').replace(/\n/g, '<br>');
+							valueElement.innerHTML = value;
+						} else {
+							valueElement.textContent = value;
+						}
+						
+						valueElement.classList.remove('error-value');
+						item.classList.remove('error-item');
+					} else {
+						valueElement.textContent = 'Pole nie istnieje w CSV';
+						valueElement.classList.add('error-value');
+						item.classList.add('error-item');
+					}
+				});
+				
+				// Apply color logic to pl-cd fields based on pl-suit value
+				const plCdItems = document.querySelectorAll('.detail-item.field-pl-cd .detail-value');
+				plCdItems.forEach(valueElement => {
+					if (plSuitValue === 'H' || plSuitValue === 'D'|| plSuitValue === 'R') {
+						valueElement.style.color = '#d81b04'; // Red for Hearts and Diamonds
+					} else if (plSuitValue === 'U') {
+						valueElement.style.color = '#24b0ee'; // Blue for Blue Joker
+					} else {
+						valueElement.style.color = '#000000'; // Black for others
+					}
+				});
+				
+				// Update IMG1 from "Img" field - BOTH front and back
+				const img1Index = data.headers.indexOf('Img');
+				if (img1Index >= 0) {
+					const img1Url = row[img1Index];
+					updateImage('img1-photo-front', img1Url);
+					updateImage('img1-photo-back', img1Url);
+				}
+				
+				// Update IMG2 from "Img2" field (if exists) - BOTH front and back
+				const img2Index = data.headers.indexOf('Img2');
+				if (img2Index >= 0) {
+					const img2Url = row[img2Index];
+					updateImage('img2-signature-front', img2Url);
+					updateImage('img2-signature-back', img2Url);
+				}
+				
+				// Update IMG3 from "Img3" field (if exists) - BOTH instances
+				const img3Index = data.headers.indexOf('Img3');
+				if (img3Index >= 0) {
+					const img3Url = row[img3Index];
+					updateImage('img3-suit-top', img3Url);
+					updateImage('img3-suit-bottom', img3Url);
+				}
+				
+				// Update IMG4 from "Img4" field (if exists)
+				const img4Index = data.headers.indexOf('Img4');
+				if (img4Index >= 0) {
+					const img4Url = row[img4Index];
+					updateImage('img4-card', img4Url);
+				}
+				
+				// Update caps visibility based on "Kapsle" field
+				const kapsleIndex = data.headers.indexOf('Kapsle');
+				if (kapsleIndex >= 0) {
+					const kapsleValue = parseInt(row[kapsleIndex]) || 0;
+					
+					// Loop through all 10 caps
+					for (let i = 1; i <= 10; i++) {
+						const capElement = document.querySelector(`.cap${i} img`);
+						if (capElement) {
+							if (i <= kapsleValue) {
+								capElement.style.display = 'block';
+							} else {
+								capElement.style.display = 'none';
+							}
+						}
+					}
+				} else {
+					// If "Kapsle" field doesn't exist, hide all caps
+					for (let i = 1; i <= 10; i++) {
+						const capElement = document.querySelector(`.cap${i} img`);
+						if (capElement) {
+							capElement.style.display = 'none';
+						}
+					}
+				}
+				
+		// Update can status rotations based on "Wyczerpanie", "Rany", "Szok" fields
+const wyczerpanieIndex = data.headers.indexOf('Wyczerpanie');
+const ranyIndex = data.headers.indexOf('Rany');
+const szokIndex = data.headers.indexOf('Szok');
+
+if (wyczerpanieIndex >= 0) {
+	const wyczerpanieValue = parseInt(row[wyczerpanieIndex]) || 0;
+	const rotation1 = wyczerpanieValue * 45 - 45;
+	const canImg1 = document.querySelector('.can.status1 img');
+	if (canImg1) {
+		canImg1.style.transform = `rotate(${rotation1}deg)`;
+	}
+}
+
+if (ranyIndex >= 0) {
+	const ranyValue = parseInt(row[ranyIndex]) || 0;
+	const rotation2 = ranyValue * (135 / 4) - 45;
+	const canImg2 = document.querySelector('.can.status2 img');
+	if (canImg2) {
+		canImg2.style.transform = `rotate(${rotation2}deg)`;
+	}
+}
+
+if (szokIndex >= 0) {
+	const szokValue = parseInt(row[szokIndex]) || 0;
+	const rotation3 = szokValue * 45 - 45;
+	const canImg3 = document.querySelector('.can.status3 img');
+	if (canImg3) {
+		canImg3.style.transform = `rotate(${rotation3}deg)`;
+	}
+}
+				const now = new Date().toLocaleString('pl-PL');
+				document.getElementById('last-update').textContent =
+					`${now}`;
+			}
+			
+			function debouncedUpdate(data) {
+				if (updateDebounceTimer) {
+					clearTimeout(updateDebounceTimer);
+				}
+				
+				updateDebounceTimer = setTimeout(() => {
+					currentData = data;
+					updateFields(data, currentRow);
+				}, 300);
+			}
+			
+			function initSSE() {
+				if (eventSource) {
+					eventSource.close();
+				}
+				
+				eventSource = new EventSource('/api/sse');
+				
+				eventSource.onmessage = (event) => {
+					const data = JSON.parse(event.data);
+					debouncedUpdate(data);
+				};
+				
+				eventSource.onerror = (error) => {
+					eventSource.close();
+					setTimeout(initSSE, 5000);
+				};
+			}
+			
+			async function handleRefresh() {
+				const refreshImg = document.getElementById('refresh-icon');
+				const originalSrc = refreshImg.src;
+				refreshImg.style.pointerEvents = 'none';
+				
+				try {
+					const response = await fetch('/api/refresh');
+					const result = await response.json();
+					
+					if (result.success) {
+						currentData = result.data;
+						updateFields(currentData, currentRow);
+						
+						if (result.updated) {
+							console.log('Data updated:', result.message);
+							initSSE();
+						} else {
+							console.log('No update:', result.message);
+						}
+					}
+				} catch (error) {
+					console.error('Refresh error:', error);
+				} finally {
+					refreshImg.style.pointerEvents = 'auto';
+				}
+			}
+			
+			
+			async function init() {
+				currentRow = getRowNumber();
+				
+				try {
+					const response = await fetch('/api/data');
+					const data = await response.json();
+					currentData = data;
+					updateFields(data, currentRow);
+					
+					initSSE();
+					
+					// Add event listeners for page2 and page3 checkboxes
+					const page2Checkbox = document.getElementById('page2_checkbox');
+					const page3Checkbox = document.getElementById('page3_checkbox');
+					
+					if (page2Checkbox) {
+						page2Checkbox.addEventListener('change', handleRefresh);
+					}
+					
+					if (page3Checkbox) {
+						page3Checkbox.addEventListener('change', handleRefresh);
+					}
+					
+					// Keep the refresh icon listener if you want to keep it as well
+					document.getElementById('refresh-icon')
+						.addEventListener('click', handleRefresh);
+					
+				} catch (error) {
+					console.error('Error loading data:', error);
+					document.getElementById('entry-details').innerHTML =
+						'<p>Błąd ładowania danych. Spróbuj odświeżyć stronę.</p>';
+				}
+			}
+			
+/* FLY TARGET SCRIPT - Modified for vmin default positioning */
+
+const target = document.getElementById('target');
+const container = document.getElementById('gameContainer');
+const movingImg = document.getElementById('movingImg');
+const stoppedImg = document.getElementById('stoppedImg');
+
+let audioContext;
+let audioBuffer;
+let sourceNode;
+let gainNode;
+
+let animationId;
+let isMoving = false;
+let speed = 8;
+let x = 25;
+let y = 25;
+let dx = 1;
+let dy = 1;
+
+const targetSize = 50;
+
+// Configuration: Default position in vmin units
+const DEFAULT_POSITION = {
+	x: 80, // vmin from left
+	y: 80,// vmin from top
+};
+
+// Convert vmin to pixels
+function vminToPx(vmin) {
+	return (vmin / 100) * Math.min(window.innerWidth, window.innerHeight);
+}
+
+// Get safe bounds
+function getBounds() {
+	return {
+		width: Math.min(window.innerWidth, document.documentElement.clientWidth),
+		height: Math.min(window.innerHeight, document.documentElement.clientHeight)
+	};
+}
+
+// Initialize position using vmin
+function initializePosition() {
+	const bounds = getBounds();
+	x = vminToPx(DEFAULT_POSITION.x);
+	y = vminToPx(DEFAULT_POSITION.y);
+	
+	// Ensure position is within bounds
+	x = Math.max(0, Math.min(x, bounds.width - targetSize));
+	y = Math.max(0, Math.min(y, bounds.height - targetSize));
+	
+	target.style.left = x + 'px';
+	target.style.top = y + 'px';
+}
+
+// Initialize position on load
+initializePosition();
+
+async function initAudio() {
+	if (!audioContext) {
+		audioContext = new(window.AudioContext || window.webkitAudioContext)();
+		gainNode = audioContext.createGain();
+		gainNode.connect(audioContext.destination);
+		
+		try {
+			const response = await fetch('./img/layout/Fly_sound.mp3');
+			const arrayBuffer = await response.arrayBuffer();
+			audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
+		} catch (e) {
+			console.log('Audio loading failed:', e);
+		}
+	}
+}
+
+function playSound(playbackRate) {
+	if (!audioBuffer) return;
+	
+	if (sourceNode) {
+		sourceNode.stop();
+	}
+	
+	sourceNode = audioContext.createBufferSource();
+	sourceNode.buffer = audioBuffer;
+	sourceNode.playbackRate.value = playbackRate;
+	sourceNode.loop = true;
+	sourceNode.connect(gainNode);
+	sourceNode.start(0);
+}
+
+function stopSound() {
+	if (sourceNode) {
+		sourceNode.stop();
+		sourceNode = null;
+	}
+}
+
+function addFuzziness() {
+	const fuzzStrength = speed * 0.15;
+	dx += (Math.random() - 0.5) * fuzzStrength;
+	dy += (Math.random() - 0.5) * fuzzStrength;
+	
+	const maxSpeed = speed * 0.8;
+	const currentSpeed = Math.sqrt(dx * dx + dy * dy);
+	
+	if (currentSpeed > maxSpeed) {
+		dx = (dx / currentSpeed) * maxSpeed;
+		dy = (dy / currentSpeed) * maxSpeed;
+	}
+}
+
+function moveTarget() {
+	addFuzziness();
+	
+	x += dx;
+	y += dy;
+	
+	const bounds = getBounds();
+	
+	if (x <= 0 || x >= bounds.width - targetSize) {
+		dx = -dx;
+		x = Math.max(0, Math.min(x, bounds.width - targetSize));
+	}
+	
+	if (y <= 0 || y >= bounds.height - targetSize) {
+		dy = -dy;
+		y = Math.max(0, Math.min(y, bounds.height - targetSize));
+	}
+	
+	const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+	target.style.transform = `rotate(${angle}deg)`;
+	
+	target.style.left = x + 'px';
+	target.style.top = y + 'px';
+	
+	if (isMoving) {
+		animationId = requestAnimationFrame(moveTarget);
+	}
+}
+
+function toggleMovement() {
+	if (isMoving) {
+		isMoving = false;
+		cancelAnimationFrame(animationId);
+		movingImg.classList.add('hidden');
+		stoppedImg.classList.remove('hidden');
+		stopSound();
+		
+		speed += 4;
+		if (speed > 48) {
+			speed = 8;
+		}
+	} else {
+		isMoving = true;
+		movingImg.classList.remove('hidden');
+		stoppedImg.classList.add('hidden');
+		
+		initAudio().then(() => {
+			playSound(1 + (speed - 1) * 0.1);
+		});
+		
+		const bounds = getBounds();
+		const side = Math.floor(Math.random() * 4);
+		if (side === 0) {
+			x = 0;
+			y = Math.random() * (bounds.height - targetSize);
+		} else if (side === 1) {
+			x = bounds.width - targetSize;
+			y = Math.random() * (bounds.height - targetSize);
+		} else if (side === 2) {
+			x = Math.random() * (bounds.width - targetSize);
+			y = 0;
+		} else {
+			x = Math.random() * (bounds.width - targetSize);
+			y = bounds.height - targetSize;
+		}
+		
+		target.style.left = x + 'px';
+		target.style.top = y + 'px';
+		
+		const angle = Math.random() * Math.PI * 2;
+		dx = Math.cos(angle) * (speed * 0.3);
+		dy = Math.sin(angle) * (speed * 0.3);
+		
+		moveTarget();
+	}
+}
+
+target.addEventListener('click', toggleMovement);
+
+// Handle window resize - recalculate vmin-based position if at rest
+window.addEventListener('resize', () => {
+	const bounds = getBounds();
+	
+	if (!isMoving) {
+		// Recalculate position based on vmin when window resizes
+		x = vminToPx(DEFAULT_POSITION.x);
+		y = vminToPx(DEFAULT_POSITION.y);
+		x = Math.min(x, bounds.width - targetSize);
+		y = Math.min(y, bounds.height - targetSize);
+		target.style.left = x + 'px';
+		target.style.top = y + 'px';
+	} else {
+		// Just ensure current position stays in bounds when moving
+		x = Math.min(x, bounds.width - targetSize);
+		y = Math.min(y, bounds.height - targetSize);
+	}
+});
+			
+			
+			
+function updateDiceInput(spanElement, addBolzgaDice = false) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    const fullText = spanElement.textContent.trim();
+    const lastSpaceIndex = fullText.lastIndexOf(' ');
+    
+    let diceNotation;
+    let fieldNameForLog = '';
+    
+    if (lastSpaceIndex !== -1) {
+        // Text has a space - split into name and dice notation
+        const textBeforeDice = fullText.substring(0, lastSpaceIndex).trim();
+        diceNotation = fullText.substring(lastSpaceIndex + 1);
+        
+        // Check if there's actual text before the dice notation
+        if (textBeforeDice && textBeforeDice !== '') {
+            // Case 2: Use the text before dice notation (e.g., "krycie się" from "krycie się d4")
+            fieldNameForLog = textBeforeDice;
+        }
+    } else {
+        // No space found - the whole text is just the dice notation
+        diceNotation = fullText;
+    }
+    
+    // If we didn't find a field name in the content, use data-field attribute
+    if (fieldNameForLog === '') {
+        const detailItem = spanElement.closest('.detail-item');
+        if (detailItem) {
+            // Case 1: Use data-field attribute (e.g., "Gibkość")
+            fieldNameForLog = detailItem.getAttribute('data-field') || '';
+        }
+    }
+    
+    // Store the field name for logging
+    lastClickedField = fieldNameForLog;
+    
+    // Add Bolzga Dice if parameter is true
+    if (addBolzgaDice) {
+        // Extract any modifier from the end of notation
+        const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
+        let modifier = '';
+        let baseNotation = diceNotation;
+        
+        if (modifierMatch) {
+            modifier = modifierMatch[1];
+            baseNotation = diceNotation.substring(0, diceNotation.length - modifier.length);
+        }
+        
+        // Add Bolzga Dice, keeping modifier at the end
+        diceNotation = baseNotation + '+d6' + modifier;
+    }
+    
+    // Update the text input
+    textInput.value = diceNotation;
+    
+    // Trigger the input event to update the size
+    textInput.dispatchEvent(new Event('input'));
+    
+    // Call main.setInput() to actually set the dice
+    main.setInput();
+}
+
+async function logDiceRoll(input, result) {
+    try {
+        const characterName = currentData && currentRow 
+            ? getCharacterName(currentRow) 
+            : 'Unknown';
+        
+        const response = await fetch('/api/log-dice-roll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: characterName,
+                field: lastClickedField,
+                input: input,
+                result: result,
+                row: currentRow
+            })
+        });
+        
+        if (!response.ok) {
+            console.error('Failed to log dice roll');
+        }
+        
+
+    } catch (error) {
+        console.error('Error logging dice roll:', error);
+    }
+}
+
+function getCharacterName(rowIndex) {
+    try {
+        if (!currentData || !currentData.rows || rowIndex < 1 || rowIndex > currentData.rows.length) {
+            return 'Unknown';
+        }
+        
+        const imieIndex = currentData.headers.indexOf('Imię');
+        if (imieIndex === -1) return 'Unknown';
+        
+        const name = currentData.rows[rowIndex - 1][imieIndex];
+        return name && name.trim() !== '' ? name.trim() : 'Unknown';
+    } catch (error) {
+        console.error('Error getting character name:', error);
+        return 'Unknown';
+    }
+}
+
+function addDiceOrModifier(parameter) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    let currentValue = textInput.value.trim();
+    
+    // Handle "clear" parameter
+    if (parameter === 'clear') {
+        textInput.value = '';
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        lastClickedField = '';
+        return;
+    }
+    
+    // Handle modifier adjustments (+1 or -1)
+    if (parameter === '+1' || parameter === '-1') {
+        const adjustment = parseInt(parameter);
+        
+        // Check if there's already a modifier at the end
+        const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
+        
+        if (modifierMatch) {
+            // Adjust existing modifier at the end
+            const sign = modifierMatch[1];
+            const value = parseInt(modifierMatch[2]);
+            const existingModifier = sign === '-' ? -value : value;
+            const newModifier = existingModifier + adjustment;
+            const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
+            
+            if (newModifier === 0) {
+                textInput.value = baseNotation;
+            } else if (newModifier > 0) {
+                textInput.value = baseNotation + '+' + newModifier;
+            } else {
+                textInput.value = baseNotation + newModifier;
+            }
+        } else {
+            // No modifier exists - add one at the end
+            if (adjustment > 0) {
+                textInput.value = currentValue + '+' + adjustment;
+            } else {
+                textInput.value = currentValue + adjustment;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    // Handle adding a die type (like d6, d8, d20, etc.)
+    if (parameter.match(/^d\d+$/i)) {
+        const modifierMatch = currentValue.match(/([+\-]\d+)$/);
+        
+        if (modifierMatch) {
+            const modifier = modifierMatch[0];
+            const baseNotation = currentValue.substring(0, currentValue.length - modifier.length);
+            
+            if (baseNotation === '') {
+                textInput.value = parameter + modifier;
+            } else {
+                textInput.value = baseNotation + '+' + parameter + modifier;
+            }
+        } else {
+            if (currentValue === '') {
+                textInput.value = parameter;
+            } else {
+                textInput.value = currentValue + '+' + parameter;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    console.warn('Invalid parameter for addDiceOrModifier:', parameter);
+}
+			
+// Game Logs Viewer with navigation
+let logEventSource = null;
+let allLogs = []; // Store all logs
+let currentLogIndex = -1; // -1 means showing latest
+
+function initGameLogs() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    // Load existing logs
+    fetch('/api/game-logs')
+        .then(response => response.json())
+        .then(data => {
+            if (data.logs && data.logs.length > 0) {
+                allLogs = data.logs;
+                currentLogIndex = allLogs.length - 1; // Start with latest
+                displayCurrentLog();
+            }
+        })
+        .catch(error => console.error('Error loading game logs:', error));
+    
+    // Connect to SSE for real-time updates
+    if (logEventSource) {
+        logEventSource.close();
+    }
+    
+    logEventSource = new EventSource('/api/game-logs-sse');
+    
+    logEventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.entry && data.entry !== 'Connected to game logs') {
+            allLogs.push(data.entry);
+            
+            // Always play notification effects for new log
+            playNotificationEffects();
+            
+            // If viewing latest, update to new log
+            if (currentLogIndex === allLogs.length - 2 || currentLogIndex === -1) {
+                currentLogIndex = allLogs.length - 1;
+                displayCurrentLog();
+            } else {
+                // Just update navigation info to show there's a new log
+                updateNavButtons();
+            }
+        }
+    };
+    
+    logEventSource.onerror = (error) => {
+        console.error('Log SSE error:', error);
+        logEventSource.close();
+        setTimeout(initGameLogs, 5000);
+    };
+}
+
+function displayCurrentLog() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    logsDisplay.innerHTML = ''; // Clear previous
+    
+    if (allLogs.length === 0) {
+        logsDisplay.textContent = 'Brak wpisów w dzienniku';
+        return;
+    }
+    
+    // Ensure index is valid
+    if (currentLogIndex < 0) currentLogIndex = 0;
+    if (currentLogIndex >= allLogs.length) currentLogIndex = allLogs.length - 1;
+    
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.textContent = allLogs[currentLogIndex];
+    logsDisplay.appendChild(entry);
+    
+    // Update navigation info
+    const navInfo = document.getElementById('log-nav-info');
+    if (navInfo) {
+        navInfo.textContent = `${currentLogIndex + 1} / ${allLogs.length}`;
+    }
+    
+    // Update button states
+    updateNavButtons();
+}
+
+function updateNavButtons() {
+    const prevBtn = document.getElementById('log-prev-btn');
+    const nextBtn = document.getElementById('log-next-btn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentLogIndex <= 0;
+        prevBtn.style.opacity = currentLogIndex <= 0 ? '0.3' : '1';
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentLogIndex >= allLogs.length - 1;
+        nextBtn.style.opacity = currentLogIndex >= allLogs.length - 1 ? '0.3' : '1';
+    }
+}
+
+function playNotificationEffects() {
+    // Play notification sound
+    const notificationSound = document.getElementById('notification-sound');
+    if (notificationSound) {
+        notificationSound.currentTime = 0.2;
+        notificationSound.volume = 0.3;
+        notificationSound.play().catch(err => {
+            console.log('Audio playback failed:', err);
+        });
+    }
+    
+    // Trigger phone buzz animation
+    const phoneContainer = document.querySelector('.phone_container');
+    if (phoneContainer) {
+        phoneContainer.classList.remove('buzzing');
+        void phoneContainer.offsetWidth;
+        phoneContainer.classList.add('buzzing');
+        
+        setTimeout(() => {
+            phoneContainer.classList.remove('buzzing');
+        }, 1000);
+    }
+}
+
+// Navigation functions - attach these to your onclick elements
+function showPreviousLog() {
+    if (currentLogIndex > 0) {
+        currentLogIndex--;
+        displayCurrentLog();
+    }
+}
+
+function showNextLog() {
+    if (currentLogIndex < allLogs.length - 1) {
+        currentLogIndex++;
+        displayCurrentLog();
+    }
+}
+
+function showLatestLog() {
+    currentLogIndex = allLogs.length - 1;
+    displayCurrentLog();
+}
+
+function showOldestLog() {
+    currentLogIndex = 0;
+    displayCurrentLog();
+}
+
+// Initialize logs when page loads
+initGameLogs();
+			
+			
+			init();
+			
+		</script>
+	</div>
+</body>
+
+</html>

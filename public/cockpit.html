@@ -292,12 +292,11 @@
 </div>
 
     <script>
-    <script>
         let currentData = null;
         let eventSource = null;
 
         /**
-         * Toggle active/inactive state
+         * Toggle active/inactive state with grayscale effect
          */
         function toggleActive(checkbox) {
             const row = checkbox.closest('.player-row');
@@ -402,151 +401,130 @@
             }
         }
 
-        /**
-         * Parse card notation to extract figure and suit
-         * Examples: "AH", "10D", "KC", "2S", "Joker R", "Joker U"
-         */
-        function parseCard(cardString) {
-            if (!cardString || cardString.trim() === '') {
-                return { figure: '', suit: '' };
-            }
-            
-            const card = cardString.trim().toUpperCase();
-            
-            // Handle Jokers
-            if (card.includes('JOKER')) {
-                if (card.includes('R') || card.includes('RED') || card.includes('CZERWONY')) {
-                    return { figure: 'Joker', suit: 'R' };
-                } else if (card.includes('U') || card.includes('BLUE') || card.includes('NIEBIESKI')) {
-                    return { figure: 'Joker', suit: 'U' };
-                } else if (card.includes('B') || card.includes('BLACK') || card.includes('CZARNY')) {
-                    return { figure: 'Joker', suit: 'B' };
-                } else {
-                    return { figure: 'Joker', suit: 'R' };
-                }
-            }
-            
-            // Valid suits
-            const validSuits = ['H', 'D', 'C', 'S', 'R', 'B', 'U'];
-            
-            let suit = '';
-            let figure = card;
-            
-            const lastChar = card[card.length - 1];
-            if (validSuits.includes(lastChar)) {
-                suit = lastChar;
-                figure = card.slice(0, -1).trim();
-            } else {
-                for (const s of validSuits) {
-                    if (card.includes(s)) {
-                        suit = s;
-                        figure = card.replace(s, '').trim();
-                        break;
-                    }
-                }
-            }
-            
-            return { figure, suit };
+/**
+ * Update Karta field and parse card info
+ */
+async function updateKarta(row, value) {
+    try {
+        // Parse the card value to extract figure and suit
+        const cardInfo = parseCard(value);
+        
+        // Update Karta field
+        const kartaResponse = await fetch(`/api/modify-text?row=${row}&field=Karta&value=${encodeURIComponent(value)}`);
+        const kartaResult = await kartaResponse.json();
+        
+        if (!kartaResult.success) {
+            console.error('Failed to update Karta:', kartaResult.error);
+            return;
         }
+        
+        // Update pl-cd (card figure)
+        if (cardInfo.figure) {
+            const figureResponse = await fetch(`/api/modify-text?row=${row}&field=pl-cd&value=${encodeURIComponent(cardInfo.figure)}`);
+            const figureResult = await figureResponse.json();
+            if (figureResult.success) {
+                console.log(`Updated pl-cd to: ${cardInfo.figure}`);
+            }
+        }
+        
+        // Update pl-suit (card suit)
+        if (cardInfo.suit) {
+            const suitResponse = await fetch(`/api/modify-text?row=${row}&field=pl-suit&value=${encodeURIComponent(cardInfo.suit)}`);
+            const suitResult = await suitResponse.json();
+            if (suitResult.success) {
+                console.log(`Updated pl-suit to: ${cardInfo.suit}`);
+            }
+        }
+        
+        // **NEW: Update Img3 (suit image URL)**
+        const suitImageUrl = getSuitImageUrl(cardInfo.suit);
+        if (suitImageUrl) {
+            const img3Response = await fetch(`/api/modify-text?row=${row}&field=Img3&value=${encodeURIComponent(suitImageUrl)}`);
+            const img3Result = await img3Response.json();
+            if (img3Result.success) {
+                console.log(`Updated Img3 to: ${suitImageUrl}`);
+            }
+        }
+        
+        // **NEW: Update Img4 (card figure image URL)**
+        const cardImageUrl = getCardImageUrl(cardInfo.figure, cardInfo.suit);
+        if (cardImageUrl) {
+            const img4Response = await fetch(`/api/modify-text?row=${row}&field=Img4&value=${encodeURIComponent(cardImageUrl)}`);
+            const img4Result = await img4Response.json();
+            if (img4Result.success) {
+                console.log(`Updated Img4 to: ${cardImageUrl}`);
+            }
+        }
+        
+        console.log(`Updated Karta for row ${row}: ${value}`);
+    } catch (error) {
+        console.error('Error updating Karta:', error);
+    }
+}
 
-        /**
-         * Get the suit image URL based on suit code
-         */
-        function getSuitImageUrl(suit) {
-            const suitMap = {
-                'H': '/img/cards/H.png',
-                'D': '/img/cards/D.png',
-                'C': '/img/cards/C.png',
-                'S': '/img/cards/S.png',
-                'R': '/img/cards/R.png',
-                'U': '/img/cards/U.png',
-                'B': '/img/cards/B.png'
-            };
-            
-            return suitMap[suit] || '';
-        }
+/**
+ * Get the suit image URL based on suit code
+ */
+function getSuitImageUrl(suit) {
+    const suitMap = {
+        'H': '/img/cards/H.png',      // Hearts
+        'D': '/img/cards/D.png',    // Diamonds
+        'C': '/img/cards/C.png',       // Clubs
+        'S': '/img/cards/S.png',      // Spades
+        'R': '/img/cards/R.png',   // Red Joker
+        'U': '/img/cards/U.png',  // Blue Joker
+        'B': '/img/cards/B.png'  // Black Joker
+    };
+    
+    return suitMap[suit] || '';
+}
 
-        /**
-         * Get the card figure image URL based on figure and suit
-         */
-        function getCardImageUrl(figure, suit) {
-            if (!figure || !suit) return '';
-            
-            // Handle Jokers
-            if (figure === 'JOKER' || figure.toUpperCase() === 'JOKER') {
-                if (suit === 'R') return '/img/cards/J_R.png';
-                if (suit === 'U') return '/img/cards/J_U.png';
-                if (suit === 'B') return '/img/cards/J_B.png';
-                return '/img/cards/J_R.png';
-            }
-            
-            if (!['H', 'D', 'C', 'S'].includes(suit)) {
-                return '';
-            }
-            
-            return `/img/cards/${figure}_${suit}.png`;
-        }
-
-        /**
-         * Update Karta field and parse card info
-         */
-        async function updateKarta(row, value) {
-            console.log(`=== updateKarta called for row ${row} with value: "${value}" ===`);
-            
-            try {
-                const cardInfo = parseCard(value);
-                console.log('Parsed card info:', cardInfo);
-                
-                // Update Karta field
-                console.log('Updating Karta field...');
-                const kartaResponse = await fetch(`/api/modify-text?row=${row}&field=Karta&value=${encodeURIComponent(value)}`);
-                const kartaResult = await kartaResponse.json();
-                console.log('Karta update result:', kartaResult);
-                
-                if (!kartaResult.success) {
-                    console.error('Failed to update Karta:', kartaResult.error);
-                    return;
-                }
-                
-                // Update pl-cd (card figure)
-                if (cardInfo.figure) {
-                    console.log(`Updating pl-cd to: ${cardInfo.figure}`);
-                    const figureResponse = await fetch(`/api/modify-text?row=${row}&field=pl-cd&value=${encodeURIComponent(cardInfo.figure)}`);
-                    const figureResult = await figureResponse.json();
-                    console.log('pl-cd update result:', figureResult);
-                }
-                
-                // Update pl-suit (card suit)
-                if (cardInfo.suit) {
-                    console.log(`Updating pl-suit to: ${cardInfo.suit}`);
-                    const suitResponse = await fetch(`/api/modify-text?row=${row}&field=pl-suit&value=${encodeURIComponent(cardInfo.suit)}`);
-                    const suitResult = await suitResponse.json();
-                    console.log('pl-suit update result:', suitResult);
-                }
-                
-                // Update Img3 (suit image URL)
-                const suitImageUrl = getSuitImageUrl(cardInfo.suit);
-                console.log(`Generated suit image URL (Img3): ${suitImageUrl}`);
-                if (suitImageUrl) {
-                    const img3Response = await fetch(`/api/modify-text?row=${row}&field=Img3&value=${encodeURIComponent(suitImageUrl)}`);
-                    const img3Result = await img3Response.json();
-                    console.log('Img3 update result:', img3Result);
-                }
-                
-                // Update Img4 (card figure image URL)
-                const cardImageUrl = getCardImageUrl(cardInfo.figure, cardInfo.suit);
-                console.log(`Generated card image URL (Img4): ${cardImageUrl}`);
-                if (cardImageUrl) {
-                    const img4Response = await fetch(`/api/modify-text?row=${row}&field=Img4&value=${encodeURIComponent(cardImageUrl)}`);
-                    const img4Result = await img4Response.json();
-                    console.log('Img4 update result:', img4Result);
-                }
-                
-                console.log(`=== updateKarta completed successfully for row ${row} ===`);
-            } catch (error) {
-                console.error('Error in updateKarta:', error);
-            }
-        }
+/**
+ * Get the card figure image URL based on figure and suit
+ */
+function getCardImageUrl(figure, suit) {
+    if (!figure || !suit) return '';
+    
+    // Handle Jokers
+    if (figure === 'Joker') {
+        if (suit === 'R') return '/img/cards/J_R.png';
+        if (suit === 'U') return '/img/cards/J_U.png';
+        if (suit === 'B') return '/img/cards/J_B.png';
+        return '/img/cards/J_R.png'; // default
+    }
+    
+    // Handle regular cards
+    const suitName = {
+        'H': 'H',
+        'D': 'D',
+        'C': 'C',
+        'S': 'S'
+    }[suit];
+    
+    if (!suitName) return '';
+    
+    // Map figure to filename (adjust based on your actual file naming)
+    const figureMap = {
+        'A': 'A',
+        'K': 'K',
+        'Q': 'Q',
+        'J': 'J',
+        '10': '10',
+        '9': '9',
+        '8': '8',
+        '7': '7',
+        '6': '6',
+        '5': '5',
+        '4': '4',
+        '3': '3',
+        '2': '2'
+    };
+    
+    const figureName = figureMap[figure];
+    if (!figureName) return '';
+    
+    return `/img/cards/${figureName}_${suitName}.png`;
+}
 
         /**
          * Initialize SSE connection

@@ -420,6 +420,89 @@ app.get('/api/modify/:row/:field/:delta', async (req, res) => {
 });
 
 /**
+ * Modify a text field value (like Karta)
+ * @param {number} rowIndex - 1-based row number (excluding header)
+ * @param {string} fieldName - Column header name
+ * @param {string} value - New text value
+ */
+async function modifyTextValue(rowIndex, fieldName, value) {
+  try {
+    // Validate row index
+    if (rowIndex < 1 || rowIndex > currentData.rows.length) {
+      throw new Error(`Invalid row index: ${rowIndex}. Must be between 1 and ${currentData.rows.length}`);
+    }
+    
+    // Find column index
+    const columnIndex = currentData.headers.indexOf(fieldName);
+    if (columnIndex === -1) {
+      throw new Error(`Field "${fieldName}" not found in headers`);
+    }
+    
+    // Get current value
+    const row = currentData.rows[rowIndex - 1];
+    const oldValue = row[columnIndex];
+    
+    // Update in-memory data
+    currentData.rows[rowIndex - 1][columnIndex] = value;
+    
+    // Update timestamp in first column
+    const newTimestamp = updateRowTimestamp(rowIndex);
+    
+    // Save to file
+    await saveLocalCSV(currentData);
+    
+    // Notify all SSE clients
+    notifyAllClients();
+    
+    console.log(`Modified row ${rowIndex}, field "${fieldName}": "${oldValue}" → "${value}", timestamp updated to ${newTimestamp}`);
+    
+    return {
+      success: true,
+      row: rowIndex,
+      field: fieldName,
+      oldValue: oldValue,
+      newValue: value,
+      timestamp: newTimestamp
+    };
+  } catch (error) {
+    console.error('Error modifying text value:', error);
+    throw error;
+  }
+}
+
+/**
+ * API endpoint to modify text fields
+ * GET /api/modify-text?row=X&field=Y&value=Z
+ */
+app.get('/api/modify-text', async (req, res) => {
+  try {
+    const { row, field, value } = req.query;
+    
+    if (!row || !field || value === undefined) {
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required parameters: row, field, value'
+      });
+    }
+    
+    const result = await modifyTextValue(
+      parseInt(row),
+      field,
+      value
+    );
+    
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+
+
+/**
  * SSE endpoint for real-time updates
  * HTML pages connect here - no changes needed!
  */

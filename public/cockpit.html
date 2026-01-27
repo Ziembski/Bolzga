@@ -372,7 +372,7 @@
             }
 
             // Update stat fields
-            const fields = ['Szok', 'Rany', 'Wyczerpanie', 'Kapsle'];
+            const fields = ['Garda', 'Wytrzymałość', 'Szok', 'Rany', 'Wyczerpanie', 'Kapsle'];
             fields.forEach(field => {
                 const fieldIndex = headers.indexOf(field);
                 const value = fieldIndex >= 0 ? (row[fieldIndex] || '0') : '0';

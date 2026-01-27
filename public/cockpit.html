@@ -412,19 +412,6 @@
             
             const card = cardString.trim().toUpperCase();
             
-            // Handle Jokers
-            if (card.includes('JOKER')) {
-                if (card.includes('R') || card.includes('RED') || card.includes('CZERWONY')) {
-                    return { figure: 'Joker', suit: 'R' };
-                } else if (card.includes('U') || card.includes('BLUE') || card.includes('NIEBIESKI')) {
-                    return { figure: 'Joker', suit: 'U' };
-                } else if (card.includes('B') || card.includes('BLACK') || card.includes('CZARNY')) {
-                    return { figure: 'Joker', suit: 'B' };
-                } else {
-                    return { figure: 'Joker', suit: 'R' };
-                }
-            }
-            
             // Valid suits
             const validSuits = ['H', 'D', 'C', 'S', 'R', 'B', 'U'];
             
@@ -471,13 +458,6 @@
         function getCardImageUrl(figure, suit) {
             if (!figure || !suit) return '';
             
-            // Handle Jokers
-            if (figure === 'JOKER' || figure.toUpperCase() === 'JOKER') {
-                if (suit === 'R') return '/img/cards/J_R.png';
-                if (suit === 'U') return '/img/cards/J_U.png';
-                if (suit === 'B') return '/img/cards/J_B.png';
-                return '/img/cards/J_R.png';
-            }
             
             if (!['H', 'D', 'C', 'S'].includes(suit)) {
                 return '';

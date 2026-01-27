@@ -60,7 +60,7 @@
 			<!-- Wytrzymałość -->
 			<div class="stat-item">
 
-				<div class="stat-label">Wytrzym.</div>
+				<div class="stat-label">Wytrz.</div>
 				<img class="stat_screen2" src="/img/layout/screen.png">
 				<div class="stat-control">
 					<div class="stat-value" data-field="Wytrzymałość">0</div>
@@ -141,6 +141,7 @@
 
 		<!-- Player Info (IMG1 + Name) -->
 		<div class="player-info">
+			<img class="info_screen" src="/img/layout/screen.png">
 			<div class="checkbox-container">
 				<input type="checkbox" 
 					   class="isactive-checkbox" 
@@ -161,6 +162,25 @@
 
 		<!-- Stats Container -->
 		<div class="stats-container">
+		
+			<!-- Garda -->
+			<div class="stat-item">
+				<div class="stat-label">Garda</div>
+				<img class="stat_screen1" src="/img/layout/screen.png">
+				<div class="stat-control">
+					<div class="stat-value" data-field="Garda">0</div>
+				</div>
+			</div>
+			<!-- Wytrzymałość -->
+			<div class="stat-item">
+
+				<div class="stat-label">Wytrz.</div>
+				<img class="stat_screen2" src="/img/layout/screen.png">
+				<div class="stat-control">
+					<div class="stat-value" data-field="Wytrzymałość">0</div>
+				</div>
+			</div>
+			
 			<!-- Szok -->
 			<div class="stat-item">
 				<div class="stat-label">Szok</div>
@@ -204,6 +224,7 @@
 			<!-- Kapsle -->
 			<div class="stat-item">
 				<div class="stat-label">Kapsle</div>
+				<img class="stat_screen3" src="/img/layout/screen.png">
 				<div class="stat-control">
 
 
@@ -227,13 +248,14 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="player-row" data-row="3">
 		<!-- IsActive Checkbox -->
 
 
 		<!-- Player Info (IMG1 + Name) -->
 		<div class="player-info">
+			<img class="info_screen" src="/img/layout/screen.png">
 			<div class="checkbox-container">
 				<input type="checkbox" 
 					   class="isactive-checkbox" 
@@ -254,6 +276,25 @@
 
 		<!-- Stats Container -->
 		<div class="stats-container">
+		
+			<!-- Garda -->
+			<div class="stat-item">
+				<div class="stat-label">Garda</div>
+				<img class="stat_screen1" src="/img/layout/screen.png">
+				<div class="stat-control">
+					<div class="stat-value" data-field="Garda">0</div>
+				</div>
+			</div>
+			<!-- Wytrzymałość -->
+			<div class="stat-item">
+
+				<div class="stat-label">Wytrz.</div>
+				<img class="stat_screen2" src="/img/layout/screen.png">
+				<div class="stat-control">
+					<div class="stat-value" data-field="Wytrzymałość">0</div>
+				</div>
+			</div>
+			
 			<!-- Szok -->
 			<div class="stat-item">
 				<div class="stat-label">Szok</div>
@@ -297,6 +338,7 @@
 			<!-- Kapsle -->
 			<div class="stat-item">
 				<div class="stat-label">Kapsle</div>
+				<img class="stat_screen3" src="/img/layout/screen.png">
 				<div class="stat-control">
 
 
@@ -320,7 +362,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 </div>
 
@@ -357,7 +399,7 @@
             const nazwiskoIndex = headers.indexOf('Nazwisko');
             const imie = imieIndex >= 0 ? (row[imieIndex] || '') : '';
             const nazwisko = nazwiskoIndex >= 0 ? (row[nazwiskoIndex] || '') : '';
-            const displayName = [imie, nazwisko].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
+            const displayName = [imie].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
             
             const nameElement = rowElement.querySelector('.player-name');
             if (nameElement) {

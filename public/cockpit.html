@@ -399,7 +399,7 @@
             const nazwiskoIndex = headers.indexOf('Nazwisko');
             const imie = imieIndex >= 0 ? (row[imieIndex] || '') : '';
             const nazwisko = nazwiskoIndex >= 0 ? (row[nazwiskoIndex] || '') : '';
-            const displayName = [imie].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
+            const displayName = [imie, nazwisko].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
             
             const nameElement = rowElement.querySelector('.player-name');
             if (nameElement) {

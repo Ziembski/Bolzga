@@ -47,13 +47,16 @@
 			<!-- Szok -->
 			<div class="stat-item">
 				<div class="stat-label">Szok</div>
-				<div class="stat-control">
-					<div class="arrow-btn arrow-up" 
-						 onclick="modifyField(1, 'Szok', 1)"></div>
-					<div class="stat-value" data-field="Szok">0</div>
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(1, 'Szok', -1)"></div>
-
+				<div class="stat-control szok-control">
+					<input type="checkbox" 
+						   class="szok-checkbox" 
+						   id="szok-checkbox-1"
+						   data-row="1"
+						   onchange="toggleSzok(this)">
+					<label for="szok-checkbox-1" class="szok-switch">
+						<img class="switch-image" src="/img/layout/switch_off.png" alt="Off">
+					</label>
+					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
 				</div>
 			</div>
 
@@ -137,13 +140,16 @@
 			<!-- Szok -->
 			<div class="stat-item">
 				<div class="stat-label">Szok</div>
-				<div class="stat-control">
-					<div class="arrow-btn arrow-up" 
-						 onclick="modifyField(2, 'Szok', 1)"></div>
-					<div class="stat-value" data-field="Szok">0</div>
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(2, 'Szok', -1)"></div>
-
+				<div class="stat-control szok-control">
+					<input type="checkbox" 
+						   class="szok-checkbox" 
+						   id="szok-checkbox-2"
+						   data-row="2"
+						   onchange="toggleSzok(this)">
+					<label for="szok-checkbox-2" class="szok-switch">
+						<img class="switch-image" src="/img/layout/switch_off.png" alt="Off">
+					</label>
+					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
 				</div>
 			</div>
 
@@ -227,13 +233,16 @@
 			<!-- Szok -->
 			<div class="stat-item">
 				<div class="stat-label">Szok</div>
-				<div class="stat-control">
-					<div class="arrow-btn arrow-up" 
-						 onclick="modifyField(3, 'Szok', 1)"></div>
-					<div class="stat-value" data-field="Szok">0</div>
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(3, 'Szok', -1)"></div>
-
+				<div class="stat-control szok-control">
+					<input type="checkbox" 
+						   class="szok-checkbox" 
+						   id="szok-checkbox-3"
+						   data-row="3"
+						   onchange="toggleSzok(this)">
+					<label for="szok-checkbox-3" class="szok-switch">
+						<img class="switch-image" src="/img/layout/switch_off.png" alt="Off">
+					</label>
+					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
 				</div>
 			</div>
 
@@ -355,6 +364,22 @@
                 if (valueElement) {
                     valueElement.textContent = value;
                 }
+                
+                // Special handling for Szok checkbox
+                if (field === 'Szok') {
+                    const szokValue = parseInt(value);
+                    const checkbox = rowElement.querySelector('.szok-checkbox');
+                    if (checkbox) {
+                        checkbox.checked = szokValue === 1;
+                        
+                        // Update switch image
+                        const label = checkbox.nextElementSibling;
+                        const img = label ? label.querySelector('.switch-image') : null;
+                        if (img) {
+                            img.src = szokValue === 1 ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+                        }
+                    }
+                }
             });
 
             // Update Karta input field
@@ -381,6 +406,36 @@
             rows.forEach(rowElement => {
                 updateRow(rowElement, data.rows, data.headers);
             });
+        }
+
+        /**
+         * Toggle Szok checkbox and update switch image
+         */
+        function toggleSzok(checkbox) {
+            const row = checkbox.dataset.row;
+            const isChecked = checkbox.checked;
+            const newValue = isChecked ? 1 : 0;
+            
+            // Update the switch image
+            const label = checkbox.nextElementSibling;
+            const img = label.querySelector('.switch-image');
+            if (img) {
+                img.src = isChecked ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+            }
+            
+            // Update the backend
+            modifyField(row, 'Szok', newValue - getCurrentSzokValue(row));
+        }
+
+        /**
+         * Get current Szok value for a row
+         */
+        function getCurrentSzokValue(row) {
+            const rowElement = document.querySelector(`.player-row[data-row="${row}"]`);
+            if (!rowElement) return 0;
+            
+            const valueElement = rowElement.querySelector('[data-field="Szok"]');
+            return valueElement ? parseInt(valueElement.textContent) || 0 : 0;
         }
 
         /**

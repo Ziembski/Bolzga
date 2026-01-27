@@ -320,3 +320,30 @@ body {
         .karta-input::placeholder {
             color: #90CAF9;
         }
+		
+				/* Szok Switch Styling */
+		.szok-control {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.szok-checkbox {
+			display: none; /* Hide the actual checkbox */
+		}
+		
+		.szok-switch {
+			cursor: pointer;
+			display: inline-block;
+		}
+		
+		.szok-switch .switch-image {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			user-select: none;
+		}
+		
+		.szok-switch:hover .switch-image {
+			opacity: 0.8;
+		}

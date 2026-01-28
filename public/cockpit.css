@@ -171,15 +171,16 @@ body {
 			}
 
         .player-img {
-    width: 4vmin;
-    height: 4vmin;
+    width: 7.2vmin;
+    height: 7.2vmin;
     object-fit: contain;
     border: 0.2vmin solid #04ff00;
     align-items: center;
     position: absolute;
-    filter: drop-shadow(0 0 0.7vmin #009520);
+    filter: drop-shadow(0 0 0.3vmin #009520);
     transform: translate(-50%, -50%);
-    top: 3.5vmin;
+    border-radius: 0.7vmin;
+    top: 50%;
     left: 50%;
     }
 
@@ -195,25 +196,25 @@ body {
     height: 100%;
     object-fit: cover;
     filter: saturate(2.9) contrast(2.3) hue-rotate(57deg);
+    border-radius: 0.6vmin;
     }
 
         .player-name {
-        font-size: 1.3vmin;
-        font-weight: bold;
-        color: #00d92f;
-        text-transform: uppercase;
-        filter: drop-shadow(0 0 0.3vmin #009520);
-        text-align: center;
-        z-index: 3;
-        position: absolute;
-        bottom: 1vmin;
-        height: 3.3vmin;
-        width: 8vmin;
-        transform: translate(-50%, 0%);
-        left: 50%;
-        overflow: clip;
-        border-bottom-left-radius: 0vmin;
-        border-bottom-right-radius: 0vmin;
+    font-size: 1.3vmin;
+    font-weight: bold;
+    color: #00d92f;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 0.3vmin #009520);
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    top: 1.8vmin;
+    height: 1.5vmin;
+    width: 17.7vmin;
+    left: 1.7vmin;
+    overflow: clip;
+    border-bottom-left-radius: 0vmin;
+    border-bottom-right-radius: 0vmin;
         }
 
 .player-name {}
@@ -232,9 +233,21 @@ body {
 }
 
 		
-		.stat_screen1 {position: absolute;width: 100%;height: 10vmin;top: 0;filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);}
-		.stat_screen2 {position: absolute;width: 100%;height: 10vmin;top: 0;filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);}	
-		.stat_screen3 {position: fixed;display: none;}
+		.stat_screen1 {
+			position: absolute;
+			width: 21vmin;
+			height: 10vmin;
+			top: 1vmin;
+			filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+			}
+			
+		.stat_screen2 {
+			position: absolute;width: 100%;height: 10vmin;top: 0;filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+		}	
+		
+		.stat_screen3 {
+			position: fixed;display: none;
+		}
 
 
         .stats-container {
@@ -244,14 +257,57 @@ body {
             flex-direction: row;
         }
 
-        .stat-item {
-            object-fit: contain;
-            width: 10vmin;
-            position: relative;
-            height: 10vmin;
+        .stat-item1 {
+    object-fit: contain;
+    width: 7.5vmin;
+    position: relative;
+    height: 10vmin;
         }
+		
+        .stat-item2 {
+    object-fit: contain;
+    width: 7.5vmin;
+    position: relative;
+    height: 10vmin;
+        }
+		
+        .stat-item3 {
+    object-fit: contain;
+    width: 7.5vmin;
+    position: relative;
+    height: 10vmin;
+        }
+		
+        .stat-item4 {
+    object-fit: contain;
+    width: 7.5vmin;
+    position: relative;
+    height: 10vmin;
+        }
+		
+        .stat-item5 {
+    object-fit: contain;
+    width: 7.5vmin;
+    position: relative;
+    height: 10vmin;
+        }
+		
 
-        .stat-label {
+        .stat-label1 {
+    font-size: 1.5vmin;
+    font-weight: bold;
+    color: #00d92f;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 0.3vmin #009520);
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 4vmin;
+    left: 50%;
+        }
+		
+        .stat-label2 {
             font-size: 1.5vmin;
             font-weight: bold;
             color: #00d92f;
@@ -266,26 +322,34 @@ body {
         }
 
         .stat-control {
-        position: absolute;
-        width: 100%;
-        height: 8vmin;
-        display: flex;
-        justify-content: center;
-        top: 1.9vmin;
+    position: absolute;
+    width: 100%;
+    height: 8vmin;
+    display: flex;
+    justify-content: center;
+    top: 1.9vmin;
         }
 
         .stat-value {
-            font-size: 4vmin;
-            font-weight: bold;
-            color: #00d92f;
-            min-width: 5.5vmin;
-            text-align: center;
-            position: absolute;
-            filter: drop-shadow(0 0 0.3vmin #009520);
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
+font-size: 3vmin;
+    font-weight: bold;
+    color: #00d92f;
+    min-width: 5.5vmin;
+    text-align: center;
+    position: absolute;
+    filter: drop-shadow(0 0 0.3vmin #009520);
+    transform: translate(-50%, -50%);
+    top: 4.6vmin;
+    left: 50%;
         }
+		
+		
+.button-up {
+	
+        }	
+.button-down {
+	
+        }	
 
         .arrow-btn {
             width: 35px;
@@ -388,12 +452,13 @@ body {
 		}
 		
 		.szok-switch .switch-image {
-			display: block;
-			max-width: 100%;
-			height: auto;
-			user-select: none;
+	display: block;
+    max-width: 100%;
+    height: auto;
+    user-select: none;
+    filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 		}
 		
 		.szok-switch:hover .switch-image {
-			opacity: 0.8;
+		
 		}

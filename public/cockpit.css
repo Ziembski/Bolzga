@@ -122,7 +122,6 @@ body {
         .player-row {
             border-radius: 1.1vmin;
             padding: 1vmin;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: filter 0.3s, opacity 0.3s;
             display: flex;
             gap: 0.5vmin;
@@ -411,46 +410,6 @@ display: none;
             flex-shrink: 0;
         }
 
-        .arrow-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .arrow-btn:active {
-            transform: scale(0.95);
-            opacity: 0.6;
-        }
-
-        .arrow-up {
-            background: #4CAF50;
-            border-radius: 0.7vmin;
-            position: relative;
-        }
-
-        .arrow-up::after {
-            content: '▲';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 18px;
-        }
-
-        .arrow-down {
-            background: #F44336;
-            border-radius: 0.7vmin;
-            position: relative;
-        }
-
-        .arrow-down::after {
-            content: '▼';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 18px;
-        }
 
         .karta-item {
             background: #e3f2fd;
@@ -512,4 +471,33 @@ display: none;
 		
 		.szok-switch:hover .switch-image {
 		
+		}
+		
+		.knob1 {
+		
+		}
+		.knob2 {
+		
+		}
+		
+		.r0 {
+		
+		}
+		.r1 {
+		
+		}
+		.r2 {
+	
+		}
+		.r3 {
+		
+		}
+		.w0 {
+		
+		}
+		.w1 {
+		
+		}
+		.w2 {
+	
 		}

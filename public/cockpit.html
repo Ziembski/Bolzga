@@ -27,7 +27,7 @@
 
 		<!-- Player Info (IMG1 + Name) -->
 		<div class="player-info">
-			<img class="info_screen" src="/img/layout/screen.png">
+			<img class="info_screen" src="/img/layout/screen_small.png">
 			<div class="checkbox-container">
 				<input type="checkbox" 
 					   class="isactive-checkbox" 
@@ -49,10 +49,11 @@
 		<!-- Stats Container -->
 		<div class="stats-container">
 		
+		<img class="stat_screen1" src="/img/layout/screen_big.png">
+		
 			<!-- Garda -->
 			<div class="stat-item">
 				<div class="stat-label">Garda</div>
-				<img class="stat_screen1" src="/img/layout/screen.png">
 				<div class="stat-control">
 					<div class="stat-value" data-field="Garda">0</div>
 				</div>
@@ -61,7 +62,6 @@
 			<div class="stat-item">
 
 				<div class="stat-label">Wytrz.</div>
-				<img class="stat_screen2" src="/img/layout/screen.png">
 				<div class="stat-control">
 					<div class="stat-value" data-field="Wytrzymałość">0</div>
 				</div>
@@ -69,7 +69,7 @@
 			
 			<!-- Szok -->
 			<div class="stat-item">
-				<div class="stat-label">Szok</div>
+				<div class="stat-label2">Szok</div>
 				<div class="stat-control szok-control">
 					<input type="checkbox" 
 						   class="szok-checkbox" 
@@ -85,7 +85,7 @@
 
 			<!-- Rany -->
 			<div class="stat-item">
-				<div class="stat-label">Rany</div>
+				<div class="stat-label2">Rany</div>
 				<div class="stat-control">
 					<div class="arrow-btn arrow-up" 
 						 onclick="modifyField(1, 'Rany', 1)"></div>
@@ -97,7 +97,7 @@
 
 			<!-- Wyczerpanie -->
 			<div class="stat-item">
-				<div class="stat-label">Wyczerpanie</div>
+				<div class="stat-label2">Wyczerpanie</div>
 				<div class="stat-control">
 					<div class="arrow-btn arrow-up" 
 						 onclick="modifyField(1, 'Wyczerpanie', 1)"></div>
@@ -109,16 +109,12 @@
 
 			<!-- Kapsle -->
 			<div class="stat-item">
+				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(1, 'Kapsle', 1)">
+				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(1, 'Kapsle', -1)">
+				<img class="info_screen" src="/img/layout/screen_small.png">
 				<div class="stat-label">Kapsle</div>
-				<img class="stat_screen3" src="/img/layout/screen.png">
 				<div class="stat-control">
-
-
-					<div class="arrow-btn arrow-up" 
-						 onclick="modifyField(1, 'Kapsle', 1)"></div>
 					<div class="stat-value" data-field="Kapsle">0</div>
-					<div class="arrow-btn arrow-down" 
-						 onclick="modifyField(1, 'Kapsle', -1)"></div>
 				</div>
 			</div>
 

@@ -252,7 +252,6 @@ body {
 
         .stats-container {
             display: flex;
-            gap: 0vmin;
             flex: 1;
             flex-direction: row;
         }
@@ -275,16 +274,17 @@ body {
 		
         .stat-item3 {
     object-fit: contain;
-    width: 7.5vmin;
+    width: 12.2vmin;
     position: relative;
     height: 10vmin;
-        }
+    }
 		
         .stat-item4 {
     object-fit: contain;
     width: 16.2vmin;
     position: relative;
     height: 10vmin;
+    margin-left: 0.8vmin;
     }
 		
         .stat-item5 {
@@ -413,7 +413,7 @@ display: none;
 
         .karta-item {
             background: #e3f2fd;
-            flex-direction: column;
+            margin-left: 0.8vmin;
         }
 
         .karta-item .stat-label {
@@ -463,41 +463,72 @@ display: none;
 		
 		.szok-switch .switch-image {
 	display: block;
-    max-width: 100%;
-    height: auto;
-    user-select: none;
-    filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
-		}
+	width: 4.5vmin;
+	height: auto;
+	user-select: none;
+	filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+	}
 		
 		.szok-switch:hover .switch-image {
 		
 		}
 		
 		.knob1 {
-		
+		position: absolute;
+		bottom: -2vmin;
+		width: 8.5vmin;
+		filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+		transform: rotate(
+30deg);
 		}
 		.knob2 {
-		
+		position: absolute;
+		bottom: -2vmin;
+		width: 8.5vmin;
+		filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+		transform: rotate(
+90deg);
 		}
 		
 		.r0 {
-		
+		position: absolute;
+		left: 1.4vmin;
+		bottom: 3.9vmin;
+		font-size: 1.5vmin;
 		}
 		.r1 {
-		
+		position: absolute;
+		left: 3.9vmin;
+		bottom: 6.2vmin;
+		font-size: 1.5vmin;
 		}
 		.r2 {
-	
-		}
+	position: absolute;
+	right: 3.9vmin;
+	bottom: 6.2vmin;
+	font-size: 1.5vmin;
+	}
 		.r3 {
-		
+		position: absolute;
+		right: 1.4vmin;
+		bottom: 3.9vmin;
+		font-size: 1.5vmin;
 		}
 		.w0 {
-		
+		position: absolute;
+		left: 1.4vmin;
+		bottom: 3.9vmin;
+		font-size: 1.5vmin;
 		}
 		.w1 {
-		
+		position: absolute;
+		left: 5.7vmin;
+		bottom: 6.5vmin;
+		font-size: 1.5vmin;
 		}
 		.w2 {
-	
-		}
+	position: absolute;
+	right: 1.4vmin;
+	bottom: 3.9vmin;
+	font-size: 1.5vmin;
+	}

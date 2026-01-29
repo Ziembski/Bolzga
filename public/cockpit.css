@@ -232,6 +232,17 @@ body {
     filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 }
 
+.input_screen {
+    position: absolute;
+    display: flex;
+    width: 10vmin;
+    height: 10vmin;
+    top: 0;
+    right: 0;
+    filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+}
+
+
 		
 		.stat_screen1 {
 			position: absolute;

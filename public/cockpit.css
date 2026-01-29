@@ -318,7 +318,7 @@ body {
             z-index: 3;
             position: absolute;
             transform: translate(-50%, -50%);
-            top: 1.2vmin;
+            top: 0.8vmin;
             left: 50%;
         }
 		
@@ -533,33 +533,90 @@ display: none;
 	}
 	
 	.w0b {
-		
+	position: absolute;
+	width: 0.4vmin;
+	height: 0.2vmin;
+	background: black;
+	left: 2.3vmin;
+	bottom: 4.3vmin;
+	transform: rotate(30deg);
 	}
 	.w1b {
-		
+		position: absolute;
+		width: 0.2vmin;
+		height: 0.4vmin;
+		background: black;
+		left: 6vmin;
+		bottom: 6.4vmin;
 	}
 	.w2b {
-		
+		position: absolute;
+		width: 0.4vmin;
+		height: 0.2vmin;
+		background: black;
+		right: 2.3vmin;
+		bottom: 4.3vmin;
+		transform: rotate(30deg);
 	}
 	
 	.r0b {
-		
+		position: absolute;
+		width: 0.4vmin;
+		height: 0.2vmin;
+		background: black;
+		left: 2.3vmin;
+		bottom: 4.3vmin;
+		transform: rotate(
+30deg);
 	}
 	
 	.r1b {
-		
+		position: absolute;
+		width: 0.4vmin;
+		height: 0.2vmin;
+		background: black;
+		left: 4.4vmin;
+		bottom: 6.1vmin;
+		transform: rotate(
+70deg);
 	}
 	
 	.r2b {
-		
+		position: absolute;
+		width: 0.4vmin;
+		height: 0.2vmin;
+		background: black;
+		right: 4.4vmin;
+		bottom: 6.1vmin;
+		transform: rotate(70deg);
 	}
 	
 	.r3b {
-		
+		position: absolute;
+		width: 0.4vmin;
+		height: 0.2vmin;
+		background: black;
+		right: 2.3vmin;
+		bottom: 4.3vmin;
+		transform: rotate(30deg);
 	}
 	.dial1 {
-		
+		position: absolute;
+		width: 8vmin;
+		height: 4vmin;
+		border: 0.2vmin solid black;
+		border-bottom: 0;
+		border-radius: 10rem 10rem 0 0;
+		top: 1.6vmin;
 	}
+
+.dial1 {}
 	.dial2 {
-		
+	position: absolute;
+	width: 8vmin;
+	height: 4vmin;
+	border: 0.2vmin solid black;
+	border-bottom: 0;
+	border-radius: 10rem 10rem 0 0;
+	top: 1.6vmin;
 	}

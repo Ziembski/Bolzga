@@ -118,8 +118,8 @@
 
 			<!-- Kapsle -->
 			<div class="stat-item4">
-				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(1, 'Kapsle', 1)">
-				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(1, 'Kapsle', -1)">
+				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(1, 'Kapsle', 1); playButtonSound('button')">
+				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(1, 'Kapsle', -1); playButtonSound('button')">
 				<img class="info_screen" src="/img/layout/screen_small.png">
 				<div class="stat-label3">Kapsle</div>
 				<div class="stat-control3">
@@ -155,6 +155,7 @@
 				'switch_on': './sounds/switch_on.mp3',
 				'switch_off': './sounds/switch_off.mp3',
 				'rotary_switch': './sounds/rotary_switch.mp3',
+				'button': './sounds/button.mp3',
 			};
 			
 			const soundPath = soundMap[soundKey];

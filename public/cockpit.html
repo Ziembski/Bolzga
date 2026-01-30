@@ -202,11 +202,48 @@
 </div>
 
 
+		<audio id="notification-sound" preload="auto">
+    <source src="/sounds/notification.mp3" type="audio/mpeg">
+    <source src="/sounds/notification.ogg" type="audio/ogg">
+</audio>
+		
+		<input type="checkbox" id="phone_checkbox">
+		<div class="phone_container">
+			
+		<label for="phone_checkbox"></label>
+			
+			<img src=".\img\layout\phone.png">
+			<div class="phone_d4" onclick="playButtonSound('d4'); addDiceOrModifier('d4')" style="cursor: pointer;"></div>
+			<div class="phone_d6" onclick="playButtonSound('d6'); addDiceOrModifier('d6')" style="cursor: pointer;"></div>
+			<div class="phone_d8" onclick="playButtonSound('d8'); addDiceOrModifier('d8')" style="cursor: pointer;"></div>
+			<div class="phone_d10" onclick="playButtonSound('d10'); addDiceOrModifier('d10')" style="cursor: pointer;"></div>
+			<div class="phone_d12" onclick="playButtonSound('d12'); addDiceOrModifier('d12')" style="cursor: pointer;"></div>
+			<div class="phone_plus" onclick="playButtonSound('+1'); addDiceOrModifier('+1')" style="cursor: pointer;"></div>
+			<div class="phone_minus" onclick="playButtonSound('-1'); addDiceOrModifier('-1')" style="cursor: pointer;"></div>
+			<div class="phone_x" onclick="playButtonSound('clear'); addDiceOrModifier('clear')" style="cursor: pointer;"></div>
+			<input type="text" id="textInput" 
+			spellcheck="false"
+			inputmode="none"
+			virtualkeyboardpolicy="manual"
+			value="d6">
+			<div class="game-logs-container">
+				<div id="game-logs-display" class="game-logs-display"></div>
+			</div>
+			<span id="log-nav-info" style="color: #1E1E1E; font-size: 1.2vmin;">0/0</span>
+			<div id="log-next-btn" onclick="playButtonSound('next-log'); showNextLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+			<div id="log-prev-btn" onclick="playButtonSound('prev-log'); showPreviousLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+		</div>
+
+	</div>
+
+
 	<script src="/libs/three.min.js"></script>
 	<script src="/libs/cannon.min.js"></script>
 	<script src="/libs/teal.js"></script>
 	<script src="dice.js"></script>
 	<script src="main.js"></script>
+	
+	
     <script>
         let currentData = null;
         let eventSource = null;

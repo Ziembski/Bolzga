@@ -164,12 +164,50 @@
 	</div>
 	
 
-
 </div>
 
+
+<!-- Dice tray -->
+<input type="checkbox" id="dice_tray_checkbox">
+<div id="dice_tray_main">
+
+	<label for="dice_tray_checkbox"></label>
+	
+	<img class="dice_tray" src="./img/layout/tray2.png"></img>
+	
+	<div id="diceRoller">
+
+		<!-- dice_box gets created here by dice.js -->
+	</div>
+
+	<div id="diceRollerUI">
+		<div class="dice_top_field">
+
+		</div>
+		<div id='center_div' class="dice_center_field">
+			<div id="instructions" style="display: none">
+				<p></p>
+			</div>
+		</div> 
+		<div class="dice_bottom_field">
+			<span id="result"></span>
+		</div>  
+
+	</div>
+	
+</div>
+
+
+	<script src="/libs/three.min.js"></script>
+	<script src="/libs/cannon.min.js"></script>
+	<script src="/libs/teal.js"></script>
+	<script src="dice.js"></script>
+	<script src="main.js"></script>
     <script>
         let currentData = null;
         let eventSource = null;
+		
+		
 		
 		// KNOB ROTATION CONFIGURATION
 		const KNOB_CONFIG = {
@@ -620,6 +658,197 @@
 
         // Start the app
         init();
+		
+function updateDiceInput(spanElement, addBolzgaDice = false) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    const fullText = spanElement.textContent.trim();
+    const lastSpaceIndex = fullText.lastIndexOf(' ');
+    
+    let diceNotation;
+    let fieldNameForLog = '';
+    
+    if (lastSpaceIndex !== -1) {
+        // Text has a space - split into name and dice notation
+        const textBeforeDice = fullText.substring(0, lastSpaceIndex).trim();
+        diceNotation = fullText.substring(lastSpaceIndex + 1);
+        
+        // Check if there's actual text before the dice notation
+        if (textBeforeDice && textBeforeDice !== '') {
+            // Case 2: Use the text before dice notation (e.g., "krycie się" from "krycie się d4")
+            fieldNameForLog = textBeforeDice;
+        }
+    } else {
+        // No space found - the whole text is just the dice notation
+        diceNotation = fullText;
+    }
+    
+    // If we didn't find a field name in the content, use data-field attribute
+    if (fieldNameForLog === '') {
+        const detailItem = spanElement.closest('.detail-item');
+        if (detailItem) {
+            // Case 1: Use data-field attribute (e.g., "Gibkość")
+            fieldNameForLog = detailItem.getAttribute('data-field') || '';
+        }
+    }
+    
+    // Store the field name for logging
+    lastClickedField = fieldNameForLog;
+    
+    // Add Bolzga Dice if parameter is true
+    if (addBolzgaDice) {
+        // Extract any modifier from the end of notation
+        const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
+        let modifier = '';
+        let baseNotation = diceNotation;
+        
+        if (modifierMatch) {
+            modifier = modifierMatch[1];
+            baseNotation = diceNotation.substring(0, diceNotation.length - modifier.length);
+        }
+        
+        // Add Bolzga Dice, keeping modifier at the end
+        diceNotation = baseNotation + '+d6' + modifier;
+    }
+    
+    // Update the text input
+    textInput.value = diceNotation;
+    
+    // Trigger the input event to update the size
+    textInput.dispatchEvent(new Event('input'));
+    
+    // Call main.setInput() to actually set the dice
+    main.setInput();
+}
+
+async function logDiceRoll(input, result) {
+    try {
+        const characterName = currentData && currentRow 
+            ? getCharacterName(currentRow) 
+            : 'Unknown';
+        
+        const response = await fetch('/api/log-dice-roll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: characterName,
+                field: lastClickedField,
+                input: input,
+                result: result,
+                row: currentRow
+            })
+        });
+        
+        if (!response.ok) {
+            console.error('Failed to log dice roll');
+        }
+        
+
+    } catch (error) {
+        console.error('Error logging dice roll:', error);
+    }
+}
+
+function getCharacterName(rowIndex) {
+    try {
+        if (!currentData || !currentData.rows || rowIndex < 1 || rowIndex > currentData.rows.length) {
+            return 'Unknown';
+        }
+        
+        const imieIndex = currentData.headers.indexOf('Imię');
+        if (imieIndex === -1) return 'Unknown';
+        
+        const name = currentData.rows[rowIndex - 1][imieIndex];
+        return name && name.trim() !== '' ? name.trim() : 'Unknown';
+    } catch (error) {
+        console.error('Error getting character name:', error);
+        return 'Unknown';
+    }
+}
+
+function addDiceOrModifier(parameter) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    let currentValue = textInput.value.trim();
+    
+    // Handle "clear" parameter
+    if (parameter === 'clear') {
+        textInput.value = '';
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        lastClickedField = '';
+        return;
+    }
+    
+    // Handle modifier adjustments (+1 or -1)
+    if (parameter === '+1' || parameter === '-1') {
+        const adjustment = parseInt(parameter);
+        
+        // Check if there's already a modifier at the end
+        const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
+        
+        if (modifierMatch) {
+            // Adjust existing modifier at the end
+            const sign = modifierMatch[1];
+            const value = parseInt(modifierMatch[2]);
+            const existingModifier = sign === '-' ? -value : value;
+            const newModifier = existingModifier + adjustment;
+            const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
+            
+            if (newModifier === 0) {
+                textInput.value = baseNotation;
+            } else if (newModifier > 0) {
+                textInput.value = baseNotation + '+' + newModifier;
+            } else {
+                textInput.value = baseNotation + newModifier;
+            }
+        } else {
+            // No modifier exists - add one at the end
+            if (adjustment > 0) {
+                textInput.value = currentValue + '+' + adjustment;
+            } else {
+                textInput.value = currentValue + adjustment;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    // Handle adding a die type (like d6, d8, d20, etc.)
+    if (parameter.match(/^d\d+$/i)) {
+        const modifierMatch = currentValue.match(/([+\-]\d+)$/);
+        
+        if (modifierMatch) {
+            const modifier = modifierMatch[0];
+            const baseNotation = currentValue.substring(0, currentValue.length - modifier.length);
+            
+            if (baseNotation === '') {
+                textInput.value = parameter + modifier;
+            } else {
+                textInput.value = baseNotation + '+' + parameter + modifier;
+            }
+        } else {
+            if (currentValue === '') {
+                textInput.value = parameter;
+            } else {
+                textInput.value = currentValue + '+' + parameter;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    console.warn('Invalid parameter for addDiceOrModifier:', parameter);
+}
+		
     </script>
 </body>
 </html>

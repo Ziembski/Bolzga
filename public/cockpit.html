@@ -100,7 +100,7 @@
 			<div class="stat-item3">
 				<div class="stat-label2">Rany</div>
 				<div class="stat-control">
-				<img class="knob1" src="/img/layout/knob.png">
+				<img class="knob1" src="/img/layout/knob.png" data-row="1">
 				<div class="dial1"></div>
 				<div class="r0">0</div>
 				<div class="r0b"></div>
@@ -122,7 +122,7 @@
 			<div class="stat-item3">
 				<div class="stat-label2">Wyczerpanie</div>
 				<div class="stat-control">
-				<img class="knob2" src="/img/layout/knob.png">
+				<img class="knob2" src="/img/layout/knob.png" data-row="1">
 				<div class="dial2"></div>
 				<div class="w0b"></div>
 				<div class="w1b"></div>
@@ -170,6 +170,75 @@
     <script>
         let currentData = null;
         let eventSource = null;
+		
+		// KNOB ROTATION CONFIGURATION
+		const KNOB_CONFIG = {
+			rany: {
+				baseRotation: 30,      // Base rotation in degrees (from CSS: transform: rotate(30deg))
+				degreesPerUnit: 40,    // Degrees to rotate per unit value
+				fieldName: 'Rany'      // Data field name to monitor
+			},
+			wyczerpanie: {
+				baseRotation: 30,      // Base rotation in degrees
+				degreesPerUnit: 50,    // Degrees to rotate per unit value
+				fieldName: 'Wyczerpanie' // Data field name to monitor
+			}
+		};
+		
+		/**
+		 * Update knob rotation for a specific row and knob type
+		 * @param {number} rowNumber - The row number
+		 * @param {string} knobType - Either 'rany' or 'wyczerpanie'
+		 * @param {number} value - The field value
+		 */
+		function updateKnobRotation(rowNumber, knobType, value) {
+			const config = KNOB_CONFIG[knobType];
+			if (!config) {
+				console.error(`Invalid knob type: ${knobType}`);
+				return;
+			}
+			
+			// Find the knob element for this row
+			const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
+			if (!rowElement) {
+				console.error(`Row ${rowNumber} not found`);
+				return;
+			}
+			
+			// Select the appropriate knob class
+			const knobClass = knobType === 'rany' ? '.knob1' : '.knob2';
+			const knobElement = rowElement.querySelector(knobClass);
+			
+			if (!knobElement) {
+				console.error(`Knob element ${knobClass} not found in row ${rowNumber}`);
+				return;
+			}
+			
+			// Calculate rotation
+			const rotation = config.baseRotation + (value * config.degreesPerUnit);
+			
+			// Apply rotation
+			knobElement.style.transform = `rotate(${rotation}deg)`;
+			
+			console.log(`Updated ${knobClass} in row ${rowNumber}: value=${value}, rotation=${rotation}deg`);
+		}
+		
+		/**
+		 * Update all knobs for a specific row
+		 * @param {number} rowNumber - The row number
+		 */
+		function updateAllKnobsForRow(rowNumber) {
+			const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
+			if (!rowElement) return;
+			
+			// Update Rany knob
+			const ranyValue = parseInt(rowElement.querySelector('[data-field="Rany"]')?.textContent) || 0;
+			updateKnobRotation(rowNumber, 'rany', ranyValue);
+			
+			// Update Wyczerpanie knob
+			const wyczerpanieValue = parseInt(rowElement.querySelector('[data-field="Wyczerpanie"]')?.textContent) || 0;
+			updateKnobRotation(rowNumber, 'wyczerpanie', wyczerpanieValue);
+		}
 		
 		
 		// Generic function to play sounds - can be used with ANY button
@@ -232,64 +301,133 @@
                 agentElement.textContent = agent;
             }
 
-            // Update player image
-            const imgIndex = headers.indexOf('Img');
-            const imgUrl = imgIndex >= 0 ? (row[imgIndex] || '') : '';
-            const imgElement = rowElement.querySelector('.player-img-element');
-            const imgPlaceholder = rowElement.querySelector('.player-img-placeholder');
-            
-            if (imgUrl && imgUrl.trim() !== '') {
-                imgElement.src = imgUrl;
-                imgElement.style.display = 'block';
-                if (imgPlaceholder) imgPlaceholder.style.display = 'none';
-            } else {
-                imgElement.style.display = 'none';
-                if (imgPlaceholder) imgPlaceholder.style.display = 'block';
-            }
-
-            // Update stat fields
-            const fields = ['Garda', 'Wytrzymałość', 'Szok', 'Rany', 'Wyczerpanie', 'Kapsle'];
-            fields.forEach(field => {
+            // Update stat values
+            const statFields = ['Garda', 'Wytrzymałość', 'Szok', 'Rany', 'Wyczerpanie', 'Kapsle'];
+            statFields.forEach(field => {
                 const fieldIndex = headers.indexOf(field);
-                const value = fieldIndex >= 0 ? (row[fieldIndex] || '0') : '0';
-                const valueElement = rowElement.querySelector(`[data-field="${field}"]`);
-                if (valueElement) {
-                    valueElement.textContent = value;
-                }
-                
-                // Special handling for Szok checkbox
-                if (field === 'Szok') {
-                    const szokValue = parseInt(value);
-                    const checkbox = rowElement.querySelector('.szok-checkbox');
-                    if (checkbox) {
-                        checkbox.checked = szokValue === 1;
-                       
-						
-                        // Update switch image
-                        const label = checkbox.nextElementSibling;
-                        const img = label ? label.querySelector('.button-image') : null;
-                        if (img) {
-                            img.src = szokValue === 1 ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
-                        }
-					
+                if (fieldIndex >= 0) {
+                    const value = row[fieldIndex] || '0';
+                    const valueElement = rowElement.querySelector(`[data-field="${field}"]`);
+                    if (valueElement) {
+                        valueElement.textContent = value;
                     }
                 }
             });
 
-            // Update Karta input field
+            // Update Szok checkbox based on value
+            const szokIndex = headers.indexOf('Szok');
+            if (szokIndex >= 0) {
+                const szokValue = parseInt(row[szokIndex]) || 0;
+                const szokCheckbox = rowElement.querySelector('.szok-checkbox');
+                if (szokCheckbox) {
+                    szokCheckbox.checked = szokValue > 0;
+                    const label = szokCheckbox.nextElementSibling;
+                    const img = label.querySelector('.button-image');
+                    if (img) {
+                        img.src = szokValue > 0 ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
+                    }
+                }
+            }
+
+            // Update Agent checkbox based on value
+            const agentIndexNum = headers.indexOf('Agent');
+            if (agentIndexNum >= 0) {
+                const agentValue = row[agentIndexNum] || '';
+                const agentCheckbox = rowElement.querySelector('.agent-checkbox');
+                if (agentCheckbox) {
+                    agentCheckbox.checked = agentValue.trim() !== '';
+                    const label = agentCheckbox.nextElementSibling;
+                    const img = label.querySelector('.agent-switch');
+                    if (img) {
+                        img.src = agentValue.trim() !== '' ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+                    }
+                }
+            }
+
+            // Update Karta input
             const kartaIndex = headers.indexOf('Karta');
-            const kartaValue = kartaIndex >= 0 ? (row[kartaIndex] || '') : '';
-            const kartaInput = rowElement.querySelector('.karta-input[data-field="Karta"]');
-            if (kartaInput) {
-                kartaInput.value = kartaValue;
+            if (kartaIndex >= 0) {
+                const kartaValue = row[kartaIndex] || '';
+                const kartaInput = rowElement.querySelector('.karta-input');
+                if (kartaInput) {
+                    kartaInput.value = kartaValue;
+                }
+            }
+            
+            // Update player image if Img1 field exists
+            const img1Index = headers.indexOf('Img1');
+            if (img1Index >= 0) {
+                const imageUrl = row[img1Index] || '';
+                const imgElement = rowElement.querySelector('.player-img-element');
+                const placeholder = rowElement.querySelector('.player-img-placeholder');
+                
+                if (imageUrl && imageUrl.trim() !== '') {
+                    if (imgElement) {
+                        imgElement.src = imageUrl;
+                        imgElement.style.display = 'block';
+                    }
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                } else {
+                    if (imgElement) {
+                        imgElement.style.display = 'none';
+                    }
+                    if (placeholder) {
+                        placeholder.style.display = 'block';
+                    }
+                }
+            }
+			
+			// UPDATE KNOBS AFTER ALL VALUES ARE SET
+			updateAllKnobsForRow(rowNumber);
+        }
+
+        /**
+         * Toggle Agent checkbox
+         */
+        function toggleAgent(checkbox) {
+            const row = checkbox.dataset.row;
+            const isChecked = checkbox.checked;
+            
+            // Update the switch image
+            const label = checkbox.nextElementSibling;
+            const img = label.querySelector('.agent-switch');
+            if (img) {
+                img.src = isChecked ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+            }
+            
+            // If checked, keep current agent value, otherwise clear it
+            if (!isChecked) {
+                // Clear agent by setting it to empty string
+                updateAgentField(row, '');
             }
         }
 
         /**
-         * Update all rows
+         * Update agent field value
+         */
+        async function updateAgentField(row, value) {
+            try {
+                const response = await fetch(`/api/modify-text?row=${row}&field=Agent&value=${encodeURIComponent(value)}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log(`Updated Agent for row ${row}: ${value}`);
+                } else {
+                    console.error('Agent update failed:', result.error);
+                }
+            } catch (error) {
+                console.error('Error updating agent:', error);
+            }
+        }
+
+        /**
+         * Update all rows with data from CSV
          */
         function updateAllRows(data) {
-            if (!data || !data.rows || data.rows.length === 0) {
+            if (!data || !data.headers || !data.rows) {
+                console.error('Invalid data format:', data);
                 return;
             }
 
@@ -342,6 +480,13 @@
                 
                 if (result.success) {
                     console.log(`Modified row ${row}, ${field}: ${result.oldValue} → ${result.newValue}`);
+                    
+                    // Update knobs if the field is Rany or Wyczerpanie
+                    if (field === 'Rany') {
+                        updateKnobRotation(row, 'rany', result.newValue);
+                    } else if (field === 'Wyczerpanie') {
+                        updateKnobRotation(row, 'wyczerpanie', result.newValue);
+                    }
                 } else {
                     console.error('Modification failed:', result.error);
                 }

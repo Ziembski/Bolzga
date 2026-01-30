@@ -343,7 +343,7 @@
             const img1Index = headers.indexOf('Img1');
             if (img1Index >= 0) {
                 const imageUrl = row[img1Index] || '';
-                const imgElement = rowElement.querySelector('.player-img-element');
+                const imgElement = rowElement.querySelector('.player-img img');
                 const placeholder = rowElement.querySelector('.player-img-placeholder');
                 
                 if (imageUrl && imageUrl.trim() !== '') {

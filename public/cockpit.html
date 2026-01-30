@@ -175,12 +175,12 @@
 		const KNOB_CONFIG = {
 			rany: {
 				baseRotation: 30,      // Base rotation in degrees (from CSS: transform: rotate(30deg))
-				degreesPerUnit: 60,    // Degrees to rotate per unit value
+				degreesPerUnit: 40,    // Degrees to rotate per unit value
 				fieldName: 'Rany'      // Data field name to monitor
 			},
 			wyczerpanie: {
 				baseRotation: 30,      // Base rotation in degrees
-				degreesPerUnit: 50,    // Degrees to rotate per unit value
+				degreesPerUnit: 60,    // Degrees to rotate per unit value
 				fieldName: 'Wyczerpanie' // Data field name to monitor
 			}
 		};
@@ -329,21 +329,6 @@
                 }
             }
 
-            // Update Agent checkbox based on value
-            const agentIndexNum = headers.indexOf('Agent');
-            if (agentIndexNum >= 0) {
-                const agentValue = row[agentIndexNum] || '';
-                const agentCheckbox = rowElement.querySelector('.agent-checkbox');
-                if (agentCheckbox) {
-                    agentCheckbox.checked = agentValue.trim() !== '';
-                    const label = agentCheckbox.nextElementSibling;
-                    const img = label.querySelector('.agent-switch');
-                    if (img) {
-                        img.src = agentValue.trim() !== '' ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
-                    }
-                }
-            }
-
             // Update Karta input
             const kartaIndex = headers.indexOf('Karta');
             if (kartaIndex >= 0) {
@@ -358,7 +343,7 @@
             const img1Index = headers.indexOf('Img1');
             if (img1Index >= 0) {
                 const imageUrl = row[img1Index] || '';
-                const imgElement = rowElement.querySelector('.player-img-element');
+                const imgElement = rowElement.querySelector('.player-img img');
                 const placeholder = rowElement.querySelector('.player-img-placeholder');
                 
                 if (imageUrl && imageUrl.trim() !== '') {
@@ -387,7 +372,6 @@
          * Toggle Agent checkbox
          */
         function toggleAgent(checkbox) {
-            const row = checkbox.dataset.row;
             const isChecked = checkbox.checked;
             
             // Update the switch image
@@ -395,30 +379,6 @@
             const img = label.querySelector('.agent-switch');
             if (img) {
                 img.src = isChecked ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
-            }
-            
-            // If checked, keep current agent value, otherwise clear it
-            if (!isChecked) {
-                // Clear agent by setting it to empty string
-                updateAgentField(row, '');
-            }
-        }
-
-        /**
-         * Update agent field value
-         */
-        async function updateAgentField(row, value) {
-            try {
-                const response = await fetch(`/api/modify-text?row=${row}&field=Agent&value=${encodeURIComponent(value)}`);
-                const result = await response.json();
-                
-                if (result.success) {
-                    console.log(`Updated Agent for row ${row}: ${value}`);
-                } else {
-                    console.error('Agent update failed:', result.error);
-                }
-            } catch (error) {
-                console.error('Error updating agent:', error);
             }
         }
 

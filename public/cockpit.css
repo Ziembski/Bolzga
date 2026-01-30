@@ -219,27 +219,54 @@ body {
 
 .agent-info	{
 
+    width: 7vmin;
+    position: relative;
+    height: 10vmin;
+	
     }
 	
 .agent-name	{
 
+    font-size: 1.5vmin;
+    font-weight: bold;
+    color: #1e1e1e;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 1.7vmin;
+    left: 50%;
+	
     }
 	
 .agent-checkbox	{
 
+    display: none;
+	
     }
 	
-.agent-switch	{
-
-    }
+.agent-switch-label {
+position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: inline-block;
+	}
 	
 		.agent-switch {
-	display: block;
-	width: 4.5vmin;
-	height: auto;
-	user-select: none;
-	filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+    display: block;
+    position: absolute;
+    width: 5vmin;
+    height: auto;
+    user-select: none;
+    filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
 	}
+	
+
 
 .info_screen {
     position: absolute;
@@ -442,6 +469,16 @@ display: none;
 	pointer-events: all;
 	cursor: pointer;
 	z-index: 3;
+	}
+
+.button-image {
+	
+	display: block;
+    width: 6.5vmin;
+    height: auto;
+    user-select: none;
+    filter: drop-shadow(-0.2vmin 0.2vmin 0.2vmin black);
+
 	}	
 
         .arrow-btn {

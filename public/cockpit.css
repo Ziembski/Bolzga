@@ -237,8 +237,7 @@ body {
     display: flex;
     width: 10vmin;
     height: 10vmin;
-    top: 0;
-    right: 0;
+    top: 0vmin;
     filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 }
 
@@ -345,6 +344,20 @@ body {
     top: 2.4vmin;
     right: 2.4vmin;
     }
+	
+        .stat-label4 {
+    font-size: 1.3vmin;
+    font-weight: bold;
+    color: #00d92f;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 0.3vmin #009520);
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 3.2vmin;
+    left: 50%;
+    }
 
         .stat-control {
     position: absolute;
@@ -422,8 +435,9 @@ display: none;
 
 
         .karta-item {
-            background: #e3f2fd;
-            margin-left: 0.8vmin;
+background: #e3f2fd;
+    margin-left: 0.8vmin;
+    width: 10vmin;
         }
 
         .karta-item .stat-label {
@@ -431,23 +445,26 @@ display: none;
         }
 
         .karta-input {
-            font-size: 2vmin;
-            font-weight: bold;
-            color: #2196F3;
-            text-align: center;
-            padding: 8px;
-            border: 0.1vmin solid #2196F3;
-            border-radius: 0.8vmin;
-            background: white;
-            width: 10vmin;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
+font-size: 2vmin;
+    font-weight: bold;
+    color: #00d92f;
+    text-align: center;
+    padding: 8px;
+    border: 0.3vmin solid #00d92f;
+    border-radius: 0.8vmin;
+    background: 0;
+    width: 6vmin;
+    height: 3.8vmin;
+    position: absolute;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 6.2vmin;
+    filter: drop-shadow(0 0 0.3vmin #009520);
         }
 
         .karta-input:focus {
             outline: none;
-            border-color: #1565C0;
-            background: #E3F2FD;
         }
 
         .karta-input::placeholder {

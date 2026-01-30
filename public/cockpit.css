@@ -216,11 +216,30 @@ body {
     border-bottom-right-radius: 0vmin;
     }
 
-.player-name {}
 
-.player-name {}
-		
-		.plate {position: absolute;width: 100%;height: 100%;}
+.agent-info	{
+
+    }
+	
+.agent-name	{
+
+    }
+	
+.agent-checkbox	{
+
+    }
+	
+.agent-switch	{
+
+    }
+	
+		.agent-switch {
+	display: block;
+	width: 4.5vmin;
+	height: auto;
+	user-select: none;
+	filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
+	}
 
 .info_screen {
     position: absolute;
@@ -451,7 +470,7 @@ font-size: 2vmin;
     text-align: center;
     padding: 8px;
     border: 0.3vmin solid #00d92f;
-    border-radius: 0.8vmin;
+    border-radius: 0.4vmin;
     background: 0;
     width: 6vmin;
     height: 3.8vmin;

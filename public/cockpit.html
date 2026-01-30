@@ -22,8 +22,21 @@
 			
 	<div class="player-row" data-row="1">
 		<!-- IsActive Checkbox -->
+		
 
+		<div class="agent-info">
+		<div class="agent-name">-</div>
 
+		<input type="checkbox" 
+			   class="agent-checkbox" 
+			   id="agent-checkbox-1"
+			   data-row="1"
+			   onchange="toggleAgent(this)">
+		<label for="agent-checkbox-1" class="agnet-switch" onclick="playButtonSound('switch_on')">
+			<img class="agent-switch" src="/img/layout/switch_off.png" alt="Off">
+		</label>
+		
+		</div>
 		<!-- Player Info (IMG1 + Name) -->
 		<div class="player-info">
 			<img class="info_screen" src="/img/layout/screen_small.png">
@@ -77,7 +90,7 @@
 						   data-row="1"
 						   onchange="toggleSzok(this)">
 					<label for="szok-checkbox-1" class="szok-switch" onclick="playButtonSound('switch_on')">
-						<img class="switch-image" src="/img/layout/switch_off.png" alt="Off">
+						<img class="button-image" src="/img/layout/button_off.png" alt="Off">
 					</label>
 					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
 				</div>
@@ -203,13 +216,20 @@
             // Update player name
             const imieIndex = headers.indexOf('Imię');
             const nazwiskoIndex = headers.indexOf('Nazwisko');
+            const agentIndex = headers.indexOf('Agent');
             const imie = imieIndex >= 0 ? (row[imieIndex] || '') : '';
             const nazwisko = nazwiskoIndex >= 0 ? (row[nazwiskoIndex] || '') : '';
             const displayName = [imie, nazwisko].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
+            const agent = agentIndex >= 0 ? (row[agentIndex] || '') : '';
             
             const nameElement = rowElement.querySelector('.player-name');
             if (nameElement) {
                 nameElement.textContent = displayName;
+            }
+			
+            const agentElement = rowElement.querySelector('.agent-name');
+            if (agentElement) {
+                agentElement.textContent = agent;
             }
 
             // Update player image
@@ -247,9 +267,9 @@
 						
                         // Update switch image
                         const label = checkbox.nextElementSibling;
-                        const img = label ? label.querySelector('.switch-image') : null;
+                        const img = label ? label.querySelector('.button-image') : null;
                         if (img) {
-                            img.src = szokValue === 1 ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+                            img.src = szokValue === 1 ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
                         }
 					
                     }
@@ -292,9 +312,9 @@
             
             // Update the switch image
             const label = checkbox.nextElementSibling;
-            const img = label.querySelector('.switch-image');
+            const img = label.querySelector('.button-image');
             if (img) {
-                img.src = isChecked ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+                img.src = isChecked ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
             }
             
             // Update the backend

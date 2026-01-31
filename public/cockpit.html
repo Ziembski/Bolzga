@@ -242,6 +242,7 @@
 	<script src="/libs/teal.js"></script>
 	<script src="dice.js"></script>
 	<script src="main.js"></script>
+	<script src="toggleActive.js"></script>
 	
 	
     <script>
@@ -338,17 +339,8 @@
 			}
 		}
 
-        /**
-         * Toggle active/inactive state
-         */
-        function toggleActive(checkbox) {
-            const row = checkbox.closest('.player-row');
-            if (checkbox.checked) {
-                row.classList.remove('inactive');
-            } else {
-                row.classList.add('inactive');
-            }
-        }
+
+
 
         /**
          * Update a single row with data from CSV

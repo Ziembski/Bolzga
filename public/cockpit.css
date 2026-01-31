@@ -129,9 +129,9 @@ body {
             z-index: 2;
         }
 
-        .player-row.inactive {
-            filter: grayscale(100%);
-            opacity: 0.6;
+        .inactive {
+            
+            display: none;
         }
 
         .checkbox-container {

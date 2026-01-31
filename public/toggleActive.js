@@ -16,7 +16,7 @@ function toggleActive(checkbox) {
     
     // Define all the selectors for elements that should get the inactive class
     const selectors = [
-        '.player-img-element',
+        '.player-img',
         '.player-name',
         '.stat-label1',
         '.stat-value[data-field="Garda"]',

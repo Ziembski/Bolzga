@@ -208,7 +208,7 @@ body {
     top: 3.1vmin;
     height: 1.5vmin;
     width: 12.7vmin;
-    left: 20.9vmin;
+    left: 2vmin;
     overflow: clip;
     border-bottom-left-radius: 0vmin;
     border-bottom-right-radius: 0vmin;
@@ -272,7 +272,7 @@ body {
 			position: absolute;
 			width: 16.6vmin;
 			height: 10vmin;
-			top: 1vmin;
+			top: 0;
 			filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 			}
 			

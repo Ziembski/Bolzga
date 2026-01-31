@@ -40,7 +40,7 @@ function toggleActive(checkbox) {
     });
     
     // Also uncheck szok-checkbox when agent is unchecked
-    const szokCheckbox = playerRow.querySelector('[id^="szok-checkbox"]');
+    const szokCheckbox = playerRow.querySelector('szok-checkbox');
     if (szokCheckbox && !isChecked) {
         szokCheckbox.checked = false;
     }

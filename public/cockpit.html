@@ -1115,6 +1115,141 @@
 				<img class="input_screen" src="/img/layout/screen_small.png">
 			</div>
 		</div>
+	</div	<div class="player-row" data-row="2">
+		<!-- IsActive Checkbox -->
+		
+
+		<div class="agent-info">
+		<div class="agent-name">-</div>
+
+		<input type="checkbox" 
+		checked
+			   class="agent-checkbox" 
+			   id="agent-checkbox-2"
+			   data-row="1"
+			   onchange="toggleActive(this), toggleAgent(this)">
+		<label for="agent-checkbox-2" class="agent-switch-label" onclick="playButtonSound('switch_on')">
+			<img class="agent-switch" src="/img/layout/switch_on.png">
+		</label>
+		
+		</div>
+		<!-- Player Info (IMG1 + Name) -->
+		<div class="player-info">
+			<img class="info_screen" src="/img/layout/screen_small.png">
+			
+			<div class="player-img">
+				<img class="player-img-element" src="" alt="Player" style="display: none;">
+				<span class="player-img-placeholder">IMG1</span>
+
+			</div>
+
+			<label for="checkbox-player2"></label>
+
+		</div>
+
+		<!-- Stats Container -->
+		<div class="stats-container">
+		
+		<img class="stat_screen1" src="/img/layout/screen_big.png">
+		<div class="player-name">Ładowanie...</div>
+			<!-- Garda -->
+			<div class="stat-item1">
+
+				<div class="stat-label1">Garda</div>
+				<div class="stat-control">
+					<div class="stat-value" data-field="Garda">0</div>
+				</div>
+			</div>
+			<!-- Wytrzymałość -->
+			<div class="stat-item1">
+
+				<div class="stat-label1">Wytrz.</div>
+				<div class="stat-control">
+					<div class="stat-value" data-field="Wytrzymałość">0</div>
+				</div>
+			</div>
+			
+			<!-- Szok -->
+			<div class="stat-item2">
+				<div class="stat-label2">Szok</div>
+				<div class="stat-control szok-control">
+					<input type="checkbox" 
+						   class="szok-checkbox" 
+						   id="szok-checkbox-2"
+						   data-row="2"
+						   onchange="toggleSzok(this)">
+					<label for="szok-checkbox-2" class="szok-switch" onclick="playButtonSound('button2')">
+						<img class="button-image" src="/img/layout/button_off.png" alt="Off">
+					</label>
+					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
+				</div>
+			</div>
+
+			<!-- Rany -->
+			<div class="stat-item3">
+				<div class="stat-label2">Rany</div>
+				<div class="stat-control">
+				<img class="knob1" src="/img/layout/knob.png" data-row="1">
+				<div class="dial1"></div>
+				<div class="r0">0</div>
+				<div class="r0b"></div>
+				<div class="r1">1</div>
+				<div class="r1b"></div>
+				<div class="r2">2</div>
+				<div class="r2b"></div>
+				<div class="r3">3</div>
+				<div class="r3b"></div>
+					<div class="arrow-btn" 
+						 onclick="modifyField(2, 'Rany', -1); playButtonSound('rotary_switch')"></div>
+					<div class="stat-value3" data-field="Rany">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(2, 'Rany', 1); playButtonSound('rotary_switch')"></div>
+				</div>
+			</div>
+
+			<!-- Wyczerpanie -->
+			<div class="stat-item3">
+				<div class="stat-label2">Wyczerpanie</div>
+				<div class="stat-control">
+				<img class="knob2" src="/img/layout/knob.png" data-row="1">
+				<div class="dial2"></div>
+				<div class="w0b"></div>
+				<div class="w1b"></div>
+				<div class="w2b"></div>
+				<div class="w0">0</div>
+				<div class="w1">1</div>
+				<div class="w2">2</div>
+					<div class="arrow-btn" 
+						 onclick="modifyField(2, 'Wyczerpanie', -1); playButtonSound('rotary_switch')"></div>
+					<div class="stat-value3" data-field="Wyczerpanie">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(2, 'Wyczerpanie', 1); playButtonSound('rotary_switch')"></div>
+				</div>
+			</div>
+
+			<!-- Kapsle -->
+			<div class="stat-item4">
+				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(2, 'Kapsle', 1); playButtonSound('button')">
+				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(2, 'Kapsle', -1); playButtonSound('button')">
+				<img class="info_screen" src="/img/layout/screen_small.png">
+				<div class="stat-label3">Kapsle</div>
+				<div class="stat-control3">
+					<div class="stat-value2" data-field="Kapsle">0</div>
+				</div>
+			</div>
+
+			<!-- Karta -->
+			<div class="stat-item5 karta-item">
+				<div class="stat-label4">Karta</div>
+				<input type="text" 
+					   class="karta-input" 
+					   data-field="Karta"
+					   data-row="2"
+					   placeholder="Brak"
+					   onchange="updateKarta(2, this.value)">
+				<img class="input_screen" src="/img/layout/screen_small.png">
+			</div>
+		</div>
 	</div>
 
 

@@ -113,7 +113,7 @@ body {
         .players-container {
             display: flex;
             flex-direction: column;
-            gap: 1.1vmin;
+            gap: 0.4vmin;
             margin: 0 auto;
             position: absolute;
             object-fit: contain;
@@ -205,13 +205,14 @@ body {
     text-align: center;
     z-index: 3;
     position: absolute;
-    top: 3.1vmin;
+    top: 1.1vmin;
     height: 1.5vmin;
     width: 12.7vmin;
     left: 2vmin;
     overflow: clip;
     border-bottom-left-radius: 0vmin;
     border-bottom-right-radius: 0vmin;
+    text-wrap: nowrap;
     }
 
 

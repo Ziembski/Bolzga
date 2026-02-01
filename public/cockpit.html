@@ -6,7 +6,7 @@
     <title>Player Control Row</title>
 	<link rel="stylesheet" href="cockpit.css">
 </head>
-<body>
+<body onload="main.init(); diceRollerInit()">
 
 
 <div class="body-img">
@@ -1116,8 +1116,68 @@
 			</div>
 		</div>
 	</div>
+	
+			<!-- Dice tray -->
+		<input type="checkbox" id="dice_tray_checkbox">
+		<div id="dice_tray_main">
 
+			<label for="dice_tray_checkbox"></label>
+			
+			<img class="dice_tray" src="./img/layout/tray2.png"></img>
+			
+			<div id="diceRoller">
 
+				<!-- dice_box gets created here by dice.js -->
+			</div>
+
+			<div id="diceRollerUI">
+				<div class="dice_top_field">
+
+				</div>
+				<div id='center_div' class="dice_center_field">
+					<div id="instructions" style="display: none">
+						<p></p>
+					</div>
+				</div> 
+				<div class="dice_bottom_field">
+					<span id="result"></span>
+				</div>  
+
+			</div>
+			
+		</div>
+
+		<audio id="notification-sound" preload="auto">
+    <source src="/sounds/notification.mp3" type="audio/mpeg">
+    <source src="/sounds/notification.ogg" type="audio/ogg">
+</audio>
+		
+		<input type="checkbox" id="phone_checkbox">
+		<div class="phone_container">
+			
+		<label for="phone_checkbox"></label>
+			
+			<img src=".\img\layout\phone.png">
+			<div class="phone_d4" onclick="playButtonSound('d4'); addDiceOrModifier('d4')" style="cursor: pointer;"></div>
+			<div class="phone_d6" onclick="playButtonSound('d6'); addDiceOrModifier('d6')" style="cursor: pointer;"></div>
+			<div class="phone_d8" onclick="playButtonSound('d8'); addDiceOrModifier('d8')" style="cursor: pointer;"></div>
+			<div class="phone_d10" onclick="playButtonSound('d10'); addDiceOrModifier('d10')" style="cursor: pointer;"></div>
+			<div class="phone_d12" onclick="playButtonSound('d12'); addDiceOrModifier('d12')" style="cursor: pointer;"></div>
+			<div class="phone_plus" onclick="playButtonSound('+1'); addDiceOrModifier('+1')" style="cursor: pointer;"></div>
+			<div class="phone_minus" onclick="playButtonSound('-1'); addDiceOrModifier('-1')" style="cursor: pointer;"></div>
+			<div class="phone_x" onclick="playButtonSound('clear'); addDiceOrModifier('clear')" style="cursor: pointer;"></div>
+			<input type="text" id="textInput" 
+			spellcheck="false"
+			inputmode="none"
+			virtualkeyboardpolicy="manual"
+			value="d6">
+			<div class="game-logs-container">
+				<div id="game-logs-display" class="game-logs-display"></div>
+			</div>
+			<span id="log-nav-info" style="color: #1E1E1E; font-size: 1.2vmin;">0/0</span>
+			<div id="log-next-btn" onclick="playButtonSound('next-log'); showNextLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+			<div id="log-prev-btn" onclick="playButtonSound('prev-log'); showPreviousLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+		</div>
 
 </div>
 
@@ -1135,6 +1195,11 @@
     <script>
         let currentData = null;
         let eventSource = null;
+        let currentData = null;
+			let currentRow = null;
+			let updateDebounceTimer = null;
+			let previousKartaValue = null;
+			let lastClickedField = '';
 		
 		
 		
@@ -1576,7 +1641,346 @@
             }
         }
 
+function updateDiceInput(spanElement, addBolzgaDice = false) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    const fullText = spanElement.textContent.trim();
+    const lastSpaceIndex = fullText.lastIndexOf(' ');
+    
+    let diceNotation;
+    let fieldNameForLog = '';
+    
+    if (lastSpaceIndex !== -1) {
+        // Text has a space - split into name and dice notation
+        const textBeforeDice = fullText.substring(0, lastSpaceIndex).trim();
+        diceNotation = fullText.substring(lastSpaceIndex + 1);
+        
+        // Check if there's actual text before the dice notation
+        if (textBeforeDice && textBeforeDice !== '') {
+            // Case 2: Use the text before dice notation (e.g., "krycie się" from "krycie się d4")
+            fieldNameForLog = textBeforeDice;
+        }
+    } else {
+        // No space found - the whole text is just the dice notation
+        diceNotation = fullText;
+    }
+    
+    // If we didn't find a field name in the content, use data-field attribute
+    if (fieldNameForLog === '') {
+        const detailItem = spanElement.closest('.detail-item');
+        if (detailItem) {
+            // Case 1: Use data-field attribute (e.g., "Gibkość")
+            fieldNameForLog = detailItem.getAttribute('data-field') || '';
+        }
+    }
+    
+    // Store the field name for logging
+    lastClickedField = fieldNameForLog;
+    
+    // Add Bolzga Dice if parameter is true
+    if (addBolzgaDice) {
+        // Extract any modifier from the end of notation
+        const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
+        let modifier = '';
+        let baseNotation = diceNotation;
+        
+        if (modifierMatch) {
+            modifier = modifierMatch[1];
+            baseNotation = diceNotation.substring(0, diceNotation.length - modifier.length);
+        }
+        
+        // Add Bolzga Dice, keeping modifier at the end
+        diceNotation = baseNotation + '+d6' + modifier;
+    }
+    
+    // Update the text input
+    textInput.value = diceNotation;
+    
+    // Trigger the input event to update the size
+    textInput.dispatchEvent(new Event('input'));
+    
+    // Call main.setInput() to actually set the dice
+    main.setInput();
+}
 
+async function logDiceRoll(input, result) {
+    try {
+        const characterName = currentData && currentRow 
+            ? getCharacterName(currentRow) 
+            : 'Unknown';
+        
+        const response = await fetch('/api/log-dice-roll', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: characterName,
+                field: lastClickedField,
+                input: input,
+                result: result,
+                row: currentRow
+            })
+        });
+        
+        if (!response.ok) {
+            console.error('Failed to log dice roll');
+        }
+        
+
+    } catch (error) {
+        console.error('Error logging dice roll:', error);
+    }
+}
+
+function getCharacterName(rowIndex) {
+    try {
+        if (!currentData || !currentData.rows || rowIndex < 1 || rowIndex > currentData.rows.length) {
+            return 'Unknown';
+        }
+        
+        const imieIndex = currentData.headers.indexOf('Imię');
+        if (imieIndex === -1) return 'Unknown';
+        
+        const name = currentData.rows[rowIndex - 1][imieIndex];
+        return name && name.trim() !== '' ? name.trim() : 'Unknown';
+    } catch (error) {
+        console.error('Error getting character name:', error);
+        return 'Unknown';
+    }
+}
+
+function addDiceOrModifier(parameter) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    let currentValue = textInput.value.trim();
+    
+    // Handle "clear" parameter
+    if (parameter === 'clear') {
+        textInput.value = '';
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        lastClickedField = '';
+        return;
+    }
+    
+    // Handle modifier adjustments (+1 or -1)
+    if (parameter === '+1' || parameter === '-1') {
+        const adjustment = parseInt(parameter);
+        
+        // Check if there's already a modifier at the end
+        const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
+        
+        if (modifierMatch) {
+            // Adjust existing modifier at the end
+            const sign = modifierMatch[1];
+            const value = parseInt(modifierMatch[2]);
+            const existingModifier = sign === '-' ? -value : value;
+            const newModifier = existingModifier + adjustment;
+            const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
+            
+            if (newModifier === 0) {
+                textInput.value = baseNotation;
+            } else if (newModifier > 0) {
+                textInput.value = baseNotation + '+' + newModifier;
+            } else {
+                textInput.value = baseNotation + newModifier;
+            }
+        } else {
+            // No modifier exists - add one at the end
+            if (adjustment > 0) {
+                textInput.value = currentValue + '+' + adjustment;
+            } else {
+                textInput.value = currentValue + adjustment;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    // Handle adding a die type (like d6, d8, d20, etc.)
+    if (parameter.match(/^d\d+$/i)) {
+        const modifierMatch = currentValue.match(/([+\-]\d+)$/);
+        
+        if (modifierMatch) {
+            const modifier = modifierMatch[0];
+            const baseNotation = currentValue.substring(0, currentValue.length - modifier.length);
+            
+            if (baseNotation === '') {
+                textInput.value = parameter + modifier;
+            } else {
+                textInput.value = baseNotation + '+' + parameter + modifier;
+            }
+        } else {
+            if (currentValue === '') {
+                textInput.value = parameter;
+            } else {
+                textInput.value = currentValue + '+' + parameter;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    console.warn('Invalid parameter for addDiceOrModifier:', parameter);
+}
+			
+// Game Logs Viewer with navigation
+let logEventSource = null;
+let allLogs = []; // Store all logs
+let currentLogIndex = -1; // -1 means showing latest
+
+function initGameLogs() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    // Load existing logs
+    fetch('/api/game-logs')
+        .then(response => response.json())
+        .then(data => {
+            if (data.logs && data.logs.length > 0) {
+                allLogs = data.logs;
+                currentLogIndex = allLogs.length - 1; // Start with latest
+                displayCurrentLog();
+            }
+        })
+        .catch(error => console.error('Error loading game logs:', error));
+    
+    // Connect to SSE for real-time updates
+    if (logEventSource) {
+        logEventSource.close();
+    }
+    
+    logEventSource = new EventSource('/api/game-logs-sse');
+    
+    logEventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.entry && data.entry !== 'Connected to game logs') {
+            allLogs.push(data.entry);
+            
+            // Always play notification effects for new log
+            playNotificationEffects();
+            
+            // If viewing latest, update to new log
+            if (currentLogIndex === allLogs.length - 2 || currentLogIndex === -1) {
+                currentLogIndex = allLogs.length - 1;
+                displayCurrentLog();
+            } else {
+                // Just update navigation info to show there's a new log
+                updateNavButtons();
+            }
+        }
+    };
+    
+    logEventSource.onerror = (error) => {
+        console.error('Log SSE error:', error);
+        logEventSource.close();
+        setTimeout(initGameLogs, 5000);
+    };
+}
+
+function displayCurrentLog() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    logsDisplay.innerHTML = ''; // Clear previous
+    
+    if (allLogs.length === 0) {
+        logsDisplay.textContent = 'Brak wpisów w dzienniku';
+        return;
+    }
+    
+    // Ensure index is valid
+    if (currentLogIndex < 0) currentLogIndex = 0;
+    if (currentLogIndex >= allLogs.length) currentLogIndex = allLogs.length - 1;
+    
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.textContent = allLogs[currentLogIndex];
+    logsDisplay.appendChild(entry);
+    
+    // Update navigation info
+    const navInfo = document.getElementById('log-nav-info');
+    if (navInfo) {
+        navInfo.textContent = `${currentLogIndex + 1} / ${allLogs.length}`;
+    }
+    
+    // Update button states
+    updateNavButtons();
+}
+
+function updateNavButtons() {
+    const prevBtn = document.getElementById('log-prev-btn');
+    const nextBtn = document.getElementById('log-next-btn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentLogIndex <= 0;
+        prevBtn.style.opacity = currentLogIndex <= 0 ? '0.3' : '1';
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentLogIndex >= allLogs.length - 1;
+        nextBtn.style.opacity = currentLogIndex >= allLogs.length - 1 ? '0.3' : '1';
+    }
+}
+
+function playNotificationEffects() {
+    // Play notification sound
+    const notificationSound = document.getElementById('notification-sound');
+    if (notificationSound) {
+        notificationSound.currentTime = 0.2;
+        notificationSound.volume = 0.3;
+        notificationSound.play().catch(err => {
+            console.log('Audio playback failed:', err);
+        });
+    }
+    
+    // Trigger phone buzz animation
+    const phoneContainer = document.querySelector('.phone_container');
+    if (phoneContainer) {
+        phoneContainer.classList.remove('buzzing');
+        void phoneContainer.offsetWidth;
+        phoneContainer.classList.add('buzzing');
+        
+        setTimeout(() => {
+            phoneContainer.classList.remove('buzzing');
+        }, 1000);
+    }
+}
+
+// Navigation functions - attach these to your onclick elements
+function showPreviousLog() {
+    if (currentLogIndex > 0) {
+        currentLogIndex--;
+        displayCurrentLog();
+    }
+}
+
+function showNextLog() {
+    if (currentLogIndex < allLogs.length - 1) {
+        currentLogIndex++;
+        displayCurrentLog();
+    }
+}
+
+function showLatestLog() {
+    currentLogIndex = allLogs.length - 1;
+    displayCurrentLog();
+}
+
+function showOldestLog() {
+    currentLogIndex = 0;
+    displayCurrentLog();
+}
+
+// Initialize logs when page loads
+initGameLogs();
 		
 
         // Start the app

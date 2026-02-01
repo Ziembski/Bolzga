@@ -905,14 +905,33 @@
 	</div>
 </div>
 
-<!-- Include dice.js -->
+<!-- Include required libraries and scripts -->
+<script src="/libs/three.min.js"></script>
+<script src="/libs/cannon.min.js"></script>
+<script src="/libs/teal.js"></script>
 <script src="dice.js"></script>
+<script src="main.js"></script>
+<script src="toggleActive.js"></script>
 
 <script>
 	// ========== GLOBAL VARIABLES ==========
 	let eventSource = null;
 	let currentData = null;
 	let lastClickedField = '';
+
+	// ========== KNOB ROTATION CONFIGURATION ==========
+	const KNOB_CONFIG = {
+		rany: {
+			baseRotation: 30,      // Base rotation in degrees (from CSS: transform: rotate(30deg))
+			degreesPerUnit: 40,    // Degrees to rotate per unit value
+			fieldName: 'Rany'      // Data field name to monitor
+		},
+		wyczerpanie: {
+			baseRotation: 30,      // Base rotation in degrees
+			degreesPerUnit: 60,    // Degrees to rotate per unit value
+			fieldName: 'Wyczerpanie' // Data field name to monitor
+		}
+	};
 
 	// ========== SOUND EFFECTS ==========
 	function playButtonSound(soundKey) {
@@ -945,26 +964,47 @@
 	}
 
 	// ========== KNOB ROTATION FUNCTIONS ==========
-	function updateKnobRotation(rowNumber, type, value) {
+	/**
+	 * Update knob rotation for a specific row and knob type
+	 * @param {number} rowNumber - The row number
+	 * @param {string} knobType - Either 'rany' or 'wyczerpanie'
+	 * @param {number} value - The field value
+	 */
+	function updateKnobRotation(rowNumber, knobType, value) {
+		const config = KNOB_CONFIG[knobType];
+		if (!config) {
+			console.error(`Invalid knob type: ${knobType}`);
+			return;
+		}
+		
+		// Find the knob element for this row
 		const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
-		if (!rowElement) return;
-
-		let knob, dial, rotation;
-
-		if (type === 'rany') {
-			knob = rowElement.querySelector('.knob1');
-			dial = rowElement.querySelector('.dial1');
-			rotation = value * 90 - 90;
-		} else if (type === 'wyczerpanie') {
-			knob = rowElement.querySelector('.knob2');
-			dial = rowElement.querySelector('.dial2');
-			rotation = value * 120 - 120;
+		if (!rowElement) {
+			console.error(`Row ${rowNumber} not found`);
+			return;
 		}
-
-		if (knob && dial) {
-			knob.style.transform = `rotate(${rotation}deg)`;
-			dial.style.transform = `rotate(${rotation}deg)`;
+		
+		// Select the appropriate knob class
+		const knobClass = knobType === 'rany' ? '.knob1' : '.knob2';
+		const dialClass = knobType === 'rany' ? '.dial1' : '.dial2';
+		const knobElement = rowElement.querySelector(knobClass);
+		const dialElement = rowElement.querySelector(dialClass);
+		
+		if (!knobElement) {
+			console.error(`Knob element ${knobClass} not found in row ${rowNumber}`);
+			return;
 		}
+		
+		// Calculate rotation
+		const rotation = config.baseRotation + (value * config.degreesPerUnit);
+		
+		// Apply rotation to both knob and dial
+		knobElement.style.transform = `rotate(${rotation}deg)`;
+		if (dialElement) {
+			dialElement.style.transform = `rotate(${rotation}deg)`;
+		}
+		
+		console.log(`Updated ${knobClass} in row ${rowNumber}: value=${value}, rotation=${rotation}deg`);
 	}
 
 	function updateAllKnobsForRow(rowNumber) {
@@ -1101,18 +1141,27 @@
 
 	// ========== UPDATE ALL ROWS ==========
 	function updateAllRows(data) {
+		console.log('updateAllRows called with data:', data);
+		
 		if (!data || !data.headers || !data.rows) {
 			console.error('Invalid data format:', data);
 			return;
 		}
 
 		currentData = data;
+		console.log('Current data set. Headers:', data.headers.length, 'Rows:', data.rows.length);
 
 		// Update each player row
 		const rows = document.querySelectorAll('.player-row[data-row]');
+		console.log('Found', rows.length, 'player rows to update');
+		
 		rows.forEach(rowElement => {
+			const rowNum = rowElement.dataset.row;
+			console.log('Updating row', rowNum);
 			updateRow(rowElement, data.rows, data.headers);
 		});
+		
+		console.log('All rows updated successfully');
 	}
 
 	// ========== TOGGLE SZOK ==========
@@ -1265,13 +1314,31 @@
 
 	// ========== LOAD CSV DATA ==========
 	async function loadCSVData() {
+		console.log('Loading CSV data from /api/data...');
 		try {
 			const response = await fetch('/api/data');
+			console.log('Response status:', response.status);
+			
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			
 			const data = await response.json();
+			console.log('CSV data received:', data);
+			
 			updateAllRows(data);
+			console.log('All rows updated with CSV data');
+			
 			initSSE();
+			console.log('SSE connection initiated');
 		} catch (error) {
 			console.error('Error loading data:', error);
+			// Show error message to user
+			const rows = document.querySelectorAll('.player-row[data-row] .player-name');
+			rows.forEach(nameElement => {
+				nameElement.textContent = 'Błąd ładowania danych';
+				nameElement.style.color = 'red';
+			});
 		}
 	}
 
@@ -1426,17 +1493,31 @@
 	let currentLogIndex = -1;
 
 	function initGameLogs() {
+		console.log('Initializing game logs...');
 		const logsDisplay = document.getElementById('game-logs-display');
-		if (!logsDisplay) return;
+		if (!logsDisplay) {
+			console.error('game-logs-display element not found!');
+			return;
+		}
+		
+		console.log('game-logs-display element found');
 		
 		// Load existing logs
+		console.log('Fetching existing logs from /api/game-logs...');
 		fetch('/api/game-logs')
-			.then(response => response.json())
+			.then(response => {
+				console.log('Game logs response status:', response.status);
+				return response.json();
+			})
 			.then(data => {
+				console.log('Game logs data received:', data);
 				if (data.logs && data.logs.length > 0) {
 					allLogs = data.logs;
 					currentLogIndex = allLogs.length - 1;
+					console.log('Loaded', allLogs.length, 'existing logs');
 					displayCurrentLog();
+				} else {
+					console.log('No existing logs found');
 				}
 			})
 			.catch(error => console.error('Error loading game logs:', error));
@@ -1446,12 +1527,19 @@
 			logEventSource.close();
 		}
 		
+		console.log('Connecting to game logs SSE at /api/game-logs-sse...');
 		logEventSource = new EventSource('/api/game-logs-sse');
 		
+		logEventSource.onopen = () => {
+			console.log('Game logs SSE connection opened');
+		};
+		
 		logEventSource.onmessage = (event) => {
+			console.log('Game log SSE message received:', event.data);
 			const data = JSON.parse(event.data);
 			if (data.entry && data.entry !== 'Connected to game logs') {
 				allLogs.push(data.entry);
+				console.log('New log added. Total logs:', allLogs.length);
 				
 				// Always play notification effects for new log
 				playNotificationEffects();
@@ -1470,6 +1558,7 @@
 		logEventSource.onerror = (error) => {
 			console.error('Log SSE error:', error);
 			logEventSource.close();
+			console.log('Will retry connection in 5 seconds...');
 			setTimeout(initGameLogs, 5000);
 		};
 	}
@@ -1570,15 +1659,31 @@
 
 	// ========== MAIN INITIALIZATION ==========
 	function initApp() {
-		// Initialize dice roller first
-		main.init();
-		diceRollerInit();
+		console.log('Starting app initialization...');
+		
+		// Initialize dice roller first (from main.js)
+		if (typeof main !== 'undefined' && typeof main.init === 'function') {
+			main.init();
+			console.log('main.init() completed');
+		} else {
+			console.warn('main.init() not found');
+		}
+		
+		// Initialize dice roller (if diceRollerInit exists)
+		if (typeof diceRollerInit === 'function') {
+			diceRollerInit();
+			console.log('diceRollerInit() completed');
+		} else {
+			console.warn('diceRollerInit() not found');
+		}
 		
 		// Load CSV data
 		loadCSVData();
+		console.log('CSV data loading initiated');
 		
 		// Initialize game logs
 		initGameLogs();
+		console.log('Game logs initialization completed');
 	}
 		
 	</script>

@@ -113,7 +113,7 @@ body {
         .players-container {
             display: flex;
             flex-direction: column;
-            gap: 0.4vmin;
+            gap: 0vmin;
             margin: 0 auto;
             position: absolute;
             object-fit: contain;
@@ -121,7 +121,7 @@ body {
 
         .player-row {
             border-radius: 1.1vmin;
-            padding: 1vmin;
+            padding: 0.6vmin;
             transition: filter 0.3s, opacity 0.3s;
             display: flex;
             gap: 0.8vmin;

@@ -6,7 +6,7 @@
     <title>Player Control Row</title>
 	<link rel="stylesheet" href="cockpit.css">
 </head>
-<body onload="initApp()">
+<body onload="main.init(); diceRollerInit()">
 
 
 <div class="body-img">
@@ -293,7 +293,8 @@
 			</div>
 		</div>
 	</div>
-	
+
+
 	<div class="player-row" data-row="3">
 		<!-- IsActive Checkbox -->
 		
@@ -357,7 +358,7 @@
 						   id="szok-checkbox-3"
 						   data-row="3"
 						   onchange="toggleSzok(this)">
-					<label for="szok-checkbox-3" class="szok-switch" onclick="playButtonSound('button2')">
+					<label for="szok-checkbox-2" class="szok-switch" onclick="playButtonSound('button2')">
 						<img class="button-image" src="/img/layout/button_off.png" alt="Off">
 					</label>
 					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
@@ -567,7 +568,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="player-row" data-row="5">
 		<!-- IsActive Checkbox -->
 		
@@ -704,7 +705,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="player-row" data-row="6">
 		<!-- IsActive Checkbox -->
 		
@@ -841,851 +842,1101 @@
 			</div>
 		</div>
 	</div>
-</div>
 
-<!-- Dice Controls Panel -->
-<div class="dice_controls">
-	<!-- Phone-like container -->
-	<div class="phone_container">
-		<img class="phone_bg" src="/img/layout/phone_bg.png">
+	<div class="player-row" data-row="7">
+		<!-- IsActive Checkbox -->
 		
-		<!-- Screen showing logs with navigation -->
-		<div class="phone_screen">
-			<div class="game-logs-container">
-				<div id="game-logs-display" class="logs-display">
-					Brak wpisów w dzienniku
-				</div>
-				<div class="log-navigation">
-					<button id="log-prev-btn" onclick="showPreviousLog(); playButtonSound('prev-log')" class="log-nav-btn">◄</button>
-					<span id="log-nav-info" class="log-nav-info">0 / 0</span>
-					<button id="log-next-btn" onclick="showNextLog(); playButtonSound('next-log')" class="log-nav-btn">►</button>
+
+		<div class="agent-info">
+		<div class="agent-name">-</div>
+
+		<input type="checkbox" 
+		checked
+			   class="agent-checkbox" 
+			   id="agent-checkbox-7"
+			   data-row="7"
+			   onchange="toggleActive(this), toggleAgent(this)">
+		<label for="agent-checkbox-7" class="agent-switch-label" onclick="playButtonSound('switch_on')">
+			<img class="agent-switch" src="/img/layout/switch_on.png">
+		</label>
+		
+		</div>
+		<!-- Player Info (IMG1 + Name) -->
+		<div class="player-info">
+			<img class="info_screen" src="/img/layout/screen_small.png">
+			
+			<div class="player-img">
+				<img class="player-img-element" src="" alt="Player" style="display: none;">
+				<span class="player-img-placeholder">IMG1</span>
+
+			</div>
+
+			<label for="checkbox-player2"></label>
+
+		</div>
+
+		<!-- Stats Container -->
+		<div class="stats-container">
+		
+		<img class="stat_screen1" src="/img/layout/screen_big.png">
+		<div class="player-name">Ładowanie...</div>
+			<!-- Garda -->
+			<div class="stat-item1">
+
+				<div class="stat-label1">Garda</div>
+				<div class="stat-control">
+					<div class="stat-value" data-field="Garda">0</div>
 				</div>
 			</div>
+			<!-- Wytrzymałość -->
+			<div class="stat-item1">
+
+				<div class="stat-label1">Wytrz.</div>
+				<div class="stat-control">
+					<div class="stat-value" data-field="Wytrzymałość">0</div>
+				</div>
+			</div>
+			
+			<!-- Szok -->
+			<div class="stat-item2">
+				<div class="stat-label2">Szok</div>
+				<div class="stat-control szok-control">
+					<input type="checkbox" 
+						   class="szok-checkbox" 
+						   id="szok-checkbox-7"
+						   data-row="7"
+						   onchange="toggleSzok(this)">
+					<label for="szok-checkbox-7" class="szok-switch" onclick="playButtonSound('button2')">
+						<img class="button-image" src="/img/layout/button_off.png" alt="Off">
+					</label>
+					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
+				</div>
+			</div>
+
+			<!-- Rany -->
+			<div class="stat-item3">
+				<div class="stat-label2">Rany</div>
+				<div class="stat-control">
+				<img class="knob1" src="/img/layout/knob.png" data-row="1">
+				<div class="dial1"></div>
+				<div class="r0">0</div>
+				<div class="r0b"></div>
+				<div class="r1">1</div>
+				<div class="r1b"></div>
+				<div class="r2">2</div>
+				<div class="r2b"></div>
+				<div class="r3">3</div>
+				<div class="r3b"></div>
+					<div class="arrow-btn" 
+						 onclick="modifyField(7, 'Rany', -1); playButtonSound('rotary_switch')"></div>
+					<div class="stat-value3" data-field="Rany">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(7, 'Rany', 1); playButtonSound('rotary_switch')"></div>
+				</div>
+			</div>
+
+			<!-- Wyczerpanie -->
+			<div class="stat-item3">
+				<div class="stat-label2">Wyczerpanie</div>
+				<div class="stat-control">
+				<img class="knob2" src="/img/layout/knob.png" data-row="1">
+				<div class="dial2"></div>
+				<div class="w0b"></div>
+				<div class="w1b"></div>
+				<div class="w2b"></div>
+				<div class="w0">0</div>
+				<div class="w1">1</div>
+				<div class="w2">2</div>
+					<div class="arrow-btn" 
+						 onclick="modifyField(7, 'Wyczerpanie', -1); playButtonSound('rotary_switch')"></div>
+					<div class="stat-value3" data-field="Wyczerpanie">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(7, 'Wyczerpanie', 1); playButtonSound('rotary_switch')"></div>
+				</div>
+			</div>
+
+			<!-- Kapsle -->
+			<div class="stat-item4">
+				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(7, 'Kapsle', 1); playButtonSound('button')">
+				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(7, 'Kapsle', -1); playButtonSound('button')">
+				<img class="info_screen" src="/img/layout/screen_small.png">
+				<div class="stat-label3">Kapsle</div>
+				<div class="stat-control3">
+					<div class="stat-value2" data-field="Kapsle">0</div>
+				</div>
+			</div>
+
+			<!-- Karta -->
+			<div class="stat-item5 karta-item">
+				<div class="stat-label4">Karta</div>
+				<input type="text" 
+					   class="karta-input" 
+					   data-field="Karta"
+					   data-row="7"
+					   placeholder="Brak"
+					   onchange="updateKarta(7, this.value)">
+				<img class="input_screen" src="/img/layout/screen_small.png">
+			</div>
 		</div>
+	</div>
+
+	<div class="player-row" data-row="8">
+		<!-- IsActive Checkbox -->
 		
-		<!-- Notification sound (hidden audio element) -->
-		<audio id="notification-sound" src="./sounds/notification.mp3" preload="auto"></audio>
+
+		<div class="agent-info">
+		<div class="agent-name">-</div>
+
+		<input type="checkbox" 
+		checked
+			   class="agent-checkbox" 
+			   id="agent-checkbox-8"
+			   data-row="8"
+			   onchange="toggleActive(this), toggleAgent(this)">
+		<label for="agent-checkbox-8" class="agent-switch-label" onclick="playButtonSound('switch_on')">
+			<img class="agent-switch" src="/img/layout/switch_on.png">
+		</label>
+		
+		</div>
+		<!-- Player Info (IMG1 + Name) -->
+		<div class="player-info">
+			<img class="info_screen" src="/img/layout/screen_small.png">
+			
+			<div class="player-img">
+				<img class="player-img-element" src="" alt="Player" style="display: none;">
+				<span class="player-img-placeholder">IMG1</span>
+
+			</div>
+
+			<label for="checkbox-player2"></label>
+
+		</div>
+
+		<!-- Stats Container -->
+		<div class="stats-container">
+		
+		<img class="stat_screen1" src="/img/layout/screen_big.png">
+		<div class="player-name">Ładowanie...</div>
+			<!-- Garda -->
+			<div class="stat-item1">
+
+				<div class="stat-label1">Garda</div>
+				<div class="stat-control">
+					<div class="stat-value" data-field="Garda">0</div>
+				</div>
+			</div>
+			<!-- Wytrzymałość -->
+			<div class="stat-item1">
+
+				<div class="stat-label1">Wytrz.</div>
+				<div class="stat-control">
+					<div class="stat-value" data-field="Wytrzymałość">0</div>
+				</div>
+			</div>
+			
+			<!-- Szok -->
+			<div class="stat-item2">
+				<div class="stat-label2">Szok</div>
+				<div class="stat-control szok-control">
+					<input type="checkbox" 
+						   class="szok-checkbox" 
+						   id="szok-checkbox-8"
+						   data-row="8"
+						   onchange="toggleSzok(this)">
+					<label for="szok-checkbox-8" class="szok-switch" onclick="playButtonSound('button2')">
+						<img class="button-image" src="/img/layout/button_off.png" alt="Off">
+					</label>
+					<div class="stat-value" data-field="Szok" style="display: none;">0</div>
+				</div>
+			</div>
+
+			<!-- Rany -->
+			<div class="stat-item3">
+				<div class="stat-label2">Rany</div>
+				<div class="stat-control">
+				<img class="knob1" src="/img/layout/knob.png" data-row="1">
+				<div class="dial1"></div>
+				<div class="r0">0</div>
+				<div class="r0b"></div>
+				<div class="r1">1</div>
+				<div class="r1b"></div>
+				<div class="r2">2</div>
+				<div class="r2b"></div>
+				<div class="r3">3</div>
+				<div class="r3b"></div>
+					<div class="arrow-btn" 
+						 onclick="modifyField(8, 'Rany', -1); playButtonSound('rotary_switch')"></div>
+					<div class="stat-value3" data-field="Rany">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(8, 'Rany', 1); playButtonSound('rotary_switch')"></div>
+				</div>
+			</div>
+
+			<!-- Wyczerpanie -->
+			<div class="stat-item3">
+				<div class="stat-label2">Wyczerpanie</div>
+				<div class="stat-control">
+				<img class="knob2" src="/img/layout/knob.png" data-row="1">
+				<div class="dial2"></div>
+				<div class="w0b"></div>
+				<div class="w1b"></div>
+				<div class="w2b"></div>
+				<div class="w0">0</div>
+				<div class="w1">1</div>
+				<div class="w2">2</div>
+					<div class="arrow-btn" 
+						 onclick="modifyField(8, 'Wyczerpanie', -1); playButtonSound('rotary_switch')"></div>
+					<div class="stat-value3" data-field="Wyczerpanie">0</div>
+					<div class="arrow-btn arrow-down" 
+						 onclick="modifyField(8, 'Wyczerpanie', 1); playButtonSound('rotary_switch')"></div>
+				</div>
+			</div>
+
+			<!-- Kapsle -->
+			<div class="stat-item4">
+				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(8, 'Kapsle', 1); playButtonSound('button')">
+				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(8, 'Kapsle', -1); playButtonSound('button')">
+				<img class="info_screen" src="/img/layout/screen_small.png">
+				<div class="stat-label3">Kapsle</div>
+				<div class="stat-control3">
+					<div class="stat-value2" data-field="Kapsle">0</div>
+				</div>
+			</div>
+
+			<!-- Karta -->
+			<div class="stat-item5 karta-item">
+				<div class="stat-label4">Karta</div>
+				<input type="text" 
+					   class="karta-input" 
+					   data-field="Karta"
+					   data-row="8"
+					   placeholder="Brak"
+					   onchange="updateKarta(8, this.value)">
+				<img class="input_screen" src="/img/layout/screen_small.png">
+			</div>
+		</div>
 	</div>
 	
-	<img class="control_panel" src="/img/layout/control_panel.png">
+			<!-- Dice tray -->
+		<input type="checkbox" id="dice_tray_checkbox">
+		<div id="dice_tray_main">
 
-	<!-- Main text input at the top -->
-	<input type="text" 
-		   id="textInput" 
-		   placeholder="" 
-		   class="dice-text-input"
-		   readonly>
-	<div class="input_screen"></div>
-	
-	<!-- Result display -->
-	<div id="result" class="result-display"></div>
-	<div class="result_screen"></div>
+			<label for="dice_tray_checkbox"></label>
+			
+			<img class="dice_tray" src="./img/layout/tray2.png"></img>
+			
+			<div id="diceRoller">
 
-	<!-- Dice buttons (d4, d6, d8, d10, d12, d20, d100) -->
-	<div class="dice-buttons">
-		<button class="d4" onclick="addDiceOrModifier('d4'); playButtonSound('d4')">d4</button>
-		<button class="d6" onclick="addDiceOrModifier('d6'); playButtonSound('d6')">d6</button>
-		<button class="d8" onclick="addDiceOrModifier('d8'); playButtonSound('d8')">d8</button>
-		<button class="d10" onclick="addDiceOrModifier('d10'); playButtonSound('d10')">d10</button>
-		<button class="d12" onclick="addDiceOrModifier('d12'); playButtonSound('d12')">d12</button>
-		<button class="d20" onclick="addDiceOrModifier('d20'); playButtonSound('d20')">d20</button>
-		<button class="d100" onclick="addDiceOrModifier('d100'); playButtonSound('d100')">d100</button>
-	</div>
+				<!-- dice_box gets created here by dice.js -->
+			</div>
 
-	<!-- Plus / Minus buttons -->
-	<div class="modifier-buttons">
-		<button class="plus1" onclick="addDiceOrModifier('+1'); playButtonSound('+1')">+1</button>
-		<button class="minus1" onclick="addDiceOrModifier('-1'); playButtonSound('-1')">-1</button>
-	</div>
+			<div id="diceRollerUI">
+				<div class="dice_top_field">
 
-	<!-- Roll and Clear buttons -->
-	<div class="action-buttons">
-		<button class="roll" onclick="main.throwDice(); playButtonSound('roll')">RZUT</button>
-		<button class="clear" onclick="addDiceOrModifier('clear'); playButtonSound('clear')">CZYŚĆ</button>
-	</div>
+				</div>
+				<div id='center_div' class="dice_center_field">
+					<div id="instructions" style="display: none">
+						<p></p>
+					</div>
+				</div> 
+				<div class="dice_bottom_field">
+					<span id="result"></span>
+				</div>  
+
+			</div>
+			
+		</div>
+
+		<audio id="notification-sound" preload="auto">
+    <source src="/sounds/notification.mp3" type="audio/mpeg">
+    <source src="/sounds/notification.ogg" type="audio/ogg">
+</audio>
+		
+		<input type="checkbox" id="phone_checkbox">
+		<div class="phone_container">
+			
+		<label for="phone_checkbox"></label>
+			
+			<img src=".\img\layout\phone.png">
+			<div class="phone_d4" onclick="playButtonSound('d4'); addDiceOrModifier('d4')" style="cursor: pointer;"></div>
+			<div class="phone_d6" onclick="playButtonSound('d6'); addDiceOrModifier('d6')" style="cursor: pointer;"></div>
+			<div class="phone_d8" onclick="playButtonSound('d8'); addDiceOrModifier('d8')" style="cursor: pointer;"></div>
+			<div class="phone_d10" onclick="playButtonSound('d10'); addDiceOrModifier('d10')" style="cursor: pointer;"></div>
+			<div class="phone_d12" onclick="playButtonSound('d12'); addDiceOrModifier('d12')" style="cursor: pointer;"></div>
+			<div class="phone_plus" onclick="playButtonSound('+1'); addDiceOrModifier('+1')" style="cursor: pointer;"></div>
+			<div class="phone_minus" onclick="playButtonSound('-1'); addDiceOrModifier('-1')" style="cursor: pointer;"></div>
+			<div class="phone_x" onclick="playButtonSound('clear'); addDiceOrModifier('clear')" style="cursor: pointer;"></div>
+			<input type="text" id="textInput" 
+			spellcheck="false"
+			inputmode="none"
+			virtualkeyboardpolicy="manual"
+			value="d6">
+			<div class="game-logs-container">
+				<div id="game-logs-display" class="game-logs-display"></div>
+			</div>
+			<span id="log-nav-info" style="color: #1E1E1E; font-size: 1.2vmin;">0/0</span>
+			<div id="log-next-btn" onclick="playButtonSound('next-log'); showNextLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+			<div id="log-prev-btn" onclick="playButtonSound('prev-log'); showPreviousLog()" style="cursor: pointer; font-size: 1.4vmin; color: #1E1E1E;"></div>
+		</div>
+
 </div>
 
-<!-- Include required libraries and scripts -->
-<script src="/libs/three.min.js"></script>
-<script src="/libs/cannon.min.js"></script>
-<script src="/libs/teal.js"></script>
-<script src="dice.js"></script>
-<script src="main.js"></script>
-<script src="toggleActive.js"></script>
 
-<script>
-	// ========== GLOBAL VARIABLES ==========
-	let eventSource = null;
-	let currentData = null;
-	let lastClickedField = '';
 
-	// ========== KNOB ROTATION CONFIGURATION ==========
-	const KNOB_CONFIG = {
-		rany: {
-			baseRotation: 30,      // Base rotation in degrees (from CSS: transform: rotate(30deg))
-			degreesPerUnit: 40,    // Degrees to rotate per unit value
-			fieldName: 'Rany'      // Data field name to monitor
-		},
-		wyczerpanie: {
-			baseRotation: 30,      // Base rotation in degrees
-			degreesPerUnit: 60,    // Degrees to rotate per unit value
-			fieldName: 'Wyczerpanie' // Data field name to monitor
-		}
-	};
 
-	// ========== SOUND EFFECTS ==========
-	function playButtonSound(soundKey) {
-		const soundMap = {
-			'd4': './sounds/dial1.mp3',
-			'd6': './sounds/dial2.mp3',
-			'd8': './sounds/dial3.mp3',
-			'd10': './sounds/dial4.mp3',
-			'd12': './sounds/dial5.mp3',
-			'd20': './sounds/dial6.mp3',
-			'd100': './sounds/dial7.mp3',
-			'roll': './sounds/dial8.mp3',
-			'button': './sounds/button.mp3',
-			'button2': './sounds/button2.mp3',
-			'rotary_switch': './sounds/rotary_switch.mp3',
-			'switch_on': './sounds/switch_on.mp3',
-			'+1': './sounds/dial5.mp3',
-			'-1': './sounds/dial7.mp3',
-			'clear': './sounds/dial8.mp3',
-			'next-log': './sounds/dial9.mp3',
-			'prev-log': './sounds/dial2.mp3',
+	<script src="/libs/three.min.js"></script>
+	<script src="/libs/cannon.min.js"></script>
+	<script src="/libs/teal.js"></script>
+	<script src="dice.js"></script>
+	<script src="main.js"></script>
+	<script src="toggleActive.js"></script>
+	
+	
+    <script>
+        let currentData = null;
+        let eventSource = null;
+		let updateDebounceTimer = null;
+		let previousKartaValue = null;
+		let lastClickedField = '';
+		
+		
+		
+		// KNOB ROTATION CONFIGURATION
+		const KNOB_CONFIG = {
+			rany: {
+				baseRotation: 30,      // Base rotation in degrees (from CSS: transform: rotate(30deg))
+				degreesPerUnit: 40,    // Degrees to rotate per unit value
+				fieldName: 'Rany'      // Data field name to monitor
+			},
+			wyczerpanie: {
+				baseRotation: 30,      // Base rotation in degrees
+				degreesPerUnit: 60,    // Degrees to rotate per unit value
+				fieldName: 'Wyczerpanie' // Data field name to monitor
+			}
 		};
 		
-		const soundPath = soundMap[soundKey];
-		if (soundPath) {
-			const audio = new Audio(soundPath);
-			audio.volume = 0.5;
-			audio.play().catch(err => console.log('Audio failed:', err));
-		}
-	}
-
-	// ========== KNOB ROTATION FUNCTIONS ==========
-	/**
-	 * Update knob rotation for a specific row and knob type
-	 * @param {number} rowNumber - The row number
-	 * @param {string} knobType - Either 'rany' or 'wyczerpanie'
-	 * @param {number} value - The field value
-	 */
-	function updateKnobRotation(rowNumber, knobType, value) {
-		const config = KNOB_CONFIG[knobType];
-		if (!config) {
-			console.error(`Invalid knob type: ${knobType}`);
-			return;
-		}
-		
-		// Find the knob element for this row
-		const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
-		if (!rowElement) {
-			console.error(`Row ${rowNumber} not found`);
-			return;
-		}
-		
-		// Select the appropriate knob class
-		const knobClass = knobType === 'rany' ? '.knob1' : '.knob2';
-		const dialClass = knobType === 'rany' ? '.dial1' : '.dial2';
-		const knobElement = rowElement.querySelector(knobClass);
-		const dialElement = rowElement.querySelector(dialClass);
-		
-		if (!knobElement) {
-			console.error(`Knob element ${knobClass} not found in row ${rowNumber}`);
-			return;
-		}
-		
-		// Calculate rotation
-		const rotation = config.baseRotation + (value * config.degreesPerUnit);
-		
-		// Apply rotation to both knob and dial
-		knobElement.style.transform = `rotate(${rotation}deg)`;
-		if (dialElement) {
-			dialElement.style.transform = `rotate(${rotation}deg)`;
-		}
-		
-		console.log(`Updated ${knobClass} in row ${rowNumber}: value=${value}, rotation=${rotation}deg`);
-	}
-
-	function updateAllKnobsForRow(rowNumber) {
-		const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
-		if (!rowElement) return;
-
-		const ranyValue = parseInt(rowElement.querySelector('[data-field="Rany"]')?.textContent || '0');
-		updateKnobRotation(rowNumber, 'rany', ranyValue);
-
-		const wyczerpanieValue = parseInt(rowElement.querySelector('[data-field="Wyczerpanie"]')?.textContent || '0');
-		updateKnobRotation(rowNumber, 'wyczerpanie', wyczerpanieValue);
-	}
-
-	// ========== TOGGLE ACTIVE FUNCTION ==========
-	function toggleActive(checkbox) {
-		const row = checkbox.dataset.row;
-		const rowElement = checkbox.closest('.player-row');
-		
-		if (checkbox.checked) {
-			rowElement.classList.remove('inactive');
-		} else {
-			rowElement.classList.add('inactive');
-		}
-	}
-
-	// ========== UPDATE SINGLE ROW ==========
-	function updateRow(rowElement, rows, headers) {
-		const rowNumber = parseInt(rowElement.dataset.row);
-		
-		if (rowNumber > rows.length) {
-			console.warn(`Row ${rowNumber} does not exist in CSV`);
-			return;
-		}
-
-		const row = rows[rowNumber - 1];
-		
-		// Update player name
-		const imieIndex = headers.indexOf('Imię');
-		const nazwiskoIndex = headers.indexOf('Nazwisko');
-		const agentIndex = headers.indexOf('Agent');
-		const imie = imieIndex >= 0 ? (row[imieIndex] || '') : '';
-		const nazwisko = nazwiskoIndex >= 0 ? (row[nazwiskoIndex] || '') : '';
-		const displayName = [imie, nazwisko].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
-		const agent = agentIndex >= 0 ? (row[agentIndex] || '') : '';
-		
-		const nameElement = rowElement.querySelector('.player-name');
-		if (nameElement) {
-			nameElement.textContent = displayName;
-		}
-			
-		const agentElement = rowElement.querySelector('.agent-name');
-		if (agentElement) {
-			agentElement.textContent = agent;
-		}
-
-		// Update stat values
-		const statFields = ['Garda', 'Wytrzymałość', 'Szok', 'Rany', 'Wyczerpanie', 'Kapsle'];
-		statFields.forEach(field => {
-			const fieldIndex = headers.indexOf(field);
-			if (fieldIndex >= 0) {
-				const value = row[fieldIndex] || '0';
-				const valueElement = rowElement.querySelector(`[data-field="${field}"]`);
-				if (valueElement) {
-					valueElement.textContent = value;
-				}
+		/**
+		 * Update knob rotation for a specific row and knob type
+		 * @param {number} rowNumber - The row number
+		 * @param {string} knobType - Either 'rany' or 'wyczerpanie'
+		 * @param {number} value - The field value
+		 */
+		function updateKnobRotation(rowNumber, knobType, value) {
+			const config = KNOB_CONFIG[knobType];
+			if (!config) {
+				console.error(`Invalid knob type: ${knobType}`);
+				return;
 			}
-		});
-
-		// Update Szok checkbox based on value
-		const szokIndex = headers.indexOf('Szok');
-		if (szokIndex >= 0) {
-			const szokValue = parseInt(row[szokIndex]) || 0;
-			const szokCheckbox = rowElement.querySelector('.szok-checkbox');
-			if (szokCheckbox) {
-				szokCheckbox.checked = szokValue > 0;
-				const label = szokCheckbox.nextElementSibling;
-				const img = label.querySelector('.button-image');
-				if (img) {
-					img.src = szokValue > 0 ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
-				}
-			}
-		}
-
-		// Update Karta input
-		const kartaIndex = headers.indexOf('Karta');
-		if (kartaIndex >= 0) {
-			const kartaValue = row[kartaIndex] || '';
-			const kartaInput = rowElement.querySelector('.karta-input');
-			if (kartaInput) {
-				kartaInput.value = kartaValue;
-			}
-		}
-		
-		// Update player image if Img1 field exists
-		const img1Index = headers.indexOf('Img1');
-		if (img1Index >= 0) {
-			const imageUrl = row[img1Index] || '';
-			const imgElement = rowElement.querySelector('.player-img-element');
-			const placeholder = rowElement.querySelector('.player-img-placeholder');
 			
-			if (imageUrl && imageUrl.trim() !== '') {
-				if (imgElement) {
-					imgElement.src = imageUrl;
-					imgElement.style.display = 'block';
-				}
-				if (placeholder) {
-					placeholder.style.display = 'none';
-				}
-			} else {
-				if (imgElement) {
-					imgElement.style.display = 'none';
-				}
-				if (placeholder) {
-					placeholder.style.display = 'block';
-				}
-			}
-		}
-			
-		// UPDATE KNOBS AFTER ALL VALUES ARE SET
-		updateAllKnobsForRow(rowNumber);
-	}
-
-	// ========== TOGGLE AGENT ==========
-	function toggleAgent(checkbox) {
-		const isChecked = checkbox.checked;
-		
-		// Update the switch image
-		const label = checkbox.nextElementSibling;
-		const img = label.querySelector('.agent-switch');
-		if (img) {
-			img.src = isChecked ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
-		}
-	}
-
-	// ========== UPDATE ALL ROWS ==========
-	function updateAllRows(data) {
-		console.log('updateAllRows called with data:', data);
-		
-		if (!data || !data.headers || !data.rows) {
-			console.error('Invalid data format:', data);
-			return;
-		}
-
-		currentData = data;
-		console.log('Current data set. Headers:', data.headers.length, 'Rows:', data.rows.length);
-
-		// Update each player row
-		const rows = document.querySelectorAll('.player-row[data-row]');
-		console.log('Found', rows.length, 'player rows to update');
-		
-		rows.forEach(rowElement => {
-			const rowNum = rowElement.dataset.row;
-			console.log('Updating row', rowNum);
-			updateRow(rowElement, data.rows, data.headers);
-		});
-		
-		console.log('All rows updated successfully');
-	}
-
-	// ========== TOGGLE SZOK ==========
-	function toggleSzok(checkbox) {
-		const row = checkbox.dataset.row;
-		const isChecked = checkbox.checked;
-		const newValue = isChecked ? 1 : 0;
-		
-		// Update the switch image
-		const label = checkbox.nextElementSibling;
-		const img = label.querySelector('.button-image');
-		if (img) {
-			img.src = isChecked ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
-		}
-		
-		// Update the backend
-		modifyField(row, 'Szok', newValue - getCurrentSzokValue(row));
-	}
-
-	// ========== GET CURRENT SZOK VALUE ==========
-	function getCurrentSzokValue(row) {
-		const rowElement = document.querySelector(`.player-row[data-row="${row}"]`);
-		if (!rowElement) return 0;
-		
-		const valueElement = rowElement.querySelector('[data-field="Szok"]');
-		return valueElement ? parseInt(valueElement.textContent) || 0 : 0;
-	}
-
-	// ========== MODIFY FIELD ==========
-	async function modifyField(row, field, delta) {
-		try {
-			const response = await fetch(`/api/modify?row=${row}&field=${field}&delta=${delta}`);
-			const result = await response.json();
-			
-			if (result.success) {
-				console.log(`Modified row ${row}, ${field}: ${result.oldValue} → ${result.newValue}`);
-				
-				// Update knobs if the field is Rany or Wyczerpanie
-				if (field === 'Rany') {
-					updateKnobRotation(row, 'rany', result.newValue);
-				} else if (field === 'Wyczerpanie') {
-					updateKnobRotation(row, 'wyczerpanie', result.newValue);
-				}
-			} else {
-				console.error('Modification failed:', result.error);
-			}
-		} catch (error) {
-			console.error('Error modifying field:', error);
-		}
-	}
-
-	// ========== PARSE CARD ==========
-	function parseCard(cardString) {
-		if (!cardString || cardString.trim() === '') {
-			return { figure: '', suit: '' };
-		}
-		
-		const card = cardString.trim().toUpperCase();
-		
-		// Valid suits
-		const validSuits = ['H', 'D', 'C', 'S', 'R', 'B', 'U'];
-		
-		let suit = '';
-		let figure = card;
-		
-		const lastChar = card[card.length - 1];
-		if (validSuits.includes(lastChar)) {
-			suit = lastChar;
-			figure = card.substring(0, card.length - 1);
-		}
-		
-		return { figure, suit };
-	}
-
-	// ========== UPDATE KARTA ==========
-	async function updateKarta(row, newValue) {
-		try {
-			console.log(`=== updateKarta called for row ${row} with value: "${newValue}" ===`);
-			
-			const rowElement = document.querySelector(`.player-row[data-row="${row}"]`);
+			// Find the knob element for this row
+			const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
 			if (!rowElement) {
-				console.error(`Row element not found for row ${row}`);
+				console.error(`Row ${rowNumber} not found`);
 				return;
 			}
-
-			const kartaInput = rowElement.querySelector('.karta-input');
-			if (!kartaInput) {
-				console.error(`Karta input not found for row ${row}`);
+			
+			// Select the appropriate knob class
+			const knobClass = knobType === 'rany' ? '.knob1' : '.knob2';
+			const knobElement = rowElement.querySelector(knobClass);
+			
+			if (!knobElement) {
+				console.error(`Knob element ${knobClass} not found in row ${rowNumber}`);
 				return;
 			}
-
-			const parsedCard = parseCard(newValue);
-			console.log(`Parsed card:`, parsedCard);
-
-			const response = await fetch('/api/update-karta', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-					row: row,
-					value: newValue,
-					figure: parsedCard.figure,
-					suit: parsedCard.suit
-				})
-			});
-
-			const result = await response.json();
-			console.log(`Server response:`, result);
-
-			if (result.success) {
-				console.log(`Successfully updated Karta for row ${row}`);
-			} else {
-				console.error(`Failed to update Karta: ${result.error}`);
-				if (currentData && currentData.rows && currentData.rows[row - 1]) {
-					const kartaIndex = currentData.headers.indexOf('Karta');
-					if (kartaIndex >= 0) {
-						const oldValue = currentData.rows[row - 1][kartaIndex] || '';
-						kartaInput.value = oldValue;
-						console.log(`Reverted to old value: "${oldValue}"`);
-					}
-				}
-			}
 			
-			console.log(`=== updateKarta completed successfully for row ${row} ===`);
-		} catch (error) {
-			console.error('Error in updateKarta:', error);
-		}
-	}
-
-	// ========== INIT SSE ==========
-	function initSSE() {
-		if (eventSource) {
-			eventSource.close();
-		}
-
-		eventSource = new EventSource('/api/sse');
-
-		eventSource.onmessage = (event) => {
-			const data = JSON.parse(event.data);
-			updateAllRows(data);
-		};
-
-		eventSource.onerror = (error) => {
-			console.error('SSE Error:', error);
-			eventSource.close();
-			setTimeout(initSSE, 5000);
-		};
-	}
-
-	// ========== LOAD CSV DATA ==========
-	async function loadCSVData() {
-		console.log('Loading CSV data from /api/data...');
-		try {
-			const response = await fetch('/api/data');
-			console.log('Response status:', response.status);
+			// Calculate rotation
+			const rotation = config.baseRotation + (value * config.degreesPerUnit);
 			
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
+			// Apply rotation
+			knobElement.style.transform = `rotate(${rotation}deg)`;
 			
-			const data = await response.json();
-			console.log('CSV data received:', data);
-			
-			updateAllRows(data);
-			console.log('All rows updated with CSV data');
-			
-			initSSE();
-			console.log('SSE connection initiated');
-		} catch (error) {
-			console.error('Error loading data:', error);
-			// Show error message to user
-			const rows = document.querySelectorAll('.player-row[data-row] .player-name');
-			rows.forEach(nameElement => {
-				nameElement.textContent = 'Błąd ładowania danych';
-				nameElement.style.color = 'red';
-			});
-		}
-	}
-
-	// ========== DICE INPUT HELPER ==========
-	function updateDiceInput(spanElement, addBolzgaDice = false) {
-		const textInput = document.getElementById('textInput');
-		if (!textInput) return;
-		
-		const fullText = spanElement.textContent.trim();
-		const lastSpaceIndex = fullText.lastIndexOf(' ');
-		
-		let diceNotation;
-		let fieldNameForLog = '';
-		
-		if (lastSpaceIndex !== -1) {
-			// Text has a space - split into name and dice notation
-			const textBeforeDice = fullText.substring(0, lastSpaceIndex).trim();
-			diceNotation = fullText.substring(lastSpaceIndex + 1);
-			
-			// Check if there's actual text before the dice notation
-			if (textBeforeDice && textBeforeDice !== '') {
-				// Case 2: Use the text before dice notation (e.g., "krycie się" from "krycie się d4")
-				fieldNameForLog = textBeforeDice;
-			}
-		} else {
-			// No space found - the whole text is just the dice notation
-			diceNotation = fullText;
+			console.log(`Updated ${knobClass} in row ${rowNumber}: value=${value}, rotation=${rotation}deg`);
 		}
 		
-		// If we didn't find a field name in the content, use data-field attribute
-		if (fieldNameForLog === '') {
-			const detailItem = spanElement.closest('.detail-item');
-			if (detailItem) {
-				// Case 1: Use data-field attribute (e.g., "Gibkość")
-				fieldNameForLog = detailItem.getAttribute('data-field') || '';
+		/**
+		 * Update all knobs for a specific row
+		 * @param {number} rowNumber - The row number
+		 */
+		function updateAllKnobsForRow(rowNumber) {
+			const rowElement = document.querySelector(`.player-row[data-row="${rowNumber}"]`);
+			if (!rowElement) return;
+			
+			// Update Rany knob
+			const ranyValue = parseInt(rowElement.querySelector('[data-field="Rany"]')?.textContent) || 0;
+			updateKnobRotation(rowNumber, 'rany', ranyValue);
+			
+			// Update Wyczerpanie knob
+			const wyczerpanieValue = parseInt(rowElement.querySelector('[data-field="Wyczerpanie"]')?.textContent) || 0;
+			updateKnobRotation(rowNumber, 'wyczerpanie', wyczerpanieValue);
+		}
+		
+		
+		// Generic function to play sounds - can be used with ANY button
+		function playButtonSound(soundKey) {
+			const soundMap = {
+				'switch_on': './sounds/switch_on.mp3',
+				'switch_off': './sounds/switch_off.mp3',
+				'rotary_switch': './sounds/rotary_switch.mp3',
+				'button': './sounds/button.mp3',
+				'button2': './sounds/button2.mp3',
+			};
+			
+			const soundPath = soundMap[soundKey];
+			if (soundPath) {
+				const audio = new Audio(soundPath);
+				audio.volume = 0.5;
+				audio.play().catch(err => console.log('Audio failed:', err));
 			}
 		}
-		
-		// Store the field name for logging
-		lastClickedField = fieldNameForLog;
-		
-		// Add Bolzga Dice if parameter is true
-		if (addBolzgaDice) {
-			// Extract any modifier from the end of notation
-			const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
-			let modifier = '';
-			let baseNotation = diceNotation;
+
+
+
+
+        /**
+         * Update a single row with data from CSV
+         */
+        function updateRow(rowElement, rowData, headers) {
+            const rowNumber = parseInt(rowElement.getAttribute('data-row'));
+            
+            if (!rowData || rowNumber > currentData.rows.length) {
+                return;
+            }
+
+            const row = currentData.rows[rowNumber - 1];
+
+            // Update player name
+            const imieIndex = headers.indexOf('Imię');
+            const nazwiskoIndex = headers.indexOf('Nazwisko');
+            const agentIndex = headers.indexOf('Agent');
+            const imie = imieIndex >= 0 ? (row[imieIndex] || '') : '';
+            const nazwisko = nazwiskoIndex >= 0 ? (row[nazwiskoIndex] || '') : '';
+            const displayName = [imie, nazwisko].filter(n => n).join(' ') || `Gracz ${rowNumber}`;
+            const agent = agentIndex >= 0 ? (row[agentIndex] || '') : '';
+            
+            const nameElement = rowElement.querySelector('.player-name');
+            if (nameElement) {
+                nameElement.textContent = displayName;
+            }
 			
-			if (modifierMatch) {
-				modifier = modifierMatch[1];
-				baseNotation = diceNotation.substring(0, diceNotation.length - modifier.length);
-			}
+            const agentElement = rowElement.querySelector('.agent-name');
+            if (agentElement) {
+                agentElement.textContent = agent;
+            }
+
+            // Update stat values
+            const statFields = ['Garda', 'Wytrzymałość', 'Szok', 'Rany', 'Wyczerpanie', 'Kapsle'];
+            statFields.forEach(field => {
+                const fieldIndex = headers.indexOf(field);
+                if (fieldIndex >= 0) {
+                    const value = row[fieldIndex] || '0';
+                    const valueElement = rowElement.querySelector(`[data-field="${field}"]`);
+                    if (valueElement) {
+                        valueElement.textContent = value;
+                    }
+                }
+            });
+
+            // Update Szok checkbox based on value
+            const szokIndex = headers.indexOf('Szok');
+            if (szokIndex >= 0) {
+                const szokValue = parseInt(row[szokIndex]) || 0;
+                const szokCheckbox = rowElement.querySelector('.szok-checkbox');
+                if (szokCheckbox) {
+                    szokCheckbox.checked = szokValue > 0;
+                    const label = szokCheckbox.nextElementSibling;
+                    const img = label.querySelector('.button-image');
+                    if (img) {
+                        img.src = szokValue > 0 ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
+                    }
+                }
+            }
+
+            // Update Karta input
+            const kartaIndex = headers.indexOf('Karta');
+            if (kartaIndex >= 0) {
+                const kartaValue = row[kartaIndex] || '';
+                const kartaInput = rowElement.querySelector('.karta-input');
+                if (kartaInput) {
+                    kartaInput.value = kartaValue;
+                }
+            }
+            
+            // Update player image if Img1 field exists
+            const img1Index = headers.indexOf('Img1');
+            if (img1Index >= 0) {
+                const imageUrl = row[img1Index] || '';
+                const imgElement = rowElement.querySelector('.player-img-element');
+                const placeholder = rowElement.querySelector('.player-img-placeholder');
+                
+                if (imageUrl && imageUrl.trim() !== '') {
+                    if (imgElement) {
+                        imgElement.src = imageUrl;
+                        imgElement.style.display = 'block';
+                    }
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                } else {
+                    if (imgElement) {
+                        imgElement.style.display = 'none';
+                    }
+                    if (placeholder) {
+                        placeholder.style.display = 'block';
+                    }
+                }
+            }
 			
-			// Add Bolzga Dice, keeping modifier at the end
-			diceNotation = baseNotation + '+d6' + modifier;
-		}
-		
-		// Update the text input
-		textInput.value = diceNotation;
-		
-		// Trigger the input event to update the size
-		textInput.dispatchEvent(new Event('input'));
-		
-		// Call main.setInput() to actually set the dice
-		main.setInput();
-	}
+			// UPDATE KNOBS AFTER ALL VALUES ARE SET
+			updateAllKnobsForRow(rowNumber);
+        }
 
-	// ========== ADD DICE OR MODIFIER ==========
-	function addDiceOrModifier(parameter) {
-		const textInput = document.getElementById('textInput');
-		if (!textInput) return;
-		
-		let currentValue = textInput.value.trim();
-		
-		// Handle "clear" parameter
-		if (parameter === 'clear') {
-			textInput.value = '';
-			textInput.dispatchEvent(new Event('input'));
-			main.setInput();
-			lastClickedField = '';
-			return;
-		}
-		
-		// Handle modifier adjustments (+1 or -1)
-		if (parameter === '+1' || parameter === '-1') {
-			const adjustment = parseInt(parameter);
+        /**
+         * Toggle Agent checkbox
+         */
+        function toggleAgent(checkbox) {
+            const isChecked = checkbox.checked;
+            
+            // Update the switch image
+            const label = checkbox.nextElementSibling;
+            const img = label.querySelector('.agent-switch');
+            if (img) {
+                img.src = isChecked ? '/img/layout/switch_on.png' : '/img/layout/switch_off.png';
+            }
+        }
+
+        /**
+         * Update all rows with data from CSV
+         */
+        function updateAllRows(data) {
+            if (!data || !data.headers || !data.rows) {
+                console.error('Invalid data format:', data);
+                return;
+            }
+
+            currentData = data;
+
+            // Update each player row
+            const rows = document.querySelectorAll('.player-row[data-row]');
+            rows.forEach(rowElement => {
+                updateRow(rowElement, data.rows, data.headers);
+            });
+        }
+
+        /**
+         * Toggle Szok checkbox and update switch image
+         */
+        function toggleSzok(checkbox) {
+            const row = checkbox.dataset.row;
+            const isChecked = checkbox.checked;
+            const newValue = isChecked ? 1 : 0;
+            
+            // Update the switch image
+            const label = checkbox.nextElementSibling;
+            const img = label.querySelector('.button-image');
+            if (img) {
+                img.src = isChecked ? '/img/layout/button_on.png' : '/img/layout/button_off.png';
+            }
+            
+            // Update the backend
+            modifyField(row, 'Szok', newValue - getCurrentSzokValue(row));
+        }
+
+        /**
+         * Get current Szok value for a row
+         */
+        function getCurrentSzokValue(row) {
+            const rowElement = document.querySelector(`.player-row[data-row="${row}"]`);
+            if (!rowElement) return 0;
+            
+            const valueElement = rowElement.querySelector('[data-field="Szok"]');
+            return valueElement ? parseInt(valueElement.textContent) || 0 : 0;
+        }
+
+        /**
+         * Modify a field value
+         */
+        async function modifyField(row, field, delta) {
+            try {
+                const response = await fetch(`/api/modify?row=${row}&field=${field}&delta=${delta}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log(`Modified row ${row}, ${field}: ${result.oldValue} → ${result.newValue}`);
+                    
+                    // Update knobs if the field is Rany or Wyczerpanie
+                    if (field === 'Rany') {
+                        updateKnobRotation(row, 'rany', result.newValue);
+                    } else if (field === 'Wyczerpanie') {
+                        updateKnobRotation(row, 'wyczerpanie', result.newValue);
+                    }
+                } else {
+                    console.error('Modification failed:', result.error);
+                }
+            } catch (error) {
+                console.error('Error modifying field:', error);
+            }
+        }
+
+        /**
+         * Parse card notation to extract figure and suit
+         * Examples: "AH", "10D", "KC", "2S", "Joker R", "Joker U"
+         */
+        function parseCard(cardString) {
+            if (!cardString || cardString.trim() === '') {
+                return { figure: '', suit: '' };
+            }
+            
+            const card = cardString.trim().toUpperCase();
+            
+            // Valid suits
+            const validSuits = ['H', 'D', 'C', 'S', 'R', 'B', 'U'];
+            
+            let suit = '';
+            let figure = card;
+            
+            const lastChar = card[card.length - 1];
+            if (validSuits.includes(lastChar)) {
+                suit = lastChar;
+                figure = card.slice(0, -1).trim();
+            } else {
+                for (const s of validSuits) {
+                    if (card.includes(s)) {
+                        suit = s;
+                        figure = card.replace(s, '').trim();
+                        break;
+                    }
+                }
+            }
+            
+            return { figure, suit };
+        }
+
+        /**
+         * Get the suit image URL based on suit code
+         */
+        function getSuitImageUrl(suit) {
+            const suitMap = {
+                'H': '/img/cards/H.png',
+                'D': '/img/cards/D.png',
+                'C': '/img/cards/C.png',
+                'S': '/img/cards/S.png',
+                'R': '/img/cards/R.png',
+                'U': '/img/cards/U.png',
+                'B': '/img/cards/B.png'
+            };
+            
+            return suitMap[suit] || '';
+        }
+
+        /**
+         * Get the card figure image URL based on figure and suit
+         */
+        function getCardImageUrl(figure, suit) {
+            if (!figure || !suit) return '';
+            
+            
+            if (!['H', 'D', 'C', 'S', 'R', 'U', 'B'].includes(suit)) {
+                return '';
+            }
+            
+            return `/img/cards/${figure}_${suit}.png`;
+        }
+
+        /**
+         * Update Karta field and parse card info
+         */
+        async function updateKarta(row, value) {
+            console.log(`=== updateKarta called for row ${row} with value: "${value}" ===`);
+            
+            try {
+                const cardInfo = parseCard(value);
+                console.log('Parsed card info:', cardInfo);
+                
+                // Update Karta field
+                console.log('Updating Karta field...');
+                const kartaResponse = await fetch(`/api/modify-text?row=${row}&field=Karta&value=${encodeURIComponent(value)}`);
+                const kartaResult = await kartaResponse.json();
+                console.log('Karta update result:', kartaResult);
+                
+                if (!kartaResult.success) {
+                    console.error('Failed to update Karta:', kartaResult.error);
+                    return;
+                }
+                
+                // Update pl-cd (card figure)
+                if (cardInfo.figure) {
+                    console.log(`Updating pl-cd to: ${cardInfo.figure}`);
+                    const figureResponse = await fetch(`/api/modify-text?row=${row}&field=pl-cd&value=${encodeURIComponent(cardInfo.figure)}`);
+                    const figureResult = await figureResponse.json();
+                    console.log('pl-cd update result:', figureResult);
+                }
+                
+                // Update pl-suit (card suit)
+                if (cardInfo.suit) {
+                    console.log(`Updating pl-suit to: ${cardInfo.suit}`);
+                    const suitResponse = await fetch(`/api/modify-text?row=${row}&field=pl-suit&value=${encodeURIComponent(cardInfo.suit)}`);
+                    const suitResult = await suitResponse.json();
+                    console.log('pl-suit update result:', suitResult);
+                }
+                
+                // Update Img3 (suit image URL)
+                const suitImageUrl = getSuitImageUrl(cardInfo.suit);
+                console.log(`Generated suit image URL (Img3): ${suitImageUrl}`);
+                if (suitImageUrl) {
+                    const img3Response = await fetch(`/api/modify-text?row=${row}&field=Img3&value=${encodeURIComponent(suitImageUrl)}`);
+                    const img3Result = await img3Response.json();
+                    console.log('Img3 update result:', img3Result);
+                }
+                
+                // Update Img4 (card figure image URL)
+                const cardImageUrl = getCardImageUrl(cardInfo.figure, cardInfo.suit);
+                console.log(`Generated card image URL (Img4): ${cardImageUrl}`);
+                if (cardImageUrl) {
+                    const img4Response = await fetch(`/api/modify-text?row=${row}&field=Img4&value=${encodeURIComponent(cardImageUrl)}`);
+                    const img4Result = await img4Response.json();
+                    console.log('Img4 update result:', img4Result);
+                }
+                
+                console.log(`=== updateKarta completed successfully for row ${row} ===`);
+            } catch (error) {
+                console.error('Error in updateKarta:', error);
+            }
+        }
+
+        /**
+         * Initialize SSE connection
+         */
+        function initSSE() {
+            if (eventSource) {
+                eventSource.close();
+            }
+
+            eventSource = new EventSource('/api/sse');
+
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                updateAllRows(data);
+            };
+
+            eventSource.onerror = (error) => {
+                console.error('SSE Error:', error);
+                eventSource.close();
+                setTimeout(initSSE, 5000);
+            };
+        }
+
+        /**
+         * Initial load
+         */
+        async function init() {
+            try {
+                const response = await fetch('/api/data');
+                const data = await response.json();
+                updateAllRows(data);
+                initSSE();
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+function updateDiceInput(spanElement, addBolzgaDice = false) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    const fullText = spanElement.textContent.trim();
+    const lastSpaceIndex = fullText.lastIndexOf(' ');
+    
+    let diceNotation;
+    let fieldNameForLog = '';
+    
+    if (lastSpaceIndex !== -1) {
+        // Text has a space - split into name and dice notation
+        const textBeforeDice = fullText.substring(0, lastSpaceIndex).trim();
+        diceNotation = fullText.substring(lastSpaceIndex + 1);
+        
+        // Check if there's actual text before the dice notation
+        if (textBeforeDice && textBeforeDice !== '') {
+            // Case 2: Use the text before dice notation (e.g., "krycie się" from "krycie się d4")
+            fieldNameForLog = textBeforeDice;
+        }
+    } else {
+        // No space found - the whole text is just the dice notation
+        diceNotation = fullText;
+    }
+    
+    // If we didn't find a field name in the content, use data-field attribute
+    if (fieldNameForLog === '') {
+        const detailItem = spanElement.closest('.detail-item');
+        if (detailItem) {
+            // Case 1: Use data-field attribute (e.g., "Gibkość")
+            fieldNameForLog = detailItem.getAttribute('data-field') || '';
+        }
+    }
+    
+    // Store the field name for logging
+    lastClickedField = fieldNameForLog;
+    
+    // Add Bolzga Dice if parameter is true
+    if (addBolzgaDice) {
+        // Extract any modifier from the end of notation
+        const modifierMatch = diceNotation.match(/([+\-]\d+)$/);
+        let modifier = '';
+        let baseNotation = diceNotation;
+        
+        if (modifierMatch) {
+            modifier = modifierMatch[1];
+            baseNotation = diceNotation.substring(0, diceNotation.length - modifier.length);
+        }
+        
+        // Add Bolzga Dice, keeping modifier at the end
+        diceNotation = baseNotation + '+d6' + modifier;
+    }
+    
+    // Update the text input
+    textInput.value = diceNotation;
+    
+    // Trigger the input event to update the size
+    textInput.dispatchEvent(new Event('input'));
+    
+    // Call main.setInput() to actually set the dice
+    main.setInput();
+}
+
+function addDiceOrModifier(parameter) {
+    const textInput = document.getElementById('textInput');
+    if (!textInput) return;
+    
+    let currentValue = textInput.value.trim();
+    
+    // Handle "clear" parameter
+    if (parameter === 'clear') {
+        textInput.value = '';
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        lastClickedField = '';
+        return;
+    }
+    
+    // Handle modifier adjustments (+1 or -1)
+    if (parameter === '+1' || parameter === '-1') {
+        const adjustment = parseInt(parameter);
+        
+        // Check if there's already a modifier at the end
+        const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
+        
+        if (modifierMatch) {
+            // Adjust existing modifier at the end
+            const sign = modifierMatch[1];
+            const value = parseInt(modifierMatch[2]);
+            const existingModifier = sign === '-' ? -value : value;
+            const newModifier = existingModifier + adjustment;
+            const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
+            
+            if (newModifier === 0) {
+                textInput.value = baseNotation;
+            } else if (newModifier > 0) {
+                textInput.value = baseNotation + '+' + newModifier;
+            } else {
+                textInput.value = baseNotation + newModifier;
+            }
+        } else {
+            // No modifier exists - add one at the end
+            if (adjustment > 0) {
+                textInput.value = currentValue + '+' + adjustment;
+            } else {
+                textInput.value = currentValue + adjustment;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    // Handle adding a die type (like d6, d8, d20, etc.)
+    if (parameter.match(/^d\d+$/i)) {
+        const modifierMatch = currentValue.match(/([+\-]\d+)$/);
+        
+        if (modifierMatch) {
+            const modifier = modifierMatch[0];
+            const baseNotation = currentValue.substring(0, currentValue.length - modifier.length);
+            
+            if (baseNotation === '') {
+                textInput.value = parameter + modifier;
+            } else {
+                textInput.value = baseNotation + '+' + parameter + modifier;
+            }
+        } else {
+            if (currentValue === '') {
+                textInput.value = parameter;
+            } else {
+                textInput.value = currentValue + '+' + parameter;
+            }
+        }
+        
+        textInput.dispatchEvent(new Event('input'));
+        main.setInput();
+        return;
+    }
+    
+    console.warn('Invalid parameter for addDiceOrModifier:', parameter);
+}
 			
-			// Check if there's already a modifier at the end
-			const modifierMatch = currentValue.match(/([+\-])(\d+)$/);
-			
-			if (modifierMatch) {
-				// Adjust existing modifier at the end
-				const sign = modifierMatch[1];
-				const value = parseInt(modifierMatch[2]);
-				const existingModifier = sign === '-' ? -value : value;
-				const newModifier = existingModifier + adjustment;
-				const baseNotation = currentValue.substring(0, currentValue.length - modifierMatch[0].length);
-				
-				if (newModifier === 0) {
-					textInput.value = baseNotation;
-				} else if (newModifier > 0) {
-					textInput.value = baseNotation + '+' + newModifier;
-				} else {
-					textInput.value = baseNotation + newModifier;
-				}
-			} else {
-				// No modifier exists - add one at the end
-				if (adjustment > 0) {
-					textInput.value = currentValue + '+' + adjustment;
-				} else {
-					textInput.value = currentValue + adjustment;
-				}
-			}
-			
-			textInput.dispatchEvent(new Event('input'));
-			main.setInput();
-			return;
-		}
-		
-		// Handle adding a die type (like d6, d8, d20, etc.)
-		if (parameter.match(/^d\d+$/i)) {
-			const modifierMatch = currentValue.match(/([+\-]\d+)$/);
-			
-			if (modifierMatch) {
-				const modifier = modifierMatch[0];
-				const baseNotation = currentValue.substring(0, currentValue.length - modifier.length);
-				
-				if (baseNotation === '') {
-					textInput.value = parameter + modifier;
-				} else {
-					textInput.value = baseNotation + '+' + parameter + modifier;
-				}
-			} else {
-				if (currentValue === '') {
-					textInput.value = parameter;
-				} else {
-					textInput.value = currentValue + '+' + parameter;
-				}
-			}
-			
-			textInput.dispatchEvent(new Event('input'));
-			main.setInput();
-			return;
-		}
-		
-		console.warn('Invalid parameter for addDiceOrModifier:', parameter);
-	}
-			
-	// ========== GAME LOGS VIEWER ==========
-	let logEventSource = null;
-	let allLogs = [];
-	let currentLogIndex = -1;
+// Game Logs Viewer with navigation
+let logEventSource = null;
+let allLogs = []; // Store all logs
+let currentLogIndex = -1; // -1 means showing latest
 
-	function initGameLogs() {
-		console.log('Initializing game logs...');
-		const logsDisplay = document.getElementById('game-logs-display');
-		if (!logsDisplay) {
-			console.error('game-logs-display element not found!');
-			return;
-		}
-		
-		console.log('game-logs-display element found');
-		
-		// Load existing logs
-		console.log('Fetching existing logs from /api/game-logs...');
-		fetch('/api/game-logs')
-			.then(response => {
-				console.log('Game logs response status:', response.status);
-				return response.json();
-			})
-			.then(data => {
-				console.log('Game logs data received:', data);
-				if (data.logs && data.logs.length > 0) {
-					allLogs = data.logs;
-					currentLogIndex = allLogs.length - 1;
-					console.log('Loaded', allLogs.length, 'existing logs');
-					displayCurrentLog();
-				} else {
-					console.log('No existing logs found');
-				}
-			})
-			.catch(error => console.error('Error loading game logs:', error));
-		
-		// Connect to SSE for real-time updates
-		if (logEventSource) {
-			logEventSource.close();
-		}
-		
-		console.log('Connecting to game logs SSE at /api/game-logs-sse...');
-		logEventSource = new EventSource('/api/game-logs-sse');
-		
-		logEventSource.onopen = () => {
-			console.log('Game logs SSE connection opened');
-		};
-		
-		logEventSource.onmessage = (event) => {
-			console.log('Game log SSE message received:', event.data);
-			const data = JSON.parse(event.data);
-			if (data.entry && data.entry !== 'Connected to game logs') {
-				allLogs.push(data.entry);
-				console.log('New log added. Total logs:', allLogs.length);
-				
-				// Always play notification effects for new log
-				playNotificationEffects();
-				
-				// If viewing latest, update to new log
-				if (currentLogIndex === allLogs.length - 2 || currentLogIndex === -1) {
-					currentLogIndex = allLogs.length - 1;
-					displayCurrentLog();
-				} else {
-					// Just update navigation info to show there's a new log
-					updateNavButtons();
-				}
-			}
-		};
-		
-		logEventSource.onerror = (error) => {
-			console.error('Log SSE error:', error);
-			logEventSource.close();
-			console.log('Will retry connection in 5 seconds...');
-			setTimeout(initGameLogs, 5000);
-		};
-	}
+function initGameLogs() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    // Load existing logs
+    fetch('/api/game-logs')
+        .then(response => response.json())
+        .then(data => {
+            if (data.logs && data.logs.length > 0) {
+                allLogs = data.logs;
+                currentLogIndex = allLogs.length - 1; // Start with latest
+                displayCurrentLog();
+            }
+        })
+        .catch(error => console.error('Error loading game logs:', error));
+    
+    // Connect to SSE for real-time updates
+    if (logEventSource) {
+        logEventSource.close();
+    }
+    
+    logEventSource = new EventSource('/api/game-logs-sse');
+    
+    logEventSource.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.entry && data.entry !== 'Connected to game logs') {
+            allLogs.push(data.entry);
+            
+            // Always play notification effects for new log
+            playNotificationEffects();
+            
+            // If viewing latest, update to new log
+            if (currentLogIndex === allLogs.length - 2 || currentLogIndex === -1) {
+                currentLogIndex = allLogs.length - 1;
+                displayCurrentLog();
+            } else {
+                // Just update navigation info to show there's a new log
+                updateNavButtons();
+            }
+        }
+    };
+    
+    logEventSource.onerror = (error) => {
+        console.error('Log SSE error:', error);
+        logEventSource.close();
+        setTimeout(initGameLogs, 5000);
+    };
+}
 
-	function displayCurrentLog() {
-		const logsDisplay = document.getElementById('game-logs-display');
-		if (!logsDisplay) return;
-		
-		logsDisplay.innerHTML = '';
-		
-		if (allLogs.length === 0) {
-			logsDisplay.textContent = 'Brak wpisów w dzienniku';
-			return;
-		}
-		
-		// Ensure index is valid
-		if (currentLogIndex < 0) currentLogIndex = 0;
-		if (currentLogIndex >= allLogs.length) currentLogIndex = allLogs.length - 1;
-		
-		const entry = document.createElement('div');
-		entry.className = 'log-entry';
-		entry.textContent = allLogs[currentLogIndex];
-		logsDisplay.appendChild(entry);
-		
-		// Update navigation info
-		const navInfo = document.getElementById('log-nav-info');
-		if (navInfo) {
-			navInfo.textContent = `${currentLogIndex + 1} / ${allLogs.length}`;
-		}
-		
-		// Update button states
-		updateNavButtons();
-	}
+function displayCurrentLog() {
+    const logsDisplay = document.getElementById('game-logs-display');
+    if (!logsDisplay) return;
+    
+    logsDisplay.innerHTML = ''; // Clear previous
+    
+    if (allLogs.length === 0) {
+        logsDisplay.textContent = 'Brak wpisów w dzienniku';
+        return;
+    }
+    
+    // Ensure index is valid
+    if (currentLogIndex < 0) currentLogIndex = 0;
+    if (currentLogIndex >= allLogs.length) currentLogIndex = allLogs.length - 1;
+    
+    const entry = document.createElement('div');
+    entry.className = 'log-entry';
+    entry.textContent = allLogs[currentLogIndex];
+    logsDisplay.appendChild(entry);
+    
+    // Update navigation info
+    const navInfo = document.getElementById('log-nav-info');
+    if (navInfo) {
+        navInfo.textContent = `${currentLogIndex + 1} / ${allLogs.length}`;
+    }
+    
+    // Update button states
+    updateNavButtons();
+}
 
-	function updateNavButtons() {
-		const prevBtn = document.getElementById('log-prev-btn');
-		const nextBtn = document.getElementById('log-next-btn');
-		
-		if (prevBtn) {
-			prevBtn.disabled = currentLogIndex <= 0;
-			prevBtn.style.opacity = currentLogIndex <= 0 ? '0.3' : '1';
-		}
-		
-		if (nextBtn) {
-			nextBtn.disabled = currentLogIndex >= allLogs.length - 1;
-			nextBtn.style.opacity = currentLogIndex >= allLogs.length - 1 ? '0.3' : '1';
-		}
-	}
+function updateNavButtons() {
+    const prevBtn = document.getElementById('log-prev-btn');
+    const nextBtn = document.getElementById('log-next-btn');
+    
+    if (prevBtn) {
+        prevBtn.disabled = currentLogIndex <= 0;
+        prevBtn.style.opacity = currentLogIndex <= 0 ? '0.3' : '1';
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = currentLogIndex >= allLogs.length - 1;
+        nextBtn.style.opacity = currentLogIndex >= allLogs.length - 1 ? '0.3' : '1';
+    }
+}
 
-	function playNotificationEffects() {
-		// Play notification sound
-		const notificationSound = document.getElementById('notification-sound');
-		if (notificationSound) {
-			notificationSound.currentTime = 0.2;
-			notificationSound.volume = 0.3;
-			notificationSound.play().catch(err => {
-				console.log('Audio playback failed:', err);
-			});
-		}
-		
-		// Trigger phone buzz animation
-		const phoneContainer = document.querySelector('.phone_container');
-		if (phoneContainer) {
-			phoneContainer.classList.remove('buzzing');
-			void phoneContainer.offsetWidth;
-			phoneContainer.classList.add('buzzing');
-			
-			setTimeout(() => {
-				phoneContainer.classList.remove('buzzing');
-			}, 1000);
-		}
-	}
+function playNotificationEffects() {
+    // Play notification sound
+    const notificationSound = document.getElementById('notification-sound');
+    if (notificationSound) {
+        notificationSound.currentTime = 0.2;
+        notificationSound.volume = 0.3;
+        notificationSound.play().catch(err => {
+            console.log('Audio playback failed:', err);
+        });
+    }
+    
+    // Trigger phone buzz animation
+    const phoneContainer = document.querySelector('.phone_container');
+    if (phoneContainer) {
+        phoneContainer.classList.remove('buzzing');
+        void phoneContainer.offsetWidth;
+        phoneContainer.classList.add('buzzing');
+        
+        setTimeout(() => {
+            phoneContainer.classList.remove('buzzing');
+        }, 1000);
+    }
+}
 
-	// Navigation functions
-	function showPreviousLog() {
-		if (currentLogIndex > 0) {
-			currentLogIndex--;
-			displayCurrentLog();
-		}
-	}
+// Navigation functions - attach these to your onclick elements
+function showPreviousLog() {
+    if (currentLogIndex > 0) {
+        currentLogIndex--;
+        displayCurrentLog();
+    }
+}
 
-	function showNextLog() {
-		if (currentLogIndex < allLogs.length - 1) {
-			currentLogIndex++;
-			displayCurrentLog();
-		}
-	}
+function showNextLog() {
+    if (currentLogIndex < allLogs.length - 1) {
+        currentLogIndex++;
+        displayCurrentLog();
+    }
+}
 
-	function showLatestLog() {
-		currentLogIndex = allLogs.length - 1;
-		displayCurrentLog();
-	}
+function showLatestLog() {
+    currentLogIndex = allLogs.length - 1;
+    displayCurrentLog();
+}
 
-	function showOldestLog() {
-		currentLogIndex = 0;
-		displayCurrentLog();
-	}
+function showOldestLog() {
+    currentLogIndex = 0;
+    displayCurrentLog();
+}
 
-	// ========== MAIN INITIALIZATION ==========
-	function initApp() {
-		console.log('Starting app initialization...');
+// Initialize logs when page loads
+initGameLogs();
 		
-		// Initialize dice roller first (from main.js)
-		if (typeof main !== 'undefined' && typeof main.init === 'function') {
-			main.init();
-			console.log('main.init() completed');
-		} else {
-			console.warn('main.init() not found');
-		}
+
+        // Start the app
+        init();
 		
-		// Initialize dice roller (if diceRollerInit exists)
-		if (typeof diceRollerInit === 'function') {
-			diceRollerInit();
-			console.log('diceRollerInit() completed');
-		} else {
-			console.warn('diceRollerInit() not found');
-		}
-		
-		// Load CSV data
-		loadCSVData();
-		console.log('CSV data loading initiated');
-		
-		// Initialize game logs
-		initGameLogs();
-		console.log('Game logs initialization completed');
-	}
-		
-	</script>
+    </script>
 </body>
 </html>

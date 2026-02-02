@@ -36,13 +36,24 @@
 		
 			<!-- Garda -->
 			<div class="stat-item1">
-				<div class="stat-label1">Garda</div>
+				<div class="stat-label2">Garda</div>
 
 			</div>
 			<!-- Wytrzymałość -->
 			<div class="stat-item1">
-				<div class="stat-label1">Wytrz.</div>
+				<div class="stat-label2">Wytrz.</div>
 			</div>
+			
+			<!-- Karta -->
+			<div class="stat-item5 karta-item">
+				<div class="stat-label4">Karta</div>
+			</div>
+			
+			<!-- Kapsle -->
+			<div class="stat-item4">
+				<div class="stat-label2"></div>
+			</div>
+
 			
 			<!-- Szok -->
 			<div class="stat-item2">
@@ -60,15 +71,7 @@
 
 			</div>
 
-			<!-- Kapsle -->
-			<div class="stat-item4">
-				<div class="stat-label3">Kapsle</div>
-			</div>
 
-			<!-- Karta -->
-			<div class="stat-item5 karta-item">
-				<div class="stat-label4">Karta</div>
-			</div>
 		</div>
 	</div>
 
@@ -124,6 +127,31 @@
 					<div class="stat-value" data-field="Wytrzymałość">0</div>
 				</div>
 			</div>
+			
+			<!-- Karta -->
+			<div class="stat-item5 karta-item">
+
+				<input type="text" 
+					   class="karta-input" 
+					   data-field="Karta"
+					   data-row="1"
+					   placeholder="Brak"
+					   onchange="updateKarta(1, this.value)">
+			</div>
+			
+			<!-- Kapsle -->
+			<div class="stat-item4">
+
+				<div class="stat-control3">
+					<div class="stat-value2" data-field="Kapsle">0</div>
+				</div>
+				
+				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(1, 'Kapsle', 1); playButtonSound('button')">
+				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(1, 'Kapsle', -1); playButtonSound('button')">
+
+			</div>
+
+
 			
 			<!-- Szok -->
 			<div class="stat-item2">
@@ -183,28 +211,7 @@
 				</div>
 			</div>
 
-			<!-- Kapsle -->
-			<div class="stat-item4">
-				<img class="button-up" src="/img/layout/button_up.png" onclick="modifyField(1, 'Kapsle', 1); playButtonSound('button')">
-				<img class="button-down" src="/img/layout/button_down.png" onclick="modifyField(1, 'Kapsle', -1); playButtonSound('button')">
-				<img class="info_screen" src="/img/layout/screen_small.png">
 
-				<div class="stat-control3">
-					<div class="stat-value2" data-field="Kapsle">0</div>
-				</div>
-			</div>
-
-			<!-- Karta -->
-			<div class="stat-item5 karta-item">
-
-				<input type="text" 
-					   class="karta-input" 
-					   data-field="Karta"
-					   data-row="1"
-					   placeholder="Brak"
-					   onchange="updateKarta(1, this.value)">
-				<img class="input_screen" src="/img/layout/screen_small.png">
-			</div>
 		</div>
 	</div>
 	

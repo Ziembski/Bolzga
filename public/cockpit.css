@@ -410,7 +410,7 @@ body {
 		top: 4.7vmin;left: 50%;
 		}	
 		
-        .stat-value2 {font-size: 3vmin;font-weight: bold;color: #00d92f;min-width: 5.5vmin;text-align: center;position: absolute;filter: drop-shadow(0 0 0.3vmin #009520);transform: translate(-50%, -50%);top: 4.7vmin;left: 0.9vmin;}	
+        .stat-value2 {font-size: 3vmin;font-weight: bold;color: #00d92f;min-width: 5.5vmin;text-align: center;position: absolute;filter: drop-shadow(0 0 0.3vmin #009520);transform: translate(-50%, -50%);top: 4.7vmin;left: 1.8vmin;}	
 		
         .stat-value3 {
 display: none;
@@ -507,7 +507,7 @@ display: none;
 		width: 7.5vmin;
 		filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 		transform: rotate(
-30deg);
+69deg);
 		}
 		.knob2 {
 		position: absolute;
@@ -520,114 +520,115 @@ display: none;
 		
 		.r0 {
 		position: absolute;
-		left: 1.8vmin;
-		bottom: 3.9vmin;
+		left: 0.7vmin;
+		bottom: 4.4vmin;
 		font-size: 1.5vmin;
 		}
 		.r1 {
 		position: absolute;
-		left: 4.1vmin;
-		bottom: 6vmin;
+		left: 3.2vmin;
+		bottom: 6.3vmin;
 		font-size: 1.5vmin;
 		}
 		.r2 {
 	position: absolute;
-	right: 3.9vmin;
-	bottom: 6vmin;
+	right: 2.9vmin;
+	bottom: 6.3vmin;
 	font-size: 1.5vmin;
 	}
 		.r3 {
 		position: absolute;
-		right: 1.6vmin;
-		bottom: 3.9vmin;
+		right: 0.6vmin;
+		bottom: 4.4vmin;
 		font-size: 1.5vmin;
 		}
 		.w0 {
 		position: absolute;
-		left: 1.8vmin;
-		bottom: 3.9vmin;
+		left: 0.7vmin;
+		bottom: 4.4vmin;
 		font-size: 1.5vmin;
 		}
 		.w1 {
 		position: absolute;
-		left: 5.7vmin;
+		left: 4.7vmin;
 		bottom: 6.4vmin;
 		font-size: 1.5vmin;
 		}
 		.w2 {
 	position: absolute;
-	right: 1.8vmin;
-	bottom: 3.9vmin;
+	right: 0.7vmin;
+	bottom: 4.4vmin;
 	font-size: 1.5vmin;
 	}
 	
 	.w0b {
 	position: absolute;
-	width: 0.4vmin;
+	width: 0.5vmin;
 	height: 0.2vmin;
 	background: black;
-	left: 2.7vmin;
-	bottom: 4.5vmin;
+	left: 1.5vmin;
+	bottom: 4.6vmin;
 	transform: rotate(30deg);
 	}
 	.w1b {
 		position: absolute;
 		width: 0.2vmin;
-		height: 0.4vmin;
+		height: 0.5vmin;
 		background: black;
-		left: 6vmin;
+		left: 5vmin;
 		bottom: 6.2vmin;
 	}
 	.w2b {
 		position: absolute;
-		width: 0.4vmin;
+		width: 0.5vmin;
 		height: 0.2vmin;
 		background: black;
-		right: 2.7vmin;
-		bottom: 4.5vmin;
+		right: 1.5vmin;
+		bottom: 4.6vmin;
 		transform: rotate(
 330deg);
 	}
 	
 	.r0b {
 		position: absolute;
-		width: 0.4vmin;
+		width: 0.5vmin;
 		height: 0.2vmin;
 		background: black;
-		left: 2.7vmin;
-		bottom: 4.5vmin;
+		left: 1.5vmin;
+		bottom: 4.6vmin;
 		transform: rotate(
 30deg);
 	}
 	
 	.r1b {
 		position: absolute;
-		width: 0.4vmin;
+		width: 0.5vmin;
 		height: 0.2vmin;
 		background: black;
-		left: 4.6vmin;
-		bottom: 6vmin;
+		left: 3.6vmin;
+		bottom: 6.1vmin;
 		transform: rotate(
 70deg);
 	}
 	
 	.r2b {
 		position: absolute;
-		width: 0.4vmin;
+		width: 0.5vmin;
 		height: 0.2vmin;
 		background: black;
-		right: 4.6vmin;
-		bottom: 6vmin;
-		transform: rotate(70deg);
+		right: 3.4vmin;
+		bottom: 6.1vmin;
+		transform: rotate(
+120deg);
 	}
 	
 	.r3b {
 		position: absolute;
-		width: 0.4vmin;
+		width: 0.5vmin;
 		height: 0.2vmin;
 		background: black;
-		right: 2.6vmin;
-		bottom: 4.4vmin;
+		right: 1.5vmin;
+		bottom: 4.6vmin;
 		transform: rotate(
 330deg);
 	}
@@ -641,7 +642,15 @@ display: none;
 		top: 1.8vmin;
 	}
 
-.dial1 {}
+.kapsle-icon {
+	
+	position: absolute;
+	width: 7vmin;
+	height: 3.5vmin;
+	
+}
+
+
 	.dial2 {
 	position: absolute;
 	width: 7vmin;

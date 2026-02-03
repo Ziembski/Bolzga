@@ -209,12 +209,11 @@ body {
     position: absolute;
     top: 1.8vmin;
     height: 1.7vmin;
-    width: 25vmin;
-    left: 100%;
+    width: 20.5vmin;
+    left: 0;
     overflow: clip;
     border-bottom-left-radius: 0.6vmin;
     border-bottom-right-radius: 0.5vmin;
-    transform: translate(-50%, 0%);
     text-wrap: nowrap;
     }
 
@@ -303,12 +302,12 @@ body {
     width: 7.5vmin;
     position: relative;
     height: 8vmin;
-    margin-left: 2.3vmin;
+    margin-left: 0.9vmin;
     }
 		
         .stat-item3 {
     object-fit: contain;
-    width: 12.2vmin;
+    width: 10vmin;
     position: relative;
     height: 8vmin;
     }
@@ -411,7 +410,7 @@ body {
 		top: 4.7vmin;left: 50%;
 		}	
 		
-        .stat-value2 {font-size: 3vmin;font-weight: bold;color: #00d92f;min-width: 5.5vmin;text-align: center;position: absolute;filter: drop-shadow(0 0 0.3vmin #009520);transform: translate(-50%, -50%);top: 4.5vmin;left: 0.6vmin;}	
+        .stat-value2 {font-size: 3vmin;font-weight: bold;color: #00d92f;min-width: 5.5vmin;text-align: center;position: absolute;filter: drop-shadow(0 0 0.3vmin #009520);transform: translate(-50%, -50%);top: 4.7vmin;left: 0.9vmin;}	
 		
         .stat-value3 {
 display: none;
@@ -512,8 +511,8 @@ display: none;
 		}
 		.knob2 {
 		position: absolute;
-		bottom: -2vmin;
-		width: 8.5vmin;
+		bottom: -1vmin;
+		width: 7.5vmin;
 		filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 		transform: rotate(
 30deg);
@@ -521,43 +520,43 @@ display: none;
 		
 		.r0 {
 		position: absolute;
-		left: 1.4vmin;
-		bottom: 4.9vmin;
+		left: 1.8vmin;
+		bottom: 3.9vmin;
 		font-size: 1.5vmin;
 		}
 		.r1 {
 		position: absolute;
-		left: 3.9vmin;
-		bottom: 7.2vmin;
+		left: 4.1vmin;
+		bottom: 6vmin;
 		font-size: 1.5vmin;
 		}
 		.r2 {
 	position: absolute;
 	right: 3.9vmin;
-	bottom: 6.2vmin;
+	bottom: 6vmin;
 	font-size: 1.5vmin;
 	}
 		.r3 {
 		position: absolute;
-		right: 1.4vmin;
+		right: 1.6vmin;
 		bottom: 3.9vmin;
 		font-size: 1.5vmin;
 		}
 		.w0 {
 		position: absolute;
-		left: 1.4vmin;
+		left: 1.8vmin;
 		bottom: 3.9vmin;
 		font-size: 1.5vmin;
 		}
 		.w1 {
 		position: absolute;
 		left: 5.7vmin;
-		bottom: 6.5vmin;
+		bottom: 6.4vmin;
 		font-size: 1.5vmin;
 		}
 		.w2 {
 	position: absolute;
-	right: 1.4vmin;
+	right: 1.8vmin;
 	bottom: 3.9vmin;
 	font-size: 1.5vmin;
 	}
@@ -567,8 +566,8 @@ display: none;
 	width: 0.4vmin;
 	height: 0.2vmin;
 	background: black;
-	left: 2.3vmin;
-	bottom: 4.3vmin;
+	left: 2.7vmin;
+	bottom: 4.5vmin;
 	transform: rotate(30deg);
 	}
 	.w1b {
@@ -577,16 +576,17 @@ display: none;
 		height: 0.4vmin;
 		background: black;
 		left: 6vmin;
-		bottom: 6.4vmin;
+		bottom: 6.2vmin;
 	}
 	.w2b {
 		position: absolute;
 		width: 0.4vmin;
 		height: 0.2vmin;
 		background: black;
-		right: 2.3vmin;
-		bottom: 4.3vmin;
-		transform: rotate(30deg);
+		right: 2.7vmin;
+		bottom: 4.5vmin;
+		transform: rotate(
+330deg);
 	}
 	
 	.r0b {
@@ -594,8 +594,8 @@ display: none;
 		width: 0.4vmin;
 		height: 0.2vmin;
 		background: black;
-		left: 2.3vmin;
-		bottom: 5.3vmin;
+		left: 2.7vmin;
+		bottom: 4.5vmin;
 		transform: rotate(
 30deg);
 	}
@@ -605,8 +605,8 @@ display: none;
 		width: 0.4vmin;
 		height: 0.2vmin;
 		background: black;
-		left: 4.4vmin;
-		bottom: 7.1vmin;
+		left: 4.6vmin;
+		bottom: 6vmin;
 		transform: rotate(
 70deg);
 	}
@@ -616,8 +616,8 @@ display: none;
 		width: 0.4vmin;
 		height: 0.2vmin;
 		background: black;
-		right: 4.4vmin;
-		bottom: 6.1vmin;
+		right: 4.6vmin;
+		bottom: 6vmin;
 		transform: rotate(70deg);
 	}
 	
@@ -626,9 +626,10 @@ display: none;
 		width: 0.4vmin;
 		height: 0.2vmin;
 		background: black;
-		right: 2.3vmin;
-		bottom: 4.3vmin;
-		transform: rotate(30deg);
+		right: 2.6vmin;
+		bottom: 4.4vmin;
+		transform: rotate(
+330deg);
 	}
 	.dial1 {
 		position: absolute;
@@ -643,12 +644,12 @@ display: none;
 .dial1 {}
 	.dial2 {
 	position: absolute;
-	width: 8vmin;
-	height: 4vmin;
+	width: 7vmin;
+	height: 3.5vmin;
 	border: 0.2vmin solid black;
 	border-bottom: 0;
 	border-radius: 10rem 10rem 0 0;
-	top: 1.6vmin;
+	top: 1.8vmin;
 	}
 	
 			.gamelog-screen {

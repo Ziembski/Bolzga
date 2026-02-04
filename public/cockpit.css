@@ -643,11 +643,9 @@ display: none;
 
 .kapsle-icon {
 	
-position: absolute;
-    height: 3vmin;
-    transform: translate(-50%, 50%);
-    left: 20%;
-    bottom: 50%;
+	position: absolute;
+	width: 7vmin;
+	height: 3.5vmin;
 	
 }
 
@@ -705,58 +703,6 @@ position: absolute;
 		filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 		height: 2.3vmin;
 	}
-	
-	.player-row.title {
-    height: 5vmin;
-}
-
-img.garda-icon {
-    position: absolute;
-    height: 3vmin;
-    transform: translate(-50%, 50%);
-    left: 50%;
-    bottom: 50%;
-}
-
-img.wytrzymalosc-icon {
-    position: absolute;
-    height: 3vmin;
-    transform: translate(-50%, 50%);
-    left: 50%;
-    bottom: 50%;
-}
-
-img.karta-icon {
-    position: absolute;
-    height: 3vmin;
-    transform: translate(-50%, 50%);
-    left: 50%;
-    bottom: 50%;
-}
-
-img.szok-icon {
-    position: absolute;
-    height: 3vmin;
-    transform: translate(-50%, 50%);
-    left: 50%;
-    bottom: 50%;
-}
-
-img.rany-icon {
-    position: absolute;
-    height: 5vmin;
-    transform: translate(-50%, 50%);
-    left: 50%;
-    bottom: 50%;
-}
-
-img.wyczerpanie-icon {
-    position: absolute;
-    height: 5vmin;
-    transform: translate(-50%, 50%);
-    left: 50%;
-    bottom: 50%;
-}
 	
 /*
 ############################################################

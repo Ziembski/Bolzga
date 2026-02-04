@@ -665,11 +665,11 @@ display: none;
 .gamelog-screen {
     position: absolute;
     width: 40vmin;
-    height: 20vmin;
-    top: 77vmin;
+    height: 18vmin;
+    top: 76.2vmin;
     left: 1vmin;
     object-fit: contain;
-    z-index: 9999;
+    z-index: 145;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -980,120 +980,100 @@ img.wyczerpanie-icon {
 
 .phone_container {
     position: absolute;
-    top: 85vmin;
-    left: 19vmin;
+    top: 94.7vmin;
+    left: 0.8vmin;
     object-fit: contain;
-    width: 27vmin;
-    height: 53vmin;
+    width: 40vmin;
+    height: 5vmin;
     z-index: 150;
-    transform: rotate(90deg);
-    transition: transform 1.5s;
-    transform-style: preserve-3d;
+    display: flex;
 }
 
 
 .phone_container img {
     position: absolute;
     width: 100%;
-    filter: drop-shadow(3vmin 3vmin 2vmin black);
-    transition: filter 1.5s;
-    transform-style: preserve-3d;
+
 }
 
 .phone_d4 {
-	position: absolute;
-	width: 7vmin;
-	height: 4vmin;
-	bottom: 16.4vmin;
-	left: 2.6vmin;
-	z-index: 1001;
-	pointer-events: auto;
-	filter: brightness(2.25) grayscale(1);
-	opacity: 0.8;
+    position: relative;
+    width: 8vmin;
+    height: 4vmin;
+    z-index: 1001;
+    pointer-events: auto;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_d6 {
-	position: absolute;
-	width: 7.8vmin;
-	height: 4vmin;
-	bottom: 16vmin;
-	left: 9.8vmin;
-	z-index: 1001;
-	pointer-events: auto;
-	filter: brightness(2.25) grayscale(1);
-	opacity: 0.8;
+    position: relative;
+    width: 8vmin;
+    height: 4vmin;
+    z-index: 1001;
+    pointer-events: auto;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_d8 {
-	position: absolute;
-	width: 7vmin;
-	height: 4vmin;
-	bottom: 16.4vmin;
-	left: 17.4vmin;
-	z-index: 1001;
-	pointer-events: auto;
-	filter: brightness(2.25) grayscale(1);
-	opacity: 0.8;
+    position: relative;
+    width: 8vmin;
+    height: 4vmin;
+    z-index: 1001;
+    pointer-events: auto;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_d10 {
-	position: absolute;
-	width: 7vmin;
-	height: 4vmin;
-	bottom: 11.9vmin;
-	left: 2.6vmin;
-	z-index: 1001;
-	pointer-events: auto;
-	filter: brightness(2.25) grayscale(1);
-	opacity: 0.8;
+    position: relative;
+    width: 8vmin;
+    height: 4vmin;
+    z-index: 1001;
+    pointer-events: auto;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_d12 {
-	position: absolute;
-	width: 7.8vmin;
-	height: 4vmin;
-	bottom: 11.7vmin;
-	left: 9.8vmin;
-	z-index: 1001;
-	pointer-events: auto;
-	filter: brightness(2.25) grayscale(1);
-	opacity: 0.8;
+    position: relative;
+    width: 8vmin;
+    height: 4vmin;
+    z-index: 1001;
+    pointer-events: auto;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_plus {
-    position: absolute;
-    width: 7vmin;
+    position: relative;
+    width: 8vmin;
     height: 4vmin;
-    bottom: 7.8vmin;
-    left: 17.4vmin;
     z-index: 1001;
     pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_minus {
-    position: absolute;
-    width: 7vmin;
+    position: relative;
+    width: 8vmin;
     height: 4vmin;
-    left: 2.6vmin;
-    bottom: 7.8vmin;
     z-index: 1001;
     pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 .phone_x {
-    position: absolute;
-    width: 7.8vmin;
+    position: relative;
+    width: 8vmin;
     height: 4vmin;
-    bottom: 7.3vmin;
-    left: 9.8vmin;
     z-index: 1001;
     pointer-events: auto;
-    filter: brightness(2.25) grayscale(1);
-    opacity: 0.8;
+    object-fit: contain;
+	    filter: drop-shadow(-0.2vmin 0.2vmin 0.1vmin black);
 }
 
 

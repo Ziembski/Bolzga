@@ -1164,3 +1164,20 @@ img.wyczerpanie-icon {
 	z-index: 1001;
 	
 }
+.tray-symbole1 {
+    position: absolute;
+    height: 3vmin;
+    width: 3vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+.tray-symbole2 {
+    position: absolute;
+    height: 3vmin;
+    width: 3vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}

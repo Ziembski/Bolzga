@@ -643,11 +643,12 @@ display: none;
 	}
 
 .kapsle-icon {
-	
 	position: absolute;
-	width: 7vmin;
-	height: 3.5vmin;
-	
+	width: 4.2vmin;
+	height: 2vmin;
+	bottom: 50%;
+	left: 20%;
+	transform: translate(-50%, 50%);
 }
 
 

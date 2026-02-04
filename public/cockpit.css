@@ -662,19 +662,19 @@ display: none;
 	top: 1.8vmin;
 	}
 	
-			.gamelog-screen {
-			position: absolute;
-			width: 50vmin;
-			height: 10vmin;
-			top: 87vmin;
-			left: 1vmin;
-			object-fit: contain;
-		    z-index: 9999;
+.gamelog-screen {
+    position: absolute;
+    width: 40vmin;
+    height: 20vmin;
+    top: 77vmin;
+    left: 1vmin;
+    object-fit: contain;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-			}
+}
 	
 				.gamelog-screen img {
 			position: absolute;

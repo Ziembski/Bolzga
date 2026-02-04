@@ -705,6 +705,73 @@ display: none;
 		height: 2.3vmin;
 	}
 	
+	.player-row.title {
+    height: 4vmin;
+}
+
+img.garda-icon {
+    position: absolute;
+    width: 5vmin;
+    height: 3.5vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+img.wytrzymalosc-icon {
+    position: absolute;
+    width: 3.9vmin;
+    height: 3.5vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+img.karta-icon {
+    position: absolute;
+    width: 3.9vmin;
+    height: 3.5vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+img.karta-icon {
+    position: absolute;
+    width: 3.9vmin;
+    height: 3.5vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+img.szok-icon {
+    position: absolute;
+    width: 3.9vmin;
+    height: 3.9vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+img.rany-icon {
+    position: absolute;
+    width: 3.9vmin;
+    height: 3.9vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+
+img.wyczerpanie-icon {
+    position: absolute;
+    width: 3.9vmin;
+    height: 3.9vmin;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+	
 /*
 ############################################################
 ||                                                        ||

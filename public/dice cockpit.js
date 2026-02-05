@@ -31,17 +31,12 @@ const DICE = (function() {
         scale: 10, //dice size
         
         material_options: {
-            specular: 0x0c1c13,
-            color: 0x0c1c13,
-            shininess: 0,
             shading: THREE.FlatShading,
-            transparent: false,
-            opacity: 1,
         },
-        label_color: '#00d92f', //numbers on dice - changed to match edge color
-        dice_color: '#0c1c13', //background color for dice faces
-        edge_color: '#00d92f', //color for edges
-        edge_width: 30, //width of edge lines
+        label_color: '#00d92f', //numbers on dice - bright green
+        dice_color: '#0c1c13', //background color for dice faces - dark green
+        edge_color: '#00d92f', //color for edges - bright green
+        edge_width: 300, //width of edge lines (scaled by 0.01 in the function)
         ambient_light_color: '#D6E8FF',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background

@@ -111,12 +111,15 @@ body {
 
 
         .players-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0vmin;
-            margin: 0 auto;
-            position: absolute;
-            object-fit: contain;
+    display: flex;
+    flex-direction: column;
+    gap: 0vmin;
+    margin: 0 auto;
+    position: absolute;
+    object-fit: contain;
+    left: 12.8vmin;
+    top: 11.9vmin;
+    scale: 1.3;
         }
 
         .player-row {
@@ -990,7 +993,7 @@ img.wyczerpanie-icon {
 }
 
 
-.phone_container img {
+.tray-button {
     position: absolute;
     width: 100%;
 
@@ -1164,20 +1167,23 @@ img.wyczerpanie-icon {
 	z-index: 1001;
 	
 }
+
 .tray-symbole1 {
     position: absolute;
-    height: 3vmin;
-    width: 3vmin;
-    bottom: 50%;
+    height: 3.5vmin;
+    width: 3.5vmin;
+    bottom: 47%;
     left: 50%;
     transform: translate(-50%, 50%);
+    filter: brightness(2.7) saturate(0.3);
 }
 
 .tray-symbole2 {
     position: absolute;
-    height: 3vmin;
-    width: 3vmin;
-    bottom: 50%;
+    height: 5vmin;
+    width: 5vmin;
+    bottom: 47%;
     left: 50%;
     transform: translate(-50%, 50%);
+    filter: brightness(2.7) saturate(0.3);
 }

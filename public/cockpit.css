@@ -865,30 +865,31 @@ img.wyczerpanie-icon {
 }
 
 .dice_top_field {
-	width: 100%;
-	height: 10vmin;
+	width: 37vmin;
+	height: 4vmin;
 	background-color: rgba(150, 150, 150, 0);
 	border-radius: 0.5vmin;
 	position: absolute;
 	top: 2.5vmin;
-	left: 0;
+	left: 2.2vmin;
 }
 
 #diceRollerUI #textInput {
-    text-align: center;
+    text-align: start;
     border: none;
-    color: rgb(125 125 125);
-    filter: drop-shadow(0px 0px 0.01vmin white);
+    font-weight: bold;
+    color: #00d92f;
+    filter: drop-shadow(0 0 0.3vmin #009520);
     background-color: rgba(199, 199, 199, 0.0);
     width: 100%;
     height: 100%;
     text-overflow: ellipsis;
     padding: 0.5vmin;
     text-decoration: none;
-    font-size: 4.1vmin;
-    font-family: Carved;
-    display: block;
-    border-radius: 0.5vmin;
+    font-size: 2.1vmin;
+    font-family: 'NOkia';
+    -:
+    block;
 }
 
 #diceRollerUI #textInput:focus {

@@ -31,13 +31,16 @@ const DICE = (function() {
         scale: 10, //dice size
         
         material_options: {
-            specular: 0x172022,
-            color: 0xf0f0f0,
+            specular: 0x000000,
+            color: 0x000000,
             shininess: 0,
             shading: THREE.FlatShading,
+            transparent: true,
+            opacity: 0.3,
         },
         label_color: '#161512', //numbers on dice
         dice_color: '#00d92f',
+        edge_color: '#00d92f', //color for edges
         ambient_light_color: '#D6E8FF',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
@@ -491,60 +494,80 @@ const DICE = (function() {
     // dice geometries
     let threeD_dice = {};
 
+    // Helper function to add edges to dice mesh
+    function add_dice_edges(dice, geometry) {
+        var edges = new THREE.EdgesGeometry(geometry);
+        var edgeMaterial = new THREE.LineBasicMaterial({ 
+            color: vars.edge_color,
+            linewidth: 2 
+        });
+        var edgeLines = new THREE.LineSegments(edges, edgeMaterial);
+        dice.add(edgeLines);
+        return dice;
+    }
+
     threeD_dice.create_d4 = function() {
         if (!this.d4_geometry) this.d4_geometry = create_d4_geometry(vars.scale * 1.2);
         if (!this.d4_material) this.d4_material = new THREE.MeshFaceMaterial(
                 create_d4_materials(vars.scale / 2, vars.scale * 2, CONSTS.d4_labels[0]));
-        return new THREE.Mesh(this.d4_geometry, this.d4_material);
+        var dice = new THREE.Mesh(this.d4_geometry, this.d4_material);
+        return add_dice_edges(dice, this.d4_geometry);
     }
 
     threeD_dice.create_d6 = function() {
         if (!this.d6_geometry) this.d6_geometry = create_d6_geometry(vars.scale * 1.1);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d20_dice_face_labels, vars.scale / 2, 0.9));
-        return new THREE.Mesh(this.d6_geometry, this.dice_material);
+        var dice = new THREE.Mesh(this.d6_geometry, this.dice_material);
+        return add_dice_edges(dice, this.d6_geometry);
     }
 
     threeD_dice.create_d8 = function() {
         if (!this.d8_geometry) this.d8_geometry = create_d8_geometry(vars.scale);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d20_dice_face_labels, vars.scale / 2, 1.4));
-        return new THREE.Mesh(this.d8_geometry, this.dice_material);
+        var dice = new THREE.Mesh(this.d8_geometry, this.dice_material);
+        return add_dice_edges(dice, this.d8_geometry);
     }
 
     threeD_dice.create_d9 = function() {
         if (!this.d10_geometry) this.d10_geometry = create_d10_geometry(vars.scale * 0.9);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d20_dice_face_labels, vars.scale / 2, 1.0));
-        return new THREE.Mesh(this.d10_geometry, this.dice_material);
+        var dice = new THREE.Mesh(this.d10_geometry, this.dice_material);
+        return add_dice_edges(dice, this.d10_geometry);
     }
 
     threeD_dice.create_d10 = function() {
         if (!this.d10_geometry) this.d10_geometry = create_d10_geometry(vars.scale * 0.9);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d20_dice_face_labels, vars.scale / 2, 1.0));
-        return new THREE.Mesh(this.d10_geometry, this.dice_material);
+        var dice = new THREE.Mesh(this.d10_geometry, this.dice_material);
+        return add_dice_edges(dice, this.d10_geometry);
     }
 
     threeD_dice.create_d12 = function() {
         if (!this.d12_geometry) this.d12_geometry = create_d12_geometry(vars.scale * 0.9);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d20_dice_face_labels, vars.scale / 2, 1.0));
-        return new THREE.Mesh(this.d12_geometry, this.dice_material);
+        var dice = new THREE.Mesh(this.d12_geometry, this.dice_material);
+        return add_dice_edges(dice, this.d12_geometry);
     }
 
     threeD_dice.create_d20 = function() {
         if (!this.d20_geometry) this.d20_geometry = create_d20_geometry(vars.scale);
         if (!this.dice_material) this.dice_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d20_dice_face_labels, vars.scale / 2, 1.2));
-        return new THREE.Mesh(this.d20_geometry, this.dice_material);
+        var dice = new THREE.Mesh(this.d20_geometry, this.dice_material);
+        return add_dice_edges(dice, this.d20_geometry);
     }
 
     threeD_dice.create_d100 = function() {
         if (!this.d10_geometry) this.d10_geometry = create_d10_geometry(vars.scale * 0.9);
         if (!this.d100_material) this.d100_material = new THREE.MeshFaceMaterial(
                 create_dice_materials(CONSTS.standart_d100_dice_face_labels, vars.scale / 2, 1.5));
-        return new THREE.Mesh(this.d10_geometry, this.d100_material);
+        var dice = new THREE.Mesh(this.d10_geometry, this.d100_material);
+        return add_dice_edges(dice, this.d10_geometry);
     }
     
     function create_dice_materials(face_labels, size, margin) {

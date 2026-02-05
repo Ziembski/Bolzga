@@ -43,12 +43,9 @@
 
 
 body {
-	
-    font-family: 'Times New Roman', serif;
-    background-color: #f5f5f5;
-    overflow: clip;
-   
-	
+	font-family: 'Times New Roman', serif;
+	background-color: #f5f5f5;
+	overflow: auto;
 }
 
 :root {
@@ -667,10 +664,10 @@ display: none;
 	
 .gamelog-screen {
     position: absolute;
-    width: 40vmin;
-    height: 18vmin;
-    top: 76.2vmin;
-    left: 1vmin;
+    width: 55vmin;
+    height: 32vmin;
+    bottom: 67.3vmin;
+    right: 43vmin;
     object-fit: contain;
     z-index: 145;
     display: flex;
@@ -688,15 +685,17 @@ display: none;
 			
 			.game-logs-display {
     overflow-y: auto;
-    font-size: 3vmin;
+    font-size: 2vmin;
     font-weight: bold;
     color: #00d92f;
     min-width: 5.5vmin;
     text-align: start;
     position: absolute;
+    bottom: 3.4vmin;
+    left: 2.5vmin;
+    height: 26vmin;
+    width: 50vmin;
     filter: drop-shadow(0 0 0.3vmin #009520);
-    transform: translate(-50%, -50%);
-    
     }
 	
 	.name_label {
@@ -983,13 +982,14 @@ img.wyczerpanie-icon {
 
 .phone_container {
     position: absolute;
-    top: 94.7vmin;
-    left: 0.8vmin;
+    bottom: 60.7vmin;
+    right: 50.7vmin;
     object-fit: contain;
     width: 40vmin;
     height: 5vmin;
     z-index: 150;
     display: flex;
+    scale: 1.37;
 }
 
 
@@ -1126,9 +1126,7 @@ img.wyczerpanie-icon {
 }
 
 .log-entry {
-    margin-bottom: 0.1vmin;
-    padding: 0.1vmin 0;
-    justify-self: center;
+    justify-self: start;
 }
 
 #log-prev-btn {

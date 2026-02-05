@@ -36,11 +36,12 @@ const DICE = (function() {
             shininess: 0,
             shading: THREE.FlatShading,
             transparent: true,
-            opacity: 0.3,
+            opacity: 1,
         },
-        label_color: '#161512', //numbers on dice
+        label_color: '#00d92f', //numbers on dice - changed to match edge color
         dice_color: '#00d92f',
         edge_color: '#00d92f', //color for edges
+        edge_width: 6, //width of edge lines
         ambient_light_color: '#D6E8FF',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
@@ -499,7 +500,7 @@ const DICE = (function() {
         var edges = new THREE.EdgesGeometry(geometry);
         var edgeMaterial = new THREE.LineBasicMaterial({ 
             color: vars.edge_color,
-            linewidth: 2 
+            linewidth: vars.edge_width
         });
         var edgeLines = new THREE.LineSegments(edges, edgeMaterial);
         dice.add(edgeLines);

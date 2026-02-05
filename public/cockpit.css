@@ -684,7 +684,7 @@ display: none;
 			}
 			
 			.game-logs-display {
-    overflow-y: auto;
+overflow-y: auto;
     font-size: 2vmin;
     font-weight: bold;
     color: #00d92f;
@@ -1116,7 +1116,7 @@ img.wyczerpanie-icon {
 
 .game-logs-container::-webkit-scrollbar,
 .game-logs-display::-webkit-scrollbar {
-    width: 0.3vmin;
+    width: 0.5vmin;
 }
 
 .game-logs-container::-webkit-scrollbar-track,
@@ -1127,23 +1127,22 @@ img.wyczerpanie-icon {
 
 .game-logs-container::-webkit-scrollbar-thumb,
 .game-logs-display::-webkit-scrollbar-thumb {
-    background: #1E1E1E;
+    background: #00d92f;
     border-radius: 0.1vmin;
 }
 
 .game-logs-container::-webkit-scrollbar-thumb:hover,
 .game-logs-display::-webkit-scrollbar-thumb:hover {
-    background: #2E2E2E;
+    background: #00d92f;
 }
 
 .log-entry {
     justify-self: start;
     margin-bottom: 0.5vmin;
     text-align: left;
-    color: #1E1E1E;
     font-family: Nokia;
-    font-size: 1.1vmin;
-    line-height: 1.4;
+    font-size: 1.6vmin;
+    line-height: 1.3;
 }
 
 #log-prev-btn {

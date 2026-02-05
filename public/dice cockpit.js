@@ -144,7 +144,7 @@ const DICE = (function() {
         this.w = this.cw;
         this.h = this.ch;
         this.aspect = Math.min(this.cw / this.w, this.ch / this.h);
-        vars.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 10;
+        vars.scale = Math.sqrt(this.w * this.w + this.h * this.h) / 6;
         //console.log('scale = ' + vars.scale);
 
         this.renderer.setSize(this.cw * 2, this.ch * 2);
@@ -172,7 +172,7 @@ const DICE = (function() {
 
         if (this.desk) this.scene.remove(this.desk);
         this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
-                new THREE.MeshPhongMaterial({ color: vars.desk_color, opacity: vars.desk_opacity, transparent: true }));
+                new THREE.MeshToonMaterial({ color: vars.desk_color, opacity: vars.desk_opacity, transparent: true }));
         this.desk.receiveShadow = vars.use_shadows;
         this.scene.add(this.desk); 
 
@@ -570,7 +570,7 @@ const DICE = (function() {
         }
         var materials = [];
         for (var i = 0; i < face_labels.length; ++i)
-            materials.push(new THREE.MeshPhongMaterial($t.copyto(vars.material_options,
+            materials.push(new THREE.MeshToonMaterial($t.copyto(vars.material_options,
                         { map: create_text_texture(face_labels[i], vars.label_color, vars.dice_color) })));
         return materials;
     }
@@ -600,7 +600,7 @@ const DICE = (function() {
         }
         var materials = [];
         for (var i = 0; i < labels.length; ++i)
-            materials.push(new THREE.MeshPhongMaterial($t.copyto(vars.material_options,
+            materials.push(new THREE.MeshToonMaterial($t.copyto(vars.material_options,
                         { map: create_d4_text(labels[i], vars.label_color, vars.dice_color) })));
         return materials;
     }

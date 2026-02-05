@@ -27,19 +27,19 @@ const DICE = (function() {
     var that = {};
 
     var vars = { //todo: make these configurable on init
-        frame_rate: 1 / 60,
+        frame_rate: 10 / 60,
         scale: 10, //dice size
         
         material_options: {
-            specular: 0x000000,
-            color: 0x000000,
-            shininess: 0,
+            specular: 0x0c1c13,
+            color: 0x0c1c13,
+            shininess: 1,
             shading: THREE.FlatShading,
             transparent: true,
             opacity: 1,
         },
         label_color: '#00d92f', //numbers on dice - changed to match edge color
-        dice_color: '#00d92f',
+        dice_color: '#0c1c13', //background color for dice faces
         edge_color: '#00d92f', //color for edges
         edge_width: 6, //width of edge lines
         ambient_light_color: '#D6E8FF',
@@ -496,14 +496,47 @@ const DICE = (function() {
     let threeD_dice = {};
 
     // Helper function to add edges to dice mesh
+    // Note: WebGL linewidth is limited to 1 in most browsers, so we use a mesh-based approach
     function add_dice_edges(dice, geometry) {
         var edges = new THREE.EdgesGeometry(geometry);
-        var edgeMaterial = new THREE.LineBasicMaterial({ 
-            color: vars.edge_color,
-            linewidth: vars.edge_width
-        });
-        var edgeLines = new THREE.LineSegments(edges, edgeMaterial);
-        dice.add(edgeLines);
+        
+        // Create fat lines using MeshLine-like approach with cylinders
+        var positions = edges.attributes.position.array;
+        var edgeGroup = new THREE.Group();
+        
+        for (var i = 0; i < positions.length; i += 6) {
+            var start = new THREE.Vector3(positions[i], positions[i+1], positions[i+2]);
+            var end = new THREE.Vector3(positions[i+3], positions[i+4], positions[i+5]);
+            
+            var direction = new THREE.Vector3().subVectors(end, start);
+            var length = direction.length();
+            
+            // Create a thin cylinder for each edge
+            var edgeGeometry = new THREE.CylinderGeometry(
+                vars.edge_width * 0.01, // radius top (scaled down)
+                vars.edge_width * 0.01, // radius bottom
+                length,
+                4 // segments - low for performance
+            );
+            
+            var edgeMaterial = new THREE.MeshBasicMaterial({ 
+                color: vars.edge_color
+            });
+            
+            var edgeMesh = new THREE.Mesh(edgeGeometry, edgeMaterial);
+            
+            // Position and orient the cylinder
+            edgeMesh.position.copy(start);
+            edgeMesh.position.add(direction.multiplyScalar(0.5));
+            edgeMesh.quaternion.setFromUnitVectors(
+                new THREE.Vector3(0, 1, 0),
+                direction.normalize()
+            );
+            
+            edgeGroup.add(edgeMesh);
+        }
+        
+        dice.add(edgeGroup);
         return dice;
     }
 

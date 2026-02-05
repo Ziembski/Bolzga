@@ -666,7 +666,7 @@ display: none;
     position: absolute;
     width: 55vmin;
     height: 32vmin;
-    bottom: 67.3vmin;
+    bottom: 63.3vmin;
     right: 43vmin;
     object-fit: contain;
     z-index: 145;
@@ -784,18 +784,16 @@ img.wyczerpanie-icon {
 */
 
 #dice_tray_main {
-	
-    position: absolute;
-    bottom: 28vmin;
-    right: 5.5vmin;
-    width: 70.2vmin;
-    height: 70.2vmin;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    pointer-events: none;
-    overflow: clip;
-
+	position: absolute;
+	bottom: 1.3vmin;
+	right: 43vmin;
+	width: 55vmin;
+	height: 55vmin;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	pointer-events: none;
+	object-fit: contain;
 }
 
 
@@ -816,10 +814,10 @@ img.wyczerpanie-icon {
 /* Dice Roller Canvas */
 #diceRoller {
     position: absolute;
-    top: 12vmin;
-    right: 12vmin;
-    width: 38.2vmin;
-    height: 38.2vmin;
+    top: 2.3vmin;
+    left: 2.3vmin;
+    width: 50.4vmin;
+    height: 50.4vmin;
     z-index: -1;
     overflow: hidden;
     object-fit: fill;
@@ -827,16 +825,15 @@ img.wyczerpanie-icon {
 
 
 .dice_tray {
-	
-    position: absolute;
-    top: 0;
-    width: 71vmin;
-    height: 76vmin;
-    z-index: -1;
-    justify-self: center;
-    align-self: center;
-    opacity: 0.95;
-	
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	justify-self: center;
+	align-self: center;
+	opacity: 1;
+	filter: drop-shadow(-0.4vmin 0.4vmin 0.3vmin black);
 }
 
 .dice_tray_shadow {
@@ -859,8 +856,8 @@ img.wyczerpanie-icon {
     flex-direction: column;
     pointer-events: none;
     position: absolute;
-    width: 70.2vmin;
-    height: 70.2vmin;
+    width: 100%;
+    height: 100%;
 }
 
 #diceRollerUI * {
@@ -868,14 +865,13 @@ img.wyczerpanie-icon {
 }
 
 .dice_top_field {
-	text-align: center;
-    width: 54%;
-    height: 9%;
-    background-color: rgba(150, 150, 150, 0);
-    border-radius: 0.5vmin;
-    position: absolute;
-    top: 2vmin;
-    left: 20vmin;
+	width: 100%;
+	height: 10vmin;
+	background-color: rgba(150, 150, 150, 0);
+	border-radius: 0.5vmin;
+	position: absolute;
+	top: 2.5vmin;
+	left: 0;
 }
 
 #diceRollerUI #textInput {
@@ -979,7 +975,7 @@ img.wyczerpanie-icon {
 
 .phone_container {
     position: absolute;
-    bottom: 60.7vmin;
+    bottom: 56.7vmin;
     right: 50.7vmin;
     object-fit: contain;
     width: 40vmin;

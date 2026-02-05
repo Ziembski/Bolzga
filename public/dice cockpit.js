@@ -36,9 +36,9 @@ const DICE = (function() {
         label_color: '#00d92f', //numbers on dice - bright green
         dice_color: '#0c1c13', //background color for dice faces - dark green
         edge_color: '#00d92f', //color for edges - bright green
-        edge_width: 300, //width of edge lines (scaled by 0.01 in the function)
+        edge_width: 150, //width of edge lines (scaled by 0.01 in the function)
         ambient_light_color: '#D6E8FF',
-        spot_light_color: '#D6E8FF',
+        spot_light_color: '#00d92f',
         desk_color: '#FFFFFF', //canvas background
         desk_opacity: 0.02,
         use_shadows: false,

@@ -34,11 +34,12 @@ const DICE = (function() {
             shading: THREE.FlatShading,
         },
         label_color: '#00d92f', //numbers on dice - bright green
+        label_font: 'Nokia', //font family for dice labels (e.g., 'Arial', 'Helvetica', 'Georgia', 'Courier New', 'Verdana')
         dice_color: '#0c1c13', //background color for dice faces - dark green
         edge_color: '#00d92f', //color for edges - bright green
         edge_width: 150, //width of edge lines (scaled by 0.01 in the function)
         ambient_light_color: '#D6E8FF',
-        spot_light_color: '#00d92f',
+        spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
         desk_opacity: 0.02,
         use_shadows: false,
@@ -606,7 +607,7 @@ const DICE = (function() {
             var context = canvas.getContext("2d");
             var ts = calc_texture_size(size + size * 2 * margin) * 2;
             canvas.width = canvas.height = ts;
-            context.font = ts / (1 + 2 * margin) + "pt Arial";
+            context.font = ts / (1 + 2 * margin) + "pt " + vars.label_font;
             context.fillStyle = back_color;
             context.fillRect(0, 0, canvas.width, canvas.height);
             context.textAlign = "center";
@@ -633,7 +634,7 @@ const DICE = (function() {
             var context = canvas.getContext("2d");
             var ts = calc_texture_size(size + margin) * 2;
             canvas.width = canvas.height = ts;
-            context.font = (ts - margin) * 0.5 + "pt Arial";
+            context.font = (ts - margin) * 0.5 + "pt " + vars.label_font;
             context.fillStyle = back_color;
             context.fillRect(0, 0, canvas.width, canvas.height);
             context.textAlign = "center";

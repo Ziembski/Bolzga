@@ -33,15 +33,15 @@ const DICE = (function() {
         material_options: {
             specular: 0x0c1c13,
             color: 0x0c1c13,
-            shininess: 0.1,
+            shininess: 0,
             shading: THREE.FlatShading,
-            transparent: true,
+            transparent: false,
             opacity: 1,
         },
         label_color: '#00d92f', //numbers on dice - changed to match edge color
         dice_color: '#0c1c13', //background color for dice faces
         edge_color: '#00d92f', //color for edges
-        edge_width: 6, //width of edge lines
+        edge_width: 30, //width of edge lines
         ambient_light_color: '#D6E8FF',
         spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background

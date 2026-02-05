@@ -51,7 +51,7 @@ body {
 :root {
   /* Height function variables */
   --base-height: 98vmin;
-  --max-height-x: 120vmin;
+  --max-height-x: 115vmin;
   --height-curve-steepness: 3;
   
   /* Width function variables */
@@ -1107,26 +1107,43 @@ img.wyczerpanie-icon {
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
 
+.game-logs-container::-webkit-scrollbar,
 .game-logs-display::-webkit-scrollbar {
     width: 0.3vmin;
 }
 
+.game-logs-container::-webkit-scrollbar-track,
 .game-logs-display::-webkit-scrollbar-track {
-    background: 0;
+    background: rgba(30, 30, 30, 0.1);
+    border-radius: 0.1vmin;
 }
 
+.game-logs-container::-webkit-scrollbar-thumb,
 .game-logs-display::-webkit-scrollbar-thumb {
     background: #1E1E1E;
     border-radius: 0.1vmin;
 }
 
+.game-logs-container::-webkit-scrollbar-thumb:hover,
+.game-logs-display::-webkit-scrollbar-thumb:hover {
+    background: #2E2E2E;
+}
+
 .log-entry {
     justify-self: start;
+    margin-bottom: 0.5vmin;
+    text-align: left;
+    color: #1E1E1E;
+    font-family: Nokia;
+    font-size: 1.1vmin;
+    line-height: 1.4;
 }
 
 #log-prev-btn {

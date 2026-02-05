@@ -1966,10 +1966,29 @@ function displayCurrentLog() {
     if (currentLogIndex < 0) currentLogIndex = 0;
     if (currentLogIndex >= allLogs.length) currentLogIndex = allLogs.length - 1;
     
-    const entry = document.createElement('div');
-    entry.className = 'log-entry';
-    entry.textContent = allLogs[currentLogIndex];
-    logsDisplay.appendChild(entry);
+    // Display all logs
+    allLogs.forEach((log, index) => {
+        const entry = document.createElement('div');
+        entry.className = 'log-entry';
+        entry.id = `log-entry-${index}`;
+        entry.textContent = log;
+        
+        // Highlight current log
+        if (index === currentLogIndex) {
+            entry.style.fontWeight = 'bold';
+            entry.style.backgroundColor = 'rgba(30, 30, 30, 0.1)';
+            entry.style.padding = '0.2vmin';
+            entry.style.borderRadius = '0.2vmin';
+        }
+        
+        logsDisplay.appendChild(entry);
+    });
+    
+    // Scroll to current log entry
+    const currentEntry = document.getElementById(`log-entry-${currentLogIndex}`);
+    if (currentEntry) {
+        currentEntry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     
     // Update navigation info
     const navInfo = document.getElementById('log-nav-info');

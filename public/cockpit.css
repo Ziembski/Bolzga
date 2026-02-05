@@ -51,7 +51,7 @@ body {
 :root {
   /* Height function variables */
   --base-height: 98vmin;
-  --max-height-x: 92vmin;
+  --max-height-x: 120vmin;
   --height-curve-steepness: 3;
   
   /* Width function variables */

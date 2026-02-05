@@ -27,13 +27,13 @@ const DICE = (function() {
     var that = {};
 
     var vars = { //todo: make these configurable on init
-        frame_rate: 10 / 60,
+        frame_rate: 1 / 60,
         scale: 10, //dice size
         
         material_options: {
             specular: 0x0c1c13,
             color: 0x0c1c13,
-            shininess: 1,
+            shininess: 0.1,
             shading: THREE.FlatShading,
             transparent: true,
             opacity: 1,

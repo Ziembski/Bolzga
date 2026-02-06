@@ -27,7 +27,7 @@ const DICE = (function() {
         edge_color: '#00d92f', //color for edges - bright green
         edge_width: 150, //width of edge lines (scaled by 0.01 in the function)
         ambient_light_color: '#0c1c13',
-        spot_light_color: '#0c1c13',
+        spot_light_color: '#D6E8FF',
         desk_color: '#FFFFFF', //canvas background
         desk_opacity: 0.02,
         use_shadows: false,

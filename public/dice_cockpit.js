@@ -26,8 +26,8 @@ const DICE = (function() {
         dice_color: '#0c1c13', //background color for dice faces - dark green
         edge_color: '#00d92f', //color for edges - bright green
         edge_width: 150, //width of edge lines (scaled by 0.01 in the function)
-        ambient_light_color: '#0c1c13',
-        spot_light_color: '#D6E8FF',
+        ambient_light_color: '#ffffff', // Changed to white for proper MeshBasicMaterial visibility
+        spot_light_color: '#D6E8FF', // Not used anymore
         desk_color: '#FFFFFF', //canvas background
         desk_opacity: 0.02,
         use_shadows: false,
@@ -143,25 +143,13 @@ const DICE = (function() {
         this.camera.position.z = this.wh;
 
         var mw = Math.max(this.w, this.h);
-        if (this.light) this.scene.remove(this.light);
-        this.light = new THREE.SpotLight(vars.spot_light_color, 2.0);
-        this.light.position.set(mw / 1, mw / 1, mw * 3.5);
-        this.light.target.position.set(mw / 1, mw / 1, mw * 2);
-        this.light.distance = mw * 5;
-        this.light.castShadow = true;
-        this.light.shadowCameraNear = mw / 10;
-        this.light.shadowCameraFar = mw * 5;
-        this.light.shadowCameraFov = 50;
-        this.light.shadowBias = 0.001;
-        this.light.shadowDarkness = 5;
-        this.light.shadowMapWidth = 1024;
-        this.light.shadowMapHeight = 1024;
-        this.scene.add(this.light);
+        // Removed spotlight - using only ambient light for flat, matte appearance
+        // if (this.light) this.scene.remove(this.light);
 
         if (this.desk) this.scene.remove(this.desk);
         this.desk = new THREE.Mesh(new THREE.PlaneGeometry(this.w * 2, this.h * 2, 1, 1), 
-                new THREE.MeshPhongMaterial({ color: vars.desk_color, opacity: vars.desk_opacity, transparent: true }));
-        this.desk.receiveShadow = vars.use_shadows;
+                new THREE.MeshBasicMaterial({ color: vars.desk_color, opacity: vars.desk_opacity, transparent: true }));
+        this.desk.receiveShadow = false; // No shadows needed
         this.scene.add(this.desk); 
 
         this.renderer.render(this.scene, this.camera);
@@ -611,7 +599,7 @@ const DICE = (function() {
         }
         var materials = [];
         for (var i = 0; i < face_labels.length; ++i)
-            materials.push(new THREE.MeshPhongMaterial($t.copyto(vars.material_options,
+            materials.push(new THREE.MeshBasicMaterial($t.copyto(vars.material_options,
                         { map: create_text_texture(face_labels[i], vars.label_color, vars.dice_color) })));
         return materials;
     }
@@ -641,7 +629,7 @@ const DICE = (function() {
         }
         var materials = [];
         for (var i = 0; i < labels.length; ++i)
-            materials.push(new THREE.MeshPhongMaterial($t.copyto(vars.material_options,
+            materials.push(new THREE.MeshBasicMaterial($t.copyto(vars.material_options,
                         { map: create_d4_text(labels[i], vars.label_color, vars.dice_color) })));
         return materials;
     }

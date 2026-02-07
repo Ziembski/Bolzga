@@ -1195,12 +1195,3 @@ img.wyczerpanie-icon {
     filter: brightness(2.7) saturate(0.3);
 }
 
-.card_dealer_container {
-	
-    position: absolute;
-    bottom: 42vmin;
-    right: 0;
-    height: 90vmin;
-    width: 40vmin;
-
-}

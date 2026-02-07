@@ -6,9 +6,11 @@
 }
 
 .card_dealer_container {
-    position: relative;
-    width: 40vmin;
+position: absolute;
+    bottom: 2vmin;
+    right: 0;
     height: 90vmin;
+    width: 40vmin;
     perspective: 1500vmin;
     overflow: visible;
 }

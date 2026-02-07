@@ -249,9 +249,10 @@ function animateCardDeal(cardElement, index) {
     // Calculate final position in stack (stacking downward from top)
     const stackOffset = index * stackOffsetValue;
     
-    // Animate to final position with 360-degree spin (coming from bottom, landing at top position)
+    // Animate to final position with 360-degree spin (no overshoot)
     setTimeout(() => {
-        cardElement.style.transition = 'transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-out';
+        // Use ease-out for smooth deceleration with no bounce
+        cardElement.style.transition = 'transform 1s ease-out, opacity 0.5s ease-out';
         cardElement.style.transform = `translateX(-50%) translateY(${stackOffset}vmin) rotate(360deg)`;
         cardElement.style.opacity = '1';
         

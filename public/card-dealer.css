@@ -6,7 +6,7 @@
 }
 
 .card_dealer_container {
-    position: relative;
+    position: absolute;
     right: 0vmin;
     bottom: 0vmin;
     width: 40vmin;

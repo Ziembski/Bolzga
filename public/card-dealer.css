@@ -2,7 +2,7 @@
 
 /* Card spacing variable - adjust this to change distance between stacked cards */
 :root {
-    --card-stack-offset: 4.5vmin;
+    --card-stack-offset: 7vmin;
 }
 
 .card_dealer_container {

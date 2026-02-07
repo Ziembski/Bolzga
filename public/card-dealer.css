@@ -1,0 +1,213 @@
+/* Card Dealer Styles */
+
+.card_dealer_container {
+    position: relative;
+    width: 56.1vmin;
+    height: 82.5vmin;
+    perspective: 1500vmin;
+}
+
+/* Individual dealt card wrapper */
+.dealt-card {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56.1vmin;
+    height: 82.5vmin;
+    background-color: transparent;
+    border-radius: 2.7vmin;
+    transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+}
+
+.dealt-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.dealt-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border-radius: 2.7vmin;
+    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;
+}
+
+/* Playing card structure (reused from mainplayerview) */
+.dealt-card .playing-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.dealt-card .pc-inner-frame {
+    width: 48.6vmin;
+    height: 75vmin;
+    position: absolute;
+    left: 3.75vmin;
+    top: 3.75vmin;
+    contain: paint;
+    border: 0.3vmin solid #000000;
+    border-radius: 2.25vmin;
+}
+
+.dealt-card .pc-inner-frame img {
+    width: 100%;
+    height: 100%;
+}
+
+.dealt-card .pc-top-left {
+    position: absolute;
+    background-color: #ffffff;
+    top: 6.75vmin;
+    left: 1.5vmin;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 7.5vmin 5.25vmin;
+}
+
+.dealt-card .pc-bottom-right {
+    position: absolute;
+    transform: rotate(180deg);
+    background-color: #ffffff;
+    right: 1.5vmin;
+    bottom: 6.75vmin;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 7.5vmin 5.25vmin;
+}
+
+.dealt-card .img3-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1.2vmin;
+    margin-bottom: 0;
+}
+
+.dealt-card .img3-container {
+    width: 4.5vmin;
+    height: 6vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.dealt-card .img3-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dealt-card .detail-item.field-pl-cd {
+    justify-content: center;
+    align-items: center;
+    height: 8.25vmin;
+    margin-top: -1.2vmin;
+    display: flex;
+}
+
+.dealt-card .field-pl-cd .detail-value {
+    border: 0;
+    font-size: 6.75vmin;
+    font-family: TheSoul, serif;
+    color: #000000;
+    overflow: unset;
+}
+
+.dealt-card .playing-card-backside {
+    border-radius: 2.7vmin;
+    object-fit: contain;
+    width: 56.1vmin;
+    height: 82.5vmin;
+}
+
+.dealt-card .playing-card-backside img {
+    height: 100%;
+    width: 100%;
+    border-radius: 2.7vmin;
+    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;
+}
+
+/* Card dealer controls */
+.card-dealer-controls {
+    position: absolute;
+    bottom: -15vmin;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 2vmin;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.card-dealer-btn {
+    padding: 1.5vmin 3vmin;
+    font-size: 2.5vmin;
+    font-family: 'Times New Roman', serif;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 0.3vmin solid #444;
+    border-radius: 1vmin;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.5);
+}
+
+.card-dealer-btn:hover {
+    background-color: #3a3a3a;
+    border-color: #666;
+    transform: translateY(-0.2vmin);
+    box-shadow: 0 0.7vmin 1.5vmin rgba(0, 0, 0, 0.6);
+}
+
+.card-dealer-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 0.3vmin 0.5vmin rgba(0, 0, 0, 0.4);
+}
+
+.card-dealer-btn.deal {
+    background-color: #1a4d2e;
+    border-color: #2d6a47;
+}
+
+.card-dealer-btn.deal:hover {
+    background-color: #2d6a47;
+}
+
+.card-dealer-btn.blank {
+    background-color: #4d4d1a;
+    border-color: #6a6a2d;
+}
+
+.card-dealer-btn.blank:hover {
+    background-color: #6a6a2d;
+}
+
+.card-dealer-btn.reset {
+    background-color: #4d1a1a;
+    border-color: #6a2d2d;
+}
+
+.card-dealer-btn.reset:hover {
+    background-color: #6a2d2d;
+}
+
+/* Deck counter display */
+.deck-counter {
+    position: absolute;
+    top: -10vmin;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5vmin;
+    font-family: 'Times New Roman', serif;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1vmin 2vmin;
+    border-radius: 1vmin;
+    border: 0.2vmin solid #444;
+    text-align: center;
+    z-index: 1000;
+}

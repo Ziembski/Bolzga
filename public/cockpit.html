@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player Control Row</title>
 	<link rel="stylesheet" href="cockpit.css">
+	<link rel="stylesheet" href="card-dealer.css">
+
 </head>
 <body onload="main.init(); diceRollerInit()">
 
@@ -1289,6 +1291,26 @@
 			
 			<div class="card_dealer_container">
 
+			   <!-- Deck counter -->
+				<div class="deck-counter">
+					<span id="deck-count">55</span> cards remaining
+				</div>
+				
+				<!-- Cards will be added here dynamically -->
+				
+				<!-- Control buttons -->
+				<div class="card-dealer-controls">
+					<button class="card-dealer-btn deal" onclick="dealCard(); playButtonSound('button')">
+						Deal Card
+					</button>
+					<button class="card-dealer-btn blank" onclick="dealBlankCard(); playButtonSound('button')">
+						Deal Blank
+					</button>
+					<button class="card-dealer-btn reset" onclick="resetDeck(); playButtonSound('button2')">
+						Reset Deck
+					</button>
+				</div>
+
 				
 			</div>
 
@@ -1307,6 +1329,7 @@
 	<script src="dice_cockpit.js"></script>
 	<script src="main.js"></script>
 	<script src="toggleActive.js"></script>
+	<script src="card-dealer.js"></script>
 	
 	
     <script>

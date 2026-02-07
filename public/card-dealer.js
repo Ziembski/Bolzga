@@ -235,19 +235,24 @@ function getSuitImagePath(card) {
 // Animate card dealing
 function animateCardDeal(cardElement, index) {
     // Start position: bottom center, off-screen
-    cardElement.style.transform = 'translateY(100vh)';
+    cardElement.style.transform = 'translateX(-50%) translateY(100vh)';
     cardElement.style.opacity = '0';
     
     // Force reflow
     cardElement.offsetHeight;
     
+    // Get the stack offset from CSS variable
+    const computedStyle = getComputedStyle(document.documentElement);
+    const stackOffsetRaw = computedStyle.getPropertyValue('--card-stack-offset').trim();
+    const stackOffsetValue = parseFloat(stackOffsetRaw);
+    
     // Calculate final position in stack
-    const stackOffset = index * 3; // Each card offset by 3vmin
+    const stackOffset = index * stackOffsetValue;
     
     // Animate to final position
     setTimeout(() => {
         cardElement.style.transition = 'transform 0.8s ease-out, opacity 0.5s ease-out';
-        cardElement.style.transform = `translateY(${stackOffset}vmin)`;
+        cardElement.style.transform = `translateX(-50%) translateY(-${stackOffset}vmin)`;
         cardElement.style.opacity = '1';
     }, 50);
 }
@@ -262,7 +267,7 @@ function resetDeck() {
     dealtCardElements.forEach((card, index) => {
         setTimeout(() => {
             card.style.transition = 'transform 0.5s ease-in, opacity 0.5s ease-in';
-            card.style.transform = 'translateY(100vh)';
+            card.style.transform = 'translateX(-50%) translateY(100vh)';
             card.style.opacity = '0';
             
             setTimeout(() => {
@@ -275,6 +280,7 @@ function resetDeck() {
     setTimeout(() => {
         dealtCards = [];
         cardCounter = 0;
+        selectedCard = null;
         initializeDeck();
     }, dealtCardElements.length * 50 + 500);
 }
@@ -283,6 +289,14 @@ function resetDeck() {
 function selectCard(cardElement, cardData) {
     // Don't select blank cards
     if (cardData.isBlank) return;
+    
+    // If clicking the same card again, deselect it
+    if (selectedCard === cardElement) {
+        cardElement.classList.remove('card-selected');
+        selectedCard = null;
+        console.log('Card deselected');
+        return;
+    }
     
     // Remove selection from previously selected card
     if (selectedCard) {

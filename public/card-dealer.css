@@ -1,20 +1,26 @@
 /* Card Dealer Styles */
 
+/* Card spacing variable - adjust this to change distance between stacked cards */
+:root {
+    --card-stack-offset: 2.5vmin;
+}
+
 .card_dealer_container {
     position: relative;
-    width: 56.1vmin;
-    height: 82.5vmin;
+    width: 40vmin;
+    height: 90vmin;
     perspective: 1500vmin;
+    overflow: visible;
 }
 
 /* Individual dealt card wrapper */
 .dealt-card {
     position: absolute;
-    bottom: 0;
+    bottom: 15vmin; /* Leave space for buttons */
     left: 50%;
     transform: translateX(-50%);
-    width: 56.1vmin;
-    height: 82.5vmin;
+    width: 40vmin; /* Full width of container */
+    height: 58.8vmin; /* Maintain aspect ratio (40 * 1.47) */
     background-color: transparent;
     border-radius: 2.7vmin;
     transition: transform 0.8s ease-out, opacity 0.5s ease-out;
@@ -60,14 +66,14 @@
 }
 
 .dealt-card .pc-inner-frame {
-    width: 48.6vmin;
-    height: 75vmin;
+    width: 34.65vmin; /* 86.625% of 40vmin */
+    height: 53.55vmin; /* Maintain ratio */
     position: absolute;
-    left: 3.75vmin;
-    top: 3.75vmin;
+    left: 2.675vmin;
+    top: 2.675vmin;
     contain: paint;
-    border: 0.3vmin solid #000000;
-    border-radius: 2.25vmin;
+    border: 0.21vmin solid #000000;
+    border-radius: 1.6vmin;
 }
 
 .dealt-card .pc-inner-frame img {
@@ -78,34 +84,34 @@
 .dealt-card .pc-top-left {
     position: absolute;
     background-color: #ffffff;
-    top: 6.75vmin;
-    left: 1.5vmin;
+    top: 4.8vmin;
+    left: 1.07vmin;
     text-align: center;
     display: grid;
-    grid-template-rows: 7.5vmin 5.25vmin;
+    grid-template-rows: 5.35vmin 3.75vmin;
 }
 
 .dealt-card .pc-bottom-right {
     position: absolute;
     transform: rotate(180deg);
     background-color: #ffffff;
-    right: 1.5vmin;
-    bottom: 6.75vmin;
+    right: 1.07vmin;
+    bottom: 4.8vmin;
     text-align: center;
     display: grid;
-    grid-template-rows: 7.5vmin 5.25vmin;
+    grid-template-rows: 5.35vmin 3.75vmin;
 }
 
 .dealt-card .img3-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: -1.2vmin;
+    margin-top: -0.86vmin;
     margin-bottom: 0;
 }
 
 .dealt-card .img3-container {
-    width: 4.5vmin;
-    height: 6vmin;
+    width: 3.2vmin;
+    height: 4.3vmin;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,14 +127,14 @@
 .dealt-card .detail-item.field-pl-cd {
     justify-content: center;
     align-items: center;
-    height: 8.25vmin;
-    margin-top: -1.2vmin;
+    height: 5.9vmin;
+    margin-top: -0.86vmin;
     display: flex;
 }
 
 .dealt-card .field-pl-cd .detail-value {
     border: 0;
-    font-size: 6.75vmin;
+    font-size: 4.8vmin;
     font-family: TheSoul, serif;
     color: #000000;
     overflow: unset;
@@ -137,8 +143,8 @@
 .dealt-card .playing-card-backside {
     border-radius: 2.7vmin;
     object-fit: contain;
-    width: 56.1vmin;
-    height: 82.5vmin;
+    width: 40vmin;
+    height: 58.8vmin;
 }
 
 .dealt-card .playing-card-backside img {
@@ -151,38 +157,39 @@
 /* Card dealer controls */
 .card-dealer-controls {
     position: absolute;
-    bottom: -15vmin;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    gap: 2vmin;
+    flex-direction: column;
+    gap: 1vmin;
     justify-content: center;
     z-index: 1000;
 }
 
 .card-dealer-btn {
-    padding: 1.5vmin 3vmin;
-    font-size: 2.5vmin;
+    padding: 1.2vmin 2vmin;
+    font-size: 1.8vmin;
     font-family: 'Times New Roman', serif;
     background-color: #2a2a2a;
     color: #ffffff;
-    border: 0.3vmin solid #444;
-    border-radius: 1vmin;
+    border: 0.21vmin solid #444;
+    border-radius: 0.7vmin;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.35vmin 0.7vmin rgba(0, 0, 0, 0.5);
 }
 
 .card-dealer-btn:hover {
     background-color: #3a3a3a;
     border-color: #666;
-    transform: translateY(-0.2vmin);
-    box-shadow: 0 0.7vmin 1.5vmin rgba(0, 0, 0, 0.6);
+    transform: translateY(-0.14vmin);
+    box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.6);
 }
 
 .card-dealer-btn:active {
     transform: translateY(0);
-    box-shadow: 0 0.3vmin 0.5vmin rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.21vmin 0.35vmin rgba(0, 0, 0, 0.4);
 }
 
 .card-dealer-btn.deal {
@@ -215,16 +222,16 @@
 /* Deck counter display */
 .deck-counter {
     position: absolute;
-    top: -10vmin;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.5vmin;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1.8vmin;
     font-family: 'Times New Roman', serif;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 1vmin 2vmin;
-    border-radius: 1vmin;
-    border: 0.2vmin solid #444;
+    padding: 0.7vmin 1.4vmin;
+    border-radius: 0.7vmin;
+    border: 0.14vmin solid #444;
     text-align: center;
     z-index: 1000;
 }

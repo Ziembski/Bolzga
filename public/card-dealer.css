@@ -2,15 +2,13 @@
 
 /* Card spacing variable - adjust this to change distance between stacked cards */
 :root {
-    --card-stack-offset: 2.5vmin;
+    --card-stack-offset: 1.5vmin;
 }
 
 .card_dealer_container {
-position: absolute;
-    bottom: 2vmin;
-    right: 0;
-    height: 90vmin;
+    position: relative;
     width: 40vmin;
+    height: 90vmin;
     perspective: 1500vmin;
     overflow: visible;
 }
@@ -18,13 +16,13 @@ position: absolute;
 /* Individual dealt card wrapper */
 .dealt-card {
     position: absolute;
-    bottom: 15vmin; /* Leave space for buttons */
+    top: 5vmin; /* Position from top instead of bottom */
     left: 50%;
     transform: translateX(-50%);
-    width: 40vmin; /* Full width of container */
-    height: 58.8vmin; /* Maintain aspect ratio (40 * 1.47) */
+    width: 20vmin; /* Half width: 40vmin / 2 */
+    height: 29.4vmin; /* Half height: maintain aspect ratio */
     background-color: transparent;
-    border-radius: 2.7vmin;
+    border-radius: 1.35vmin;
     transition: transform 0.8s ease-out, opacity 0.5s ease-out;
     cursor: pointer;
 }
@@ -36,13 +34,13 @@ position: absolute;
 
 /* Selected card state */
 .dealt-card.card-selected {
-    outline: 0.5vmin solid #4CAF50;
-    outline-offset: 0.3vmin;
-    box-shadow: 0 0 2vmin rgba(76, 175, 80, 0.8);
+    outline: 0.25vmin solid #4CAF50;
+    outline-offset: 0.15vmin;
+    box-shadow: 0 0 1vmin rgba(76, 175, 80, 0.8);
 }
 
 .dealt-card.card-selected .dealt-card-front {
-    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black, 0 0 2vmin rgba(76, 175, 80, 0.6);
+    box-shadow: -0.075vmin 0.225vmin 0.45vmin 0 black, 0 0 1vmin rgba(76, 175, 80, 0.6);
 }
 
 .dealt-card-inner {
@@ -68,14 +66,14 @@ position: absolute;
 }
 
 .dealt-card .pc-inner-frame {
-    width: 34.65vmin; /* 86.625% of 40vmin */
-    height: 53.55vmin; /* Maintain ratio */
+    width: 17.325vmin; /* Half of previous: 34.65 / 2 */
+    height: 26.775vmin; /* Half of previous: 53.55 / 2 */
     position: absolute;
-    left: 2.675vmin;
-    top: 2.675vmin;
+    left: 1.3375vmin;
+    top: 1.3375vmin;
     contain: paint;
-    border: 0.21vmin solid #000000;
-    border-radius: 1.6vmin;
+    border: 0.105vmin solid #000000;
+    border-radius: 0.8vmin;
 }
 
 .dealt-card .pc-inner-frame img {
@@ -86,34 +84,34 @@ position: absolute;
 .dealt-card .pc-top-left {
     position: absolute;
     background-color: #ffffff;
-    top: 4.8vmin;
-    left: 1.07vmin;
+    top: 2.4vmin;
+    left: 0.535vmin;
     text-align: center;
     display: grid;
-    grid-template-rows: 5.35vmin 3.75vmin;
+    grid-template-rows: 2.675vmin 1.875vmin;
 }
 
 .dealt-card .pc-bottom-right {
     position: absolute;
     transform: rotate(180deg);
     background-color: #ffffff;
-    right: 1.07vmin;
-    bottom: 4.8vmin;
+    right: 0.535vmin;
+    bottom: 2.4vmin;
     text-align: center;
     display: grid;
-    grid-template-rows: 5.35vmin 3.75vmin;
+    grid-template-rows: 2.675vmin 1.875vmin;
 }
 
 .dealt-card .img3-wrapper {
     display: flex;
     flex-direction: column;
-    margin-top: -0.86vmin;
+    margin-top: -0.43vmin;
     margin-bottom: 0;
 }
 
 .dealt-card .img3-container {
-    width: 3.2vmin;
-    height: 4.3vmin;
+    width: 1.6vmin;
+    height: 2.15vmin;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,31 +127,31 @@ position: absolute;
 .dealt-card .detail-item.field-pl-cd {
     justify-content: center;
     align-items: center;
-    height: 5.9vmin;
-    margin-top: -0.86vmin;
+    height: 2.95vmin;
+    margin-top: -0.43vmin;
     display: flex;
 }
 
 .dealt-card .field-pl-cd .detail-value {
     border: 0;
-    font-size: 4.8vmin;
+    font-size: 2.4vmin;
     font-family: TheSoul, serif;
     color: #000000;
     overflow: unset;
 }
 
 .dealt-card .playing-card-backside {
-    border-radius: 2.7vmin;
+    border-radius: 1.35vmin;
     object-fit: contain;
-    width: 40vmin;
-    height: 58.8vmin;
+    width: 20vmin;
+    height: 29.4vmin;
 }
 
 .dealt-card .playing-card-backside img {
     height: 100%;
     width: 100%;
-    border-radius: 2.7vmin;
-    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;
+    border-radius: 1.35vmin;
+    box-shadow: -0.075vmin 0.225vmin 0.45vmin 0 black;
 }
 
 /* Card dealer controls */
@@ -163,15 +161,16 @@ position: absolute;
     left: 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 1vmin;
-    justify-content: center;
+    flex-direction: row;
+    gap: 0.5vmin;
+    justify-content: space-between;
     z-index: 1000;
 }
 
 .card-dealer-btn {
-    padding: 1.2vmin 2vmin;
-    font-size: 1.8vmin;
+    flex: 1;
+    padding: 1vmin 0.5vmin;
+    font-size: 1.4vmin;
     font-family: 'Times New Roman', serif;
     background-color: #2a2a2a;
     color: #ffffff;

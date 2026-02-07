@@ -234,8 +234,8 @@ function getSuitImagePath(card) {
 
 // Animate card dealing
 function animateCardDeal(cardElement, index) {
-    // Start position: bottom center, off-screen
-    cardElement.style.transform = 'translateX(-50%) translateY(100vh)';
+    // Start position: top center, off-screen above
+    cardElement.style.transform = 'translateX(-50%) translateY(-100vh) rotate(0deg)';
     cardElement.style.opacity = '0';
     
     // Force reflow
@@ -246,14 +246,20 @@ function animateCardDeal(cardElement, index) {
     const stackOffsetRaw = computedStyle.getPropertyValue('--card-stack-offset').trim();
     const stackOffsetValue = parseFloat(stackOffsetRaw);
     
-    // Calculate final position in stack
+    // Calculate final position in stack (stacking downward from top)
     const stackOffset = index * stackOffsetValue;
     
-    // Animate to final position
+    // Animate to final position with 360-degree spin
     setTimeout(() => {
-        cardElement.style.transition = 'transform 0.8s ease-out, opacity 0.5s ease-out';
-        cardElement.style.transform = `translateX(-50%) translateY(-${stackOffset}vmin)`;
+        cardElement.style.transition = 'transform 1s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-out';
+        cardElement.style.transform = `translateX(-50%) translateY(${stackOffset}vmin) rotate(360deg)`;
         cardElement.style.opacity = '1';
+        
+        // After animation completes, remove rotation from transform to prevent any wobble
+        setTimeout(() => {
+            cardElement.style.transition = 'none';
+            cardElement.style.transform = `translateX(-50%) translateY(${stackOffset}vmin) rotate(0deg)`;
+        }, 1000);
     }, 50);
 }
 
@@ -262,12 +268,12 @@ function resetDeck() {
     const container = document.querySelector('.card_dealer_container');
     if (!container) return;
     
-    // Remove all dealt cards with animation
+    // Remove all dealt cards with animation (slide up)
     const dealtCardElements = container.querySelectorAll('.dealt-card');
     dealtCardElements.forEach((card, index) => {
         setTimeout(() => {
             card.style.transition = 'transform 0.5s ease-in, opacity 0.5s ease-in';
-            card.style.transform = 'translateX(-50%) translateY(100vh)';
+            card.style.transform = 'translateX(-50%) translateY(-100vh) rotate(180deg)';
             card.style.opacity = '0';
             
             setTimeout(() => {

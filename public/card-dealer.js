@@ -21,6 +21,7 @@ const FIGURES = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K
 let cardDeck = [];
 let dealtCards = [];
 let cardCounter = 0;
+let selectedCard = null; // Track the currently selected card
 
 // Update deck counter display
 function updateDeckCounter() {
@@ -78,7 +79,7 @@ function dealCard() {
     updateDeckCounter();
 }
 
-// Deal a blank card
+// Deal a blank card (plain red card)
 function dealBlankCard() {
     const blankCard = { figure: '', suit: '', notation: 'BLANK', isBlank: true };
     createCardElement(blankCard);
@@ -99,6 +100,16 @@ function createCardElement(card) {
     cardWrapper.style.zIndex = cardCounter;
     cardWrapper.dataset.cardId = cardCounter;
     
+    // Store card data for later use
+    if (!card.isBlank) {
+        cardWrapper.dataset.cardNotation = `${card.figure}${card.suit}`;
+    }
+    
+    // Add click handler for card selection
+    cardWrapper.addEventListener('click', function() {
+        selectCard(this, card);
+    });
+    
     // Create the card structure (similar to flip-playing-card but without flip)
     const cardInner = document.createElement('div');
     cardInner.className = 'dealt-card-inner';
@@ -107,13 +118,15 @@ function createCardElement(card) {
     cardFront.className = 'dealt-card-front';
     
     if (card.isBlank) {
-        // Blank card - show backside
-        const backside = document.createElement('div');
-        backside.className = 'playing-card-backside';
-        const backsideImg = document.createElement('img');
-        backsideImg.src = '/img/cards/Backside.png';
-        backside.appendChild(backsideImg);
-        cardFront.appendChild(backside);
+        // Blank card - show plain red card
+        const playingCard = document.createElement('div');
+        playingCard.className = 'playing-card blank-card';
+        playingCard.style.backgroundColor = '#d81b04';
+        playingCard.style.border = '0.3vmin solid #a01503';
+        playingCard.style.borderRadius = '2.7vmin';
+        playingCard.style.width = '100%';
+        playingCard.style.height = '100%';
+        cardFront.appendChild(playingCard);
     } else {
         // Regular card
         const playingCard = document.createElement('div');
@@ -266,9 +279,90 @@ function resetDeck() {
     }, dealtCardElements.length * 50 + 500);
 }
 
+// Select a card when clicked
+function selectCard(cardElement, cardData) {
+    // Don't select blank cards
+    if (cardData.isBlank) return;
+    
+    // Remove selection from previously selected card
+    if (selectedCard) {
+        selectedCard.classList.remove('card-selected');
+    }
+    
+    // Select this card
+    cardElement.classList.add('card-selected');
+    selectedCard = cardElement;
+    
+    console.log('Selected card:', cardData.figure + cardData.suit);
+}
+
+// Paste selected card notation into karta-input field
+function pasteCardToInput(inputElement, rowNumber) {
+    if (!selectedCard) {
+        console.log('No card selected');
+        return;
+    }
+    
+    const cardNotation = selectedCard.dataset.cardNotation;
+    if (!cardNotation) {
+        console.log('Selected card has no notation');
+        return;
+    }
+    
+    // Set the input value
+    inputElement.value = cardNotation;
+    
+    // Trigger the updateKarta function
+    if (typeof updateKarta === 'function') {
+        updateKarta(rowNumber, cardNotation);
+    } else {
+        // Fallback: trigger change event
+        inputElement.dispatchEvent(new Event('change'));
+    }
+    
+    // Deselect the card
+    selectedCard.classList.remove('card-selected');
+    selectedCard = null;
+    
+    console.log('Pasted card notation:', cardNotation, 'to row', rowNumber);
+}
+
+// Initialize karta-input click handlers
+function initKartaInputHandlers() {
+    const kartaInputs = document.querySelectorAll('.karta-input');
+    
+    kartaInputs.forEach(input => {
+        // Add click handler
+        input.addEventListener('click', function() {
+            if (selectedCard) {
+                const rowNumber = parseInt(this.dataset.row);
+                pasteCardToInput(this, rowNumber);
+            }
+        });
+        
+        // Add visual feedback when hovering with selected card
+        input.addEventListener('mouseenter', function() {
+            if (selectedCard) {
+                this.style.outline = '0.3vmin solid #4CAF50';
+                this.style.cursor = 'pointer';
+            }
+        });
+        
+        input.addEventListener('mouseleave', function() {
+            if (selectedCard) {
+                this.style.outline = '';
+                this.style.cursor = '';
+            }
+        });
+    });
+    
+    console.log('Karta input handlers initialized for', kartaInputs.length, 'inputs');
+}
+
 // Initialize on page load
 function initCardDealer() {
     initializeDeck();
+    initKartaInputHandlers();
     console.log('Card dealer initialized with', cardDeck.length, 'cards');
 }
 

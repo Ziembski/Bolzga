@@ -18,6 +18,23 @@
     background-color: transparent;
     border-radius: 2.7vmin;
     transition: transform 0.8s ease-out, opacity 0.5s ease-out;
+    cursor: pointer;
+}
+
+/* Hover effect for dealt cards */
+.dealt-card:hover {
+    filter: brightness(1.1);
+}
+
+/* Selected card state */
+.dealt-card.card-selected {
+    outline: 0.5vmin solid #4CAF50;
+    outline-offset: 0.3vmin;
+    box-shadow: 0 0 2vmin rgba(76, 175, 80, 0.8);
+}
+
+.dealt-card.card-selected .dealt-card-front {
+    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black, 0 0 2vmin rgba(76, 175, 80, 0.6);
 }
 
 .dealt-card-inner {

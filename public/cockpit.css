@@ -1194,3 +1194,9 @@ img.wyczerpanie-icon {
     transform: translate(-50%, 50%);
     filter: brightness(2.7) saturate(0.3);
 }
+
+.card_dealer_card {
+	
+	    position: absolute;
+
+}

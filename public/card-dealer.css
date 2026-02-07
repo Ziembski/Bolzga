@@ -54,8 +54,8 @@
     width: 100%;
     height: 100%;
     background-color: #ffffff;
-    border-radius: 2.7vmin;
-    box-shadow: -0.15vmin 0.45vmin 0.9vmin 0 black;
+    border-radius: 1.35vmin; /* Half of original 2.7vmin */
+    box-shadow: -0.075vmin 0.225vmin 0.45vmin 0 black;
 }
 
 /* Playing card structure (reused from mainplayerview) */

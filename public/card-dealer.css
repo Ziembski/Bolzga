@@ -1,8 +1,9 @@
 /* Card Dealer Styles */
 
-/* Card spacing variable - adjust this to change distance between stacked cards */
+/* Card spacing variables - adjust these to change distance between stacked cards */
 :root {
-    --card-stack-offset: 7vmin;
+    --card-stack-offset: 7vmin; /* Vertical distance between rows */
+    --card-row-offset: 4vmin; /* Horizontal distance between cards in a row */
 }
 
 .card_dealer_container {

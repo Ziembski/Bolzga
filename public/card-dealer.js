@@ -241,25 +241,37 @@ function animateCardDeal(cardElement, index) {
     // Force reflow
     cardElement.offsetHeight;
     
-    // Get the stack offset from CSS variable
+    // Get the spacing variables from CSS
     const computedStyle = getComputedStyle(document.documentElement);
     const stackOffsetRaw = computedStyle.getPropertyValue('--card-stack-offset').trim();
     const stackOffsetValue = parseFloat(stackOffsetRaw);
+    const rowOffsetRaw = computedStyle.getPropertyValue('--card-row-offset').trim();
+    const rowOffsetValue = parseFloat(rowOffsetRaw);
     
-    // Calculate final position in stack (stacking downward from top)
-    const stackOffset = index * stackOffsetValue;
+    // Calculate row and column (5 cards per row)
+    const cardsPerRow = 5;
+    const rowIndex = Math.floor(index / cardsPerRow);
+    const colIndex = index % cardsPerRow;
+    
+    // Calculate vertical position (row-based)
+    const verticalOffset = rowIndex * stackOffsetValue;
+    
+    // Calculate horizontal position (column-based)
+    // Center the row by offsetting from middle
+    const totalRowWidth = (cardsPerRow - 1) * rowOffsetValue;
+    const horizontalOffset = (colIndex - (cardsPerRow - 1) / 2) * rowOffsetValue;
     
     // Animate to final position with 360-degree spin (no overshoot)
     setTimeout(() => {
         // Use ease-out for smooth deceleration with no bounce
         cardElement.style.transition = 'transform 1s ease-out, opacity 0.5s ease-out';
-        cardElement.style.transform = `translateX(-50%) translateY(${stackOffset}vmin) rotate(360deg)`;
+        cardElement.style.transform = `translateX(calc(-50% + ${horizontalOffset}vmin)) translateY(${verticalOffset}vmin) rotate(360deg)`;
         cardElement.style.opacity = '1';
         
         // After animation completes, remove rotation from transform to prevent any wobble
         setTimeout(() => {
             cardElement.style.transition = 'none';
-            cardElement.style.transform = `translateX(-50%) translateY(${stackOffset}vmin) rotate(0deg)`;
+            cardElement.style.transform = `translateX(calc(-50% + ${horizontalOffset}vmin)) translateY(${verticalOffset}vmin) rotate(0deg)`;
         }, 1000);
     }, 50);
 }

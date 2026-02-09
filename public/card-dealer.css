@@ -7,11 +7,11 @@
 }
 
 .card_dealer_container {
-    position: absolute;
+	position: absolute;
     right: 0vmin;
     bottom: 0vmin;
     width: 40vmin;
-    height: 90vmin;
+    height: 98vmin;
     perspective: 1500vmin;
     overflow: visible;
 }
@@ -161,7 +161,7 @@
 /* Card dealer controls */
 .card-dealer-controls {
     position: absolute;
-    bottom: 0;
+    bottom: 3vmin;
     left: 0;
     width: 100%;
     display: flex;
@@ -169,60 +169,19 @@
     gap: 0.5vmin;
     justify-content: space-between;
     z-index: 1000;
+    height: 7vmin;
+    object-fit: contain;
 }
 
 .card-dealer-btn {
+position: relative;
     flex: 1;
-    padding: 1vmin 0.5vmin;
-    font-size: 1.4vmin;
-    font-family: 'Times New Roman', serif;
-    background-color: #2a2a2a;
-    color: #ffffff;
-    border: 0.21vmin solid #444;
-    border-radius: 0.7vmin;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 0.35vmin 0.7vmin rgba(0, 0, 0, 0.5);
+    height: 6vmin;
 }
 
-.card-dealer-btn:hover {
-    background-color: #3a3a3a;
-    border-color: #666;
-    transform: translateY(-0.14vmin);
-    box-shadow: 0 0.5vmin 1vmin rgba(0, 0, 0, 0.6);
-}
 
-.card-dealer-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 0.21vmin 0.35vmin rgba(0, 0, 0, 0.4);
-}
-
-.card-dealer-btn.deal {
-    background-color: #1a4d2e;
-    border-color: #2d6a47;
-}
-
-.card-dealer-btn.deal:hover {
-    background-color: #2d6a47;
-}
-
-.card-dealer-btn.blank {
-    background-color: #4d4d1a;
-    border-color: #6a6a2d;
-}
-
-.card-dealer-btn.blank:hover {
-    background-color: #6a6a2d;
-}
-
-.card-dealer-btn.reset {
-    background-color: #4d1a1a;
-    border-color: #6a2d2d;
-}
-
-.card-dealer-btn.reset:hover {
-    background-color: #6a2d2d;
-}
 
 /* Deck counter display */
 .deck-counter {
@@ -239,4 +198,5 @@
     border: 0.14vmin solid #444;
     text-align: center;
     z-index: 1000;
+	display: none;
 }

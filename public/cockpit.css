@@ -1195,3 +1195,13 @@ img.wyczerpanie-icon {
     filter: brightness(2.7) saturate(0.3);
 }
 
+.tray-symbole3 {
+position: absolute;
+    height: 8vmin;
+    width: 8vmin;
+    bottom: 47%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    filter: brightness(2.7) saturate(0.3);
+}
+

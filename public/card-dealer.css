@@ -19,7 +19,7 @@
 /* Individual dealt card wrapper */
 .dealt-card {
     position: absolute;
-    top: 5vmin; /* Position from top instead of bottom */
+    top: 1vmin; 
     left: 50%;
     transform: translateX(-50%);
     width: 20vmin; /* Half width: 40vmin / 2 */
@@ -141,6 +141,7 @@
     font-family: TheSoul, serif;
     color: #000000;
     overflow: unset;
+	margin-top: 0.5vmin;
 }
 
 .dealt-card .playing-card-backside {

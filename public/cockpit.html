@@ -1300,15 +1300,18 @@
 				
 				<!-- Control buttons -->
 				<div class="card-dealer-controls">
-					<button class="card-dealer-btn deal" onclick="dealCard(); playButtonSound('button')">
-						Deal Card
-					</button>
-					<button class="card-dealer-btn blank" onclick="dealBlankCard(); playButtonSound('button')">
-						Deal Blank
-					</button>
-					<button class="card-dealer-btn reset" onclick="resetDeck(); playButtonSound('button2')">
-						Reset Deck
-					</button>
+					<div class="card-dealer-btn deal" onclick="dealCard(); playButtonSound('button')">
+						<img class="tray-button" src="/img/layout/button_clear_green.png">
+						<img class="tray-symbole2" src="/img/layout/tray_+.png">
+					</div>
+					<div class="card-dealer-btn blank" onclick="dealBlankCard(); playButtonSound('button')">
+						<img class="tray-button" src="/img/layout/button_clear_green.png">
+						<img class="tray-symbole2" src="/img/layout/tray_-.png">
+					</div>
+					<div class="card-dealer-btn reset" onclick="resetDeck(); playButtonSound('button2')">
+						<img class="tray-button" src="/img/layout/button_clear_red.png">
+						<img class="tray-symbole2" src="/img/layout/tray_x.png">
+					</div>
 				</div>
 
 				

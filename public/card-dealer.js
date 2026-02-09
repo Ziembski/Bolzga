@@ -123,7 +123,7 @@ function createCardElement(card) {
         playingCard.className = 'playing-card blank-card';
         playingCard.style.backgroundColor = '#d81b04';
         playingCard.style.border = '0.3vmin solid #a01503';
-        playingCard.style.borderRadius = '2.7vmin';
+        playingCard.style.borderRadius = '1.35vmin';
         playingCard.style.width = '100%';
         playingCard.style.height = '100%';
         cardFront.appendChild(playingCard);

@@ -646,6 +646,25 @@ app.get('/api/game-logs', async (req, res) => {
 });
 
 /**
+ * API endpoint to manually post a game log entry
+ * POST /api/game-logs
+ * Body: { "message": "Some text" }
+ */
+app.post('/api/game-logs', async (req, res) => {
+  try {
+    const { message } = req.body;
+    if (!message || message.trim() === '') {
+      return res.status(400).json({ success: false, error: 'Message is required' });
+    }
+    await appendToGameLog(message.trim());
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error posting manual game log:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+/**
  * SSE endpoint for real-time game log updates
  * GET /api/game-logs-sse
  */

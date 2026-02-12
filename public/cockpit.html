@@ -1212,6 +1212,15 @@
 				
 			<img src="/img/layout/screen_bigger.png">
 			<div id="game-logs-display" class="game-logs-display"></div>
+			<div class="gamelog-input-row">
+				<input type="text"
+					   id="gamelog-manual-input"
+					   class="gamelog-manual-input"
+					   placeholder="Wpis..."
+					   maxlength="200"
+					   onkeydown="if(event.key==='Enter') postManualLog()">
+				<button class="gamelog-post-btn" onclick="postManualLog()">&#x23CE;</button>
+			</div>
 	</div>
 
 
@@ -2090,6 +2099,31 @@ function showLatestLog() {
 function showOldestLog() {
     currentLogIndex = 0;
     displayCurrentLog();
+}
+
+// Post a manually typed entry to game logs
+async function postManualLog() {
+    const input = document.getElementById('gamelog-manual-input');
+    if (!input) return;
+
+    const text = input.value.trim();
+    if (!text) return;
+
+    try {
+        const response = await fetch('/api/game-logs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ entry: text })
+        });
+        const result = await response.json();
+        if (result.success !== false) {
+            input.value = '';
+        } else {
+            console.error('Failed to post log entry:', result.error);
+        }
+    } catch (error) {
+        console.error('Error posting manual log entry:', error);
+    }
 }
 
 // Initialize logs when page loads

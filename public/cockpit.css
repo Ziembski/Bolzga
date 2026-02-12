@@ -691,9 +691,9 @@ overflow-y: auto;
     min-width: 5.5vmin;
     text-align: start;
     position: absolute;
-    bottom: 4.2vmin;
+    bottom: 7.3vmin;
     left: 2.5vmin;
-    height: 22.5vmin;
+    height: 21.4vmin;
     width: 50vmin;
     filter: drop-shadow(0 0 0.3vmin #009520);
     }
@@ -1210,13 +1210,14 @@ position: absolute;
 /* Gamelog manual input row — matches karta-input style */
 .gamelog-input-row {
     position: absolute;
-    bottom: 0.4vmin;
+    bottom: 3.4vmin;
     left: 2.5vmin;
     width: 50vmin;
     display: flex;
     align-items: center;
     gap: 0.5vmin;
     z-index: 4;
+	
 }
 
 .gamelog-manual-input {

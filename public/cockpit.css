@@ -989,6 +989,7 @@ img.wyczerpanie-icon {
 
 .tray-button {
     position: absolute;
+    height: 100%;
     width: 100%;
 
 }

@@ -161,7 +161,7 @@
 /* Card dealer controls */
 .card-dealer-controls {
     position: absolute;
-    bottom: 3vmin;
+    bottom: 0vmin;
     left: 0;
     width: 100%;
     display: flex;

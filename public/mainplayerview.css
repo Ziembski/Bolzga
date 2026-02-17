@@ -2089,3 +2089,49 @@ position: absolute;
 #phone_checkbox:checked ~ .phone_container img {
 	filter: drop-shadow(-3vmin 3vmin 2vmin black);
 }
+/* Phone settings checkboxes */
+.phone-settings-checkboxes {
+    position: absolute;
+    top: 5.5vmin;
+    left: 4vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vmin;
+    z-index: 10;
+}
+
+.phone-setting-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4vmin;
+    cursor: pointer;
+    font-family: Nokia, monospace;
+    font-size: 0.9vmin;
+    color: #1E1E1E;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.phone-setting-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1vmin;
+    height: 1vmin;
+    border: 0.15vmin solid #1E1E1E;
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.phone-setting-label input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 0.05vmin;
+    left: 0.15vmin;
+    width: 0.35vmin;
+    height: 0.6vmin;
+    border-right: 0.15vmin solid #1E1E1E;
+    border-bottom: 0.15vmin solid #1E1E1E;
+    transform: rotate(45deg);
+}

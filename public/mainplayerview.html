@@ -717,6 +717,17 @@
 		<div class="phone_container">
 			
 		<label for="phone_checkbox"></label>
+
+		<div class="phone-settings-checkboxes">
+			<label class="phone-setting-label">
+				<input type="checkbox" id="dice_log_checkbox" checked>
+				<span>Dice log</span>
+			</label>
+			<label class="phone-setting-label">
+				<input type="checkbox" id="notif_checkbox" checked>
+				<span>Notifications</span>
+			</label>
+		</div>
 			
 			<img src=".\img\layout\phone.png">
 			<div class="phone_d4" onclick="playButtonSound('d4'); addDiceOrModifier('d4')" style="cursor: pointer;"></div>
@@ -1382,6 +1393,10 @@ function updateDiceInput(spanElement, addBolzgaDice = false) {
 }
 
 async function logDiceRoll(input, result) {
+    // Check if dice log posting is enabled
+    const diceLogCheckbox = document.getElementById('dice_log_checkbox');
+    if (diceLogCheckbox && !diceLogCheckbox.checked) return;
+
     try {
         const characterName = currentData && currentRow 
             ? getCharacterName(currentRow) 
@@ -1608,6 +1623,10 @@ function updateNavButtons() {
 }
 
 function playNotificationEffects() {
+    // Check if notifications are enabled
+    const notifCheckbox = document.getElementById('notif_checkbox');
+    if (notifCheckbox && !notifCheckbox.checked) return;
+
     // Play notification sound
     const notificationSound = document.getElementById('notification-sound');
     if (notificationSound) {
